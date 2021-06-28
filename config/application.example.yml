@@ -17,3 +17,4 @@ default: &default
 
 production:
   SECRET_KEY_BASE: 123
+  SETTINGS__SMTP__PORT: 587
