@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title ត្រីវិស័យ
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'variables', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'compile', media: 'all', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag asset_path('favicon.png')
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body.devise-form{id: css_id_name}
+    = render 'shared/notify_message'
+    = yield

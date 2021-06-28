@@ -2,6 +2,18 @@ default: &default
   HTTP_BASIC_USER: 'localhost'
   HTTP_BASIC_PASSWORD: '123'
 
-development:
-  TREY-VISAY-API_DATABASE_USERNAME: 'localhost'
-  TREY-VISAY-API_DATABASE_PASSWORD: '123'
+  TREY-VISAY-API_DATABASE_USERNAME: root
+  TREY-VISAY-API_DATABASE_PASSWORD: password
+
+  # SMTP Mandrill config
+  SETTINGS__SMTP__ADDRESS: smtp
+  SETTINGS__SMTP__DOMAIN: domain
+  SETTINGS__SMTP__USER_NAME: smtp
+  SETTINGS__SMTP__PASSWORD: smtp
+  SETTINGS__SMTP__PORT: 1025
+  SETTINGS__SMTP__HOST: localhost:3000
+  SETTINGS__SMTP__DEFAULT_FROM: notifications@example.org
+  MAILER_SENDER: notifications@example.org
+
+production:
+  SECRET_KEY_BASE: 123
