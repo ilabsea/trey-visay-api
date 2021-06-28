@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  layout :set_layout
 
   expose(:user)
   expose(:games) { user.games }
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
     else
       User.all
     end
+  end
+
+  def set_layout
+    devise_controller? ? "layouts/minimal" : "layouts/application"
   end
 
   def authenticate_admin_user!

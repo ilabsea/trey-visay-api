@@ -1,7 +1,7 @@
 .container
   .center
-    = image_tag 'logo.png', class: 'logo', style: 'box-shadow: 0px 3px 61px #fff; border-radius: 50%;'
-    %h2 ត្រីវិស័យ
+    = image_tag 'logo.png', class: 'logo'
+    %h2.title ត្រីវិស័យ
 
   = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
     .control-wrapper
