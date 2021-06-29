@@ -31,25 +31,19 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: Settings.host }
+  config.action_mailer.default_url_options = { host: ENV['SETTINGS__SMTP__HOST'] }
 
-  if Settings.smtp.present?
-    smtp_settings = {}.tap do |settings|
-      settings[:address]              = Settings.smtp["address"] if Settings.smtp["address"].present?
-      settings[:port]                 = Settings.smtp["port"] if Settings.smtp["port"].present?
-      settings[:domain]               = Settings.smtp["domain"] if Settings.smtp["domain"].present?
-      settings[:user_name]            = Settings.smtp["user_name"] if Settings.smtp["user_name"].present?
-      settings[:password]             = Settings.smtp["password"] if Settings.smtp["password"].present?
-      settings[:authentication]       = Settings.smtp["authentication"] if Settings.smtp["authentication"].present?
-      if Settings.smtp["enable_starttls_auto"].present?
-        settings[:enable_starttls_auto] = Settings.smtp["enable_starttls_auto"]
-      end
-    end
+  smtp_settings = {}.tap do |settings|
+    settings[:address]              = ENV['SETTINGS__SMTP__ADDRESS'] if ENV['SETTINGS__SMTP__ADDRESS'].present?
+    settings[:port]                 = ENV['SETTINGS__SMTP__PORT'] if ENV['SETTINGS__SMTP__PORT'].present?
+    settings[:domain]               = ENV['SETTINGS__SMTP__DOMAIN'] if ENV['SETTINGS__SMTP__DOMAIN'].present?
+    settings[:user_name]            = ENV['SETTINGS__SMTP__USER_NAME'] if ENV['SETTINGS__SMTP__USER_NAME'].present?
+    settings[:password]             = ENV['SETTINGS__SMTP__PASSWORD'] if ENV['SETTINGS__SMTP__PASSWORD'].present?
+  end
 
-    if smtp_settings.present?
-      config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = smtp_settings
-    end
+  if smtp_settings.present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = smtp_settings
   end
 
   # Print deprecation notices to the Rails logger.
