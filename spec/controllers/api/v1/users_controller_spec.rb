@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::UsersController, type: :controller do
   include AuthHelper
 
-  describe "POST game#create" do
+  describe "POST users#create" do
     let(:attributes) {
       {
         "data"=>"{\"uuid\":\"f28df85a-6669-4988-8d58-d2472dbe7ea5\",\"full_name\":\"Sothida\",\"password\":\"123\",\"username\":\"Sothida\",\"sex\":\"ស្រី\",\"photo\":\"\",\"date_of_birth\":\"07-May-2019\",\"phone_number\":\"090999888\",\"grade\":\"other\",\"version\":\"ios 1.4.0\"}",

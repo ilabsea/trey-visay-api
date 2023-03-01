@@ -6,4 +6,4 @@ class Object
   end
 end
 
-MultiJson.use :oj
+# MultiJson.use :oj
