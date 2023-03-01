@@ -52,3 +52,10 @@ bower.json
 sftp-config.json
 
 .rake_tasks~
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

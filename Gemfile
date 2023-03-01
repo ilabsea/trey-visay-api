@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6.2'
+gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
@@ -21,7 +19,12 @@ gem 'simple_form', '~> 5.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
+
 gem 'therubyracer', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
+
+# Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -36,45 +39,50 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'cancancan', '~> 2.0'
-gem 'devise', '~>4.7.1'
+
+gem 'devise', '~> 4.8.1'
+
 gem 'haml', '~>5.0.4'
-gem 'carrierwave', '~> 1.0'
-gem 'active_model_serializers', '~> 0.10.7'
+gem 'carrierwave', '~> 2.2.2'
+gem 'active_model_serializers', '~> 0.10.13'
 gem 'strip_attributes', '~> 1.8.0'
 gem 'decent_exposure'
 gem 'oj'
 gem 'kaminari', '~> 1.1.1'
-gem 'roo', '~> 2.8.2'
-gem 'pumi', github: 'dwilkie/pumi', require: 'pumi/rails'
+gem 'roo', '~> 2.9.0'
+gem 'pumi', require: 'pumi/rails'
 gem 'rubyzip', '~> 1.3.0'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'pry-rails', '0.3.6'
-  gem 'rspec', '3.7.0'
-  gem 'rspec-rails', '~> 3.6'
-  gem 'selenium-webdriver'
-  gem 'factory_bot_rails', '~> 4.0'
-  gem 'ffaker', '~> 2.8.0'
+  gem 'byebug'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
 end
 
 group :test do
-  gem 'shoulda-matchers',       '~> 3.1.2'
-  gem 'database_cleaner',       '~> 1.6.2'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop', '~> 0.52.1'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'annotate', '~> 2.7.2'
+  gem 'annotate'
+
   # Use Capistrano for deployment
   gem 'capistrano',             '~> 3.10.1', require: false
   gem 'capistrano-rails',       '~> 1.3.1', require: false
