@@ -118,7 +118,7 @@
                           - blank_department_majors = school.majors.select { |major| major.department_id == nil }
                           .meddium-margin-bottom{ 'data-toggle' => 'modal', 'data-target' => '#modal-school', 'data-school' => school.to_json, 'data-departments' => school.departments.to_json(include: :majors), 'data-majors' => blank_department_majors.to_json }
                             %span.fi-circle-check
-                              = image_tag school.logo, class: 'img-circular-small'
+                              = image_tag school.logo_url, class: 'img-circular-small'
                             %h4.strong-text= school.name
                             %span.glyphicon.glyphicon-equalizer.text-primary
                             %span= school.category
