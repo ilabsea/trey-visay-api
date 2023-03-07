@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3.12'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sass-rails', '~> 5.0'
@@ -43,12 +43,12 @@ gem 'cancancan', '~> 2.0'
 gem 'devise', '~> 4.8.1'
 
 gem 'haml', '~>5.0.4'
-gem 'carrierwave', '~> 2.2.2'
+gem 'carrierwave', '~> 2.2.3'
 gem 'active_model_serializers', '~> 0.10.13'
 gem 'strip_attributes', '~> 1.8.0'
 gem 'decent_exposure'
 gem 'oj'
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.2'
 gem 'roo', '~> 2.9.0'
 gem 'pumi', require: 'pumi/rails'
 gem 'rubyzip', '~> 1.3.0'
