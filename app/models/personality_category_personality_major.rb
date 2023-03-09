@@ -4,7 +4,7 @@
 #
 # Table name: personality_category_personality_majors
 #
-#  id                        :integer          not null, primary key
+#  id                        :bigint(8)        not null, primary key
 #  personality_category_code :string(255)
 #  personality_major_code    :string(255)
 #

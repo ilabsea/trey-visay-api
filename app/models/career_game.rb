@@ -4,9 +4,10 @@
 #
 # Table name: careers_games
 #
-#  career_id   :integer
-#  game_id     :integer
+#  career_id   :bigint(8)
+#  game_id     :bigint(8)
 #  is_goal     :boolean          default(FALSE)
+#  id          :bigint(8)        not null, primary key
 #  career_code :string(255)
 #
 # Indexes

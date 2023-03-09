@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id               :integer          not null, primary key
+#  id               :bigint(8)        not null, primary key
 #  uuid             :string(255)
 #  full_name        :string(255)      not null
 #  password         :string(255)      not null
@@ -80,16 +80,5 @@ class User < ApplicationRecord
     relation = relation.where(high_school_code: params[:high_school_code]) if params[:high_school_code].present?
     relation = relation.where(grade: params[:grade]) if params[:grade].present?
     relation
-  end
-
-  def self.all_schools
-    file = File.join(Rails.root, 'public', 'school.csv')
-    csv_text = File.read(file)
-    csv = CSV.parse(csv_text, headers: true)
-    schools = []
-    csv.each do |row|
-      schools.push(id: row[0], name: row[1])
-    end
-    schools
   end
 end

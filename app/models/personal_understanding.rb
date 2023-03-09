@@ -4,7 +4,7 @@
 #
 # Table name: personal_understandings
 #
-#  id                                               :integer          not null, primary key
+#  id                                               :bigint(8)        not null, primary key
 #  user_id                                          :integer
 #  game_id                                          :integer
 #  are_you_going_to_study_till_grade12              :string(255)
@@ -26,4 +26,8 @@ class PersonalUnderstanding < ApplicationRecord
 
   belongs_to :game
   scope :fails, -> { where('score < ?', 12) }
+
+  def fail?
+    score < 12
+  end
 end

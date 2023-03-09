@@ -1,0 +1,19 @@
+#accounts-index {
+  .confirm-link {
+    position: absolute;
+    left: -100%;
+    opacity: 0;
+  }
+
+  .status {
+    color: orange;
+  }
+
+  .status.actived {
+    color: green;
+  }
+
+  .status.archived {
+    color: #6c757d;
+  }
+}

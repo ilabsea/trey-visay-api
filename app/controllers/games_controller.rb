@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class GamesController < ApplicationController
-  before_action :authenticate_account!
-
   def index
     @user = User.find(params[:user_id])
   end

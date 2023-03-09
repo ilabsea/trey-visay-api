@@ -1,4 +1,5 @@
 = render partial: 'shared/side_nav', locals: {title: 'គណនេយ្យ'}
+
 .main
   %br
   %center
@@ -15,25 +16,19 @@
         %th សារអេឡិចត្រូនិច
         %th តួនាទី
         %th សាលា
+        %th= t('account.status')
         %th
     %tbody
-      - @accounts.each do |account|
+      - @accounts.each_with_index do |account, index|
         %tr
+          %td= @pagy.from + index
+          %td= link_to account.email, edit_account_path(account.id)
+          %td= I18n.t("account.#{account.role}")
+          %td= account.counselor_school_name
+          %td.status{ class: account.status }
+            = t("account.#{account.status}")
           %td
-            = link_to account.id, edit_account_path(account.id)
-          %td
-            = link_to account.email, edit_account_path(account.id)
-          %td
-            = account.role
-          %td
-            - if account.is_counsellor and account.schools
-              - account.schools.each do |school|
-                = "#{school}"
-          %td
-            %a.btn.btn-info.btn-xs{:href => edit_account_path(account.id)}
-              %span.glyphicon.glyphicon-edit
-              កែតម្រូវ
-            - if account.id != current_account.id
-              %a.btn.btn-danger.btn-xs{:rel => "nofollow", :href => account_path(account.id), "data-method" => "delete",  data: { confirm: 'តើអ្នពិតជាចង់លុបគណនេយ្យនេះមែនទេ?' }}
-                %span.glyphicon.glyphicon-remove
-                លុបចោល
+            %div{style: 'text-align: right'}
+              = render 'action_buttons', account: account
+
+  = render "shared/footers/pagination"

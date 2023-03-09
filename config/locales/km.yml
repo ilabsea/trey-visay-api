@@ -67,7 +67,7 @@ km:
       not_found_in_database: "%{authentication_keys} ឬលេខសម្ងាត់មិនត្រឹមត្រូវ"
       timeout: "ការបញ្ចូលរបស់អ្នកបានផុតកំណត់។ សូមចូលម្តងទៀតដើម្បីបន្ត"
       unauthenticated: "អ្នកត្រូវចូលឬចុះឈ្មោះមុនពេលបន្"
-      unconfirmed: "អ្នកត្រូវបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកមុនពេលបន្"
+      unconfirmed: "អ្នកត្រូវបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកមុនពេលបន្ត"
       account:
         unauthenticated: 'សូមបញ្ចូលគណនី'
         invalid: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
@@ -120,3 +120,8 @@ km:
         one: "កំហុស 1 ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
         other: "កំហុស %{count} ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
 
+  pundit:
+    default: 'You cannot perform this action.'
+    post_policy:
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'

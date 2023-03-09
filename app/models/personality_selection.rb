@@ -4,7 +4,7 @@
 #
 # Table name: personality_selections
 #
-#  id                  :integer          not null, primary key
+#  id                  :bigint(8)        not null, primary key
 #  personality_code    :string(255)
 #  personality_test_id :integer
 #
