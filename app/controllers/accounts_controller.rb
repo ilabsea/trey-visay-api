@@ -4,7 +4,15 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ edit update archive resend_confirmation]
 
   def index
-    @pagy, @accounts = pagy(policy_scope(authorize Account.includes(:counselor_school)))
+    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(filter_params).includes(:counselor_school)))
+  end
+
+  def show
+    @account = authorize Account.with_deleted.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new

@@ -15,7 +15,9 @@
 //= require activestorage
 //= require jquery
 //= require turbolinks
-//= require bootstrap-sprockets
+//= require popper
+//= require bootstrap
+//= require sb-admin-2
 //= require chart.bundle.min
 //= require common/pumi
 
@@ -29,6 +31,8 @@
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();
+  $("[role='tooltip']").remove();
+  $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 
   let currentPage = TV.Util.getCurrentPage();
   console.log(currentPage)

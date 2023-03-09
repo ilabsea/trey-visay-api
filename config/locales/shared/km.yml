@@ -79,3 +79,8 @@ km:
     drag_to_sort: អូសដើម្បីតម្រៀបលំដាប់
     display_total: "បង្ហាញទិន្ន័យសរុប <b>%{total_count}</b>"
     copy: ថតចម្លង
+    logout: ចាកចេញ
+    all_provinces: គ្រប់ខេត្ត/ក្រុង
+    all_districts: គ្រប់ស្រុក/ខ័ណ្ឌ
+    all_communes: គ្រប់ឃុំ/សង្កាត់
+    all_schools: គ្រប់សាលា

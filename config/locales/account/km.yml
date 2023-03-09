@@ -1,13 +1,13 @@
 km:
   account:
-    users: គណនីប្រើប្រាស់
-    user: គណនីប្រើប្រាស់
+    accounts: គណនីប្រើប្រាស់
+    account: គណនីប្រើប្រាស់
     status: ស្ថានភាព
     last_sign_in_at: ចូលចុងក្រោយនៅ
     role: តួនាទី
     email: អ៊ីមែល
-    new_user: បន្ថែមគណនីប្រើប្រាស់ថ្មី
-    edit_user: កែតម្រូវគណនីប្រើប្រាស់ថ្មី
+    new_account: បន្ថែមគណនីប្រើប្រាស់ថ្មី
+    edit_account: កែតម្រូវគណនីប្រើប្រាស់ថ្មី
     copy_confirm_link: ថតចម្លងតំណភ្ជាប់
     copied: ត្រូវបានថតចម្លង!
     all: ទាំងអស់

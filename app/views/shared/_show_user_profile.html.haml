@@ -1,43 +1,31 @@
-.profile-photo.col-md-3
-  %br
-  %center
+.d-flex
+  .mr-3
     - url = @user.photo.url || 'default_profile.png'
-    = image_tag url ,:class=> "img-circular-profile"
-.col-md-9
-  %br
-  .shadow-box
-    .content-box
-      .title
-        %b ពត៍មានផ្ទាល់ខ្លួន
-      .content-display{:style => "margin-top:2rem;"}
-        %form{:role => "form"}
-          .form-group.meddium-margin-bottom
-            %label.small-gray ឈ្មោះពេញ
-            .content-data
-              %b= " : #{@user.full_name}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray ភេទ
-            .content-data
-              %b= " : #{@user.sex}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray ថ្ងៃខែឆ្នាំកំណើត
-            .content-data
-              %b= " : #{@user.date_of_birth}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray លេខទូរស័ព្ទ
-            .content-data
-              %b= " : #{@user.phone_number}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray ថ្នាក់ទី
-            .content-data
-              %b= " : #{@user.grade}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray រៀននៅសាលា
-            .content-data
-              %b= " : #{@user.high_school.try(:name_km)}"
-          .form-group.meddium-margin-bottom
-            %label.small-gray អាស័យដ្ឋានបច្ចុប្បន្ន
-            .content-data
-              %b= " : #{@user.address}"
-  %br
+    = image_tag url, class: "img-circular-profile rounded-circle"
 
+  .flex-grow-1.border.p-3
+    %h4.title
+      ព័ត៌មានផ្ទាល់ខ្លួន
+
+    .content
+      .d-flex.mb-2
+        .w-25 ឈ្មោះពេញ
+        %b= " : #{@user.full_name}"
+      .d-flex.mb-2
+        .w-25 ភេទ
+        %b= " : #{@user.sex}"
+      .d-flex.mb-2
+        .w-25 ថ្ងៃខែឆ្នាំកំណើត
+        %b= " : #{@user.date_of_birth}"
+      .d-flex.mb-2
+        .w-25 លេខទូរស័ព្ទ
+        %b= " : #{@user.phone_number}"
+      .d-flex.mb-2
+        .w-25 ថ្នាក់ទី
+        %b= " : #{@user.grade}"
+      .d-flex.mb-2
+        .w-25 រៀននៅសាលា
+        %b= " : #{@user.high_school.try(:name_km)}"
+      .d-flex.mb-2
+        .w-25 អាស័យដ្ឋានបច្ចុប្បន្ន
+        %b= " : #{@user.address}"

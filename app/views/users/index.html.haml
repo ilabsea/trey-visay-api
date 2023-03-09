@@ -1,22 +1,28 @@
-- content_for :toolbar_right_side do
-  = link_to 'ទាញយកលទ្ធផល', download_users_path, target: :_blank, id: 'btn-download', class: 'btn btn-success'
+/ Page Heading
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800 អ្នកប្រើប្រាស់
 
-= render partial: 'shared/side_nav', locals: {title: 'អ្នកប្រើប្រាស់'}
+  %a#btn-download.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm{ href: download_users_path, target: :_blank }
+    %i.fas.fa-download.fa-sm.text-white-50
+    ទាញយកលទ្ធផល
 
-.main
-  = render 'filter'
+= render 'filter'
 
-  %table.table-bordered.table.central{style: "width:80%;", align: "center"}
-    %thead
-      %tr
-        %th{width: 60} #
-        %th សិស្ស
-        %th ភេទ
-        %th ថ្នាក់ទី
-        %th ឈ្មោះសាលា
-        %th ការធ្វើតេស្ត
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @users
 
-    %tbody#body-content
-      = render partial: 'users'
+    %table.table-bordered.table
+      %thead
+        %tr
+          %th{width: 60} #
+          %th សិស្ស
+          %th ភេទ
+          %th ថ្នាក់ទី
+          %th ឈ្មោះសាលា
+          %th ការធ្វើតេស្ត
 
-  = render "shared/footers/pagination"
+      %tbody#body-content
+        = render partial: 'users'
+
+    = render "shared/footers/pagination"

@@ -88,6 +88,18 @@ class Account < ApplicationRecord
     "pending"
   end
 
+  def display_name
+    email.split("@").first.upcase
+  end
+
+  # Class methods
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
+    scope = scope.only_deleted if params[:archived] == "true"
+    scope
+  end
+
   private
     def reset_authentication_token
       self.authentication_token = nil

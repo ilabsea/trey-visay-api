@@ -1,10 +1,9 @@
-= render partial: 'shared/side_nav', locals: {title: "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"}
-.container
-  .row
-    .col-md-10
-      .tab{:role => "tabpanel"}
-        = render 'shared/tab_header'
+/ Page Heading
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
 
-        .tab-content.tabs
-          #Section2.tab-pane.fade.in.active{:role => "tabpanel"}
-            = render 'games'
+= render "users/tab_header"
+
+.card.shadow.mb-4
+  .card-body
+    = render 'games'

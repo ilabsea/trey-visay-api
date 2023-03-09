@@ -1,13 +1,13 @@
 en:
   account:
-    users: Users
-    user: User
+    accounts: Users
+    account: User
     status: Status
     last_sign_in_at: Last sign in at
     role: Role
     email: Email
-    new_user: New user
-    edit_user: Edit user
+    new_account: New account
+    edit_account: Edit account
     copy_confirm_link: Copy confirm link
     copied: Copied!
     all: All

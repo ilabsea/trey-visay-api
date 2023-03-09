@@ -1,133 +1,131 @@
-= render partial: 'shared/side_nav', locals: {title: "ការធ្វើតេស្តរបស់ #{@user.full_name}"}
-.container
-  .row
-    .col-md-10
-      .tab{:role => "tabpanel"}
-        = render 'shared/tab_header'
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
 
-        / Tab panes
-        .tab-content.tabs
-          #Section2.tab-pane.fade.in.active{:role => "tabpanel"}
-            .col-md-12
-              %br
-                %b
-                  %center
-                    #div{style: "width:100%;", align: "left"}
-                      %a.btn.icon-btn.btn-primary{:href => "#{user_games_path(@user.id)}"}
-                        %span.glyphicon.btn-glyphicon.glyphicon-arrow-left.img-circle.text-primary>
-                        - num = @user.games.map(&:id).index(@game.id) + 1
-                        = "ធ្វើតេស្តលើកទី #{num}"
+= render "users/tab_header"
 
+.card.shadow.mb-4
+  .card-body
+    / Tab panes
+    .tab-content.tabs
+      #Section2
+        .col-md-12
+          %center
+            #div{style: "width:100%;", align: "left"}
+              %a.btn.icon-btn.btn-primary{:href => "#{user_games_path(@user.id)}"}
+                %span.glyphicon.btn-glyphicon.glyphicon-arrow-left.img-circle.text-primary>
+                - num = @user.games.map(&:id).index(@game.id) + 1
+                = "ធ្វើតេស្តលើកទី #{num}"
+
+          %br
+          ធ្វើតេស្តតំណាក់កាលទី១
+          %br
+          %br
+          .shadow-box
+            .content-box
+              .title
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    %label.small-gray{:for => "full_name"}
+                      = image_tag "/images/book.png" ,:class=> "img-circular"
+                    .content-data-long
+                      %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#firstTest" } ការស្វែងយល់អំពីខ្លួនឯង
+          %br
+          %br
+          ធ្វើតេស្តតំណាក់កាលទី២
+          %br
+          %br
+          .shadow-box-top
+            .content-box
+              .title
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    %label.small-gray{:for => "full_name"}
+                      = image_tag "/images/book.png" ,:class=> "img-circular"
+                    .content-data-long
+                      %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestOne" } ការបំពេញមុខវិជ្ជា
+          .shadow-box-middle
+            .content-box
+              .title
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    %label.small-gray{:for => "full_name"}
+                      = image_tag "/images/book.png" ,:class=> "img-circular"
+                    .content-data-long
+                      %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestTwo" } ការបំពេញបុគ្គលិកលក្ខណៈ
+          .shadow-box-middle
+            .content-box
+              .title
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    %label.small-gray{:for => "full_name"}
+                      = image_tag "/images/book.png" ,:class=> "img-circular"
+                    .content-data-long
+                      %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestThree" } ការជ្រើសរើសមុខរបរផ្អែកលើបុគ្គលិលក្ខណៈ
+          .shadow-box
+            .content-box-bottom
+              .title
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    %label.small-gray{:for => "full_name"}
+                      = image_tag "/images/book.png" ,:class=> "img-circular"
+                    .content-data-long
+                      %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestFour" } ការផ្តល់អនុសាសន៍
+          %br
+          %br
+          ដាក់គោលដៅ និងមូលហេតុ
+          %br
+          %br
+          .shadow-box-top
+            .content-box-long
+              .title
+                %h4{style: "font-weight:strong"}
+                  = @game.goal_career.name
+              .content-display{:style => "margin-top:2rem;"}
+                %form{:role => "form"}
+                  .form-group.meddium-margin-bottom
+                    = @game.reason
+
+            - if @game.audio.url.present?
+              %div
+                %audio{controls: true, class: 'embed-responsive-item'}
+                  %source{src: @game.audio.url}
+          %br
+          %br
+
+          - if @schools.present? || @game.goal_career.unknown_schools.present?
+            សាលាខាងក្រោមនេះមានបង្រៀនមុខវិជ្ជាដែលអ្នកចង់រៀន
+            %br
+            %br
+
+            - if unknown_schools = @game.goal_career.unknown_schools.presence
+              .shadow-box
+                .meddium-margin-bottom
+                  %h4.strong-text= unknown_schools
               %br
-              ធ្វើតេស្តតំណាក់កាលទី១
-              %br
-              %br
+
+            - if @schools.present?
               .shadow-box
                 .content-box
-                  .title
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        %label.small-gray{:for => "full_name"}
-                          = image_tag "/images/book.png" ,:class=> "img-circular"
-                        .content-data-long
-                          %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#firstTest" } ការស្វែងយល់អំពីខ្លួនឯង
+                  .content-display
+                    - @schools.each do |school|
+                      - blank_department_majors = school.majors.select { |major| major.department_id == nil }
+                      .meddium-margin-bottom{ 'data-toggle' => 'modal', 'data-target' => '#modal-school', 'data-school' => school.to_json, 'data-departments' => school.departments.to_json(include: :majors), 'data-majors' => blank_department_majors.to_json }
+                        %span.fi-circle-check
+                          = image_tag school.logo_url, class: 'img-circular-small'
+                        %h4.strong-text= school.name
+                        %span.glyphicon.glyphicon-equalizer.text-primary
+                        %span= school.category
+                        %br
+                        %span.glyphicon.glyphicon-map-marker.text-primary
+                        %span= school.address
+                        .clear
+                        %hr
               %br
-              %br
-              ធ្វើតេស្តតំណាក់កាលទី២
-              %br
-              %br
-              .shadow-box-top
-                .content-box
-                  .title
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        %label.small-gray{:for => "full_name"}
-                          = image_tag "/images/book.png" ,:class=> "img-circular"
-                        .content-data-long
-                          %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestOne" } ការបំពេញមុខវិជ្ជា
-              .shadow-box-middle
-                .content-box
-                  .title
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        %label.small-gray{:for => "full_name"}
-                          = image_tag "/images/book.png" ,:class=> "img-circular"
-                        .content-data-long
-                          %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestTwo" } ការបំពេញបុគ្គលិកលក្ខណៈ
-              .shadow-box-middle
-                .content-box
-                  .title
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        %label.small-gray{:for => "full_name"}
-                          = image_tag "/images/book.png" ,:class=> "img-circular"
-                        .content-data-long
-                          %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestThree" } ការជ្រើសរើសមុខរបរផ្អែកលើបុគ្គលិលក្ខណៈ
-              .shadow-box
-                .content-box-bottom
-                  .title
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        %label.small-gray{:for => "full_name"}
-                          = image_tag "/images/book.png" ,:class=> "img-circular"
-                        .content-data-long
-                          %a{"href" => "#", "aria-controls" => "profile", "data-toggle" => "modal", "data-target" => "#secondTestFour" } ការផ្តល់អនុសាសន៍
-              %br
-              %br
-              ដាក់គោលដៅ និងមូលហេតុ
-              %br
-              %br
-              .shadow-box-top
-                .content-box-long
-                  .title
-                    %h4{style: "font-weight:strong"}
-                      = @game.goal_career.name
-                  .content-display{:style => "margin-top:2rem;"}
-                    %form{:role => "form"}
-                      .form-group.meddium-margin-bottom
-                        = @game.reason
-
-                - if @game.audio.url.present?
-                  %div
-                    %audio{controls: true, class: 'embed-responsive-item'}
-                      %source{src: @game.audio.url}
-              %br
-              %br
-
-              - if @schools.present? || @game.goal_career.unknown_schools.present?
-                សាលាខាងក្រោមនេះមានបង្រៀនមុខវិជ្ជាដែលអ្នកចង់រៀន
-                %br
-                %br
-
-                - if unknown_schools = @game.goal_career.unknown_schools.presence
-                  .shadow-box
-                    .meddium-margin-bottom
-                      %h4.strong-text= unknown_schools
-                  %br
-
-                - if @schools.present?
-                  .shadow-box
-                    .content-box
-                      .content-display
-                        - @schools.each do |school|
-                          - blank_department_majors = school.majors.select { |major| major.department_id == nil }
-                          .meddium-margin-bottom{ 'data-toggle' => 'modal', 'data-target' => '#modal-school', 'data-school' => school.to_json, 'data-departments' => school.departments.to_json(include: :majors), 'data-majors' => blank_department_majors.to_json }
-                            %span.fi-circle-check
-                              = image_tag school.logo_url, class: 'img-circular-small'
-                            %h4.strong-text= school.name
-                            %span.glyphicon.glyphicon-equalizer.text-primary
-                            %span= school.category
-                            %br
-                            %span.glyphicon.glyphicon-map-marker.text-primary
-                            %span= school.address
-                            .clear
-                            %hr
-                  %br
 
 = render 'modal_first_test', :personal_understandings => @game.personal_understandings
 = render 'modal_second_test_one', :subject => @game.subject

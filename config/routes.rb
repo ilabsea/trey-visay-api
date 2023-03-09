@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :accounts do
     member do
       post :resend_confirmation
-      delete :archive
+      put :archive
       put :restore
     end
   end

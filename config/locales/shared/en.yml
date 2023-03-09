@@ -79,3 +79,8 @@ en:
     drag_to_sort: Drag to sort order
     display_total: "Total items: <b>%{total_count}</b>"
     copy: Copy
+    logout: Logout
+    all_provinces: All provinces
+    all_districts: All districts
+    all_communes: All communes
+    all_schools: All schools

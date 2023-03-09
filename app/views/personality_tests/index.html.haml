@@ -1,23 +1,21 @@
-= render partial: 'shared/side_nav', locals: {title: "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"}
-.container
-  .row
-    .col-md-10
-      .tab{:role => "tabpanel"}
-        = render 'shared/tab_header'
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
 
-        .tab-content.tabs
-          #Section3.tab-pane.fade.in.active{:role => "tabpanel"}
-            %br
-            %table.table-bordered.table.central{style: "width:80%;", align: "center"}
-              %thead
-                %tr
-                  %th{width: 60} #
-                  %th តេស្ត
-                  %th កាលបរិច្ឆេទ
-              %tbody
-                - @user.personality_tests.each_with_index do |test, i|
-                  %tr
-                    %td= i + 1
-                    %td= link_to "តេស្តលើកទី #{i + 1}", user_personality_test_path(user_id: @user.id, id: test.id)
-                    %td= test.created_at
+= render "users/tab_header"
+
+.card.shadow.mb-4
+  .card-body
+    #Section3
+      %table.table-bordered.table
+        %thead
+          %tr
+            %th{width: 60} #
+            %th តេស្ត
+            %th កាលបរិច្ឆេទ
+        %tbody
+          - @user.personality_tests.each_with_index do |test, i|
+            %tr
+              %td= i + 1
+              %td= link_to "តេស្តលើកទី#{i + 1}", user_personality_test_path(user_id: @user.id, id: test.id)
+              %td= test.created_at
 

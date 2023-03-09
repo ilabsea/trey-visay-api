@@ -23,14 +23,14 @@ TV.Common.Copy = (() => {
   }
 
   function handleNotifyMessage(dom) {
-    let labelDom = $(dom).find('.m-label');
-    let oldLabel = labelDom.html();
-    let hint = labelDom.data('hint');
+    let oldLabel = $(dom).data('title');
+    let hint = $(dom).data('hint');
 
-    labelDom.html(hint);
+    $(dom).attr('data-original-title', hint);
+    $(dom).tooltip('show');
 
     setTimeout(function() {
-      labelDom.html(oldLabel);
+      $(dom).attr('data-original-title', oldLabel);
     }, 500);
   }
 

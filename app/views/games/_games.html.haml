@@ -1,20 +1,17 @@
-%br
-%table.table-bordered.table.central{style: "width:80%;", align: "center"}
+%table.table-bordered.table
   %thead
     %tr
       %th{width: 60} #
       %th តេស្ត
       %th កាលបរិច្ឆេទ
       %th តេស្តស្វែងយល់អំពីខ្លួនឯង
+
   %tbody
     - @user.games.each_with_index do |game, i|
       %tr
-        %td
-          = i + 1
-        %td
-          = link_to "តេស្តលើកទី #{i + 1}", user_game_path(:user_id =>  @user.id, :id => game.id)
-        %td
-          = game.created_at
+        %td= i + 1
+        %td= link_to "តេស្តលើកទី#{i + 1}", user_game_path(:user_id =>  @user.id, :id => game.id)
+        %td= game.created_at
         %td
           = "តេស្ត #{game.personal_understandings.size}ដង, ធ្លាក់ "
           - fails_len = game.personal_understandings.fails.size

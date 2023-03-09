@@ -1,11 +1,116 @@
 #users-index {
   .filter{
-    text-align: right;
-    width: 80%;
     margin: 0 auto;
   }
 
   .select {
     min-width: 150px;
   }
+
+  .img-circular-profile {
+    width: 196px;
+    height: 196px;
+    background-size: cover;
+    display: block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+  }
+
+  .custom-select {
+    min-width: 150px;
+  }
+}
+
+.shadow-box{
+  box-shadow: 1px 1px 1px 1px #888888;
+  border: 2px;
+  border-color: gray;
+  padding: 1rem 2rem;
+}
+
+.shadow-box-middle{
+  box-shadow: 1px 0px 1px 1px #888888;
+  border: 2px;
+  border-color: gray;
+  padding: 1rem 2rem;
+}
+
+.shadow-box-top{
+  box-shadow: 1px 0px 1px 1px #888888;
+  border: 2px;
+  border-color: gray;
+  padding: 1rem 2rem;
+}
+
+.shadow-box-bottom{
+  box-shadow: 1px 1px 1px 1px #888888;
+  border: 2px;
+  border-color: gray;
+  padding: 1rem 2rem;
+}
+
+.small-gray{
+  font-weight: normal;
+  color: gray;
+}
+
+.big-content-data{
+  width: 30%;
+  float: right;
+}
+
+.content-data{
+  width: 70%;
+  float: right;
+}
+
+.content-data-long{
+  width: 90%;
+  float: right;
+  padding-top: 20px;
+}
+
+.meddium-margin-bottom{
+  margin-bottom: 10px;
+}
+
+.img-circular{
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+}
+
+.img-circular-profile {
+  width: 196px;
+  height: 196px;
+  background-size: cover;
+  display: block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.img-circular-small{
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+}
+.fi-circle-check {
+  float: left;
+  margin-right: 10px;
+  padding-top: 2px;
+}
+
+.help-block {
+  font-size: .8em;
+  color: red;
 }
