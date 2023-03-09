@@ -14,7 +14,23 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require chart.bundle.min
-//= require pumi
-//= require_tree .
+//= require common/pumi
+
+//= require application/namespace
+//= require application/util
+//= require common/copy
+
+//= require games/show
+//= require personality_tests/show
+//= require users/index
+
+$(document).on('turbolinks:load', function() {
+  TV.Common.Copy.init();
+
+  let currentPage = TV.Util.getCurrentPage();
+  console.log(currentPage)
+  !!TV[currentPage] && TV[currentPage].init();
+});

@@ -4,7 +4,7 @@
 #
 # Table name: subject_tips
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  subject_code :string(255)      not null
 #  tip          :string(255)      not null
 #  tip_type     :string(255)      not null

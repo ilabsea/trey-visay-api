@@ -19,5 +19,4 @@
     %tbody#body-content
       = render partial: 'users'
 
-  .center
-    = paginate @users
+  = render "shared/footers/pagination"

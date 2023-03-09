@@ -1,77 +1,73 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
-  before_action :authenticate_account!
-  before_action :authenticate_admin_user!
-  def index
-    @accounts = Account.all
-  end
+  before_action :set_account, only: %i[ edit update archive resend_confirmation]
 
-  def show
-    @account = Account.find(params[:id])
+  def index
+    @pagy, @accounts = pagy(policy_scope(authorize Account.includes(:counselor_school)))
   end
 
   def new
-    @account = Account.new
-  end
-
-  def edit
-    @account = Account.find(params[:id])
-  end
-
-  def update
-    params = convert_role_params
-    @account = Account.find(params[:id])
-    if @account.update_attributes!(filter_params)
-      redirect_to accounts_path, notice: 'Account has been updated successfully'
-    else
-      flash.now[:alert] = 'Failed to update user'
-      render :new
-    end
+    @account = authorize Account.new
   end
 
   def create
-    params = convert_role_params
-    @account = Account.new(filter_params)
-    @account.password = params[:account][:password]
-    @account.password_confirmation = params[:account][:password_confirmation]
-    if @account.valid?
-      if @account.save!
-        redirect_to accounts_path, notice: 'Account has been created successfully'
-      else
-        flash.now[:alert] = 'Failed to save user'
-        render :new
-      end
+    @account = authorize Account.new(account_params)
+
+    if @account.save
+      redirect_to accounts_url, notice: "Account was successfully created."
     else
-      flash.now[:alert] = 'Failed to save user'
-      render :new, errors: @account.errors
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @account.update(account_params)
+      redirect_to accounts_url, notice: "Account was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def archive
+    @account.destroy
+
+    redirect_to accounts_url, status: :see_other, notice: I18n.t("account.archive_successfully", email: @account.email)
+  end
+
+  def restore
+    @account = authorize Account.only_deleted.find(params[:id])
+    @account.restore
+
+    redirect_to accounts_url, notice: I18n.t("account.restore_successfully", email: @account.email)
   end
 
   def destroy
-    @account = Account.find(params[:id])
-    if @account.destroy!
-      redirect_to accounts_path, notice: 'Account has been deleted'
-    else
-      redirect_to accounts_path, notice: 'Could not delete account user'
-    end
+    @account = authorize Account.only_deleted.find(params[:id])
+    @account.really_destroy!
+
+    redirect_to accounts_url(archived: true)
+  end
+
+  def resend_confirmation
+    @account.send_confirmation_instructions
+
+    redirect_to accounts_url, notice: I18n.t("account.resend_confirmation_successfully")
   end
 
   private
-
-  def filter_params
-    params.require(:account).permit(:email, :password, :password_confirmation, :is_admin, :is_counsellor, schools: [])
-  end
-
-  def convert_role_params
-    if params[:account][:role] == Account::ROLE[0]
-      params[:account][:is_admin] = true
-      params[:account][:schools] = nil
-    else
-      params[:account][:is_counsellor] = true
-      params[:account][:schools] = [params[:account][:schools]]
+    def set_account
+      @account = authorize Account.find(params[:id])
     end
-    params[:account].delete(:role)
-    params
-  end
+
+    def account_params
+      params.require(:account).permit(:email, :role, :counselor_school_id)
+    end
+
+    def filter_params
+      params.permit(:email, :archived)
+    end
 end

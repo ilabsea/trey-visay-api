@@ -7,7 +7,7 @@
     .control-wrapper
       %h3.center បញ្ចូលគណនី
 
-      = f.input :email, type: :email, autofocus: true
+      = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
       = f.input :password, type: :password
       - if devise_mapping.rememberable?
         = f.input :remember_me, as: :boolean

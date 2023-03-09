@@ -1,0 +1,7 @@
+- if policy(object).update?
+  %a.btn.btn-warning.btn-xs{:href => url}
+    %span.glyphicon.glyphicon-edit
+    កែតម្រូវ
+
+  / = link_to url, class: "btn btn-circle btn-sm btn-outline-warning me-1", data: { 'bs-toggle': 'tooltip', 'bs-placement': 'top'}, title: t('shared.edit') do
+  /   %i.fas.fa-pen

@@ -1,33 +1,127 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  realistic: 'ប្រាកដនិយម'
+  investigative : 'ពូកែអង្កេត'
+  artistic : 'សិល្បៈនិយម'
+  social : 'សង្គម'
+  enterprising : 'ត្រិះរិះពិចារណា'
+  conventional : 'សណ្ដាប់ធ្នាប់'
+  personality_test_help_you_find_correct_way: 'បុគ្គលិកលក្ខណៈរបស់អ្នក អាចជួយអ្នកក្នុងការជ្រើសរើសមុខជំនាញសិក្សា ឬអាជីពការងារមានភាពប្រសើរជាមូលដ្ឋាននាំអ្នកឆ្ពោះទៅមាគ៌ាជីវិតជោគជ័យនាថ្ងៃអនាគត។'
+  detail: 'សេចក្តីលម្អិត'
+  khmer_reading: 'ការអាន'
+  khmer_writing: 'ការសរសេរ'
+  english: 'ភាសាអង់គ្លេស/បារាំង'
+  math: 'គណិតវិទ្យា'
+  social_study_ethics_and_citizenship: 'សីលធម៌និងពលរដ្ឋ'
+  social_study_geography: 'ភូមិវិទ្យា'
+  social_study_history: 'ប្រវត្តិវិទ្យា'
+  science_physics: 'រូបវិទ្យា'
+  science_chemistry: 'គីមីវិទ្យា'
+  science_biology: 'ជីវៈវិទ្យា'
+  soft_skill_communication: 'ទំនាក់ទំនង'
+  soft_skill_brave: 'ក្លាហាន'
+  soft_skill_teamwork: 'ក្រុមការងារ'
+  soft_skill_problem_solving: 'ដោះស្រាយបញ្ហា'
+  soft_skill_public_speaking: 'និយាយជាសាធារណៈ'
+  are_you_going_to_study_till_grade12: 'តើអ្នកនឹងបន្តការសិក្សារហូតដល់ថ្នាក់ទី១២ដែរឬទេ?'
+  are_your_parents_allow_you_to_study_till_grade12: 'តើឪពុកម្តាយរបស់ប្អូននឹងអនុញ្ញាតឲ្យប្អូនបន្តការសិក្សា រហូតដល់ថ្នាក់ទី១២ដែរឬទេ?'
+  have_you_ever_thought_of_career: 'តើប្អូនធ្លាប់គិតពីការងារមួយណាដែលប្អូនចង់ធ្វើក្រោយពេលបញ្ចប់ការសិក្សាដែរឬទេ?'
+  career_name: 'តើការងារនោះជាការងារអ្វី?'
+  how_to_reach_career_goal: 'ចំពោះការងារដែលប្អូនបានជ្រើសរើសហើយ។​ តើប្អូនធ្វើដូចម្តេចដើម្បីឲ្យសម្រេចការងារដែលប្អូនជ្រើសរើសនោះ?'
+  does_parents_agree_with: 'តើឪពុកម្តាយប្អូនយល់ស្របជាមួយគំនិតរបស់ប្អូនដែរឬទេ?'
+  ever_talked_with_anyone_about_career: 'តើប្អូនធ្លាប់និយាយជាមួយនរណាម្នាក់ពីការងារអនាគតរបស់ប្អូនដែរឬទេ?'
+  how_to_reach_job_vacancy: 'តើប្អូនអាចស្វែងរកការងារបានដោយវិធីណាខ្លះ?'
+  khmerReading: "ការអានភាសាខ្មែរ"
+  khmerWriting: "ការសរសេរភាសាខ្មែរ"
+  english: "ភាសាអង់គ្លេស/ភាសាបារាំង"
+  math: "គណិតវិទ្យា"
+  socialStudyEthicsAndCitizenship: "សីលធម៌ និង ពលរដ្ឋ"
+  socialStudyGeography: "ភូមិវិទ្យា"
+  socialStudyHistory: "ប្រវត្តិវិទ្យា"
+  sciencePhysics: "រូបវិទ្យា"
+  scienceChemistry: "គីមីវិទ្យា"
+  scienceBiology: "ជីវៈវិទ្យា"
+  softSkillCommunication: "ទំនាក់ទំនង"
+  softSkillBrave: "ក្លាហាន"
+  softSkillTeamwork: "ក្រុមការងារ"
+  softSkillProblemSolving: "ដោះស្រាយបញ្ហា"
+  softSkillPublicSpeaking: "ការនិយាយជាសាធារណៈ"
+  activerecord:
+    errors:
+      models:
+        account:
+          attributes:
+            email:
+              blank: 'សូមបញ្ចូលអុីមែល'
+              not_found: 'មិនមានអុីមែលនេះក្នុងប្រព័ន្ធទេ'
+  devise:
+    confirmations:
+      confirmed: "អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវបានបញ្ជាក់ដោយជោគជ័យ"
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីម៉ែលមួយជាមួយការណែនាំអំពីរបៀបបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកនៅប៉ុន្មាននាទី"
+      send_paranoid_instructions: "ប្រសិនបើអាសយដ្ឋានអ៊ីមែលរបស់អ្នកមាននៅក្នុងប្រព័ន្ធរបស់យើង អ្នកនឹងទទួលបានអ៊ីម៉ែលដោយមានការណែនាំអំពីរបៀបបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកក្នុងប៉ុន្មាននាទី"
+    failure:
+      already_authenticated: "អ្នកបានចូលរួចហើយ"
+      inactive: "គណនីរបស់អ្នកមិនទាន់ដំណើរការនៅឡើយទេ"
+      invalid: "%{authentication_keys} ឬលេខសម្ងាត់មិនត្រឹមត្រូវ"
+      locked: "គណនីរបស់អ្នកជាប់សោ"
+      last_attempt: "អ្នកអាចព្យាយាមម្តងទៀតមុនពេលគណនីរបស់អ្នកត្រូវបានចាក់សោ"
+      not_found_in_database: "%{authentication_keys} ឬលេខសម្ងាត់មិនត្រឹមត្រូវ"
+      timeout: "ការបញ្ចូលរបស់អ្នកបានផុតកំណត់។ សូមចូលម្តងទៀតដើម្បីបន្ត"
+      unauthenticated: "អ្នកត្រូវចូលឬចុះឈ្មោះមុនពេលបន្"
+      unconfirmed: "អ្នកត្រូវបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកមុនពេលបន្"
+      account:
+        unauthenticated: 'សូមបញ្ចូលគណនី'
+        invalid: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
+        not_found_in_database: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
+    mailer:
+      confirmation_instructions:
+        subject: "ការណែនាំបញ្ជាក់"
+      reset_password_instructions:
+        subject: "កំណត់ការណែនាំពាក្យសម្ងាត់ឡើងវិញ"
+      unlock_instructions:
+        subject: "ការណែនាំដោះសោ"
+      email_changed:
+        subject: "បានផ្លាស់ប្ដូរអ៊ីមែល"
+      password_change:
+        subject: "បានផ្លាស់ប្ដូរពាក្យសម្ងាត់"
+    passwords:
+      no_token: "អ្នកមិនអាចចូលប្រើទំព័រនេះដោយមិនចាំបាច់មកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ទេ។ ប្រសិនបើអ្នកមកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ឡើងវិញសូមប្រាកដថាអ្នកបានប្រើ URL ដែលបានផ្តល់ឱ្យ"
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញក្នុងរយៈពេលពីរឬបីនាទី"
+      send_paranoid_instructions: "ប្រសិនបើអាសយដ្ឋានអ៊ីមែលរបស់អ្នកមានក្នុងប្រព័ន្ធរបស់យើងអ្នកនឹងទទួលបានការសង្គ្រោះពាក្យសម្ងាត់នៅអាសយដ្ឋានអ៊ីមែលរបស់អ្នកក្នុងរយៈពេលពីរបីនាទី"
+      updated: "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានផ្លាស់ប្តូរដោយជោគជ័យ"
+      updated_not_active: "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានផ្លាស់ប្តូរដោយជោគជ័យ"
+      account:
+        send_instructions: 'អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញក្នុងរយៈពេលពីរឬបីនាទី'
+    registrations:
+      destroyed: "លាហើយ! គណនីរបស់អ្នកត្រូវបានលុបចោលដោយជោគជ័យ។ យើងសង្ឃឹមថានឹងជួបអ្នកម្តងទៀតឆាប់ៗ"
+      signed_up: "ស្វាគមន៍! អ្នកបានចុះឈ្មោះដោយជោគជ័យ"
+      signed_up_but_inactive: "អ្នកបានចុះឈ្មោះដោយជោគជ័យ តែគណនីរបស់អ្នកមិនទាន់សកម្ម"
+      signed_up_but_locked: "អ្នកបានចុះឈ្មោះដោយជោគជ័យ តែគណនីរបស់អ្នកត្រូវបានចាក់សោ"
+      signed_up_but_unconfirmed: "សារដែលមានការបញ្ជាក់ត្រូវបានផ្ញើទៅអាសយដ្ឋានអ៊ីមែលរបស់អ្នក។ សូមអនុវត្តតាមការណែនាំដើម្បីធ្វើឱ្យគណនីរបស់អ្នកសកម្ម"
+      update_needs_confirmation: "អ្នកបានធ្វើបច្ចុប្បន្នភាពគណនីរបស់អ្នកដោយជោគជ័យប៉ុន្តែយើងត្រូវផ្ទៀងផ្ទាត់អាសយដ្ឋានអ៊ីមែលថ្មីរបស់អ្នក។ សូមពិនិត្យអ៊ីមែលរបស់អ្នកហើយអនុវត្តតាមតំណបញ្ជាក់ដើម្បីបញ្ជាក់អាសយដ្ឋានអ៊ីមែលថ្មីរបស់អ្នក"
+      updated: "គណនីរបស់អ្នកត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ"
+    sessions:
+      signed_in: "ចូលបានដោយជោគជ័យ"
+      signed_out: "ចាកចេញដោយជោគជ័យ"
+      already_signed_out: "ចាកចេញដោយជោគជ័យ"
+      account:
+        signed_in: 'ចូលបានដោយជោគជ័យ'
+    unlocks:
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបដោះសោគណនីរបស់អ្នកនៅប៉ុន្មាននាទី"
+      send_paranoid_instructions: "ប្រសិនបើគណនីរបស់អ្នកត្រឹមត្រូវ អ្នកនឹងទទួលបានអ៊ីម៉ែលដែលមានការណែនាំអំពីរបៀបដោះសោវាក្នុងរយៈពេលពីរឬបីនាទី"
+      unlocked: "គណនីរបស់អ្នកត្រូវបានដោះសោដោយជោគជ័យ។ សូមចូលដើម្បីបន្"
+  errors:
+    messages:
+      already_confirmed: "ត្រូវបានបញ្ជាក់រួចហើយសូមសាកល្បងចូល"
+      confirmation_period_expired: "ត្រូវបញ្ជាក់នៅក្នុង %{period}, សូមស្នើថ្មីមួយ"
+      expired: "បានផុតកំណត់សូមស្នើសំណើថ្មី"
+      not_found: "រក​មិន​ឃើញ"
+      not_locked: "មិនត្រូវបានចាក់សោ"
+      not_saved:
+        one: "កំហុស 1 ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
+        other: "កំហុស %{count} ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
+
+  pundit:
+    default: 'You cannot perform this action.'
+    post_policy:
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'
