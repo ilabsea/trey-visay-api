@@ -1,7 +1,9 @@
 "use strict";
 
-$(document).on('ready', function() {
-  init();
+TV.UsersIndex = (() => {
+  return {
+    init: init
+  }
 
   function init() {
     onClickSearch();
@@ -35,4 +37,4 @@ $(document).on('ready', function() {
       window.open($(this).attr("href") + '?' + getQueryString(), '_blank');
     })
   }
-});
+})();

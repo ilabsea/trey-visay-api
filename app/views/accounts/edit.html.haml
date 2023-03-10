@@ -1,45 +1,4 @@
-= render partial: 'shared/side_nav', locals: {title: 'កែតម្រូវគណនេយ្យ'}
-.container
-  %br
-  %form.form-horizontal{"accept-charset" =>"UTF-8", "action" => "/accounts/#{@account.id}", "method" => "POST"}
-    %input#authenticity_token{:name => "authenticity_token", :type => "hidden", :value => "#{form_authenticity_token}"}
-    %input{:name => "_method", :type => "hidden", :value => "put"}
-    %fieldset
-      / Form Name
-      %legend កែតម្រូវគណនេយ្យថ្មី
-      / Text input
-      .form-group
-        %label.col-md-4.control-label{:for => "Nome"} សារអេឡិចត្រូនិច
-        .col-md-4
-          %input#Nome.form-control.input-md{:value => "#{@account.email}", :name => "account[email]", :placeholder => "", :type => "email"}/
-      .form-group
-        %label.col-md-4.control-label{:for => "Citta"} តួនាទី
-        .col-md-4
-          %select.col-md-4.form-control{:title => "តួនាទី", :name => "account[role]"}
-            - Account::ROLE.each do |role|
-              - if((@account.is_admin == true and role == Account::ROLE[0]) or (@account.is_counsellor == true and role == Account::ROLE[1]))
-                %option{:selected => "selected"}
-                  = role
-              - else
-                %option{}
-                  = role
-      .form-group
-        %label.col-md-4.control-label{:for => "Citta"} សាលា
-        .col-md-4
-          %select.col-md-4.form-control{:title => "សាលា", :name => "account[schools]"}
-            - User.all_schools.each do |school|
-              -if school[:name] == @account.schools[0]
-                %option{selected: "selected"}
-                  = school[:name]
-              -else
-                %option
-                  = school[:name]
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t('account.edit_account')
 
-      / Button
-      .form-group
-        %label.col-md-4.control-label{:for => "Invio"}
-        .col-md-4
-          %button#Invio.btn.btn-primary{:name => "Invio"} រក្សាទុក
-          %a.btn.btn{:href => "/accounts"}
-            ចាកចេញ
-
+= render 'form'

@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id               :integer          not null, primary key
+#  id               :bigint(8)        not null, primary key
 #  uuid             :string(255)
 #  full_name        :string(255)      not null
 #  password         :string(255)      not null

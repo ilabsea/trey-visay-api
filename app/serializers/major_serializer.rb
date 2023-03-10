@@ -4,7 +4,7 @@
 #
 # Table name: majors
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  name          :string(255)      not null
 #  department_id :integer
 #  school_id     :integer          not null

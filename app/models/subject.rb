@@ -4,7 +4,7 @@
 #
 # Table name: subjects
 #
-#  id                                  :integer          not null, primary key
+#  id                                  :bigint(8)        not null, primary key
 #  game_id                             :integer          not null
 #  khmer_reading                       :string(255)
 #  khmer_writing                       :string(255)

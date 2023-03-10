@@ -1,0 +1,4 @@
+$('#confirmModal .title').html("<%= t('account.accounts') %>");
+$('#confirmModal .modal-body').html("<%= t('shared.are_you_sure_to_delete', type: t('account.account'), name: @account.email).html_safe %>");
+$("#confirmModal .btn-yes").attr('href', "<%= account_path(@account) %>");
+$("#confirmModal").modal("show");

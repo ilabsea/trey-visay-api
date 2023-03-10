@@ -1,29 +1,25 @@
-%form#form-filter.form-inline.filter
-  .form-group
-    %label ខេត្ត
-    %input{type: 'hidden', name: :province_code, value: params[:province_code]}
-    %select.form-control.select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/provinces", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-populate-on-load" => "true", "data-pumi-select-target" => "district", name: :province_code, 'data-pumi-select-has-hidden-value' => true}
-      %option{:value => ""} All
+%form
+  .d-flex
+    .form-group.mr-2
+      %input{type: 'hidden', name: :province_code, value: params[:province_code]}
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/provinces", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-populate-on-load" => "true", "data-pumi-select-target" => "district", name: :province_code, 'data-pumi-select-has-hidden-value' => true}
+        %option{:value => ""}= t('shared.all_provinces')
 
-  .form-group
-    %label ស្រុក
-    %input{type: 'hidden', name: :district_code, value: params[:district_code]}
-    %select.form-control.select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/districts?province_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#district", "data-pumi-select-id" => "district", "data-pumi-select-target" => "school", name: 'district_code', 'data-pumi-select-has-hidden-value' => true}
-      %option{:value => ""} All
+    .form-group.mr-2
+      %input{type: 'hidden', name: :district_code, value: params[:district_code]}
 
-  .form-group
-    %label សាលា
-    %input{type: 'hidden', name: :high_school_code, value: params[:high_school_code]}
-    %select.form-control.select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/api/v1/high_schools?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
-      %option{:value => ""} All
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/districts?province_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#district", "data-pumi-select-id" => "district", "data-pumi-select-target" => "school", name: 'district_code', 'data-pumi-select-has-hidden-value' => true}
+        %option{:value => ""}= t('shared.all_districts')
 
-  .form-group
-    %label ថ្នាក់ទី
-    %input{type: 'hidden', name: :grade, value: params[:grade]}
-    %select.form-control.select{"data-pumi-select-collection-label-method" => "label", "data-pumi-select-collection-url" => "/api/v1/high_schools/grades", "data-pumi-select-collection-value-method" => "value", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#klass", "data-pumi-select-id" => "klass", name: 'grade', 'data-pumi-select-has-hidden-value' => true}
-      %option{:value => ""} All
+    .form-group.mr-2
+      %input{type: 'hidden', name: :high_school_code, value: params[:high_school_code]}
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/api/v1/high_schools?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
+        %option{:value => ""}= t('shared.all_communes')
 
-  .form-group
-    %button.btn-search.btn.btn-primary{type: 'button'} ស្វែងរក
+    .form-group.mr-2
+      %input{type: 'hidden', name: :grade, value: params[:grade]}
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "label", "data-pumi-select-collection-url" => "/api/v1/high_schools/grades", "data-pumi-select-collection-value-method" => "value", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#klass", "data-pumi-select-id" => "klass", name: 'grade', 'data-pumi-select-has-hidden-value' => true}
+        %option{:value => ""}= t('shared.all_schools')
 
-%br
+    .form-group
+      %button.btn-search.btn.btn-primary{type: 'button'} ស្វែងរក

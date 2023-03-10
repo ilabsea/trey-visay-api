@@ -8,8 +8,8 @@
     %td
       - user.games.each_with_index do |game, i|
         %div
-          = "តេស្តលើកទី #{i + 1}: តេស្តស្វែងយល់អំពីខ្លួនឯង (តេស្ត #{game.personal_understandings.length}ដង, ធ្លាក់ "
-          - fails_len = game.personal_understandings.fails.length
-          %span{ class: ("dangerous" if fails_len > 1)}
-            = fails_len
-          = "ដង)"
+          = "តេស្តលើកទី #{i + 1}: តេស្តស្វែងយល់អំពីខ្លួនឯង ( តេស្ត #{game.personal_understandings.length}ដង"
+
+          - fails_count = game.personal_understandings.select{ |p| p.fail? }.length
+          = personal_understanding_info(fails_count).html_safe
+          = ")"

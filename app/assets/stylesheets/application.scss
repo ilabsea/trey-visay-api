@@ -1,9 +1,10 @@
-@import "bootstrap-sprockets";
+// @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "sb-admin-2";
 
 @import 'share';
 @import "user";
 @import "devise/session";
 @import "games/show";
 @import "personality_tests/show";
-
+@import "account";

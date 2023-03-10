@@ -1,7 +1,9 @@
 "use strict";
 
-$(document).on('turbolinks:load', function() {
-  init();
+TV.GamesShow = (() => {
+  return {
+    init: init
+  }
 
   function init() {
     onClickSchool();
@@ -84,4 +86,4 @@ $(document).on('turbolinks:load', function() {
 
     arrDom.push(dom);
   }
-});
+})();

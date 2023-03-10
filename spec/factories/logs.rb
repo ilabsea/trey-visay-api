@@ -2,7 +2,7 @@
 #
 # Table name: logs
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  user       :text(65535)
 #  game       :text(65535)
 #  created_at :datetime         not null

@@ -1,0 +1,86 @@
+km:
+  shared:
+    no_data_found: មិនមានទិន្នន័យ
+    use_plus_to_add_item: សូមប្រើប៊ូតុង (+) ដើម្បីបន្ថែមទិន្នន័យ!
+    edit: កែតម្រូវ
+    delete: លុប
+    cancel: បោះបង់
+    save: រក្សាទុក
+    back: ត្រលប់ក្រោយ
+    done: រួចរាល់
+    reset: កំណត់ឡើងវិញ
+    add_new: បន្ថែម%{name}ថ្មី
+    created_at: កាលបរិច្ឆេទបង្កើត
+    updated_at: កាលបរិច្ឆេទ update
+    are_you_sure_to_delete: តើអ្នកប្រាកដជាលុប%{type} <b>%{name}</b> នេះមែនទេ?
+    yes_delete: បាទ/ចាស, លុប!
+    confirm_delete: បញ្ជាក់ការលុបការ %{name}
+    restore: ស្តារឡើងវិញ
+    archive: Archive
+    activate: បើកដំណើរការគណនី
+    deactivate: បិទដំណើរការគណនី
+    code: លេខកូដ
+    name: ឈ្មោះ
+    pagination_title: "បង្ហាញទិន្ន័យ <b>%{from}</b> - <b>%{to}</b> នៃចំនួនសរុប <b>%{total}</b>"
+    all: ទាំងអស់
+    copied: បានថតចម្លង
+    email: អ៊ីម៉ែល
+    status: ស្ថានភាព
+    unauthorized_alert_message: អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យអនុវត្តសកម្មភាពនេះទេ
+    archived: Archived
+    download_excel: ទាញយកជា Excel
+    file_size_is_too_big: ទំហំឯកសារធំពេក សូមធ្វើការច្រោះ អ្នកអាចទាញយកធំបំផុត %{max_record} ជួរដេក!
+    device_id: ID ឧបករណ៍
+    reason: មូលហេតុ
+    apply: អនុវត្ត
+    advance_search: ស្វែងរកបន្ថែម
+    search: ស្វែងរក
+    download_json: ទាញយកជា JSON
+    description: បរិយាយ
+    publish: ចេញផ្សាយ
+    audio: សម្លេង
+    confirm_publish: បញ្ជាក់ការចេញផ្សាយ %{name}
+    are_you_sure_to_publish: តើអ្នកប្រាកដជាចេញផ្សាយ%{type} <b>%{name}</b> នេះជាសាធារណៈមែនទេ?
+    yes_publish: បាទ/ចាស, ចេញផ្សាយ!
+    province: ខេត្ត
+    district: ស្រុក
+    commune: ឃុំ
+    village: ភូមិ
+    street: ផ្លូវ
+    house_number: ផ្ទះលេខ
+    name_en: ឈ្មោះជាភាសាអង់គ្លេស
+    name_km: ឈ្មោះជាភាសាខ្មែរ
+    platform: Platform
+    cannot_delete: មិនអាចលុប ព្រោះកំពុងប្រើប្រាស់!
+
+    # Batch import
+    download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Excel file .xlsx)
+    attach_excel_file: ភ្ជាប់គម្រូឯកសារដែលបំពេញរួចមកវិញ
+    congratulation: អបអរសាទរ!
+    show_list: បង្ហាញទិន្នន័យ
+    download_list: ទាញយកទិន្នន័យ
+    excel_file: ឯកសារ Excel (អតិបរិមា 150 KB)
+    todo_step: ជំហ៊ានដែលត្រូវធ្វើ
+    _yes: បាទ/ចាស ខ្ញុំយល់ព្រម
+    import_batch: បញ្ចូល%{name}ជា Excel
+    filename: ឈ្មោះឯកសារ
+    search_by_code_or_filename: លេខកូដ ឬ ឈ្មោះឯកសារ
+    imported_by: បញ្ចូលដោយ
+    imported_at: កាលបរិច្ឆេទបញ្ចូល
+    import_wizard: "បញ្ចូល%{name} wizard"
+    at_least_one_item: ត្រូវមាន%{name}ដែលត្រឹមត្រូវយ៉ាងហោចណាស់ 1
+    confirm_title: បញ្ចាក់ការបញ្ចូល%{name}
+    short_description: "ចំនួនសរុប: %{total_count} (ត្រឹមត្រូវ: %{valid_count})"
+    is_valid: ត្រឹមត្រូវឬទេ?
+    search_by_batch: ស្វែងរកតាម batch
+    preview: ផ្ទៀងផ្ទាត់
+    new: ថ្មី
+    invalid: មិនត្រឹមត្រូវ
+    drag_to_sort: អូសដើម្បីតម្រៀបលំដាប់
+    display_total: "បង្ហាញទិន្ន័យសរុប <b>%{total_count}</b>"
+    copy: ថតចម្លង
+    logout: ចាកចេញ
+    all_provinces: គ្រប់ខេត្ត/ក្រុង
+    all_districts: គ្រប់ស្រុក/ខ័ណ្ឌ
+    all_communes: គ្រប់ឃុំ/សង្កាត់
+    all_schools: គ្រប់សាលា

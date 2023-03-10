@@ -1,0 +1,37 @@
+- if account.deleted?
+  / Restore
+  = link_to restore_account_path(account), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('shared.restore') }, method: :put do
+    %i.fas.fa-trash-restore
+
+  / Really destroy
+  - if policy(account).destroy?
+    %span{data: {toggle: 'tooltip', placement: 'top', title: t('shared.delete')}}
+      = link_to account_path(account), class: "btn btn-circle btn-sm btn-outline-danger", remote: true do
+        %i.fas.fa-trash-alt
+
+  - else
+    %span{data: {toggle: 'tooltip', placement: 'top', title: t('account.cannnot_be_deleted')}}
+      %button.disabled.btn.btn-circle.btn-sm.btn-outline-danger
+        %i.fas.fa-trash-alt
+
+- else
+  - if policy(account).archive?
+    - unless account.confirmed?
+      / Resend confirmation
+      = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-outline-success mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
+        %i.fas.fa-share-square
+
+      / Copy confirm link
+      %input.confirm-link{ value: confirmation_url(account, confirmation_token: account.confirmation_token) }
+
+      = link_to '#', class: "btn btn-circle btn-sm btn-outline-secondary mr-1 btn-copy", data: { toggle: 'tooltip', placement: 'top', title: t('account.copy_confirm_link') } do
+        %i.far.fa-copy
+
+    / Edit
+    - if policy(account).update?
+      = link_to edit_account_path(account), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('shared.edit')} do
+        %i.fas.fa-pen
+
+    / Archive
+    = link_to archive_account_path(account), class: "btn btn-circle btn-sm btn-outline-danger", data: {toggle: 'tooltip', placement: 'top', title: t('shared.archive')}, method: :put do
+      %i.fas.fa-user-times

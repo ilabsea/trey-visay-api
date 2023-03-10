@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :accounts, path: '/'
+  devise_for :accounts, path: '/', controllers: { confirmations: "confirmations" }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'users#index'
 
@@ -10,8 +11,21 @@ Rails.application.routes.draw do
     get :download, on: :collection
   end
 
+  # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
+  as :account do
+    match "/confirmation" => "confirmations#update", via: :put, as: :update_account_confirmation
+  end
+
   resource :about, only: [:show]
-  resources :accounts
+
+  resources :accounts do
+    member do
+      post :resend_confirmation
+      put :archive
+      put :restore
+    end
+  end
+
   namespace :api do
     namespace :v1 do
       match 'me' => 'users#me', :via => :get

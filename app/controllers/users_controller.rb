@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_account!
-
   def index
-    @users = User.filter(params).includes(:games, :personal_understandings).page(page_params).per(20)
+    @pagy, @users = pagy(User.filter(params).includes(:games, :personal_understandings, :high_school))
   end
 
   def download
-    @users = User.filter(params).includes(:games, :personal_understandings)
+    @users = User.filter(params).includes(games: :personal_understandings)
 
     if @users.length > ENV['MAXIMUM_DOWNLOAD_RECORDS'].to_i then
       flash[:alert] = 'The file size is too big, please filter it!'

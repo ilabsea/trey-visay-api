@@ -1,3 +1,15 @@
+.btn-circle {
+  margin: 0 2px !important;
+}
+
+.view-center {
+  width: 100% !important;
+}
+
+.container {
+  padding: 20px;
+}
+
 .center {
   text-align: center;
 }
@@ -6,6 +18,7 @@
   position: fixed;
   right: 10px;
   top: 10px;
+  z-index: 1;
 }
 
 .dangerous {

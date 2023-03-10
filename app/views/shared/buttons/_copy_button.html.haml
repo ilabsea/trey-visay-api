@@ -1,0 +1,10 @@
+- value ||= ''
+
+/ Space separated
+%input.confirm-link{ value: value, readonly: true }
+
+%button{ class: "btn btn-info btn-xs btn-copy" }
+  %span.glyphicon.glyphicon-copy
+
+  %span.m-label{'data-hint': t('shared.copied')}
+    = t('shared.copy')

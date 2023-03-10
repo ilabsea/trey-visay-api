@@ -12,7 +12,9 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.12'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.4.1'
+# gem 'bootstrap-sass', '~> 3.4.1'
+gem "bootstrap", "~> 4.5.2"
+
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'simple_form', '~> 5.0.0'
@@ -38,8 +40,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'cancancan', '~> 2.0'
-
 gem 'devise', '~> 4.8.1'
 
 gem 'haml', '~>5.0.4'
@@ -48,10 +48,18 @@ gem 'active_model_serializers', '~> 0.10.13'
 gem 'strip_attributes', '~> 1.8.0'
 gem 'decent_exposure'
 gem 'oj'
-gem 'kaminari', '~> 1.2.2'
 gem 'roo', '~> 2.9.0'
 gem 'pumi', require: 'pumi/rails'
 gem 'rubyzip', '~> 1.3.0'
+
+# Soft delete
+gem "paranoia", "~> 2.6.1"
+
+# Permission
+gem 'pundit', '~> 2.3.0'
+
+# Pagination
+gem 'pagy', '~> 6.0.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -4,9 +4,9 @@
 #
 # Table name: characteristics_entries
 #
-#  characteristic_id :integer
-#  entry_id          :integer
-#  id                :integer          not null, primary key
+#  characteristic_id :bigint(8)
+#  entry_id          :bigint(8)
+#  id                :bigint(8)        not null, primary key
 #  concerned         :boolean          default(FALSE)
 #
 # Indexes

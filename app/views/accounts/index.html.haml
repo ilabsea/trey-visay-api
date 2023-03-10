@@ -1,39 +1,51 @@
-= render partial: 'shared/side_nav', locals: {title: 'គណនេយ្យ'}
-.main
-  %br
-  %center
-    #div{style: "width:80%;", align: "right"}
-      %a.btn.icon-btn.btn-primary{:href => "/accounts/new"}
-        %span.glyphicon.btn-glyphicon.glyphicon-plus.img-circle.text-primary>
-        បង្កើតគណនេយ្យ
-  %br
-  .clear
-  %table.table-bordered.table.central{style: "width:80%;", align: "center"}
-    %thead
-      %tr
-        %th{width: 60} #
-        %th សារអេឡិចត្រូនិច
-        %th តួនាទី
-        %th សាលា
-        %th
-    %tbody
-      - @accounts.each do |account|
+/ Page Heading
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t('account.accounts')
+
+  %a.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm{ href: new_account_path }
+    %i.fas.fa-plus.fa-sm.text-white-50
+    %span.d-none.d-md-inline= t('shared.add_new', name: t('account.account'))
+
+/ Nav tabs
+%ul.nav.nav-tabs.nav-justified
+  %li.nav-item
+    %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
+      %i.fas.fa-users
+      %span.d-none.d-lg-inline= t("user.all")
+
+  %li.nav-item
+    %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
+      %i.fas.fa-user-times
+      %span.d-none.d-lg-inline= t("user.archived")
+
+/ Content
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @accounts
+
+    %table.table-bordered.table
+      %thead
         %tr
-          %td
-            = link_to account.id, edit_account_path(account.id)
-          %td
-            = link_to account.email, edit_account_path(account.id)
-          %td
-            = account.role
-          %td
-            - if account.is_counsellor and account.schools
-              - account.schools.each do |school|
-                = "#{school}"
-          %td
-            %a.btn.btn-info.btn-xs{:href => edit_account_path(account.id)}
-              %span.glyphicon.glyphicon-edit
-              កែតម្រូវ
-            - if account.id != current_account.id
-              %a.btn.btn-danger.btn-xs{:rel => "nofollow", :href => account_path(account.id), "data-method" => "delete",  data: { confirm: 'តើអ្នពិតជាចង់លុបគណនេយ្យនេះមែនទេ?' }}
-                %span.glyphicon.glyphicon-remove
-                លុបចោល
+          %th{width: 60} #
+          %th សារអេឡិចត្រូនិច
+          %th តួនាទី
+          %th សាលា
+          %th= t('account.status')
+          %th
+
+      %tbody
+        - @accounts.each_with_index do |account, index|
+          %tr
+            %td= @pagy.from + index
+            %td= link_to account.email, edit_account_path(account.id)
+            %td= I18n.t("account.#{account.role}")
+            %td= account.counselor_school_name
+            %td.status{ class: account.status }
+              = t("account.#{account.status}")
+            %td
+              %div{style: 'text-align: right'}
+                = render 'action_buttons', account: account
+
+    = render "shared/footers/pagination"
+
+= render "shared/modals/modal_confirm"
