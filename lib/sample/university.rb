@@ -33,10 +33,8 @@ module Sample
           address: school.address.to_s.gsub("<U+200B>", ""),
           province: school.province,
           phoneNumbers: school.phone_numbers.to_s.gsub("<U+200B>", "").split(";"),
-          faxes: school.faxes.to_s.gsub("<U+200B>", "").split(";"),
           emails: school.emails.to_s.gsub("<U+200B>", "").split(";"),
           websiteOrFacebook: school.website_or_facebook.to_s.gsub("<U+200B>", "").split(";"),
-          mailbox: school.mailbox,
           category: school.category,
           departments: school.departments.map do |department|
             { name: department.name.gsub("<U+200B>", ""), majors: department.majors.collect(&:name) }
@@ -82,13 +80,13 @@ module Sample
 
       @department = nil
       @school = ::School.find_or_initialize_by(code: row["code"].strip)
-      @school.update_attributes!(
+      @school.update(
         name: row["name"],
         address: row["address"],
         province: row["province"],
-        phone_numbers: strip_str(row["phone_numbers"]),
+        phone_numbers: strip_str(row["phone_numbers"]).to_s.to_eng_num,
         faxes: strip_str(row["faxes"]),
-        emails: strip_str(row["emails"]),
+        emails: strip_str(row["emails"]).to_s.downcase,
         website_or_facebook: strip_str(row["website_or_facebook"]),
         mailbox: row["mailbox"],
         category: category_name

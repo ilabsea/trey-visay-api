@@ -28,7 +28,7 @@ en:
     status: Status
     unauthorized_alert_message: You are not authorized to perform this action.
     archived: Archived
-    download_excel: Download Excel
+    download_excel: Download as Excel(.xlsx)
     file_size_is_too_big: Download size too large, please filter. You can download up to %{max_record} records
     device_id: Device ID
     reason: Reason
@@ -84,3 +84,9 @@ en:
     all_districts: All districts
     all_communes: All communes
     all_schools: All schools
+    at_least_one_valid_item: There must be at least 1 valid item
+    yes_i_approve: Yes, I approve
+    confirm_message: "There are total item <b>%{total_count}</b> in <b>%{province_count}</b> provinces importing to the stystem! Do you approve it?"
+    import_success: "%{count} items were successfully imported!"
+    some_invalid_records: There are some invalid records, please check and reimport!
+    import_from_file: Import from Excel(.xlsx)

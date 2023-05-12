@@ -4,17 +4,16 @@
 #
 # Table name: majors
 #
-#  id            :bigint(8)        not null, primary key
-#  name          :string(255)      not null
-#  department_id :integer
-#  school_id     :integer          not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id         :bigint(8)        not null, primary key
+#  name       :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Major < ApplicationRecord
-  belongs_to :school
-  belongs_to :department, optional: true
+  has_many :school_majors
+  has_many :schools, through: :school_majors
+  has_many :school_departments, through: :school_majors
 
   validates :name, presence: true
 end

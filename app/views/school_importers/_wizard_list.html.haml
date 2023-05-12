@@ -1,0 +1,44 @@
+.table-responsive
+  %table.table.table-hover.pretty
+    %thead
+      %tr
+        %th #
+        %th= t("school.name")
+        %th= t('school.address')
+        %th= t('school.phone_numbers')
+        %th= t('school.emails')
+        %th= t('school.website_or_facebook')
+        %th= t('school.type')
+        %th= t('school.category')
+        %th= t('school.department')
+        %th= t('shared.is_valid')
+
+    %tbody
+      - @batch.importing_schools.each_with_index do |importing_school, index|
+        - school = importing_school.school
+        - if school.valid?
+          = f.fields_for :importing_schools, importing_school do |ff|
+            = ff.hidden_field :school_id
+            = render "field_for_school", f: ff, school: school
+
+        %tr
+          %td= index + 1
+          %td= school.name
+          %td= school.address
+          %td= school.phone_numbers
+          %td= school.emails
+          %td= school.website_or_facebook
+          %td= school.kind
+          %td= school.category
+          %td
+            = school.school_departments.select{ |d| !d._destroy }.map { |sd| "#{sd.department.name}(#{t('school.major_count', count: sd.school_majors.length)})" }.join(" / ")
+
+          / Validation status
+          %td
+            - if school.valid?
+              %i.fas.fa-check.text-success
+
+            - else
+              %span.text-danger.d-flex.align-items-center{'data-toggle' => 'tooltip', 'data-placement': 'left', title: school.errors.full_messages.join(', '), style: 'min-width: 80px;' }
+                %i.fas.fa-times.text-danger
+                %small.ml-1= t('shared.reason')

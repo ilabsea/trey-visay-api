@@ -18,6 +18,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  code                :string(255)
+#  kind                :integer
 #
 
 class SchoolSerializer < ActiveModel::Serializer

@@ -1,0 +1,12 @@
+%tr
+  %td= @pagy.from + school_counter
+  %td= school.name
+  %td
+    = t("school.#{school.kind}") if school.kind.present?
+  %td= school.address
+  %td= school.phone_numbers
+  %td= school.emails
+  %td= school.website_or_facebook
+  %td= school.category
+  %td
+    = school.school_departments.map {|sd| "#{sd.department.name}(#{t('school.major_count', count: sd.majors.length)})"}.join(" / ")

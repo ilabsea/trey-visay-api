@@ -28,7 +28,7 @@ km:
     status: ស្ថានភាព
     unauthorized_alert_message: អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យអនុវត្តសកម្មភាពនេះទេ
     archived: Archived
-    download_excel: ទាញយកជា Excel
+    download_excel: ទាញយកជា Excel(.xlsx)
     file_size_is_too_big: ទំហំឯកសារធំពេក សូមធ្វើការច្រោះ អ្នកអាចទាញយកធំបំផុត %{max_record} ជួរដេក!
     device_id: ID ឧបករណ៍
     reason: មូលហេតុ
@@ -84,3 +84,9 @@ km:
     all_districts: គ្រប់ស្រុក/ខ័ណ្ឌ
     all_communes: គ្រប់ឃុំ/សង្កាត់
     all_schools: គ្រប់សាលា
+    at_least_one_valid_item: ត្រូវមានទិន្នន័យដែលត្រឹមត្រូវយ៉ាងហោចណាស់ 1
+    yes_i_approve: "បាទ/ចាស ខ្ញុំយល់ព្រម"
+    confirm_message: "មានទិន្នន័យសរុប <b>%{total_count}</b> ក្នុងខេត្តចំនួន <b>%{province_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
+    import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
+    some_invalid_records: មានទិន្នន័យ មួយចំនួនមិនត្រឹមត្រូវ សូមធ្វើការត្រួតពិនិត្យ និងបញ្ចូលឡើងវិញ!
+    import_from_file: បញ្ចូលទិន្នន័យពី Excel(.xlsx)

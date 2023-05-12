@@ -1,0 +1,23 @@
+= f.fields_for :school, school do |sf|
+  = sf.hidden_field :id
+  = sf.hidden_field :code
+  = sf.hidden_field :name
+  = sf.hidden_field :address
+  = sf.hidden_field :province
+  = sf.hidden_field :phone_numbers
+  = sf.hidden_field :emails
+  = sf.hidden_field :website_or_facebook
+  = sf.hidden_field :kind
+  = sf.hidden_field :category
+
+  - school.school_departments.each do |school_department|
+    = sf.fields_for :school_departments, school_department do |sdf|
+      = sdf.hidden_field :id
+      = sdf.hidden_field :_destroy
+      = sdf.fields_for :department, school_department.department do |df|
+        = df.hidden_field :name
+
+      - school_department.school_majors.each do |school_major|
+        = sdf.fields_for :school_majors, school_major do |smf|
+          = smf.fields_for :major, school_major.major do |mj|
+            = mj.hidden_field :name
