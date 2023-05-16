@@ -13,7 +13,7 @@
 #
 #  index_personalities_on_code  (code) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Personality, type: :model do
   it { is_expected.to have_many(:personality_selections) }

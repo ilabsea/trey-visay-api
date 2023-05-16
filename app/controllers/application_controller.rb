@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
     def http_basic_authentication
       authenticate_or_request_with_http_basic do |username, password|
-        if username == ENV['HTTP_BASIC_USER'] && password == ENV['HTTP_BASIC_PASSWORD']
+        if username == ENV["HTTP_BASIC_USER"] && password == ENV["HTTP_BASIC_PASSWORD"]
           true
         else
           head :forbidden
@@ -48,11 +48,11 @@ class ApplicationController < ActionController::Base
     end
 
     def set_request_header
-      headers['Access-Control-Allow-Origin'] = '*'
+      headers["Access-Control-Allow-Origin"] = "*"
     end
 
     def render_json(object, options = {})
-      options = options.merge(text: object.to_json_oj, content_type: 'application/json')
+      options = options.merge(text: object.to_json_oj, content_type: "application/json")
       render options
     end
 

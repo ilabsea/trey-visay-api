@@ -14,7 +14,7 @@ module Sample
     private_class_method
 
     def self.samples_path
-      Pathname.new(File.join(File.dirname(__FILE__), '..', '..', 'db', 'samples'))
+      Pathname.new(File.join(File.dirname(__FILE__), "..", "..", "db", "samples"))
     end
   end
 end

@@ -21,7 +21,7 @@
 #  soft_skill_public_speaking          :string(255)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Subject, type: :model do
   it { is_expected.to belong_to(:game) }

@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Sample
   class Career < Sample::Base
     CHARACTERISTICS = [
       {
         id: 1,
-        title: 'បុគ្គលិកលក្ខណៈបុគ្គលបែប វិទ្យាសាស្រ្ត',
-        logoName: 'science',
-        career_title: 'មុខរបរ ឬការងារ ក្នុងវិស័យវិទ្យាសាស្ត្រ'
+        title: "បុគ្គលិកលក្ខណៈបុគ្គលបែប វិទ្យាសាស្រ្ត",
+        logoName: "science",
+        career_title: "មុខរបរ ឬការងារ ក្នុងវិស័យវិទ្យាសាស្ត្រ"
       },
       {
         id: 2,
-        title: 'បុគ្គលិកលក្ខណៈបុគ្គលបែប បច្ចេកទេស',
-        logoName: 'technical',
-        career_title: 'មុខរបរ ឬការងារ ក្នុងវិស័យបច្ចេកទេស'
+        title: "បុគ្គលិកលក្ខណៈបុគ្គលបែប បច្ចេកទេស",
+        logoName: "technical",
+        career_title: "មុខរបរ ឬការងារ ក្នុងវិស័យបច្ចេកទេស"
       },
       {
         id: 3,
-        title: 'បុគ្គលិកលក្ខណៈបុគ្គល បែបសង្គម',
-        logoName: 'social',
-        career_title: 'មុខរបរ ឬការងារ ក្នុងវិស័យសង្គម'
+        title: "បុគ្គលិកលក្ខណៈបុគ្គល បែបសង្គម",
+        logoName: "social",
+        career_title: "មុខរបរ ឬការងារ ក្នុងវិស័យសង្គម"
       }
     ].freeze
 
@@ -42,7 +42,7 @@ module Sample
       contents = assign_characteristic
       contents.push(assign_vocational)
 
-      write_to_file(contents, 'characteristic_jobs')
+      write_to_file(contents, "characteristic_jobs")
     end
 
     private_class_method
@@ -69,13 +69,13 @@ module Sample
     end
 
     def self.assign_vocational
-      vocational = Vocational.where(title: 'វិជ្ជាជីវៈ').first
+      vocational = Vocational.where(title: "វិជ្ជាជីវៈ").first
       obj = {
         id: 4,
-        title: 'វិជ្ជាជីវៈ',
-        logoName: '',
+        title: "វិជ្ជាជីវៈ",
+        logoName: "",
         entries: [],
-        career_title: 'មុខរបរ ឬការងារ ទៅនឹងវិជ្ជាជីវៈ',
+        career_title: "មុខរបរ ឬការងារ ទៅនឹងវិជ្ជាជីវៈ",
         concern_subjects: [],
         concern_entries: [],
         recommendation: vocational.description,
@@ -107,35 +107,35 @@ module Sample
     end
 
     def self.assign_career(row, options)
-      return if row['name'].blank?
+      return if row["name"].blank?
 
       group = Characteristic.where(title: options[:category]).first
 
-      if options[:group] == 'Vocational'
+      if options[:group] == "Vocational"
         group = Vocational.where(title: options[:category]).first
       end
-      @career = group.careers.find_or_initialize_by(code: row['code'].strip)
+      @career = group.careers.find_or_initialize_by(code: row["code"].strip)
 
       @career.update_attributes!(
-        name: row['name'],
-        description: row['description'],
-        places_for_work: row['places_for_work'],
+        name: row["name"],
+        description: row["description"],
+        places_for_work: row["places_for_work"],
         schools: [],
-        unknown_schools: ''
+        unknown_schools: ""
       )
     end
 
     def self.assign_school(row)
-      return if row['school_code'].blank?
-      school_code = row['school_code'].strip
+      return if row["school_code"].blank?
+      school_code = row["school_code"].strip
       school = School.where(code: school_code).first
 
       if school.present?
         @career.schools << school
       else
-        arr = @career.unknown_schools.to_s.split(';')
+        arr = @career.unknown_schools.to_s.split(";")
         arr.push(school_code)
-        @career.unknown_schools = arr.join('; ')
+        @career.unknown_schools = arr.join("; ")
         @career.save
       end
     end

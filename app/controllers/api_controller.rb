@@ -21,19 +21,19 @@ class ApiController < ApplicationController
     end
   end
 
-  def render_generic_error_response(message = '', error_code = 1)
-    render_json({ message: api_error_message(message), error_code: error_code }, status: 400)
+  def render_generic_error_response(message = "", error_code = 1)
+    render_json({ message: api_error_message(message), error_code: }, status: 400)
   end
 
-  def render_error_response_422(message = 'Unprocessable Entity')
+  def render_error_response_422(message = "Unprocessable Entity")
     render_json({ message: api_error_message(message), error_code: 2, error_object: message }, status: 422)
   end
 
-  def render_error_response_403(message = 'Forbidden')
+  def render_error_response_403(message = "Forbidden")
     render_json({ message: api_error_message(message), error_code: 3 }, status: 403)
   end
 
-  def render_error_response_409(message = 'Conflict')
+  def render_error_response_409(message = "Conflict")
     render_json({ message: api_error_message(message), error_code: 4 }, status: 409)
   end
 
@@ -42,7 +42,7 @@ class ApiController < ApplicationController
   end
 
   def api_error_message(message)
-    check_api_text = 'Check the API documentation: https://github.com/ilabsea/trey-visay-api'
+    check_api_text = "Check the API documentation: https://github.com/ilabsea/trey-visay-api"
     "#{message} - #{check_api_text}"
   end
 end

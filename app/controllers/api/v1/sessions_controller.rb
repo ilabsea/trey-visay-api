@@ -8,9 +8,9 @@ module Api
       skip_before_action :verify_authenticity_token
 
       ERRORS = {
-        invalid: 'Error with your login or password.',
-        invalid_token: 'Invalid authentication token.',
-        unconfirmed: 'You have to confirm your account before continuing.'
+        invalid: "Error with your login or password.",
+        invalid_token: "Invalid authentication token.",
+        unconfirmed: "You have to confirm your account before continuing."
       }.freeze
 
       def create
@@ -30,22 +30,21 @@ module Api
       end
 
       protected
+        def login_attempt
+          self.resource = Account.find_for_database_authentication email: params[:account][:email]
+          return invalid_attempt :invalid, :unauthorized unless resource
+          return invalid_attempt :unconfirmed, :unauthorized unless resource.active_for_authentication?
+          return invalid_attempt :invalid, :unauthorized unless resource.valid_password? params[:account][:password]
+        end
 
-      def login_attempt
-        self.resource = Account.find_for_database_authentication email: params[:account][:email]
-        return invalid_attempt :invalid, :unauthorized unless resource
-        return invalid_attempt :unconfirmed, :unauthorized unless resource.active_for_authentication?
-        return invalid_attempt :invalid, :unauthorized unless resource.valid_password? params[:account][:password]
-      end
+        def check_params
+          return invalid_attempt :invalid, :unauthorized unless params[:account]
+        end
 
-      def check_params
-        return invalid_attempt :invalid, :unauthorized unless params[:account]
-      end
-
-      def invalid_attempt(reason, status)
-        warden.custom_failure!
-        render json: { success: false, message: ERRORS[reason] }, status: status
-      end
+        def invalid_attempt(reason, status)
+          warden.custom_failure!
+          render json: { success: false, message: ERRORS[reason] }, status:
+        end
     end
   end
 end

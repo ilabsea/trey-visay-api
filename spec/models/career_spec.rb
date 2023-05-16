@@ -24,7 +24,7 @@
 #  index_careers_on_code                                     (code) UNIQUE
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Career, type: :model do
   it { is_expected.to have_and_belong_to_many(:schools) }

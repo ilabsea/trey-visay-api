@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,6 +19,6 @@ module TreyVisayApi
     config.i18n.fallbacks = [:en]
     config.i18n.available_locales = [:en, :km]
 
-    ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+    ENV.update YAML.load_file("config/application.yml")[Rails.env] rescue {}
   end
 end

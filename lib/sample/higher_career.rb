@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Sample
   class HigherCareer < Sample::Base
@@ -18,14 +18,14 @@ module Sample
           training_level = row[6]
           salary = row[7]
 
-          career = ::Career.find_or_initialize_by(code: code)
+          career = ::Career.find_or_initialize_by(code:)
           career.update_attributes(
-            name: name,
-            short_description: short_description,
-            duty: duty,
-            working_environment: working_environment,
-            training_level: training_level,
-            salary: salary
+            name:,
+            short_description:,
+            duty:,
+            working_environment:,
+            training_level:,
+            salary:
           )
         end
       end

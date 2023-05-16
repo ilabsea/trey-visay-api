@@ -4,7 +4,7 @@ lock "~> 3.10.1"
 set :application, "trey-visay-api"
 set :repo_url, "https://github.com/ilabsea/trey-visay-api.git"
 
-set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_ruby, File.read(".ruby-version").strip
 
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
@@ -31,7 +31,7 @@ set :deploy_to, "/var/www/trey-visay-api"
 append :linked_files, "config/database.yml", "config/secrets.yml", "config/application.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
@@ -50,7 +50,6 @@ set :migration_role, :app
 set :passenger_restart_with_touch, true
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -59,6 +58,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
-

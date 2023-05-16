@@ -6,7 +6,7 @@
 #  personality_code    :string(255)
 #  personality_test_id :integer
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe PersonalitySelection, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

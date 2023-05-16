@@ -9,6 +9,5 @@
 #
 FactoryBot.define do
   factory :counselor_school do
-    
   end
 end

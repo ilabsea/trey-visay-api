@@ -25,7 +25,7 @@ class PersonalUnderstanding < ApplicationRecord
   YES_NO_ANSWERS = %w[Yes No Don_Know].freeze
 
   belongs_to :game
-  scope :fails, -> { where('score < ?', 12) }
+  scope :fails, -> { where("score < ?", 12) }
 
   def fail?
     score < 12

@@ -23,13 +23,13 @@ Pagy::DEFAULT[:outset] = 0                                  # default
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/docs/api/pagy#other-variables
-Pagy::DEFAULT[:size]       = [1,4,4,1]                       # default
+Pagy::DEFAULT[:size]       = [1, 4, 4, 1]                       # default
 Pagy::DEFAULT[:page_param] = :page                           # default
 # The :params can be also set as a lambda e.g ->(params){ params.exclude('useless').merge!('custom' => 'useful') }
 Pagy::DEFAULT[:params]     = {}                              # default
 # Pagy::DEFAULT[:fragment]   = '#fragment'                     # example
 # Pagy::DEFAULT[:link_extra] = 'data-remote="true"'            # example
-Pagy::DEFAULT[:i18n_key]   = 'pagy.item_name'                # default
+Pagy::DEFAULT[:i18n_key]   = "pagy.item_name"                # default
 # Pagy::DEFAULT[:cycle]      = true                            # example
 # Pagy::DEFAULT[:request_path] = "/foo"                        # example
 

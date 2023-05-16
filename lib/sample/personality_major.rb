@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Sample
   class PersonalityMajor < Sample::Base
@@ -20,14 +20,14 @@ module Sample
 
           next if name_km.blank?
 
-          major = ::PersonalityMajor.find_or_initialize_by(code: code)
+          major = ::PersonalityMajor.find_or_initialize_by(code:)
           major.update_attributes(
-            name_en: name_en,
-            name_km: name_km,
-            basic_knowledge: basic_knowledge,
-            study_credit: study_credit,
-            recieved_knowledge: recieved_knowledge,
-            possible_workplaces: possible_workplaces
+            name_en:,
+            name_km:,
+            basic_knowledge:,
+            study_credit:,
+            recieved_knowledge:,
+            possible_workplaces:
           )
         end
       end
@@ -51,7 +51,7 @@ module Sample
         data.push(obj)
       end
 
-      write_to_file(data, 'personality_major')
+      write_to_file(data, "personality_major")
     end
   end
 end

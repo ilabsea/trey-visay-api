@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :accounts, path: '/', controllers: { confirmations: "confirmations" }
+  devise_for :accounts, path: "/", controllers: { confirmations: "confirmations" }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'users#index'
+  root "users#index"
 
   resources :users do
     resources :games, only: [:index, :show]
@@ -28,20 +28,20 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      match 'me' => 'users#me', :via => :get
+      match "me" => "users#me", :via => :get
       resources :users, only: [:create]
-      resources :schools, :only => [:index, :create]
+      resources :schools, only: [:index, :create]
       resources :games, only: [:create]
       resources :personality_tests, only: [:create]
       resources :high_schools, only: [:index] do
         get :grades, on: :collection
       end
       devise_scope :account do
-        post '/accounts/sign_in' => 'sessions#create'
-        post '/accounts/sign_out' => 'sessions#destroy'
+        post "/accounts/sign_in" => "sessions#create"
+        post "/accounts/sign_out" => "sessions#destroy"
       end
     end
   end
 
-  mount Pumi::Engine => '/pumi'
+  mount Pumi::Engine => "/pumi"
 end
