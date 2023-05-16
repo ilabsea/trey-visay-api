@@ -16,8 +16,8 @@ module Sample
           location_code = row[3]
           code = row[4]
 
-          school = ::HighSchool.find_or_initialize_by(code:)
-          school.update_attributes(name_km:, location_code:)
+          school = ::HighSchool.find_or_initialize_by(code: code)
+          school.update_attributes(name_km: name_km, location_code: location_code)
         end
       end
 

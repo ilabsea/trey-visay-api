@@ -13,7 +13,7 @@ class Api::V1::GamesController < ApiController
     begin
       game.save!
       game.entries = Entry.where(name: params["data"]["characteristic_entries"])
-      render json: { success: true, game: }, status: :created
+      render json: { success: true, game: game }, status: :created
     rescue ActiveRecord::RecordInvalid
       Log.create(game: params["data"], version: params["data"]["version"])
       render json: { error: game.errors }, status: :unprocessable_entity
