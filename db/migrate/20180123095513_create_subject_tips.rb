@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSubjectTips < ActiveRecord::Migration[5.1]
   def change
     create_table :subject_tips do |t|

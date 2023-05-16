@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "sample/university"
 require "sample/career"
 require "sample/higher_career"

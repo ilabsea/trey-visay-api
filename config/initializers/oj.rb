@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Oj.default_options = { mode: :compat, bigdecimal_load: :float }
 
 class Object

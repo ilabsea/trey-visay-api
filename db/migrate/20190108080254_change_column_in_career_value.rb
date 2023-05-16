@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnInCareerValue < ActiveRecord::Migration[5.1]
   def change
     category = Characteristic.find_by(title: "បុគ្គលិកលក្ខណៈបុគ្គល បែបសង្គម")

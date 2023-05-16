@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePersonalityCategories < ActiveRecord::Migration[5.1]
   def change
     create_table :personality_categories, id: false do |t|
