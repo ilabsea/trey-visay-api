@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Integer
   # Does this string represent an integer?
   def to_khm

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCareersGames < ActiveRecord::Migration[5.1]
   def change
     create_table :careers_games, id: false  do |t|

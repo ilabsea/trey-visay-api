@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddShortDescriptionToCareers < ActiveRecord::Migration[5.1]
   def change
     add_column :careers, :short_description, :text

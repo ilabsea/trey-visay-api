@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppendCareerCode < ActiveRecord::Migration[5.1]
   def up
     Rake::Task["career:migrate_code"].invoke

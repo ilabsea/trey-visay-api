@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCharacteristicsEntries < ActiveRecord::Migration[5.1]
   def change
     create_table :characteristics_entries, id: false do |t|
