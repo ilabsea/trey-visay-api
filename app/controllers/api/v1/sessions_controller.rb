@@ -43,7 +43,7 @@ module Api
 
         def invalid_attempt(reason, status)
           warden.custom_failure!
-          render json: { success: false, message: ERRORS[reason] }, status:
+          render json: { success: false, message: ERRORS[reason] }, status: status
         end
     end
   end

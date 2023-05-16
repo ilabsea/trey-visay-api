@@ -14,8 +14,8 @@ module Sample
           name_km = row[1]
           category = sheet_name.downcase
 
-          personality = ::Personality.find_or_initialize_by(code:)
-          personality.update_attributes(name_km:, category:)
+          personality = ::Personality.find_or_initialize_by(code: code)
+          personality.update_attributes(name_km: name_km, category: category)
         end
       end
 

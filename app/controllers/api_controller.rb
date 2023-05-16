@@ -22,7 +22,7 @@ class ApiController < ApplicationController
   end
 
   def render_generic_error_response(message = "", error_code = 1)
-    render_json({ message: api_error_message(message), error_code: }, status: 400)
+    render_json({ message: api_error_message(message), error_code: error_code }, status: 400)
   end
 
   def render_error_response_422(message = "Unprocessable Entity")

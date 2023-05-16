@@ -20,8 +20,8 @@ module Sample
           career_codes = strip_str(row[7]).split(";")
           careers = ::Career.where(code: career_codes)
 
-          category = ::PersonalityCategory.find_or_initialize_by(code:)
-          category.update_attributes(name_en:, name_km:, group:, description:)
+          category = ::PersonalityCategory.find_or_initialize_by(code: code)
+          category.update_attributes(name_en: name_en, name_km: name_km, group: group, description: description)
           category.personality_majors = majors
           category.careers = careers
         end
