@@ -18,8 +18,8 @@
 #
 
 class CareerGame < ApplicationRecord
-  self.table_name = 'careers_games'
+  self.table_name = "careers_games"
 
-  belongs_to :career, foreign_key: 'career_code', primary_key: 'code'
+  belongs_to :career, foreign_key: "career_code", primary_key: "code"
   belongs_to :game
 end

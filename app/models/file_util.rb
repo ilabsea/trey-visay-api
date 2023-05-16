@@ -6,6 +6,6 @@ class FileUtil
   end
 
   def self.csv_dir
-    File.join(Rails.root, 'db', 'csv')
+    File.join(Rails.root, "db", "csv")
   end
 end

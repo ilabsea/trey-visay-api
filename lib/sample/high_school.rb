@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Sample
   class HighSchool < Sample::Base
@@ -16,8 +16,8 @@ module Sample
           location_code = row[3]
           code = row[4]
 
-          school = ::HighSchool.find_or_initialize_by(code: code)
-          school.update_attributes(name_km: name_km, location_code: location_code)
+          school = ::HighSchool.find_or_initialize_by(code:)
+          school.update_attributes(name_km:, location_code:)
         end
       end
 
@@ -37,7 +37,7 @@ module Sample
         schools.push(skool)
       end
 
-      write_to_file(schools, 'highSchools')
+      write_to_file(schools, "highSchools")
     end
   end
 end

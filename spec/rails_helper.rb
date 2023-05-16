@@ -1,15 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+require "spec_helper"
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
-require 'support/factory_bot'
-require 'support/database_cleaner'
-require 'support/auth_helper'
-require 'shoulda/matchers'
+require "spec_helper"
+require "rspec/rails"
+require "support/factory_bot"
+require "support/database_cleaner"
+require "support/auth_helper"
+require "shoulda/matchers"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

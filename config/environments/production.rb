@@ -20,7 +20,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
@@ -65,14 +65,14 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "trey-visay-api_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: ENV['SETTINGS__SMTP__HOST'] }
+  config.action_mailer.default_url_options = { host: ENV["SETTINGS__SMTP__HOST"] }
 
   smtp_settings = {}.tap do |settings|
-    settings[:address]              = ENV['SETTINGS__SMTP__ADDRESS'] if ENV['SETTINGS__SMTP__ADDRESS'].present?
-    settings[:port]                 = ENV['SETTINGS__SMTP__PORT'] if ENV['SETTINGS__SMTP__PORT'].present?
-    settings[:domain]               = ENV['SETTINGS__SMTP__DOMAIN'] if ENV['SETTINGS__SMTP__DOMAIN'].present?
-    settings[:user_name]            = ENV['SETTINGS__SMTP__USER_NAME'] if ENV['SETTINGS__SMTP__USER_NAME'].present?
-    settings[:password]             = ENV['SETTINGS__SMTP__PASSWORD'] if ENV['SETTINGS__SMTP__PASSWORD'].present?
+    settings[:address]              = ENV["SETTINGS__SMTP__ADDRESS"] if ENV["SETTINGS__SMTP__ADDRESS"].present?
+    settings[:port]                 = ENV["SETTINGS__SMTP__PORT"] if ENV["SETTINGS__SMTP__PORT"].present?
+    settings[:domain]               = ENV["SETTINGS__SMTP__DOMAIN"] if ENV["SETTINGS__SMTP__DOMAIN"].present?
+    settings[:user_name]            = ENV["SETTINGS__SMTP__USER_NAME"] if ENV["SETTINGS__SMTP__USER_NAME"].present?
+    settings[:password]             = ENV["SETTINGS__SMTP__PASSWORD"] if ENV["SETTINGS__SMTP__PASSWORD"].present?
   end
 
   if smtp_settings.present?

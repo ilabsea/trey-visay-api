@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Sample
   class Personality < Sample::Base
@@ -14,8 +14,8 @@ module Sample
           name_km = row[1]
           category = sheet_name.downcase
 
-          personality = ::Personality.find_or_initialize_by(code: code)
-          personality.update_attributes(name_km: name_km, category: category)
+          personality = ::Personality.find_or_initialize_by(code:)
+          personality.update_attributes(name_km:, category:)
         end
       end
 
@@ -35,7 +35,7 @@ module Sample
         data.push(obj)
       end
 
-      write_to_file(data, 'personality')
+      write_to_file(data, "personality")
     end
   end
 end

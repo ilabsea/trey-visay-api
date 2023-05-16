@@ -13,11 +13,11 @@
 #
 
 class Characteristic < ApplicationRecord
-  has_many :characteristics_entries, class_name: 'CharacteristicsEntry'
+  has_many :characteristics_entries, class_name: "CharacteristicsEntry"
   has_many :entries, through: :characteristics_entries
 
-  has_many :characteristics_entries_concerned, -> { where concerned: true }, class_name: 'CharacteristicsEntry'
-  has_many :concerned_entries, through: :characteristics_entries_concerned, class_name: 'Entry', source: :entry
+  has_many :characteristics_entries_concerned, -> { where concerned: true }, class_name: "CharacteristicsEntry"
+  has_many :concerned_entries, through: :characteristics_entries_concerned, class_name: "Entry", source: :entry
 
   has_many :careers, as: :categorizable
   has_many :games

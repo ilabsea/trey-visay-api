@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'sample'
+require "sample"
 
 namespace :university do
-  desc 'add value code to university'
+  desc "add value code to university"
   task migrate_code: :environment do
-    csv_path = Pathname.new(File.join(Dir.pwd, 'db', 'csv'))
+    csv_path = Pathname.new(File.join(Dir.pwd, "db", "csv"))
 
-    path = File.expand_path(csv_path + 'id_to_code_university.xlsx')
+    path = File.expand_path(csv_path + "id_to_code_university.xlsx")
     xlsx = Roo::Spreadsheet.open(path)
 
     xlsx.each_with_pagename do |_name, sheet|
@@ -22,8 +22,8 @@ namespace :university do
     end
   end
 
-  desc 'create or update university'
+  desc "create or update university"
   task load: :environment do
-    Sample::University.load('university')
+    Sample::University.load("university")
   end
 end

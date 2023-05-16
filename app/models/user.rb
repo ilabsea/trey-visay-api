@@ -23,7 +23,7 @@
 #  commune_code     :string(255)
 #
 
-require 'csv'
+require "csv"
 
 class User < ApplicationRecord
   mount_uploader :photo, ::PhotoUploader
@@ -69,7 +69,7 @@ class User < ApplicationRecord
       { value: 10, label: 10 },
       { value: 11, label: 11 },
       { value: 12, label: 12 },
-      { value: 'other', label: 'ផ្សេងៗ' }
+      { value: "other", label: "ផ្សេងៗ" }
     ]
   end
 

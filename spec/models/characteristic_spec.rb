@@ -10,7 +10,7 @@
 #  concern_subjects :text(65535)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Characteristic, type: :model do
   it { is_expected.to have_many(:entries) }
