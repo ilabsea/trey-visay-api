@@ -2,18 +2,21 @@
 
 accounts = [
   {
-    email: "sokly@instedd.org",
+    email: "sokly@kawsang.com",
     password: "123456",
     password_confirmation: "123456",
-    is_admin: true
+    is_admin: true,
+    role: "primary_admin"
   },
   {
-    email: "mesa@instedd.org",
+    email: "sokly1@kawsang.com",
     password: "123456",
-    password_confirmation: "123456"
+    password_confirmation: "123456",
+    role: "admin"
   }
 ]
 
 accounts.each do |account|
-  Account.create!(account)
+  acc = Account.create!(account)
+  acc.confirm
 end

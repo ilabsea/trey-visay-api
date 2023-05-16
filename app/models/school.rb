@@ -18,6 +18,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  code                :string(255)
+#  kind                :integer
 #
 
 class School < ApplicationRecord
@@ -25,11 +26,32 @@ class School < ApplicationRecord
 
   CATEGORIES = %w[សាលារដ្ឋ សាលាឯកជន អង្គការ].freeze
 
-  has_and_belongs_to_many :careers
-  has_many :departments
-  has_many :department_majors, through: :departments, source: :majors
-  has_many :majors
+  enum kind: {
+    higher_education: 1,
+    vocational_education: 2
+  }
 
-  validates :category, inclusion: { in: CATEGORIES }
+  # has_and_belongs_to_many :careers
+  has_many :school_departments, inverse_of: :school, dependent: :destroy
+  has_many :departments, through: :school_departments
+  has_many :school_majors
+  has_many :majors, through: :school_majors
+
+  has_many :importing_schools
+  has_many :school_batches, through: :importing_schools
+
+  # validates :category, inclusion: { in: CATEGORIES }
   validates :name, presence: true
+
+  accepts_nested_attributes_for :school_departments, allow_destroy: true
+
+  def display_id
+    "school_#{id}"
+  end
+
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
+    scope
+  end
 end

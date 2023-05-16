@@ -1,0 +1,27 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'filter'
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @schools
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('school.name')
+            %th= t('school.type')
+            %th= t('school.address')
+            %th= t('school.tels')
+            %th= t('school.emails')
+            %th= t('school.website')
+            %th= t('school.category')
+            %th
+
+        %tbody#body-content
+          = render partial: 'school', collection: @schools
+
+    = render "shared/footers/pagination"

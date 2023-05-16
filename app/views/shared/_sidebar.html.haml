@@ -34,6 +34,12 @@
         %i.fas.fa-fw.fa-user
         %span= t('account.account')
 
+  - if policy(School).create?
+    %li.nav-item{class: css_active_class('schools')}
+      %a.nav-link{ href: schools_path }
+        %i.fas.fa-fw.fa-school
+        %span= t('school.school')
+
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation

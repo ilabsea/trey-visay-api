@@ -1,0 +1,54 @@
+# frozen_string_literal: true
+
+# School sheet-------------
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "school") do |sheet|
+  sheet.add_row %w[school_code school_name address province_code tels emails website_or_facebook type category]
+
+  @schools.each_with_index do |school, index|
+    sheet.add_row [
+      school.code,
+      school.name,
+      school.address,
+      nil,
+      school.phone_numbers.to_s.to_eng_num,
+      school.emails.to_s.downcase,
+      school.website_or_facebook,
+      school.kind,
+      school.category
+    ]
+  end
+end
+
+# Department major sheet-------------
+def render_first_department(school, sheet)
+  school_department = school.school_departments[0]
+  return unless school_department.present?
+
+  sheet.add_row [school.code, school.name, school_department.try(:department_name), school_department&.majors&.first&.name]
+
+  (school_department.majors[1..-1] || []).each do |major|
+    sheet.add_row [nil, nil, nil, major.name]
+  end
+end
+
+def render_other_department(school, sheet)
+  return unless school.school_departments.length > 1
+
+  school.school_departments[1..-1].each do |sd|
+    sheet.add_row [nil, nil, sd.department_name, sd.majors[0].name]
+
+    (sd.majors[1..-1] || []).each do |major|
+      sheet.add_row [nil, nil, nil, major.name]
+    end
+  end
+end
+
+wb.add_worksheet(name: "department_major") do |sheet|
+  sheet.add_row %w[school_code school_name department_name major_name]
+
+  @schools.each do |school|
+    render_first_department(school, sheet)
+    render_other_department(school, sheet)
+  end
+end

@@ -43,13 +43,26 @@ gem "jbuilder", "~> 2.5"
 gem "devise", "~> 4.8.1"
 
 gem "haml", "~>5.0.4"
-gem "carrierwave", "~> 2.2.3"
-gem "active_model_serializers", "~> 0.10.13"
 gem "strip_attributes", "~> 1.8.0"
 gem "decent_exposure"
 gem "oj"
+
+# File upload
+gem "carrierwave", "~> 2.2.3"
+
+# Serialer
+gem "active_model_serializers", "~> 0.10.13"
+
+# Read excel
 gem "roo", "~> 2.9.0"
+# Write excel
+gem "caxlsx", "~> 3.3.0"
+gem "caxlsx_rails", "~> 0.6.3"
+
+# Location
 gem "pumi", require: "pumi/rails"
+
+# Zip file
 gem "rubyzip", "~> 1.3.0"
 
 # Soft delete
