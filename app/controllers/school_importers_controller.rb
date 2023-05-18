@@ -15,7 +15,7 @@ class SchoolImportersController < ApplicationController
     authorize SchoolBatch, :create?
 
     if file = params[:school_batch][:file].presence
-      @batch = Spreadsheets::SchoolBatchSpreadsheet.new(current_account).import(file)
+      @batch = Spreadsheets::SchoolBatchSpreadsheet.new.import(file)
 
       render :wizard_review, status: :see_other
     else
@@ -27,7 +27,7 @@ class SchoolImportersController < ApplicationController
     @batch.destroy
 
     respond_to do |format|
-      format.html { redirect_to mobile_notification_importers_url, notice: "Notification batch was successfully destroyed." }
+      format.html { redirect_to school_importers_url, notice: "Higher education school batch was successfully destroyed." }
       format.json { head :no_content }
     end
   end

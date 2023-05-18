@@ -1,0 +1,35 @@
+.table-responsive
+  %table.table.table-hover.pretty
+    %thead
+      %tr
+        %th #
+        %th= t("shared.name_km")
+        %th= t('school.address')
+        %th= t('shared.is_valid')
+
+    %tbody
+      - @batch.importing_middle_schools.each_with_index do |importing_middle_school, index|
+        - school = importing_middle_school.middle_school
+        - if school.valid?
+          = f.fields_for :importing_middle_schools, importing_middle_school do |ff|
+            = ff.hidden_field :middle_school_id
+            = ff.fields_for :middle_school, school do |hsf|
+              = hsf.hidden_field :id
+              = hsf.hidden_field :code
+              = hsf.hidden_field :name
+              = hsf.hidden_field :commune_id
+
+        %tr
+          %td= index + 1
+          %td= school.name
+          %td= "(#{school.commune_id}) #{school.address}"
+
+          / Validation status
+          %td
+            - if school.valid?
+              %i.fas.fa-check.text-success
+
+            - else
+              %span.text-danger.d-flex.align-items-center{'data-toggle' => 'tooltip', 'data-placement': 'left', title: school.errors.full_messages.join(', '), style: 'min-width: 80px;' }
+                %i.fas.fa-times.text-danger
+                %small.ml-1= t('shared.reason')

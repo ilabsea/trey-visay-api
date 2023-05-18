@@ -1,6 +1,6 @@
 km:
   school:
-    school: គ្រឹះស្ថានសិក្សា
+    school: គ្រឹះស្ថានឧត្តមសិក្សា
     name: ឈ្មោះ
     address: អាស័យដ្ឋាន
     type: ប្រភេទ
@@ -10,11 +10,11 @@ km:
     website: គេហទំព័រ ឬហ្វេសបុក
     higher_education: ការអប់រំកំរិតឧត្តម
     vocational_education: ការអប់រំវិជ្ជាជីវៈ
-    importing_school_wizard: បញ្ចូលគ្រឹះស្ថានសិក្សា Wizard
+    importing_school_wizard: បញ្ចូលគ្រឹះស្ថានឧត្តមសិក្សា Wizard
     short_description: "ចំនួនគ្រឹះស្ថានសរុប: %{total_count} (ត្រឹមត្រូវ: %{valid_count})"
     valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"
     confirm_message: "មានគ្រឹះស្ថានសរុប <b>%{total_count}</b> ក្នុងខេត្តចំនួន <b>%{province_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
     confirm_title: បញ្ចាក់ការបញ្ចូលគ្រឹះស្ថានសិក្សា
-    importing_school_history: ប្រវត្តវនៃការបញ្ចូលគ្រឹះស្ថានសិក្សាតាម Excel
+    importing_school_history: ប្រវត្តិនៃការបញ្ចូលគ្រឹះស្ថានឧត្តមសិក្សាតាម Excel
     search_by_name: ស្វែងរកតាមឈ្មោះ
     major_count: "%{count} ជំនាញ"

@@ -1,0 +1,29 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'filter'
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @schools
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name')
+            %th= t('school.address')
+            %th
+
+        %tbody#body-content
+          - @schools.each_with_index do |school, index|
+            %tr
+              %td= @pagy.from + index
+              %td= school.code
+              %td= school.name
+              %td= "(#{school.commune_id}) #{school.address}"
+              %td
+
+    = render "shared/footers/pagination"

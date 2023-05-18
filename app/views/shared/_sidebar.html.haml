@@ -40,6 +40,12 @@
         %i.fas.fa-fw.fa-school
         %span= t('school.school')
 
+  - if policy(MiddleSchool).create?
+    %li.nav-item{class: css_active_class('middle_schools')}
+      %a.nav-link{ href: middle_schools_path }
+        %i.fas.fa-fw.fa-graduation-cap
+        %span= t('middle_school.middle_school')
+
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation

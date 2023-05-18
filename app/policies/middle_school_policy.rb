@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SchoolPolicy < ApplicationPolicy
+class MiddleSchoolPolicy < ApplicationPolicy
   def index?
     create?
   end
