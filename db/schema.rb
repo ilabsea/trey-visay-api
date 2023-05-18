@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_15_041155) do
+ActiveRecord::Schema.define(version: 2023_05_18_034533) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -135,6 +135,13 @@ ActiveRecord::Schema.define(version: 2023_05_15_041155) do
     t.index ["code"], name: "index_high_schools_on_code", unique: true
   end
 
+  create_table "importing_middle_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "middle_school_id"
+    t.string "middle_school_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "importing_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "school_id"
     t.string "school_batch_id"
@@ -152,6 +159,28 @@ ActiveRecord::Schema.define(version: 2023_05_15_041155) do
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "middle_school_batches", id: :string, limit: 8, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.integer "province_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "middle_schools", id: :string, limit: 8, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "province_id"
+    t.string "district_id"
+    t.string "commune_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

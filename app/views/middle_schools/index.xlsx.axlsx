@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "high_school") do |sheet|
+  sheet.add_row %w[school_code school_name commune_id commune district_id district province_id province]
+
+  @schools.each_with_index do |school, index|
+    sheet.add_row [
+      school.code,
+      school.name,
+      school.commune_id,
+      school.commune,
+      school.district_id,
+      school.district,
+      school.province_id,
+      school.province
+    ], types: [:string, :string, :string, :string, :string, :string, :string, :string]
+  end
+end

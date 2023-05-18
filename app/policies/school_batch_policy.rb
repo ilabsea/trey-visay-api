@@ -18,7 +18,7 @@ class SchoolBatchPolicy < ApplicationPolicy
   end
 
   def destroy?
-    archive? && record.deleted?
+    create?
   end
 
   # NOTE: Be explicit about which records you allow access to!
