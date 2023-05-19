@@ -1,5 +1,5 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('middle_school.high_school')
+  %h1.h3.mb-0.text-gray-800= t('sidebar.middle_school')
 
   %div
     = render "shared/buttons/download_button", url: middle_schools_path(filter_params.merge(format: :xlsx))
@@ -17,4 +17,4 @@
 
           %a.btn.dropdown-item{ href: middle_school_importers_path }
             %i.fas.fa-history.drop-menu-icon
-            %span= t('middle_school.importing_school_history')
+            %span= t('shared.importing_history', name: t('sidebar.middle_school'))

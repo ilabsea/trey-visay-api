@@ -87,6 +87,12 @@ km:
     at_least_one_valid_item: ត្រូវមានទិន្នន័យដែលត្រឹមត្រូវយ៉ាងហោចណាស់ 1
     yes_i_approve: "បាទ/ចាស ខ្ញុំយល់ព្រម"
     confirm_message: "មានទិន្នន័យសរុប <b>%{total_count}</b> ក្នុងខេត្តចំនួន <b>%{province_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
+    confirm_message_no_province: "មានទិន្នន័យសរុប <b>%{total_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
     import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
     some_invalid_records: មានទិន្នន័យ មួយចំនួនមិនត្រឹមត្រូវ សូមធ្វើការត្រួតពិនិត្យ និងបញ្ចូលឡើងវិញ!
     import_from_file: បញ្ចូលទិន្នន័យពី Excel(.xlsx)
+    search_by_code_or_name: ស្វែងរកតាមលេខកូដ ឬឈ្មោះ
+    importing_wizard: "បញ្ចូល%{name} Wizard"
+    importing_history: "ប្រវត្តិនៃការបញ្ចូល%{name}តាម Excel"
+    search_by_name: ស្វែងរកតាមឈ្មោះ
+    valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"

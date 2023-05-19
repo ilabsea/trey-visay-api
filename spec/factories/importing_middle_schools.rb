@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: importing_middle_schools
@@ -10,6 +12,5 @@
 #
 FactoryBot.define do
   factory :importing_middle_school do
-    
   end
 end

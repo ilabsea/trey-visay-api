@@ -1,0 +1,78 @@
+.table-responsive
+  %table.table.table-hover.pretty.table-bordered
+    %thead
+      %tr
+        %th.align-middle.text-center{rowspan: 2} #
+        %th.align-middle.text-center{rowspan: 2}= t('shared.code')
+        %th.align-middle.text-center{rowspan: 2}= t("shared.name_km")
+        %th.align-middle.text-center{rowspan: 2}= t("shared.name_en")
+        %th.align-middle.text-center{rowspan: 2}= t('job.personality_type')
+        %th.align-middle.text-center{rowspan: 2}= t('job.general_description')
+        %th.align-middle.text-center{colspan: 3}= t('job.job_condition')
+        %th.align-middle.text-center{colspan: 3}= t('job.education_and_training')
+        %th.align-middle.text-center{colspan: 4}= t('job.mandate_qualification')
+        %th.align-middle.text-center{colspan: 2}= t('job.additional_info')
+        %th.align-middle.text-center{rowspan: 2}= t('shared.is_valid')
+
+      %tr
+        %th.align-top.text-center= t('job.jd_main_task')
+        %th.align-top.text-center= t('job.jd_environment')
+        %th.align-top.text-center= t('job.jd_technology_skill')
+        %th.align-top.text-center= t('job.edu_education_level')
+        %th.align-top.text-center= t('job.edu_high_school_supported_subject')
+        %th.align-top.text-center= t('job.edu_higher_education_skill')
+        %th.align-top.text-center= t('job.qua_supported_knowledge')
+        %th.align-top.text-center= t('job.qua_supported_skill')
+        %th.align-top.text-center= t('job.qua_supported_capacity')
+        %th.align-top.text-center= t('job.qua_characteristic_of_job')
+        %th.align-top.text-center= t('job.info_job_market')
+        %th.align-top.text-center= t('job.info_similar_job')
+
+    %tbody
+      - @batch.importing_jobs.each_with_index do |importing_job, index|
+        - job = importing_job.job
+        - if job.valid?
+          = f.fields_for :importing_jobs, importing_job do |ff|
+            = ff.hidden_field :job_id
+            = ff.fields_for :job, job do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name_km
+              = fff.hidden_field :name_en
+              = fff.hidden_field :personality_type
+              = fff.hidden_field :general_description
+              = fff.hidden_field :jd_main_task
+              = fff.hidden_field :jd_environment
+              = fff.hidden_field :jd_technology_skill
+              = fff.hidden_field :edu_education_level
+              = fff.hidden_field :edu_high_school_supported_subject
+              = fff.hidden_field :edu_higher_education_skill
+              = fff.hidden_field :qua_supported_knowledge
+              = fff.hidden_field :qua_supported_skill
+              = fff.hidden_field :qua_supported_capacity
+              = fff.hidden_field :qua_characteristic_of_job
+              = fff.hidden_field :info_job_market
+              = fff.hidden_field :info_similar_job
+
+        %tr
+          %td= index + 1
+          %td= job.code
+          %td= job.name_km
+          %td= job.name_en
+          %td= job.personality_type
+          %td= job.general_description
+          %td= job.jd_main_task
+          %td= job.jd_environment
+          %td= job.jd_technology_skill
+          %td= job.edu_education_level
+          %td= job.edu_high_school_supported_subject
+          %td= job.edu_higher_education_skill
+          %td= job.qua_supported_knowledge
+          %td= job.qua_supported_skill
+          %td= job.qua_supported_capacity
+          %td= job.qua_characteristic_of_job
+          %td= job.info_job_market
+          %td= job.info_similar_job
+
+          / Validation status
+          %td= render "shared/validation_status", item: job

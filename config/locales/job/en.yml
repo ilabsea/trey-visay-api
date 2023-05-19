@@ -1,0 +1,24 @@
+en:
+  job:
+    job: Job
+    personality_type: Personality type
+    general_description: General description
+    jd_main_task: Main task
+    jd_environment: Job environment
+    jd_technology_skill: Technology skill
+    edu_education_level: Education level
+    edu_high_school_supported_subject: High school support subject
+    edu_higher_education_skill: Higher education skill
+    qua_supported_knowledge: Supported knowledge
+    qua_supported_skill: Supported skill
+    qua_supported_capacity: Supported capacity
+    qua_characteristic_of_job: Characteristic of job
+    info_job_market: Job market
+    info_similar_job: Similar job
+    job_condition: Job condition
+    education_and_training: Education and training
+    mandate_qualification: Mandate qualification
+    additional_info: Additional information
+    code: Code
+    name_en: Name in English
+    name_km: Name in Khmer

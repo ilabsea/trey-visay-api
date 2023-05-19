@@ -10,12 +10,4 @@ en:
     website: Website or Facebook
     higher_education: Higher Education
     vocational_education: Vocational Education
-    importing_school_wizard: Importing School Wizard
-    short_description: "Total items: %{total_count} (valid: %{valid_count})"
-    valid_data_in_province: "total valid data in province <b>%{province_count}</b>"
-    confirm_message: "There are total school <b>%{total_count}</b> in <b>%{province_count}</b> provinces importing to the stystem! Do you approve it?"
-    confirm_title: Confirm import school
-    importing_school_history: Importing higher education school history
-    search_by_name: Search by name
     major_count: "%{count} majors"
-    higher_education: Higher Education

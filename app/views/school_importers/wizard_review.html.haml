@@ -1,4 +1,4 @@
-= render "shared/headers/progress_arrow_header", title: t("school.importing_school_wizard"), progress_num: 2
+= render "shared/headers/progress_arrow_header", title: t("shared.importing_wizard", name: t('sidebar.higher_school')), progress_num: 2
 
 = simple_form_for @batch, url: school_importers_path do |f|
   = f.hidden_field :code, value: @batch.code
@@ -11,20 +11,17 @@
   .d-flex.align-items-center{style: 'flex-wrap: wrap-reverse;'}
     / Short description header
     .flex-grow-1
-      %div= t("school.short_description", total_count: @batch.total_count, valid_count: @batch.valid_count).html_safe
+      %div= t("shared.short_description", total_count: @batch.total_count, valid_count: @batch.valid_count).html_safe
 
       %small.text-muted
-        = t('school.valid_data_in_province', province_count: @batch.province_count).html_safe
+        = t('shared.valid_data_in_province', province_count: @batch.province_count).html_safe
 
     .d-flex.mb-2
       / Back button
       = render "shared/buttons/back_button", url: school_importers_path
 
       / Yes confirm button
-      - tooltip_title = @batch.valid_count.positive? ? "" : t("shared.at_least_one_valid_item")
-
-      %span{ 'data-toggle' => 'tooltip', 'data-html' => 'true', title: tooltip_title }
-        %button.btn.btn-primary.btn-sm{'data-toggle' => 'modal', 'data-target' => '#confirmModal', type: 'button', class: ('disabled' if @batch.valid_count.zero?)}= t('shared.yes_i_approve')
+      = render "shared/buttons/yes_confirm_button"
 
   / Item valid count information
   .mt-2
@@ -34,7 +31,7 @@
   = render 'wizard_list', f: f
 
   / Yes Confirm modal
-  = render 'shared/modals/modal_import_confirm', f: f, title: t('school.confirm_title'), message: t('school.confirm_message', total_count: @batch.valid_count, province_count: @batch.province_count).html_safe
+  = render 'shared/modals/modal_import_confirm', f: f, title: t('shared.confirm_title', name: t('sidebar.higher_school')), message: t('shared.confirm_message', total_count: @batch.valid_count, province_count: @batch.province_count).html_safe
 
   / Item valid count information
   .my-2

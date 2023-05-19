@@ -25,11 +25,4 @@
           %td= "(#{school.commune_id}) #{school.address}"
 
           / Validation status
-          %td
-            - if school.valid?
-              %i.fas.fa-check.text-success
-
-            - else
-              %span.text-danger.d-flex.align-items-center{'data-toggle' => 'tooltip', 'data-placement': 'left', title: school.errors.full_messages.join(', '), style: 'min-width: 80px;' }
-                %i.fas.fa-times.text-danger
-                %small.ml-1= t('shared.reason')
+          %td= render "shared/validation_status", item: school

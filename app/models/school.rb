@@ -51,7 +51,7 @@ class School < ApplicationRecord
 
   def self.filter(params = {})
     scope = all
-    scope = scope.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope
   end
 end
