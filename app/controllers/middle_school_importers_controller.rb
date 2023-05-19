@@ -12,7 +12,6 @@ class MiddleSchoolImportersController < ApplicationController
   end
 
   def create
-    # byebug
     authorize MiddleSchoolBatch, :create?
 
     if file = params[:middle_school_batch][:file].presence

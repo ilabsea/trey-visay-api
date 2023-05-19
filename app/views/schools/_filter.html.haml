@@ -1,8 +1,0 @@
-%form{ action: schools_path, method: 'get' }
-  .form-group.filter-input
-    .input-group
-      = text_field_tag(:name, params[:name], class: 'form-control', placeholder: t('school.search_by_name'))
-
-      .input-group-append
-        .input-group-text
-          %i.fas.fa-search

@@ -1,4 +1,4 @@
-= render "shared/headers/progress_arrow_header", title: t("school.importing_school_wizard")
+= render "shared/headers/progress_arrow_header", title: t("shared.importing_wizard", name: t('sidebar.higher_school'))
 
 = render "shared/forms/wizard_form", cancel_url: schools_path, sample_url: '#', item: @batch, form_url: school_importers_path
 

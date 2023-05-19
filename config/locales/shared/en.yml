@@ -87,6 +87,12 @@ en:
     at_least_one_valid_item: There must be at least 1 valid item
     yes_i_approve: Yes, I approve
     confirm_message: "There are total item <b>%{total_count}</b> in <b>%{province_count}</b> provinces importing to the stystem! Do you approve it?"
+    confirm_message_no_province: "There are total item <b>%{total_count}</b> importing to the stystem! Do you approve it?"
     import_success: "%{count} items were successfully imported!"
     some_invalid_records: There are some invalid records, please check and reimport!
     import_from_file: Import from Excel(.xlsx)
+    search_by_code_or_name: Search bo code or name
+    importing_wizard: "Importing %{name} Wizard"
+    importing_history: "Importing %{name} history"
+    search_by_name: Search by name
+    valid_data_in_province: "total valid data in province <b>%{province_count}</b>"

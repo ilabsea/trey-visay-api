@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMiddleSchools < ActiveRecord::Migration[5.2]
   def change
     create_table :middle_schools, id: :string, limit: 8 do |t|

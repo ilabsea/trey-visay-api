@@ -1,9 +1,9 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('middle_school.importing_school_history')
+  %h1.h3.mb-0.text-gray-800= t('shared.importing_history', name: t('sidebar.middle_school'))
 
   .d-flex.mt-3.mt-md-0.justify-content-end
     = render "shared/buttons/back_button", url: middle_schools_path
-    = render "shared/buttons/add_new_button", url: new_middle_school_importer_path, name: t('middle_school.middle_school')
+    = render "shared/buttons/add_new_button", url: new_middle_school_importer_path, name: t('sidebar.middle_school')
 
 .card.shadow.mb-4
   .card-body
@@ -31,7 +31,7 @@
                   = link_to batch.reference_identifier, batch.reference_url, class: "text-primary", target: "_blank" if batch.reference_url.present?
 
                 %td
-                  = t("school.short_description", total_count: batch.total_count, valid_count: batch.valid_count)
+                  = t("shared.short_description", total_count: batch.total_count, valid_count: batch.valid_count)
 
                 %td= batch.creator_email
                 %td= timeago(batch.created_at, 'datetime').html_safe

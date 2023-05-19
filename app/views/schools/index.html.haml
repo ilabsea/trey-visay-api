@@ -1,7 +1,7 @@
 / Page Heading
 = render "page_heading"
 
-= render 'filter'
+= render 'shared/filters/name_code_filter', url: schools_path
 
 .card.shadow.mb-4
   .card-body
@@ -12,6 +12,7 @@
         %thead
           %tr
             %th{width: 60} #
+            %th= t('shared.code')
             %th= t('school.name')
             %th= t('school.type')
             %th= t('school.address')

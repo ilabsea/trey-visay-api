@@ -1,5 +1,6 @@
 %tr
   %td= @pagy.from + school_counter
+  %td= school.code
   %td= school.name
   %td
     = t("school.#{school.kind}") if school.kind.present?

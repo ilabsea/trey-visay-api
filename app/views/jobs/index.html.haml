@@ -1,0 +1,29 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: jobs_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @jobs
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name_km')
+            %th= t('shared.name_en')
+            %th
+
+        %tbody#body-content
+          - @jobs.each_with_index do |job, index|
+            %tr
+              %td= @pagy.from + index
+              %td= link_to job.code, job_path(job), class: 'text-primary'
+              %td= job.name_km
+              %td= job.name_en
+              %td
+
+    = render "shared/footers/pagination"

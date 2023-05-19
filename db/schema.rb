@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_18_034533) do
+ActiveRecord::Schema.define(version: 2023_05_18_085715) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -135,6 +135,13 @@ ActiveRecord::Schema.define(version: 2023_05_18_034533) do
     t.index ["code"], name: "index_high_schools_on_code", unique: true
   end
 
+  create_table "importing_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "job_id"
+    t.string "job_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "importing_middle_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "middle_school_id"
     t.string "middle_school_batch_id"
@@ -145,6 +152,39 @@ ActiveRecord::Schema.define(version: 2023_05_18_034533) do
   create_table "importing_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "school_id"
     t.string "school_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_batches", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name_km"
+    t.string "name_en"
+    t.string "personality_type"
+    t.text "general_description"
+    t.text "jd_main_task"
+    t.string "jd_environment"
+    t.string "jd_technology_skill"
+    t.string "edu_education_level"
+    t.string "edu_high_school_supported_subject"
+    t.string "edu_higher_education_skill"
+    t.string "qua_supported_knowledge"
+    t.string "qua_supported_skill"
+    t.string "qua_supported_capacity"
+    t.string "qua_characteristic_of_job"
+    t.text "info_job_market"
+    t.text "info_similar_job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

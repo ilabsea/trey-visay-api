@@ -1,0 +1,38 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "career_list") do |sheet|
+  sheet.add_row ["code", "name_km", "name_en", "personality_type", t("job.general_description"), t("job.job_condition"), nil, nil, t("job.education_and_training"), nil, nil, t("job.mandate_qualification"), nil, nil, nil, t("job.additional_info"), nil]
+  sheet.add_row [nil, nil, nil, nil, nil, t("job.jd_main_task"), t("job.jd_environment"), t("job.jd_technology_skill"), t("job.edu_education_level"), t("job.edu_high_school_supported_subject"), t("job.edu_higher_education_skill"), t("job.qua_supported_knowledge"), t("job.qua_supported_skill"), t("job.qua_supported_capacity"), t("job.qua_characteristic_of_job"), t("job.info_job_market"), t("job.info_similar_job")]
+  sheet.merge_cells "A1:A2"
+  sheet.merge_cells "B1:B2"
+  sheet.merge_cells "C1:C2"
+  sheet.merge_cells "D1:D2"
+  sheet.merge_cells "E1:E2"
+  sheet.merge_cells "F1:H1"
+  sheet.merge_cells "I1:K1"
+  sheet.merge_cells "L1:O1"
+  sheet.merge_cells "P1:Q1"
+
+  @jobs.each_with_index do |job, index|
+    sheet.add_row [
+      job.code,
+      job.name_km,
+      job.name_en,
+      job.personality_type,
+      job.general_description,
+      job.jd_main_task,
+      job.jd_environment,
+      job.jd_technology_skill,
+      job.edu_education_level,
+      job.edu_high_school_supported_subject,
+      job.edu_higher_education_skill,
+      job.qua_supported_knowledge,
+      job.qua_supported_skill,
+      job.qua_supported_capacity,
+      job.qua_characteristic_of_job,
+      job.info_job_market,
+      job.info_similar_job,
+    ], types: [:string]
+  end
+end

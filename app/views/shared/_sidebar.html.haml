@@ -38,13 +38,19 @@
     %li.nav-item{class: css_active_class('schools')}
       %a.nav-link{ href: schools_path }
         %i.fas.fa-fw.fa-school
-        %span= t('school.school')
+        %span= t('sidebar.school')
 
   - if policy(MiddleSchool).create?
     %li.nav-item{class: css_active_class('middle_schools')}
       %a.nav-link{ href: middle_schools_path }
         %i.fas.fa-fw.fa-graduation-cap
-        %span= t('middle_school.middle_school')
+        %span= t('sidebar.middle_school')
+
+  - if policy(Job).create?
+    %li.nav-item{class: css_active_class('jobs')}
+      %a.nav-link{ href: jobs_path }
+        %i.fas.fa-fw.fa-user-doctor
+        %span= t('sidebar.job')
 
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }

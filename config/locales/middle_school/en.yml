@@ -1,9 +1,0 @@
-en:
-  middle_school:
-    high_school: High school
-    importing_high_school_wizard: Importing high school wizard
-    confirm_message: "There are total high school <b>%{total_count}</b> in <b>%{province_count}</b> provinces importing to the stystem! Do you approve it?"
-    confirm_title: Confirm import high school
-    search_by_code_or_name: Search by code or name
-    importing_school_history: Importing middle school history
-    middle_school: Middle school
