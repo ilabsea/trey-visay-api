@@ -49,7 +49,7 @@ class JobImportersController < ApplicationController
 
     def job_batch_params
       params.require(:job_batch).permit(
-        :code, :total_count, :valid_count, :province_count, :new_count, :reference_cache,
+        :code, :total_count, :valid_count, :new_count, :reference_cache,
         importing_jobs_attributes: [
           :job_id,
           job_attributes: [

@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "holland_questions") do |sheet|
+  sheet.add_row %w[code name personality_type]
+
+  @holland_questions.each_with_index do |holland_question, index|
+    sheet.add_row [
+      holland_question.code,
+      holland_question.name,
+      holland_question.personality_type
+    ], types: [:string, :string, :string]
+  end
+end

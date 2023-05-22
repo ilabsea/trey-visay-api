@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_18_085715) do
+ActiveRecord::Schema.define(version: 2023_05_19_083727) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -133,6 +133,33 @@ ActiveRecord::Schema.define(version: 2023_05_18_085715) do
     t.string "name_en"
     t.string "location_code"
     t.index ["code"], name: "index_high_schools_on_code", unique: true
+  end
+
+  create_table "holland_question_batches", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holland_questions", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "personality_type"
+    t.integer "display_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "importing_holland_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_question_id"
+    t.string "holland_question_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "importing_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

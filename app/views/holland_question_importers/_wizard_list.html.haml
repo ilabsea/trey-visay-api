@@ -1,0 +1,30 @@
+.table-responsive
+  %table.table.table-hover.pretty
+    %thead
+      %tr
+        %th #
+        %th= t('shared.code')
+        %th= t("shared.name")
+        %th= t('job.personality_type')
+        %th= t('shared.is_valid')
+
+    %tbody
+      - @batch.importing_holland_questions.each_with_index do |importing_holland_question, index|
+        - holland_question = importing_holland_question.holland_question
+        - if holland_question.valid?
+          = f.fields_for :importing_holland_questions, importing_holland_question do |ff|
+            = ff.hidden_field :holland_question_id
+            = ff.fields_for :holland_question, holland_question do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name
+              = fff.hidden_field :personality_type
+
+        %tr
+          %td= index + 1
+          %td= holland_question.code
+          %td= holland_question.name
+          %td= holland_question.personality_type
+
+          / Validation status
+          %td= render "shared/validation_status", item: holland_question
