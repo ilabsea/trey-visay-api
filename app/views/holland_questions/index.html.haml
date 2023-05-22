@@ -1,0 +1,29 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: holland_questions_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @holland_questions
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name')
+            %th= t('job.personality_type')
+            %th
+
+        %tbody#body-content
+          - @holland_questions.each_with_index do |job, index|
+            %tr
+              %td= @pagy.from + index
+              %td= job.code
+              %td= job.name
+              %td= job.personality_type
+              %td
+
+    = render "shared/footers/pagination"
