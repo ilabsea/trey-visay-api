@@ -1,0 +1,15 @@
+en:
+  college_major:
+    code: Code
+    name: Name
+    personality_type: Personality type
+    general_info: General information
+    orien_orientation_subjects: Orientation subjects
+    orien_study_condition: Study condition
+    orien_graduation_condition: Graduation condition
+    curriculum: Curriculum
+    teaching_and_learning_process: Teaching and learning process
+    gain_knowledge: Gain knowledge
+    worthy_career: Worthy career
+    recommendation: Recommendation
+    orienation_subject_and_condition: Orientation subject and compulsory condition

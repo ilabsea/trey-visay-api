@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "college_major") do |sheet|
+  sheet.add_row ["code", "name", "personality_type", "career_code", t("college_major.general_info"), t("college_major.orienation_subject_and_condition"), nil, nil, t("college_major.curriculum"), t("college_major.teaching_and_learning_process"), t("college_major.gain_knowledge"), t("college_major.worthy_career"), t("college_major.recommendation")]
+  sheet.add_row [nil, nil, nil, nil, nil, t("college_major.orien_orientation_subjects"), t("college_major.orien_study_condition"), t("college_major.orien_graduation_condition") ]
+  sheet.merge_cells "A1:A2"
+  sheet.merge_cells "B1:B2"
+  sheet.merge_cells "C1:C2"
+  sheet.merge_cells "D1:D2"
+  sheet.merge_cells "E1:E2"
+  sheet.merge_cells "F1:H1"
+  sheet.merge_cells "I1:I2"
+  sheet.merge_cells "J1:J2"
+  sheet.merge_cells "K1:K2"
+  sheet.merge_cells "L1:L2"
+  sheet.merge_cells "M1:M2"
+
+  @majors.each_with_index do |major, index|
+    sheet.add_row [
+      major.code,
+      major.name,
+      major.personality_type,
+      nil,
+      major.general_info,
+      major.orien_orientation_subjects,
+      major.orien_study_condition,
+      major.orien_graduation_condition,
+      major.curriculum,
+      major.teaching_and_learning_process,
+      major.gain_knowledge,
+      major.worthy_career,
+      major.recommendation
+    ], types: [:string]
+  end
+end

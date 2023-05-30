@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_19_083727) do
+ActiveRecord::Schema.define(version: 2023_05_29_075858) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -94,6 +94,34 @@ ActiveRecord::Schema.define(version: 2023_05_19_083727) do
     t.index ["entry_id"], name: "index_characteristics_entries_on_entry_id"
   end
 
+  create_table "college_major_batches", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "college_majors", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "personality_type"
+    t.text "general_info"
+    t.text "orien_orientation_subjects"
+    t.text "orien_study_condition"
+    t.text "orien_graduation_condition"
+    t.text "curriculum"
+    t.text "teaching_and_learning_process"
+    t.text "gain_knowledge"
+    t.text "worthy_career"
+    t.text "recommendation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "counselor_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -151,6 +179,13 @@ ActiveRecord::Schema.define(version: 2023_05_19_083727) do
     t.string "name"
     t.string "personality_type"
     t.integer "display_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "importing_college_majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "college_major_id"
+    t.string "college_major_batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
