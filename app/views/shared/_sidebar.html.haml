@@ -52,6 +52,12 @@
         %i.fas.fa-fw.fa-user-doctor
         %span= t('sidebar.job')
 
+  - if policy(CollegeMajor).create?
+    %li.nav-item{class: css_active_class('college_majors')}
+      %a.nav-link{ href: college_majors_path }
+        %i.fas.fa-fw.fa-book-open-reader
+        %span= t('sidebar.college_major')
+
   - if policy(HollandQuestion).create?
     %li.nav-item{class: css_active_class('holland_questions')}
       %a.nav-link{ href: holland_questions_path }

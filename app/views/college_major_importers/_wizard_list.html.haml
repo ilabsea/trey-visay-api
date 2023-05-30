@@ -1,0 +1,59 @@
+.table-responsive
+  %table.table.table-hover.pretty.table-bordered
+    %thead
+      %tr
+        %th.align-middle.text-center{rowspan: 2} #
+        %th.align-middle.text-center{rowspan: 2}= t('shared.code')
+        %th.align-middle.text-center{rowspan: 2}= t("shared.name_km")
+        %th.align-middle.text-center{rowspan: 2}= t('job.personality_type')
+        %th.align-middle.text-center{rowspan: 2}= "career_code"
+        %th.align-middle.text-center{rowspan: 2}= "ព័ត៌មានទូទៅ"
+        %th.align-middle.text-center{colspan: 3}= "មុខវិជ្ជាតម្រង់ទិស និងលក្ខខណ្ឌចាំបាច់"
+        %th.align-middle.text-center{rowspan: 2}= "កម្មវិធីសិក្សា"
+        %th.align-middle.text-center{rowspan: 2}= "ដំណើរការបង្រៀន និងរៀន"
+        %th.align-middle.text-center{rowspan: 2}= "ចំណេះដឹងទទួលបាន"
+        %th.align-middle.text-center{rowspan: 2}= "អាជីពការងារសក្ដិសម"
+        %th.align-middle.text-center{rowspan: 2}= "អនុសាសន៍"
+
+      %tr
+        %th.align-top.text-center= "មុខវិជ្ជាតម្រង់ទិស"
+        %th.align-top.text-center= "លក្ខខណ្ឌចូលរៀន"
+        %th.align-top.text-center= "លក្ខខណ្ឌបញ្ចប់ការសិក្សា"
+
+    %tbody
+      - @batch.importing_college_majors.each_with_index do |importing_college_major, index|
+        - major = importing_college_major.college_major
+        - if major.valid?
+          = f.fields_for :importing_college_majors, importing_college_major do |ff|
+            = ff.hidden_field :college_major_id
+            = ff.fields_for :college_major, major do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name
+              = fff.hidden_field :personality_type
+              = fff.hidden_field :general_info
+              = fff.hidden_field :orien_orientation_subjects
+              = fff.hidden_field :orien_study_condition
+              = fff.hidden_field :orien_graduation_condition
+              = fff.hidden_field :curriculum
+              = fff.hidden_field :teaching_and_learning_process
+              = fff.hidden_field :gain_knowledge
+              = fff.hidden_field :worthy_career
+              = fff.hidden_field :recommendation
+
+        %tr
+          %td= index + 1
+          %td= major.code
+          %td= major.name
+          %td= major.general_info
+          %td= major.orien_orientation_subjects
+          %td= major.orien_study_condition
+          %td= major.orien_graduation_condition
+          %td= major.curriculum
+          %td= major.teaching_and_learning_process
+          %td= major.gain_knowledge
+          %td= major.worthy_career
+          %td= major.recommendation
+
+          / Validation status
+          %td= render "shared/validation_status", item: major

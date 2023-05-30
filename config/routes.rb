@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :jobs
   resources :job_importers
 
+  resources :college_majors
+  resources :college_major_importers
+
   resources :holland_questions
   resources :holland_question_importers
 

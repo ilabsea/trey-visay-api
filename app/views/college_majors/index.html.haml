@@ -1,0 +1,27 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: college_majors_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @majors
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('school.name')
+            %th
+
+        %tbody#body-content
+          - @majors.each_with_index do |major, index|
+            %tr
+              %td= @pagy.from + index
+              %td= link_to major.code, college_major_path(major), class: 'text-primary'
+              %td= major.name
+              %td
+
+    = render "shared/footers/pagination"
