@@ -22,5 +22,6 @@
 #
 FactoryBot.define do
   factory :college_major do
+    name { FFaker::Name.name }
   end
 end

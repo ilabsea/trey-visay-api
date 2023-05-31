@@ -11,3 +11,4 @@ en:
     higher_education: Higher Education
     vocational_education: Vocational Education
     major_count: "%{count} majors"
+    any_kind: Any level
