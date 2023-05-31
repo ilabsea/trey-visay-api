@@ -25,8 +25,10 @@
 #  created_at                        :datetime         not null
 #  updated_at                        :datetime         not null
 #
-require "rails_helper"
+class JobSerializer < ActiveModel::Serializer
+  attributes :id, :code, :name_km, :name_en, :personality_type, :general_description, :jd_main_task, :jd_environment, :jd_technology_skill, :edu_education_level, :edu_high_school_supported_subject, :edu_higher_education_skill, :qua_supported_knowledge, :qua_supported_skill, :qua_supported_capacity, :qua_characteristic_of_job, :info_job_market, :info_similar_job, :value, :updated_at
 
-RSpec.describe Job, type: :model do
-  it { is_expected.to validate_presence_of(:name_km) }
+  def value
+    object.name_km
+  end
 end
