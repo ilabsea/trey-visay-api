@@ -18,3 +18,9 @@
           %a.btn.dropdown-item{ href: middle_school_importers_path }
             %i.fas.fa-history.drop-menu-icon
             %span= t('shared.importing_history', name: t('sidebar.middle_school'))
+
+          - if current_account.primary_admin?
+            %a.btn.dropdown-item{ href: middle_schools_path(format: :json), target: '_blank' }
+              %i.fas.fa-download.drop-menu-icon
+              %span= t('shared.download_json')
+
