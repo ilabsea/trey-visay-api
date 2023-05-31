@@ -19,6 +19,12 @@ class CollegeMajorsController < ApplicationController
           render xlsx: "index", filename: "majors_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
         end
       }
+
+      format.json {
+        @majors = authorize CollegeMajor.filter(filter_params)
+
+        render json: @majors
+      }
     end
   end
 

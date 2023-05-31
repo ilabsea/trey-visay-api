@@ -58,6 +58,10 @@ Rails.application.routes.draw do
         post "/accounts/sign_out" => "sessions#destroy"
       end
     end
+
+    namespace :v2 do
+      resources :college_majors, only: [:index]
+    end
   end
 
   mount Pumi::Engine => "/pumi"
