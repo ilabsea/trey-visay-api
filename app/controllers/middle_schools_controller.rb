@@ -19,6 +19,12 @@ class MiddleSchoolsController < ApplicationController
           render xlsx: "index", filename: "high_schools_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
         end
       }
+
+      format.json {
+        @schools = authorize MiddleSchool.filter(filter_params)
+
+        render json: @schools
+      }
     end
   end
 
