@@ -49,9 +49,17 @@ class School < ApplicationRecord
     "school_#{id}"
   end
 
+  def self.t_kinds
+    [
+      [I18n.t("school.higher_education"), "higher_education"],
+      [I18n.t("school.vocational_education"), "vocational_education"]
+    ]
+  end
+
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where(kind: params[:kind]) if params[:kind].present?
     scope
   end
 end

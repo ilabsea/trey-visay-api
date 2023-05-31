@@ -19,6 +19,12 @@ class SchoolsController < ApplicationController
           render xlsx: "index", filename: "schools_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
         end
       }
+
+      format.json {
+        @schools = authorize School.filter(filter_params).includes(school_departments: [:department, :majors])
+
+        render json: @schools
+      }
     end
   end
 
@@ -28,6 +34,6 @@ class SchoolsController < ApplicationController
 
   private
     def filter_params
-      params.permit(:name)
+      params.permit(:name, :kind)
     end
 end

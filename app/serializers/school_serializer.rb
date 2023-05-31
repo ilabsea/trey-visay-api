@@ -22,7 +22,14 @@
 #
 
 class SchoolSerializer < ActiveModel::Serializer
-  attributes :id, :name, :logo, :address, :province, :phone_numbers, :faxes, :emails, :website_or_facebook, :mailbox, :category
+  attributes :id, :name, :logo, :address, :province, :phone_numbers, :faxes, :emails, :website_or_facebook, :mailbox, :category, :departments
 
-  has_many :departments
+  def departments
+    object.school_departments.map do |sd|
+      {
+        name: sd.department_name,
+        majors: sd.school_majors.map(&:major_name)
+      }
+    end
+  end
 end

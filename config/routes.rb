@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
     namespace :v2 do
       resources :college_majors, only: [:index]
+      resources :schools, only: [:index]
     end
   end
 

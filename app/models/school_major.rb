@@ -22,6 +22,9 @@ class SchoolMajor < ApplicationRecord
   # Callback
   after_create :set_school_and_department
 
+  # Delegation
+  delegate :name, to: :major, prefix: :major
+
   # Instant method
   def major_attributes=(hash)
     self.major = Major.find_or_create_by(name: hash[:name])

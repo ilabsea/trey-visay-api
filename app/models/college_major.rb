@@ -21,12 +21,18 @@
 #  updated_at                    :datetime         not null
 #
 class CollegeMajor < ApplicationRecord
+  # Validation
+  validates :name, presence: true
+
+  # Association
   has_many :importing_college_majors
   has_many :college_major_batches, through: :importing_college_majors
 
+  # Callback
   before_create :secure_id
   before_create :secure_code
 
+  # Class method
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
