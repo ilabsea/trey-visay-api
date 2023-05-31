@@ -19,6 +19,12 @@ class JobsController < ApplicationController
           render xlsx: "index", filename: "jobs_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
         end
       }
+
+      format.json {
+        @jobs = authorize Job.filter(filter_params)
+
+        render json: @jobs
+      }
     end
   end
 

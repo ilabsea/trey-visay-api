@@ -27,5 +27,6 @@
 #
 FactoryBot.define do
   factory :job do
+    name_km { FFaker::Name.name }
   end
 end
