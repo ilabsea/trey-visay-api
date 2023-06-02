@@ -1,0 +1,28 @@
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t('sidebar.self_understanding_question')
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @questions
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name')
+            %th= "Type"
+            %th= "Options"
+
+        %tbody#body-content
+          - @questions.each_with_index do |question, index|
+            %tr
+              %td= @pagy.from + index
+              %td= question.code
+              %td= question.name
+              %td= question.type
+              %td
+                = question.options.map(&:name).join(', ')
+
+    = render "shared/footers/pagination"

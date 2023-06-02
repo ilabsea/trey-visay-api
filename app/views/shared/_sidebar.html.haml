@@ -64,6 +64,12 @@
         %i.fas.fa-fw.fa-clipboard-question
         %span= t('sidebar.holland_question')
 
+  - if policy(SelfUnderstandingQuestion).index?
+    %li.nav-item{class: css_active_class('self_understanding_questions')}
+      %a.nav-link{ href: self_understanding_questions_path }
+        %i.fas.fa-fw.fa-clipboard-question
+        %span= t('sidebar.self_understanding_question')
+
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation
