@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
-  describe "GET #create" do
+  describe "POST #create" do
     let!(:api_key) { ApiKey.create }
     let!(:user)    { create(:user) }
     let!(:college_majors) { create_list(:college_major, 3) }

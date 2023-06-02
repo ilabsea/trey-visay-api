@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: holland_job_responses
@@ -11,6 +13,5 @@
 #
 FactoryBot.define do
   factory :holland_job_response do
-    
   end
 end

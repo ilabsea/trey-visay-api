@@ -15,5 +15,7 @@
 #
 FactoryBot.define do
   factory :middle_school do
+    name       { FFaker::Name.name }
+    commune_id { Pumi::Commune.all.sample.id }
   end
 end

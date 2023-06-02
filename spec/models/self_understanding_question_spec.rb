@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: self_understanding_questions
@@ -10,7 +12,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SelfUnderstandingQuestion, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

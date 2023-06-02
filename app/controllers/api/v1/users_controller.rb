@@ -28,7 +28,7 @@ class Api::V1::UsersController < ApiController
     def filter_params
       params.require(:data).permit(
         :id, :full_name, :password, :username, :sex, :date_of_birth, :phone_number,
-        :grade, :high_school_code, :province_code, :district_code, :commune_code
+        :grade, :high_school_code, :commune_code
       ).merge(photo: params[:photo])
     end
 end

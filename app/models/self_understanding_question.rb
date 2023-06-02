@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: self_understanding_questions
@@ -12,7 +14,7 @@
 #
 class SelfUnderstandingQuestion < ApplicationRecord
   # Association
-  has_many :options, foreign_key: :self_understanding_question_id, class_name: 'SelfUnderstandingOption', dependent: :destroy
+  has_many :options, foreign_key: :self_understanding_question_id, class_name: "SelfUnderstandingOption", dependent: :destroy
 
   TYPES = [
     "Fields::SelectoneField",
