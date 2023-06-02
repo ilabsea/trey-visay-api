@@ -11,9 +11,14 @@
 #
 
 class Major < ApplicationRecord
+  # Association
+  has_many :major_mappings
+  has_many :college_majors, through: :major_mappings
+
   has_many :school_majors
   has_many :schools, through: :school_majors
   has_many :school_departments, through: :school_majors
 
+  # Validation
   validates :name, presence: true
 end

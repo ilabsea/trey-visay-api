@@ -25,9 +25,16 @@ class CollegeMajorSerializer < ActiveModel::Serializer
              :orien_orientation_subjects, :orien_study_condition,
              :orien_graduation_condition, :curriculum,
              :teaching_and_learning_process, :gain_knowledge,
-             :worthy_career, :recommendation, :value, :updated_at
+             :worthy_career, :recommendation, :value, :updated_at,
+             :schools
 
   def value
     object.name
+  end
+
+  def schools
+    object.schools.uniq.map do |school|
+      school.slice("id", "code", "name")
+    end
   end
 end
