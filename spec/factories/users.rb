@@ -18,9 +18,11 @@
 #  updated_at       :datetime         not null
 #  photo            :string(255)
 #  high_school_code :string(255)
-#  province_code    :string(255)
-#  district_code    :string(255)
+#  province_id      :string(255)
+#  district_id      :string(255)
 #  commune_code     :string(255)
+#  class_group      :integer
+#  middle_school_id :integer
 #
 
 FactoryBot.define do

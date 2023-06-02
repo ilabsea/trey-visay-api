@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: holland_quizzes
@@ -15,6 +17,5 @@
 #
 FactoryBot.define do
   factory :holland_quiz do
-    
   end
 end

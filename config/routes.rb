@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       resources :schools, only: [:index]
       resources :jobs, only: [:index]
       resources :holland_quizzes, only: [:create, :update]
+      resources :users, only: [:create]
     end
   end
 

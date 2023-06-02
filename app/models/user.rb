@@ -18,44 +18,47 @@
 #  updated_at       :datetime         not null
 #  photo            :string(255)
 #  high_school_code :string(255)
-#  province_code    :string(255)
-#  district_code    :string(255)
+#  province_id      :string(255)
+#  district_id      :string(255)
 #  commune_code     :string(255)
+#  class_group      :integer
+#  middle_school_id :integer
 #
 
 require "csv"
 
 class User < ApplicationRecord
+  include Users::LocationConcern
+
   mount_uploader :photo, ::PhotoUploader
 
   GRADES = %w[9 10 11 12 other].freeze
 
+  # Enum
+  enum class_group: {
+    science: 1,
+    social_science: 2
+  }
+
+  # Associaction
+  # V2
+  belongs_to :middle_school, optional: true
+  has_many :holland_quizzes
+
+  # V1
   belongs_to :high_school, foreign_key: :high_school_code, optional: true
   has_many :games
   has_many :personal_understandings, through: :games
   has_many :personality_tests
 
+  # Validation
   validates :grade, inclusion: { in: GRADES }, allow_nil: true
 
+  # Delegation
   delegate :name_km, to: :high_school, prefix: :high_school, allow_nil: true
 
-  def address
-    return nil if high_school_code.blank?
-    district = high_school.location
-    "#{commune.try(:name_km)} #{district.name_km} #{district.province.name_km}"
-  end
-
-  def commune
-    Pumi::Commune.find_by_id(commune_code)
-  end
-
-  def district
-    Pumi::District.find_by_id(district_code)
-  end
-
-  def province
-    Pumi::Province.find_by_id(province_code)
-  end
+  # Callback
+  before_create :set_username_password
 
   def high_school_label
     return nil if high_school_code.blank?
@@ -81,4 +84,10 @@ class User < ApplicationRecord
     relation = relation.where(grade: params[:grade]) if params[:grade].present?
     relation
   end
+
+  private
+    def set_username_password
+      self.username ||= full_name
+      self.password ||= SecureRandom.uuid[0..5]
+    end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateHollandJobResponses < ActiveRecord::Migration[5.2]
   def change
     create_table :holland_job_responses, id: :string do |t|

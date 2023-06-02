@@ -6,7 +6,7 @@ require_relative "self_understanding_questions/option"
 
 module Sample
   class SelfUnderstandingQuestion < Sample::Base
-    def import(file="self_understanding_question", options = {})
+    def import(file = "self_understanding_question", options = {})
       spreadsheet(file).each_with_pagename do |sheet_name, sheet|
         sheet_name = sheet_name.to_s.downcase.upcase_first
 

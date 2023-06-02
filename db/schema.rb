@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_01_092357) do
+ActiveRecord::Schema.define(version: 2023_06_02_033533) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -509,9 +509,11 @@ ActiveRecord::Schema.define(version: 2023_06_01_092357) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "high_school_code"
-    t.string "province_code"
-    t.string "district_code"
+    t.string "province_id"
+    t.string "district_id"
     t.string "commune_code"
+    t.integer "class_group"
+    t.integer "middle_school_id"
   end
 
   create_table "vocationals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
