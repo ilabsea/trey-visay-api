@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_30_085237) do
+ActiveRecord::Schema.define(version: 2023_06_01_092357) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -169,6 +169,22 @@ ActiveRecord::Schema.define(version: 2023_05_30_085237) do
     t.index ["code"], name: "index_high_schools_on_code", unique: true
   end
 
+  create_table "holland_job_responses", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_quiz_id"
+    t.string "job_id"
+    t.boolean "selected"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holland_major_responses", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_quiz_id"
+    t.string "college_major_id"
+    t.boolean "selected"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "holland_question_batches", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code"
     t.integer "total_count", default: 0
@@ -185,6 +201,27 @@ ActiveRecord::Schema.define(version: 2023_05_30_085237) do
     t.string "name"
     t.string "personality_type"
     t.integer "display_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holland_quizzes", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "personality_type_results"
+    t.string "college_major_id"
+    t.string "job_id"
+    t.datetime "quizzed_at"
+    t.datetime "selected_college_major_at"
+    t.datetime "selected_job_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holland_responses", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_quiz_id"
+    t.string "holland_question_id"
+    t.string "holland_question_code"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -403,6 +440,34 @@ ActiveRecord::Schema.define(version: 2023_05_30_085237) do
     t.datetime "updated_at", null: false
     t.string "code"
     t.integer "kind"
+  end
+
+  create_table "self_understanding_options", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "value"
+    t.string "self_understanding_question_id"
+    t.integer "display_order", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "self_understanding_questions", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "type"
+    t.integer "display_order", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "self_understanding_responses", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_quiz_id"
+    t.string "self_understanding_question_id"
+    t.string "self_understanding_question_code"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subject_tips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

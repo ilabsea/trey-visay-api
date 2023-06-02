@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :college_majors
   resources :college_major_importers
 
+  resources :self_understanding_questions
   resources :holland_questions
   resources :holland_question_importers
 
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
       resources :college_majors, only: [:index]
       resources :schools, only: [:index]
       resources :jobs, only: [:index]
+      resources :holland_quizzes, only: [:create, :update]
     end
   end
 

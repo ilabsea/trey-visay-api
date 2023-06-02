@@ -14,5 +14,8 @@
 #
 FactoryBot.define do
   factory :holland_question do
+    code { "R_01" }
+    name { "ចិញ្ចឹមថែទាំសត្វ" }
+    personality_type { "R" }
   end
 end

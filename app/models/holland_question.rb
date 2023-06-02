@@ -33,9 +33,4 @@ class HollandQuestion < ApplicationRecord
     scope = scope.where("code LIKE ? OR name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope
   end
-
-  private
-    def set_display_order
-      self.display_order = self.class.maximum(:display_order).to_i + 1
-    end
 end
