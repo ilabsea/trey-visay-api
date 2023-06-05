@@ -15,7 +15,11 @@ RSpec.describe "Api::V2::UsersController", type: :request do
         grade: User::GRADES.sample,
         class_group: User.class_groups.keys.sample,
         middle_school_id: middle_school.id,
-        commune_code: middle_school.commune_id
+        commune_code: middle_school.commune_id,
+        device_id: '0ebf40b3',
+        device_type: 'mobile',
+        device_os: 'android',
+        app_version: 161
       }
     }
     let(:json_response) { JSON.parse(response.body) }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_02_102903) do
+ActiveRecord::Schema.define(version: 2023_06_05_070620) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -521,6 +521,10 @@ ActiveRecord::Schema.define(version: 2023_06_02_102903) do
     t.string "commune_code"
     t.integer "class_group"
     t.integer "middle_school_id"
+    t.string "device_id"
+    t.integer "device_type"
+    t.integer "device_os"
+    t.integer "app_version"
   end
 
   create_table "vocationals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

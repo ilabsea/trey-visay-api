@@ -33,8 +33,8 @@ module Users::LocationConcern
 
     private
       def set_province_id_and_district_id
-        self.province_id ||= commune_code[0..1]
-        self.district_id ||= commune_code[0..3]
+        self.province_id ||= commune_code.to_s[0..1]
+        self.district_id ||= commune_code.to_s[0..3]
       end
   end
 end
