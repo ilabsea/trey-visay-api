@@ -19,6 +19,7 @@
 //= require bootstrap
 //= require sb-admin-2
 //= require chart.bundle.min
+//= require tagify.min
 //= require common/pumi
 
 //= require application/namespace
@@ -30,6 +31,7 @@
 //= require games/show
 //= require personality_tests/show
 //= require users/index
+//= require college_majors/edit
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

@@ -4,7 +4,7 @@ module Api
   module V2
     class CollegeMajorsController < ::Api::V2::ApiController
       def index
-        pagy, college_majors = pagy(CollegeMajor.all)
+        pagy, college_majors = pagy(CollegeMajor.includes(:schools))
 
         render json: {
           pagy: pagy.vars,

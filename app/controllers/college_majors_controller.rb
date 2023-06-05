@@ -2,11 +2,12 @@
 
 class CollegeMajorsController < ApplicationController
   helper_method :filter_params
+  before_action :set_college_major, only: [:show, :edit, :update]
 
   def index
     respond_to do |format|
       format.html {
-        @pagy, @majors = pagy(authorize CollegeMajor.filter(filter_params))
+        @pagy, @majors = pagy(authorize CollegeMajor.filter(filter_params).includes(:majors, :schools))
       }
 
       format.xlsx {
@@ -29,11 +30,30 @@ class CollegeMajorsController < ApplicationController
   end
 
   def show
-    @major = CollegeMajor.find(params[:id])
+  end
+
+  def edit
+    @majors = Major.all
+  end
+
+  def update
+    if @major.update(major_params)
+      redirect_to @major
+    else
+      render :edit
+    end
   end
 
   private
     def filter_params
       params.permit(:name)
+    end
+
+    def major_params
+      params.require(:college_major).permit(major_ids: [])
+    end
+
+    def set_college_major
+      @major = authorize CollegeMajor.find(params[:id])
     end
 end

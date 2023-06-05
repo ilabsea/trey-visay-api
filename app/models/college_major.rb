@@ -27,6 +27,9 @@ class CollegeMajor < ApplicationRecord
   # Association
   has_many :importing_college_majors
   has_many :college_major_batches, through: :importing_college_majors
+  has_many :major_mappings
+  has_many :majors, through: :major_mappings
+  has_many :schools, through: :majors
 
   # Callback
   before_create :secure_id

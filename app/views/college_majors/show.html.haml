@@ -10,3 +10,7 @@
   - ['orien_orientation_subjects', 'orien_study_condition', 'orien_graduation_condition', 'curriculum', 'teaching_and_learning_process', 'gain_knowledge', 'worthy_career', 'recommendation'].each do |field|
 
     = field_value(t("college_major.#{field}"), @major[field]).html_safe
+
+  = field_value(t("college_major.major_in_schools"), @major.majors.map(&:name).join(', ')).html_safe
+
+  = field_value(t("college_major.number_of_schools"), "#{@major.schools.uniq.length}").html_safe

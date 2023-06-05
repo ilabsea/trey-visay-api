@@ -13,7 +13,9 @@
           %tr
             %th{width: 60} #
             %th= t('shared.code')
-            %th= t('school.name')
+            %th= t('shared.name')
+            %th= t('college_major.major_in_schools')
+            %th= t('college_major.number_of_schools')
             %th
 
         %tbody#body-content
@@ -22,6 +24,10 @@
               %td= @pagy.from + index
               %td= link_to major.code, college_major_path(major), class: 'text-primary'
               %td= major.name
-              %td
+              %td= major.majors.map(&:name).join(', ')
+              %td= major.schools.uniq.length
+              %td.text-right
+                = link_to edit_college_major_path(major), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('college_major.matching_with_major') } do
+                  %i.fas.fa-hands
 
     = render "shared/footers/pagination"

@@ -24,4 +24,10 @@ require "rails_helper"
 
 RSpec.describe CollegeMajor, type: :model do
   it { is_expected.to validate_presence_of(:name) }
+
+  it { is_expected.to have_many(:importing_college_majors) }
+  it { is_expected.to have_many(:college_major_batches).through(:importing_college_majors) }
+  it { is_expected.to have_many(:major_mappings) }
+  it { is_expected.to have_many(:majors).through(:major_mappings) }
+  it { is_expected.to have_many(:schools).through(:majors) }
 end
