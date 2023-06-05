@@ -23,6 +23,10 @@
 #  commune_code     :string(255)
 #  class_group      :integer
 #  middle_school_id :integer
+#  device_id        :string(255)
+#  device_type      :integer
+#  device_os        :integer
+#  app_version      :integer
 #
 
 require "csv"
@@ -38,6 +42,17 @@ class User < ApplicationRecord
   enum class_group: {
     science: 1,
     social_science: 2
+  }
+
+  enum device_type: {
+    mobile: 1,
+    tablet: 2
+  }
+
+  enum device_os: {
+    android: 1,
+    ios: 2,
+    other: 3
   }
 
   # Associaction
