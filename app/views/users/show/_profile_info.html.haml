@@ -1,0 +1,32 @@
+.flex-grow-1.border.p-3
+  %h4.title
+    = t('user.personal_info')
+
+  .content
+    .d-flex.mb-2
+      .w-25= t('user.full_name')
+      %b= " : #{@user.full_name}"
+
+    .d-flex.mb-2
+      .w-25= t('user.gender')
+      %b= " : #{@user.sex}"
+
+    .d-flex.mb-2
+      .w-25= t('user.date_of_birth')
+      %b= " : #{@user.date_of_birth}"
+
+    .d-flex.mb-2
+      .w-25= t('user.phone_number')
+      %b= " : #{@user.phone_number}"
+
+    .d-flex.mb-2
+      .w-25= t('user.grade')
+      %b= " : #{@user.grade}"
+
+    .d-flex.mb-2
+      .w-25= t('user.class_group')
+      %b= " : #{@user.class_group}"
+
+    .d-flex.mb-2
+      .w-25= t('user.study_at')
+      %b= " : #{@user.school_address}"

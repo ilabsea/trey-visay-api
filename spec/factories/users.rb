@@ -27,6 +27,7 @@
 #  device_type      :integer
 #  device_os        :integer
 #  app_version      :integer
+#  registered_at    :datetime
 #
 
 FactoryBot.define do

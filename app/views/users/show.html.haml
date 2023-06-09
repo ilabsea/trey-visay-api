@@ -2,8 +2,15 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
   %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
 
-= render "tab_header"
+/ = render "tab_header"
 
 .card.shadow.mb-4
   .card-body
-    = render 'shared/show_user_profile'
+    .d-flex
+      .mr-3
+        - url = @user.photo.url || 'default_profile.png'
+        = image_tag url, class: "img-circular-profile rounded-circle"
+
+      %div.flex-grow-1
+        = render "users/show/profile_info"
+        = render "users/show/holland_result"

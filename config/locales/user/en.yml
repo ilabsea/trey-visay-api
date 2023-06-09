@@ -1,3 +1,20 @@
 en:
   user:
     profile: Profile
+    personal_info: Personal information
+    full_name: Full name
+    gender: Gender
+    date_of_birth: Date of birth
+    phone_number: Phone number
+    grade: Grade
+    study_at: Study at
+    class_group: Class group
+    student: Student
+    holland_quiz_result: Holland test result
+    quiz_number: "Quiz %{num}"
+    selected: Selected
+    quiz_at: Quizzed at
+    selected_major: Selected major
+    selected_job: Selected job
+    student_personality_type: Student personality type
+    self_understanding: Self understanding

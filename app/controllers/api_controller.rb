@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :http_basic_authentication, except: [:show]
+class ApiController < ActionController::Base
+  before_action :http_basic_authentication
 
   around_action :rescue_with_check_api_docs
 
@@ -45,4 +44,15 @@ class ApiController < ApplicationController
     check_api_text = "Check the API documentation: https://github.com/ilabsea/trey-visay-api"
     "#{message} - #{check_api_text}"
   end
+
+  private
+    def http_basic_authentication
+      authenticate_or_request_with_http_basic do |username, password|
+        if username == ENV["HTTP_BASIC_USER"] && password == ENV["HTTP_BASIC_PASSWORD"]
+          true
+        else
+          head :forbidden
+        end
+      end
+    end
 end

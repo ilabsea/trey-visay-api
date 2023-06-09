@@ -26,13 +26,12 @@ module Api
       private
         def holland_quiz_params
           params.require(:holland_quiz).permit(
-            :user_id, :college_major_id, :job_id, :quizzed_at,
-            :selected_college_major_at, :selected_job_at,
+            :user_id, :quizzed_at,
             personality_type_results: [],
-            self_understanding_responses_attributes: [:self_understanding_question_id, :self_understanding_question_code, :value],
-            holland_responses_attributes: [:holland_question_id, :holland_question_code, :value],
-            holland_major_responses_attributes: [:college_major_id, :selected],
-            holland_job_responses_attributes: [:job_id, :selected]
+            self_understanding_responses_attributes: [:self_understanding_question_code, :value],
+            holland_responses_attributes: [:holland_question_code, :value],
+            holland_major_responses_attributes: [:college_major_code, :selected],
+            holland_job_responses_attributes: [:job_code, :selected]
           )
         end
     end

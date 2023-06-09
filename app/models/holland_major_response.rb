@@ -12,9 +12,16 @@
 #  updated_at       :datetime         not null
 #
 class HollandMajorResponse < ApplicationRecord
+  # Association
   belongs_to :quiz, class_name: :HollandQuiz, foreign_key: :holland_quiz_id
   belongs_to :college_major
 
   # Callback
   before_create :secure_id
+
+  # Scope
+  scope :selected, -> { where(selected: true) }
+
+  # Delegation
+  delegate :name, to: :college_major, prefix: :college_major
 end

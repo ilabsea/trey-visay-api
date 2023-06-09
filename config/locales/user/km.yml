@@ -1,3 +1,20 @@
 km:
   user:
     profile: ប្រវត្តិរូបសង្ខេប
+    personal_info: ព័ត៌មានផ្ទាល់ខ្លួន
+    full_name: ឈ្មោះពេញ
+    gender: ភេទ
+    date_of_birth: ថ្ងៃ/ខែ/ឆ្នាំកំណើត
+    phone_number: លេខទូរស័ព្ទ
+    grade: ជាសិស្សថ្នាក់ទី
+    study_at: រៀននៅសាលា
+    class_group: ជាសិស្សក្នុងបណ្តុំថ្នាក់
+    student: សិស្ស
+    holland_quiz_result: លទ្ធផលធ្វើតេស្តវាយតម្លៃមុខរបរ និងអាជីព
+    quiz_number: "តេស្តលើកទី %{num}"
+    selected: ត្រូវបានជ្រើសរើស
+    quiz_at: ធ្វើតេស្តនៅ
+    selected_major: ជំនាញដែលបានជ្រើសរើស
+    selected_job: មុខរបរដែលបានជ្រើសរើស
+    student_personality_type: បុគ្គលិកលក្ខណៈរបស់សិស្ស
+    self_understanding: ការឈ្វេងយល់ពីខ្លួនឯង
