@@ -16,9 +16,9 @@ RSpec.describe "Api::V2::UsersController", type: :request do
         class_group: User.class_groups.keys.sample,
         middle_school_id: middle_school.id,
         commune_code: middle_school.commune_id,
-        device_id: '0ebf40b3',
-        device_type: 'mobile',
-        device_os: 'android',
+        device_id: "0ebf40b3",
+        device_type: "mobile",
+        device_os: "android",
         app_version: 161
       }
     }

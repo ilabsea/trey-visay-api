@@ -18,23 +18,22 @@
 class HollandQuiz < ApplicationRecord
   # Association
   belongs_to :user
-  belongs_to :college_major, optional: true
-  belongs_to :job, optional: true
 
   has_many :self_understanding_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_major_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_job_responses, inverse_of: :quiz, dependent: :destroy
+  has_many :holland_scores, inverse_of: :quiz
+
+  # Nested attributes
+  include HollandQuizzes::NestedAttributeConcern
 
   # Serialize
   serialize :personality_type_results, Array
 
-  # Nested attributes
-  accepts_nested_attributes_for :self_understanding_responses
-  accepts_nested_attributes_for :holland_responses
-  accepts_nested_attributes_for :holland_major_responses
-  accepts_nested_attributes_for :holland_job_responses
-
   # Callback
   before_create :secure_id
+
+  # Scope
+  default_scope { order(quizzed_at: :asc) }
 end

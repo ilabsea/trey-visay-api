@@ -1,0 +1,49 @@
+%h4.title.mt-3
+  = t('user.holland_quiz_result')
+
+- @user.holland_quizzes.each_with_index do |quiz, index|
+  .flex-grow-1.border.p-3.mt-2
+    .content
+      %h5= t('user.quiz_number', num: index + 1)
+
+      .d-flex.mb-2
+        .w-25= t('user.quiz_at')
+        %div
+          = " : "
+          = timeago(quiz.quizzed_at, "datetime").html_safe
+
+      .d-flex.mb-2
+        .w-25= t('user.selected_major')
+        %div.d-flex
+          = " : "
+          %ul
+            - quiz.holland_major_responses.each do |major|
+              %li
+                = major.college_major_name
+                %span.text-primary= "(#{t('user.selected')})" if major.selected
+
+      .d-flex.mb-2
+        .w-25= t('user.selected_job')
+        %div.d-flex
+          = " : "
+          %ul
+            - quiz.holland_job_responses.each do |res|
+              %li
+                = res.job_name
+                %span.text-primary= "(#{t('user.selected')})" if res.selected
+
+      .d-flex.mb-2
+        .w-25= t('user.student_personality_type')
+        %div
+          = " : "
+          = quiz.holland_scores.map { |item| "#{item.personality_type}: #{item.score}" }.join(', ')
+
+      %div.mb-2
+        %h6.text-muted= t('user.self_understanding')
+        - SelfUnderstandingQuestion.all.each do |question|
+          - response = quiz.self_understanding_responses.select{|res| res.self_understanding_question_id == question.id }.first
+          %div
+            = question.name
+
+            %span.text-primary
+              = response.value || "N/A"

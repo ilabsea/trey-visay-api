@@ -6,4 +6,11 @@
 
 .card.shadow.mb-4
   .card-body
-    = render 'shared/show_user_profile'
+    .d-flex
+      .mr-3
+        - url = @user.photo.url || 'default_profile.png'
+        = image_tag url, class: "img-circular-profile rounded-circle"
+
+      %div.flex-grow-1
+        = render "users/show/profile_info"
+        = render "users/show/holland_result"

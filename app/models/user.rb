@@ -27,6 +27,7 @@
 #  device_type      :integer
 #  device_os        :integer
 #  app_version      :integer
+#  registered_at    :datetime
 #
 
 require "csv"
@@ -58,7 +59,7 @@ class User < ApplicationRecord
   # Associaction
   # V2
   belongs_to :middle_school, optional: true
-  has_many :holland_quizzes
+  has_many :holland_quizzes, dependent: :destroy
 
   # V1
   belongs_to :high_school, foreign_key: :high_school_code, optional: true
@@ -76,9 +77,16 @@ class User < ApplicationRecord
   before_create :set_username_password
 
   def high_school_label
-    return nil if high_school_code.blank?
+    # high_school_code
+    # return nil if high_school_code.blank?
 
-    "#{province.name_km} > #{district.name_km} > #{high_school.name_km}"
+    # "#{province.name_km} > #{district.name_km} > #{high_school.name_km}"
+  end
+
+  def school_address
+    return nil unless high_school_code.present?
+
+    "#{high_school_name_km} #{address}"
   end
 
   def self.grades

@@ -14,35 +14,33 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
     let(:params)   {
       {
         user_id: user.id,
-        college_major_id: college_majors.first.id,
-        job_id: jobs.first.id,
         quizzed_at: DateTime.yesterday.to_s,
-        selected_college_major_at: DateTime.yesterday.to_s,
-        selected_job_at: DateTime.yesterday.to_s,
         personality_type_results: %w(R I A S C E),
         self_understanding_responses_attributes: [
           {
-            self_understanding_question_id: self_understanding_question.id,
             self_understanding_question_code: self_understanding_question.code,
             value: self_understanding_question.options.first.value
           }
         ],
+        holland_scores_attributes: [
+          { personality_type: "R", score: 40 },
+          { personality_type: "I", score: 30 }
+        ],
         holland_responses_attributes: [
           {
-            holland_question_id: holland_question.id,
             holland_question_code: holland_question.code,
             value: rand(1..5)
           }
         ],
         holland_major_responses_attributes: [
-          { college_major_id: college_majors[0].id, selected: true },
-          { college_major_id: college_majors[1].id, selected: false },
-          { college_major_id: college_majors[2].id, selected: false }
+          { college_major_code: college_majors[0].code, selected: true },
+          { college_major_code: college_majors[1].code, selected: false },
+          { college_major_code: college_majors[2].code, selected: false }
         ],
         holland_job_responses_attributes: [
-          { job_id: jobs[0].id, selected: true },
-          { job_id: jobs[1].id, selected: false },
-          { job_id: jobs[2].id, selected: false }
+          { job_code: jobs[0].code, selected: true },
+          { job_code: jobs[1].code, selected: false },
+          { job_code: jobs[2].code, selected: false }
         ]
       }
     }
@@ -59,6 +57,7 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
       expect(response.status).to eq(201)
       expect(quiz).not_to be_nil
       expect(quiz.self_understanding_responses.length).to eq(1)
+      expect(quiz.holland_scores.length).to eq(2)
       expect(quiz.holland_responses.length).to eq(1)
       expect(quiz.holland_major_responses.length).to eq(3)
       expect(quiz.holland_job_responses.length).to eq(3)

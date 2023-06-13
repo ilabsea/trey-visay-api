@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApiController
     params["data"] = JSON.parse(params["data"])
     @user = User.find_or_initialize_by(uuid: params["data"]["uuid"])
 
-    if @user.update_attributes(filter_params)
+    if @user.update(user_params)
       @user.remove_photo! if params[:photo].blank?
       @user.save!
 
@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApiController
   end
 
   private
-    def filter_params
+    def user_params
       params.require(:data).permit(
         :id, :full_name, :password, :username, :sex, :date_of_birth, :phone_number,
         :grade, :high_school_code, :commune_code

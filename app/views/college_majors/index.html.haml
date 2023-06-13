@@ -14,6 +14,7 @@
             %th{width: 60} #
             %th= t('shared.code')
             %th= t('shared.name')
+            %th= t('job.personality_type')
             %th= t('college_major.major_in_schools')
             %th= t('college_major.number_of_schools')
             %th
@@ -24,6 +25,7 @@
               %td= @pagy.from + index
               %td= link_to major.code, college_major_path(major), class: 'text-primary'
               %td= major.name
+              %td= major.personality_type
               %td= major.majors.map(&:name).join(', ')
               %td= major.schools.uniq.length
               %td.text-right

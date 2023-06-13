@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def index
-    @pagy, @users = pagy(User.filter(params).includes(:games, :personal_understandings, :high_school))
+    @pagy, @users = pagy(User.filter(params).order(created_at: :desc).includes(:games, :personal_understandings, :high_school, :holland_quizzes))
   end
 
   def download

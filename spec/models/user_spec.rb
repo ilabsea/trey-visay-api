@@ -27,12 +27,13 @@
 #  device_type      :integer
 #  device_os        :integer
 #  app_version      :integer
+#  registered_at    :datetime
 #
 
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  it { is_expected.to belong_to(:high_school) }
+  it { is_expected.to belong_to(:high_school).optional(true) }
   it { is_expected.to have_many(:games) }
   it { is_expected.to have_many(:personality_tests) }
   it { is_expected.to have_many(:personal_understandings).through(:games) }
