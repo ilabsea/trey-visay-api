@@ -34,6 +34,10 @@ class Job < ApplicationRecord
   before_create :secure_code
   before_create :set_name_en
 
+  def name
+    self["name_#{I18n.locale}"]
+  end
+
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? OR name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?

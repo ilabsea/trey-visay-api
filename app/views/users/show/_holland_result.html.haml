@@ -4,7 +4,7 @@
 - @user.holland_quizzes.each_with_index do |quiz, index|
   .flex-grow-1.border.p-3.mt-2
     .content
-      %h5= t('user.quiz_number', num: @user.holland_quizzes.length - index)
+      %h5= t('user.quiz_number', num: index + 1)
 
       .d-flex.mb-2
         .w-25= t('user.quiz_at')
@@ -36,7 +36,7 @@
         .w-25= t('user.student_personality_type')
         %div
           = " : "
-          = quiz.personality_type_results.join(', ')
+          = quiz.holland_scores.map { |item| "#{item.personality_type}: #{item.score}" }.join(', ')
 
       %div.mb-2
         %h6.text-muted= t('user.self_understanding')

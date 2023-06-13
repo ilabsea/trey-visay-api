@@ -22,6 +22,10 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
             value: self_understanding_question.options.first.value
           }
         ],
+        holland_scores_attributes: [
+          { personality_type: "R", score: 40 },
+          { personality_type: "I", score: 30 }
+        ],
         holland_responses_attributes: [
           {
             holland_question_code: holland_question.code,
@@ -53,6 +57,7 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
       expect(response.status).to eq(201)
       expect(quiz).not_to be_nil
       expect(quiz.self_understanding_responses.length).to eq(1)
+      expect(quiz.holland_scores.length).to eq(2)
       expect(quiz.holland_responses.length).to eq(1)
       expect(quiz.holland_major_responses.length).to eq(3)
       expect(quiz.holland_job_responses.length).to eq(3)

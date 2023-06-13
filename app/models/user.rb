@@ -86,7 +86,7 @@ class User < ApplicationRecord
   def school_address
     return nil unless high_school_code.present?
 
-    str = I18n.locale == :km ? "#{high_school.name} #{commune.address_km}" : "#{commune.address_en} #{high_school.name}"
+    "#{high_school_name_km} #{address}"
   end
 
   def self.grades

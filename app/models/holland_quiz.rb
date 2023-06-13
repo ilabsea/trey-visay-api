@@ -16,9 +16,6 @@
 #  updated_at                :datetime         not null
 #
 class HollandQuiz < ApplicationRecord
-  # Nested attributes
-  include HollandQuizzes::NestedAttributeConcern
-
   # Association
   belongs_to :user
 
@@ -26,10 +23,17 @@ class HollandQuiz < ApplicationRecord
   has_many :holland_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_major_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_job_responses, inverse_of: :quiz, dependent: :destroy
+  has_many :holland_scores, inverse_of: :quiz
+
+  # Nested attributes
+  include HollandQuizzes::NestedAttributeConcern
 
   # Serialize
   serialize :personality_type_results, Array
 
   # Callback
   before_create :secure_id
+
+  # Scope
+  default_scope { order(quizzed_at: :asc) }
 end

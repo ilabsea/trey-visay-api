@@ -26,7 +26,13 @@
 #  updated_at                        :datetime         not null
 #
 class JobSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name_km, :name_en, :personality_type, :general_description, :jd_main_task, :jd_environment, :jd_technology_skill, :edu_education_level, :edu_high_school_supported_subject, :edu_higher_education_skill, :qua_supported_knowledge, :qua_supported_skill, :qua_supported_capacity, :qua_characteristic_of_job, :info_job_market, :info_similar_job, :value, :updated_at
+  attributes :id, :code, :name_km, :name_en, :name, :personality_type,
+             :general_description, :jd_main_task, :jd_environment,
+             :jd_technology_skill, :edu_education_level,
+             :edu_high_school_supported_subject, :edu_higher_education_skill,
+             :qua_supported_knowledge, :qua_supported_skill,
+             :qua_supported_capacity, :qua_characteristic_of_job,
+             :info_job_market, :info_similar_job, :value, :updated_at
 
   def value
     object.name_km

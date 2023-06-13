@@ -29,6 +29,7 @@ module Api
             :user_id, :quizzed_at,
             personality_type_results: [],
             self_understanding_responses_attributes: [:self_understanding_question_code, :value],
+            holland_scores_attributes: [:personality_type, :score],
             holland_responses_attributes: [:holland_question_code, :value],
             holland_major_responses_attributes: [:college_major_code, :selected],
             holland_job_responses_attributes: [:job_code, :selected]

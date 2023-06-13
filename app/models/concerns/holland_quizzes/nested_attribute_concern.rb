@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 module HollandQuizzes::NestedAttributeConcern
   extend ActiveSupport::Concern
 
   included do
+    accepts_nested_attributes_for :holland_scores
+
     def self_understanding_responses_attributes=(attributes)
       attributes.each do |attribute|
         attribute[:self_understanding_question_id] = SelfUnderstandingQuestion.find_by(code: attribute[:self_understanding_question_code]).try(:id)

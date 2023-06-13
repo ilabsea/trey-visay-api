@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_07_023141) do
+ActiveRecord::Schema.define(version: 2023_06_13_070911) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -222,6 +222,14 @@ ActiveRecord::Schema.define(version: 2023_06_07_023141) do
     t.string "holland_question_id"
     t.string "holland_question_code"
     t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holland_scores", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "holland_quiz_id"
+    t.string "personality_type"
+    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
