@@ -18,4 +18,9 @@ class HollandResponse < ApplicationRecord
 
   # Callback
   before_create :secure_id
+  before_validation :clean_emoji_on_value
+
+  def clean_emoji_on_value
+    self.value = RemoveEmoji::Sanitize.call(value.to_s).strip
+  end
 end

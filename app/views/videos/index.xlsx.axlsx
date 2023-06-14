@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "videos") do |sheet|
+  sheet.add_row %w[code name url author]
+
+  @videos.each_with_index do |video, index|
+    sheet.add_row [
+      video.code,
+      video.name,
+      video.url,
+      video.author
+    ], types: [:string, :string, :string, :string]
+  end
+end

@@ -19,7 +19,7 @@ module Sample
       Sample::Execute.load("characteristic_jobs", options)
       Sample::Execute.load("vocational_jobs", options)
 
-      Sample::University.load("university", options)
+      # Sample::University.load("university", options)
 
       Sample::Career.load("career_science", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប វិទ្យាសាស្រ្ត"))
       Sample::Career.load("career_technical", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប បច្ចេកទេស"))

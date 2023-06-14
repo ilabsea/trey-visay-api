@@ -70,6 +70,12 @@
         %i.fas.fa-fw.fa-clipboard-question
         %span= t('sidebar.self_understanding_question')
 
+  - if policy(Video).create?
+    %li.nav-item{class: css_active_class('videos')}
+      %a.nav-link{ href: videos_path }
+        %i.fas.fa-fw.fa-video
+        %span= t('sidebar.video')
+
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation

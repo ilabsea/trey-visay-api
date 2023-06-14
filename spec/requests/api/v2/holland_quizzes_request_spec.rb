@@ -15,7 +15,6 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
       {
         user_id: user.id,
         quizzed_at: DateTime.yesterday.to_s,
-        personality_type_results: %w(R I A S C E),
         self_understanding_responses_attributes: [
           {
             self_understanding_question_code: self_understanding_question.code,

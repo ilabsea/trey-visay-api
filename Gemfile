@@ -47,6 +47,8 @@ gem "strip_attributes", "~> 1.8.0"
 gem "decent_exposure"
 gem "oj"
 
+gem "remove_emoji", "~> 3.0.0"
+
 # File upload
 gem "carrierwave", "~> 2.2.3"
 
