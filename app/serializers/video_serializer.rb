@@ -12,10 +12,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-FactoryBot.define do
-  factory :video do
-    name   { FFaker::Name.name }
-    url    { FFaker::Internet.http_url }
-    author { FFaker::Name.name }
-  end
+class VideoSerializer < ActiveModel::Serializer
+  attributes :id, :code, :name, :url, :author, :updated_at
 end

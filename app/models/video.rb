@@ -31,4 +31,19 @@ class Video < ApplicationRecord
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope
   end
+
+  # Instant method
+  def youtube_id
+    regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    match = regex.match(url)
+    if match && !match[1].blank?
+      match[1]
+    else
+      nil
+    end
+  end
+
+  def thumbnail
+    "http://img.youtube.com/vi/#{youtube_id}/default.jpg"
+  end
 end
