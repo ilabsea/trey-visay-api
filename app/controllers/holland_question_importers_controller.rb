@@ -4,8 +4,8 @@ class HollandQuestionImportersController < ApplicationController
   include Batches::ItemableImportersConcern
 
   private
-    def batch_model
-      Batches::HollandQuestionBatch
+    def batch_type
+      "HollandQuestionBatch"
     end
 
     def redirect_success_url

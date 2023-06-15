@@ -4,8 +4,8 @@ class MiddleSchoolImportersController < ApplicationController
   include Batches::ItemableImportersConcern
 
   private
-    def batch_model
-      Batches::MiddleSchoolBatch
+    def batch_type
+      "MiddleSchoolBatch"
     end
 
     def redirect_success_url

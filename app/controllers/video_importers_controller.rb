@@ -4,8 +4,8 @@ class VideoImportersController < ApplicationController
   include Batches::ItemableImportersConcern
 
   private
-    def batch_model
-      Batches::VideoBatch
+    def batch_type
+      "VideoBatch"
     end
 
     def redirect_success_url
