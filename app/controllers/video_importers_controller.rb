@@ -8,11 +8,11 @@ class VideoImportersController < ApplicationController
       Batches::VideoBatch
     end
 
-    def itemables_url
+    def redirect_success_url
       videos_url
     end
 
-    def new_importer_url
+    def redirect_error_url
       new_video_importer_url
     end
 

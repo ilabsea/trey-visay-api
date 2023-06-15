@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  module SchoolBatches
+  module Batches
     class SchoolSpreadsheet
       attr_reader :school
 
@@ -44,7 +44,7 @@ module Spreadsheets
 
           return unless school_index.present?
 
-          @school_departments_attributes.concat Spreadsheets::SchoolBatches::SchoolMajorSpreadsheet.new(school, @rows[school_index..-1]).process
+          @school_departments_attributes.concat Spreadsheets::Batches::SchoolMajorSpreadsheet.new(school, @rows[school_index..-1]).process
         end
     end
   end
