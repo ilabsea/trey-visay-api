@@ -21,12 +21,13 @@
         %th.align-top.text-center= "លក្ខខណ្ឌបញ្ចប់ការសិក្សា"
 
     %tbody
-      - @batch.importing_college_majors.each_with_index do |importing_college_major, index|
-        - major = importing_college_major.college_major
-        - if major.valid?
-          = f.fields_for :importing_college_majors, importing_college_major do |ff|
-            = ff.hidden_field :college_major_id
-            = ff.fields_for :college_major, major do |fff|
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
               = fff.hidden_field :id
               = fff.hidden_field :code
               = fff.hidden_field :name
@@ -43,18 +44,18 @@
 
         %tr
           %td= index + 1
-          %td= major.code
-          %td= major.name
-          %td= major.personality_type
-          %td= major.general_info
-          %td= major.orien_orientation_subjects
-          %td= major.orien_study_condition
-          %td= major.orien_graduation_condition
-          %td= major.curriculum
-          %td= major.teaching_and_learning_process
-          %td= major.gain_knowledge
-          %td= major.worthy_career
-          %td= major.recommendation
+          %td= item.code
+          %td= item.name
+          %td= item.personality_type
+          %td= item.general_info
+          %td= item.orien_orientation_subjects
+          %td= item.orien_study_condition
+          %td= item.orien_graduation_condition
+          %td= item.curriculum
+          %td= item.teaching_and_learning_process
+          %td= item.gain_knowledge
+          %td= item.worthy_career
+          %td= item.recommendation
 
           / Validation status
-          %td= render "shared/validation_status", item: major
+          %td= render "shared/validation_status", item: item
