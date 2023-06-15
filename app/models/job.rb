@@ -26,6 +26,8 @@
 #  updated_at                        :datetime         not null
 #
 class Job < ApplicationRecord
+  include ItemableConcern
+
   # Validation
   validates :name_km, presence: true
 

@@ -29,12 +29,13 @@
         %th.align-top.text-center= t('job.info_similar_job')
 
     %tbody
-      - @batch.importing_jobs.each_with_index do |importing_job, index|
-        - job = importing_job.job
-        - if job.valid?
-          = f.fields_for :importing_jobs, importing_job do |ff|
-            = ff.hidden_field :job_id
-            = ff.fields_for :job, job do |fff|
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
               = fff.hidden_field :id
               = fff.hidden_field :code
               = fff.hidden_field :name_km
@@ -56,23 +57,23 @@
 
         %tr
           %td= index + 1
-          %td= job.code
-          %td= job.name_km
-          %td= job.name_en
-          %td= job.personality_type
-          %td= job.general_description
-          %td= job.jd_main_task
-          %td= job.jd_environment
-          %td= job.jd_technology_skill
-          %td= job.edu_education_level
-          %td= job.edu_high_school_supported_subject
-          %td= job.edu_higher_education_skill
-          %td= job.qua_supported_knowledge
-          %td= job.qua_supported_skill
-          %td= job.qua_supported_capacity
-          %td= job.qua_characteristic_of_job
-          %td= job.info_job_market
-          %td= job.info_similar_job
+          %td= item.code
+          %td= item.name_km
+          %td= item.name_en
+          %td= item.personality_type
+          %td= item.general_description
+          %td= item.jd_main_task
+          %td= item.jd_environment
+          %td= item.jd_technology_skill
+          %td= item.edu_education_level
+          %td= item.edu_high_school_supported_subject
+          %td= item.edu_higher_education_skill
+          %td= item.qua_supported_knowledge
+          %td= item.qua_supported_skill
+          %td= item.qua_supported_capacity
+          %td= item.qua_characteristic_of_job
+          %td= item.info_job_market
+          %td= item.info_similar_job
 
           / Validation status
-          %td= render "shared/validation_status", item: job
+          %td= render "shared/validation_status", item: item

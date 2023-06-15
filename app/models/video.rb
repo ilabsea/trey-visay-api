@@ -13,10 +13,7 @@
 #  updated_at :datetime         not null
 #
 class Video < ApplicationRecord
-  # Association
-  has_many :importing_items, as: :itemable
-  has_many :batches, through: :importing_items
-
+  include ItemableConcern
   # Callback
   before_create :secure_id
   before_create :secure_code
