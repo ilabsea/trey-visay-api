@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: middle_school_batches
+# Table name: batches
 #
 #  id             :string(8)        not null, primary key
 #  code           :string(255)
@@ -12,16 +12,12 @@
 #  province_count :integer          default(0)
 #  reference      :string(255)
 #  creator_id     :integer
+#  type           :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class MiddleSchoolBatch < ApplicationRecord
-  include BatchConcern
-
-  # Association
-  has_many :importing_middle_schools, inverse_of: :middle_school_batch, dependent: :destroy
-  has_many :middle_schools, through: :importing_middle_schools
-
-  # Nested attributes
-  accepts_nested_attributes_for :importing_middle_schools
+class Batches::MiddleSchoolBatch < Batch
+  def self.policy_class
+    MiddleSchoolBatchPolicy
+  end
 end

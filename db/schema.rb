@@ -233,13 +233,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "importing_middle_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "middle_school_id"
-    t.string "middle_school_batch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "jobs", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code"
     t.string "name_km"
@@ -279,18 +272,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "middle_school_batches", id: :string, limit: 8, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.integer "total_count", default: 0
-    t.integer "valid_count", default: 0
-    t.integer "new_count", default: 0
-    t.integer "province_count", default: 0
-    t.string "reference"
-    t.integer "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  module MiddleSchoolBatches
+  module Batches
     class MiddleSchoolSpreadsheet
       attr_reader :school
 

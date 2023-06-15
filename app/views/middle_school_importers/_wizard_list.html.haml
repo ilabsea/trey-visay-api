@@ -8,21 +8,22 @@
         %th= t('shared.is_valid')
 
     %tbody
-      - @batch.importing_middle_schools.each_with_index do |importing_middle_school, index|
-        - school = importing_middle_school.middle_school
-        - if school.valid?
-          = f.fields_for :importing_middle_schools, importing_middle_school do |ff|
-            = ff.hidden_field :middle_school_id
-            = ff.fields_for :middle_school, school do |hsf|
-              = hsf.hidden_field :id
-              = hsf.hidden_field :code
-              = hsf.hidden_field :name
-              = hsf.hidden_field :commune_id
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name
+              = fff.hidden_field :commune_id
 
         %tr
           %td= index + 1
-          %td= school.name
-          %td= "(#{school.commune_id}) #{school.address}"
+          %td= item.name
+          %td= "(#{item.commune_id}) #{item.address}"
 
           / Validation status
-          %td= render "shared/validation_status", item: school
+          %td= render "shared/validation_status", item: item
