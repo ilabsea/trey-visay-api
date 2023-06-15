@@ -15,10 +15,7 @@
 #
 class MiddleSchool < ApplicationRecord
   include MiddleSchools::LocationConcern
-
-  # Association
-  has_many :importing_middle_schools, inverse_of: :middle_school, dependent: :destroy
-  has_many :middle_school_batches, through: :importing_middle_schools
+  include ItemableConcern
 
   # Validation
   validates :name, presence: true
@@ -29,6 +26,9 @@ class MiddleSchool < ApplicationRecord
   before_create :set_province_id_and_district_id
   before_create :secure_id
   before_create :generate_code
+
+  # Scope
+  default_scope { order(commune_id: :asc) }
 
   def self.filter(params = {})
     scope = all
