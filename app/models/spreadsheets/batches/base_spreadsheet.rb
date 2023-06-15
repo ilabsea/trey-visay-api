@@ -12,7 +12,7 @@ class Spreadsheets::Batches::BaseSpreadsheet
     return unless valid?(file)
 
     spreadsheet(file).each_with_pagename do |sheet_name, sheet|
-      assign_items(sheet)
+      assign_items(sheet, sheet_name)
     rescue
       Rails.logger.warn "unknown handler for sheet: #{sheet_name}"
     end
@@ -31,7 +31,7 @@ class Spreadsheets::Batches::BaseSpreadsheet
       raise NotImplementedError, "You must define #resolve in #{self.class}"
     end
 
-    def assign_items(sheet)
+    def assign_items(sheet, sheet_name)
       @items = sheet.parse(headers: true)[1..-1]
     end
 

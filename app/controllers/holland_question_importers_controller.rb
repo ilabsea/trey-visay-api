@@ -8,11 +8,11 @@ class HollandQuestionImportersController < ApplicationController
       Batches::HollandQuestionBatch
     end
 
-    def itemables_url
+    def redirect_success_url
       holland_questions_url
     end
 
-    def new_importer_url
+    def redirect_error_url
       new_holland_question_importer_url
     end
 

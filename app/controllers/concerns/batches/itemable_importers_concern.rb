@@ -30,11 +30,11 @@ module Batches::ItemableImportersConcern
         raise NotImplementedError, "You must define #resolve in #{self.class}"
       end
 
-      def itemables_url
+      def redirect_success_url
         raise NotImplementedError, "You must define #resolve in #{self.class}"
       end
 
-      def new_importer_url
+      def redirect_error_url
         raise NotImplementedError, "You must define #resolve in #{self.class}"
       end
 
@@ -54,9 +54,9 @@ module Batches::ItemableImportersConcern
         @batch = authorize batch_model.new(batch_params)
 
         if @batch.save
-          redirect_to itemables_url, notice: I18n.t("shared.import_success", count: @batch.importing_items.length)
+          redirect_to redirect_success_url, notice: I18n.t("shared.import_success", count: @batch.importing_items.length)
         else
-          redirect_to new_importer_url, alert: I18n.t("shared.some_invalid_records")
+          redirect_to redirect_error_url, alert: I18n.t("shared.some_invalid_records")
         end
       end
 

@@ -7,7 +7,7 @@ module Spreadsheets
         ::Batches::CollegeMajorBatch
       end
 
-      def assign_items(sheet)
+      def assign_items(sheet, sheet_name)
         @items = sheet.parse[1..-1]
       end
 

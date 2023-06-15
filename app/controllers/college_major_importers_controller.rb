@@ -8,11 +8,11 @@ class CollegeMajorImportersController < ApplicationController
       Batches::CollegeMajorBatch
     end
 
-    def itemables_url
+    def redirect_success_url
       college_majors_url
     end
 
-    def new_importer_url
+    def redirect_error_url
       new_college_major_importer_url
     end
 

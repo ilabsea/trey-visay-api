@@ -14,24 +14,47 @@
         %th= t('shared.is_valid')
 
     %tbody
-      - @batch.importing_schools.each_with_index do |importing_school, index|
-        - school = importing_school.school
-        - if school.valid?
-          = f.fields_for :importing_schools, importing_school do |ff|
-            = ff.hidden_field :school_id
-            = render "field_for_school", f: ff, school: school
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name
+              = fff.hidden_field :address
+              = fff.hidden_field :province
+              = fff.hidden_field :phone_numbers
+              = fff.hidden_field :emails
+              = fff.hidden_field :website_or_facebook
+              = fff.hidden_field :kind
+              = fff.hidden_field :category
+
+              - item.school_departments.each do |school_department|
+                = fff.fields_for :school_departments, school_department do |sdf|
+                  = sdf.hidden_field :id
+                  = sdf.hidden_field :_destroy
+                  = sdf.fields_for :department, school_department.department do |df|
+                    = df.hidden_field :name
+
+                  - school_department.school_majors.each do |school_major|
+                    = sdf.fields_for :school_majors, school_major do |smf|
+                      = smf.fields_for :major, school_major.major do |mj|
+                        = mj.hidden_field :name
 
         %tr
           %td= index + 1
-          %td= school.name
-          %td= school.address
-          %td= school.phone_numbers
-          %td= school.emails
-          %td= school.website_or_facebook
-          %td= school.kind
-          %td= school.category
+          %td= item.name
+          %td= item.address
+          %td= item.phone_numbers
+          %td= item.emails
+          %td= item.website_or_facebook
+          %td= item.kind
+          %td= item.category
           %td
-            = school.school_departments.select{ |d| !d._destroy }.map { |sd| "#{sd.department.name}(#{t('school.major_count', count: sd.school_majors.length)})" }.join(" / ")
+            = item.school_departments.select{ |d| !d._destroy }.map { |sd| "#{sd.department.name}(#{t('school.major_count', count: sd.school_majors.length)})" }.join(" / ")
 
           / Validation status
-          %td= render "shared/validation_status", item: school
+          %td= render "shared/validation_status", item: item

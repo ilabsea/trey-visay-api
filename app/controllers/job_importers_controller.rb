@@ -8,11 +8,11 @@ class JobImportersController < ApplicationController
       Batches::JobBatch
     end
 
-    def itemables_url
+    def redirect_success_url
       jobs_url
     end
 
-    def new_importer_url
+    def redirect_error_url
       new_job_importer_url
     end
 

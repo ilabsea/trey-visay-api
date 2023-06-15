@@ -22,6 +22,8 @@
 #
 
 class School < ApplicationRecord
+  include ItemableConcern
+
   mount_uploader :logo, PhotoUploader
 
   CATEGORIES = %w[សាលារដ្ឋ សាលាឯកជន អង្គការ].freeze
@@ -36,9 +38,6 @@ class School < ApplicationRecord
   has_many :departments, through: :school_departments
   has_many :school_majors
   has_many :majors, through: :school_majors
-
-  has_many :importing_schools
-  has_many :school_batches, through: :importing_schools
 
   # validates :category, inclusion: { in: CATEGORIES }
   validates :name, presence: true
