@@ -20,7 +20,7 @@
   .arrow-wrapper.text-center
     %i.fas.fa-long-arrow-alt-down
 
-  = form_for item, url: form_url do |f|
+  = form_for item, as: :batch, url: form_url do |f|
     #importModals
       .file-wrapper
         .card.shadow

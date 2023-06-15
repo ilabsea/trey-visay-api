@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  module CollegeMajorBatches
+  module Batches
     class CollegeMajorSpreadsheet
       attr_reader :major
 
@@ -22,7 +22,7 @@ module Spreadsheets
           teaching_and_learning_process: row[9],
           gain_knowledge: row[10],
           worthy_career: row[11],
-          recommendation: row[12],
+          recommendation: row[12]
         }
 
         major
