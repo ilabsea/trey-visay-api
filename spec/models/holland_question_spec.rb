@@ -15,5 +15,9 @@
 require "rails_helper"
 
 RSpec.describe HollandQuestion, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_many(:importing_items) }
+  it { is_expected.to have_many(:batches).through(:importing_items) }
+
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:personality_type) }
 end
