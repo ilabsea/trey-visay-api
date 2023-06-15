@@ -21,13 +21,12 @@
 #  updated_at                    :datetime         not null
 #
 class CollegeMajor < ApplicationRecord
+  include ItemableConcern
+
   # Validation
   validates :name, presence: true
 
   # Association
-  has_many :importing_items, as: :itemable
-  has_many :batches, through: :importing_items
-
   has_many :major_mappings
   has_many :majors, through: :major_mappings
   has_many :schools, through: :majors

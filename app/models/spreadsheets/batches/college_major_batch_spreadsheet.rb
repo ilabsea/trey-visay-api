@@ -16,7 +16,7 @@ module Spreadsheets
         items = CollegeMajor.where(code: codes)
 
         @items.map do |row|
-          item = items.select { |f| f.code == row["code"] }.first || CollegeMajor.new
+          item = items.select { |f| f.code == row[0] }.first || CollegeMajor.new
 
           batch.importing_items.new(itemable: Spreadsheets::Batches::CollegeMajorSpreadsheet.new(item).process(row))
         end

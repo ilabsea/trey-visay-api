@@ -28,5 +28,8 @@
 require "rails_helper"
 
 RSpec.describe Job, type: :model do
+  it { is_expected.to have_many(:importing_items) }
+  it { is_expected.to have_many(:batches).through(:importing_items) }
+
   it { is_expected.to validate_presence_of(:name_km) }
 end

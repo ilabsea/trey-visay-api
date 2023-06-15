@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  module JobBatches
+  module Batches
     class JobSpreadsheet
       attr_reader :job
 

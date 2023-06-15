@@ -16,15 +16,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Batch < ApplicationRecord
-  include BatchConcern
-
-  # Association
-  has_many :importing_items, dependent: :destroy
-  has_many :videos, through: :importing_items, source: :itemable, source_type: "Video"
-  has_many :college_majors, through: :importing_items, source: :itemable, source_type: "CollegeMajor"
-  has_many :jobs, through: :importing_items, source: :itemable, source_type: "Job"
-
-  # Nested attributes
-  accepts_nested_attributes_for :importing_items
+class Batches::JobBatch < Batch
+  def self.policy_class
+    JobBatchPolicy
+  end
 end
