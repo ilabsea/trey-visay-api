@@ -4,8 +4,8 @@ class CollegeMajorImportersController < ApplicationController
   include Batches::ItemableImportersConcern
 
   private
-    def batch_model
-      Batches::CollegeMajorBatch
+    def batch_type
+      "CollegeMajorBatch"
     end
 
     def redirect_success_url

@@ -26,7 +26,7 @@ module Batches::ItemableImportersConcern
     end
 
     private
-      def batch_model
+      def batch_type
         raise NotImplementedError, "You must define #resolve in #{self.class}"
       end
 
@@ -42,8 +42,12 @@ module Batches::ItemableImportersConcern
         raise NotImplementedError, "You must define #resolve in #{self.class}"
       end
 
+      def batch_model
+        "::Batches::#{batch_type}".constantize
+      end
+
       def spreadsheet_model
-        "Spreadsheets::#{batch_model}Spreadsheet".constantize
+        "Spreadsheets::Batches::#{batch_type}Spreadsheet".constantize
       end
 
       def set_batch

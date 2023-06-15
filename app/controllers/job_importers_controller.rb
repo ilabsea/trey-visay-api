@@ -4,8 +4,8 @@ class JobImportersController < ApplicationController
   include Batches::ItemableImportersConcern
 
   private
-    def batch_model
-      Batches::JobBatch
+    def batch_type
+      "JobBatch"
     end
 
     def redirect_success_url
