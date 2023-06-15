@@ -187,17 +187,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "holland_question_batches", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.integer "total_count", default: 0
-    t.integer "valid_count", default: 0
-    t.integer "new_count", default: 0
-    t.string "reference"
-    t.integer "creator_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "holland_questions", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -232,13 +221,6 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
     t.string "holland_quiz_id"
     t.string "personality_type"
     t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "importing_holland_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "holland_question_id"
-    t.string "holland_question_batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

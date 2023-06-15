@@ -14,6 +14,7 @@
 #
 class Video < ApplicationRecord
   include ItemableConcern
+
   # Callback
   before_create :secure_id
   before_create :secure_code

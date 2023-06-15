@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  module HollandQuestionBatches
+  module Batches
     class HollandQuestionSpreadsheet
       attr_reader :question
 
@@ -15,7 +15,6 @@ module Spreadsheets
           name: row["name"],
           personality_type: row["personality_type"].upcase
         }
-
         question
       end
     end
