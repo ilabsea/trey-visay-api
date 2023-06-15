@@ -96,3 +96,5 @@ en:
     importing_history: "Importing %{name} history"
     search_by_name: Search by name
     valid_data_in_province: "total valid data in province <b>%{province_count}</b>"
+    url: Url
+    author: Author

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_13_070911) do
+ActiveRecord::Schema.define(version: 2023_06_14_043021) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 2023_06_13_070911) do
 
   create_table "api_keys", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "access_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "batches", id: :string, limit: 8, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.integer "total_count", default: 0
+    t.integer "valid_count", default: 0
+    t.integer "new_count", default: 0
+    t.integer "province_count", default: 0
+    t.string "reference"
+    t.integer "creator_id"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -244,6 +257,14 @@ ActiveRecord::Schema.define(version: 2023_06_13_070911) do
   create_table "importing_holland_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "holland_question_id"
     t.string "holland_question_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "importing_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "itemable_id"
+    t.string "itemable_type"
+    t.string "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -534,6 +555,15 @@ ActiveRecord::Schema.define(version: 2023_06_13_070911) do
     t.integer "device_os"
     t.integer "app_version"
     t.datetime "registered_at"
+  end
+
+  create_table "videos", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "url"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vocationals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

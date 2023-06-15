@@ -1,0 +1,34 @@
+.table-responsive
+  %table.table.table-hover.pretty.table-bordered
+    %thead
+      %tr
+        %th #
+        %th= t('shared.code')
+        %th= t("shared.name")
+        %th= t("shared.url")
+        %th= t('share.author')
+        %th
+
+    %tbody
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :code
+              = fff.hidden_field :name
+              = fff.hidden_field :url
+              = fff.hidden_field :author
+
+        %tr
+          %td= index + 1
+          %td= item.code
+          %td= item.name
+          %td= item.url
+          %td= item.author
+
+          / Validation status
+          %td= render "shared/validation_status", item: item

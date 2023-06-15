@@ -96,3 +96,5 @@ km:
     importing_history: "ប្រវត្តិនៃការបញ្ចូល%{name}តាម Excel"
     search_by_name: ស្វែងរកតាមឈ្មោះ
     valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"
+    url: តំណរភ្ជាប់ (Url)
+    author: អ្នផលិត
