@@ -23,7 +23,10 @@
               %td= @pagy.from + index
               %td= video.code
               %td= video.name
-              %td= video.url
+              %td
+                = link_to video.url, target: '_blank' do
+                  = image_tag video.thumbnail, style: 'width: 50px;'
+
               %td= video.author
               %td
 

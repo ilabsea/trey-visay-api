@@ -69,6 +69,7 @@ Rails.application.routes.draw do
       resources :jobs, only: [:index]
       resources :holland_quizzes, only: [:create, :update]
       resources :users, only: [:create]
+      resources :videos, only: [:index]
     end
   end
 
