@@ -34,47 +34,36 @@
         %i.fas.fa-fw.fa-user
         %span= t('account.account')
 
-  - if policy(School).create?
-    %li.nav-item{class: css_active_class('schools')}
-      %a.nav-link{ href: schools_path }
-        %i.fas.fa-fw.fa-school
-        %span= t('sidebar.school')
+  / Manage Content
+  %li.nav-item
+    %a.nav-link.collapsed{"aria-controls" => "collapseContent", "aria-expanded" => "true", "data-target" => "#collapseContent", "data-toggle" => "collapse", :href => "#"}
+      %i.fas.fa-fw.fa-cog
+      %span= t('sidebar.contents')
 
-  - if policy(MiddleSchool).create?
-    %li.nav-item{class: css_active_class('middle_schools')}
-      %a.nav-link{ href: middle_schools_path }
-        %i.fas.fa-fw.fa-graduation-cap
-        %span= t('sidebar.middle_school')
+    #collapseContent.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordionSidebar"}
+      .bg-white.py-2.collapse-inner.rounded
+        %h6.collapse-header For admin only
 
-  - if policy(Job).create?
-    %li.nav-item{class: css_active_class('jobs')}
-      %a.nav-link{ href: jobs_path }
-        %i.fas.fa-fw.fa-user-doctor
-        %span= t('sidebar.job')
+        - if policy(School).create?
+          %a.collapse-item{ href: schools_path, class: css_active_class('schools') }= t('sidebar.school')
 
-  - if policy(CollegeMajor).create?
-    %li.nav-item{class: css_active_class('college_majors')}
-      %a.nav-link{ href: college_majors_path }
-        %i.fas.fa-fw.fa-book-open-reader
-        %span= t('sidebar.college_major')
+        - if policy(MiddleSchool).create?
+          %a.collapse-item{ href: middle_schools_path, class: css_active_class('middle_schools') }= t('sidebar.middle_school')
 
-  - if policy(HollandQuestion).create?
-    %li.nav-item{class: css_active_class('holland_questions')}
-      %a.nav-link{ href: holland_questions_path }
-        %i.fas.fa-fw.fa-clipboard-question
-        %span= t('sidebar.holland_question')
+        - if policy(Job).create?
+          %a.collapse-item{ href: jobs_path, class: css_active_class('jobs') }= t('sidebar.job')
 
-  - if policy(SelfUnderstandingQuestion).index?
-    %li.nav-item{class: css_active_class('self_understanding_questions')}
-      %a.nav-link{ href: self_understanding_questions_path }
-        %i.fas.fa-fw.fa-clipboard-question
-        %span= t('sidebar.self_understanding_question')
+        - if policy(CollegeMajor).create?
+          %a.collapse-item{ href: college_majors_path, class: css_active_class('college_majors') }= t('sidebar.college_major')
 
-  - if policy(Video).create?
-    %li.nav-item{class: css_active_class('videos')}
-      %a.nav-link{ href: videos_path }
-        %i.fas.fa-fw.fa-video
-        %span= t('sidebar.video')
+        - if policy(Video).create?
+          %a.collapse-item{ href: videos_path, class: css_active_class('videos') }= t('sidebar.video')
+
+        - if policy(HollandQuestion).create?
+          %a.collapse-item{ href: holland_questions_path, class: css_active_class('holland_questions') }= t('sidebar.holland_question')
+
+        - if policy(SelfUnderstandingQuestion).create?
+          %a.collapse-item{ href: self_understanding_questions_path, class: css_active_class('self_understanding_questions') }= t('sidebar.self_understanding_question')
 
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
