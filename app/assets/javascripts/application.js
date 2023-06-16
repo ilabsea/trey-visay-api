@@ -27,6 +27,7 @@
 //= require common/copy
 //= require common/wizard_new
 //= require common/timeago
+//= require common/sidebar
 
 //= require games/show
 //= require personality_tests/show
@@ -37,6 +38,7 @@ $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();
   TV.Common.WizardNew.init();
   TV.Common.Timeago.init();
+  TV.Common.Sidebar.init();
   $("[role='tooltip']").remove();
   $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 
