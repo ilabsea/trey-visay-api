@@ -34,6 +34,6 @@ class JobsController < ApplicationController
 
   private
     def filter_params
-      params.permit(:name)
+      params.permit(:name, :job_cluster_id)
     end
 end

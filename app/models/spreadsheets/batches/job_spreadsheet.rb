@@ -30,6 +30,7 @@ module Spreadsheets
           info_similar_job: row[16],
         }
 
+        job.job_cluster_id = JobCluster.find_by(code: job[17]) if job[17].present?
         job
       end
     end

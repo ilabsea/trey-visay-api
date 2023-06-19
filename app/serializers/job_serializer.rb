@@ -24,9 +24,12 @@
 #  info_similar_job                  :text(65535)
 #  created_at                        :datetime         not null
 #  updated_at                        :datetime         not null
+#  job_cluster_id                    :string(255)
+#  logo                              :string(255)
 #
 class JobSerializer < ActiveModel::Serializer
   attributes :id, :code, :name_km, :name_en, :name, :personality_type,
+             :job_cluster_name, :job_cluster_id, :logo,
              :general_description, :jd_main_task, :jd_environment,
              :jd_technology_skill, :edu_education_level,
              :edu_high_school_supported_subject, :edu_higher_education_skill,
