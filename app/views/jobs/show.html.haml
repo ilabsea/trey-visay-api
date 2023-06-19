@@ -4,7 +4,7 @@
   = render 'shared/buttons/back_button', url: jobs_path
 
 #contents.mt-5.mt-md-0
-  - ['code', 'name_km', 'name_en', 'personality_type', 'general_description'].each do |field|
+  - ['code', 'name_km', 'name_en', 'personality_type', 'job_cluster_name', 'general_description'].each do |field|
     .row.mb-1
       .col-4= t("job.#{field}")
       .col-8= @job[field]

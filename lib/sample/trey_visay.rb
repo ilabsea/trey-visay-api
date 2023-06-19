@@ -14,26 +14,26 @@ module Sample
       options.reverse_merge!(verbose: true)
 
       Sample::Execute.load("accounts", options)
-      Sample::Execute.load("subject_tips", options)
-      Sample::Execute.load("entries", options)
-      Sample::Execute.load("characteristic_jobs", options)
-      Sample::Execute.load("vocational_jobs", options)
 
-      # Sample::University.load("university", options)
-
-      Sample::Career.load("career_science", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប វិទ្យាសាស្រ្ត"))
-      Sample::Career.load("career_technical", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប បច្ចេកទេស"))
-      Sample::Career.load("career_social", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គល បែបសង្គម"))
-      Sample::Career.load("career_vocational", options.merge(group: "Vocational", category: "វិជ្ជាជីវៈ"))
-      Sample::HigherCareer.load("higher_careers", options)
-
-      Sample::HighSchool.load("high_school", options)
-
-      Sample::Personality.load("personality", options)
-
+      # V1
+      # Sample::Execute.load("subject_tips", options)
+      # Sample::Execute.load("entries", options)
+      # Sample::Execute.load("characteristic_jobs", options)
+      # Sample::Execute.load("vocational_jobs", options)
+      # Sample::University.load("university", options) //run it now will be error as we change schema
+      # Sample::Career.load("career_science", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប វិទ្យាសាស្រ្ត"))
+      # Sample::Career.load("career_technical", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គលបែប បច្ចេកទេស"))
+      # Sample::Career.load("career_social", options.merge(category: "បុគ្គលិកលក្ខណៈបុគ្គល បែបសង្គម"))
+      # Sample::Career.load("career_vocational", options.merge(group: "Vocational", category: "វិជ្ជាជីវៈ"))
+      # Sample::HigherCareer.load("higher_careers", options)
+      # Sample::HighSchool.load("high_school", options)
+      # Sample::Personality.load("personality", options)
       # Major must loaded before category in order to assign dependency
-      Sample::PersonalityMajor.load("major_options_for_higher_education", options)
-      Sample::PersonalityCategory.load("personality_category_majors_and_careers", options)
+      # Sample::PersonalityMajor.load("major_options_for_higher_education", options)
+      # Sample::PersonalityCategory.load("personality_category_majors_and_careers", options)
+
+      # V2
+      Sample::SelfUnderstandingQuestion.new.import
     end
 
     def self.export_samples

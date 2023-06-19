@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "job_clusters") do |sheet|
+  sheet.add_row %w[code name]
+
+  @job_clusters.each_with_index do |video, index|
+    sheet.add_row [
+      video.code,
+      video.name,
+    ], types: [:string, :string]
+  end
+end

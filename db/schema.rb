@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_14_043021) do
+ActiveRecord::Schema.define(version: 2023_06_16_102718) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -233,6 +233,14 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_clusters", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "display_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jobs", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "code"
     t.string "name_km"
@@ -253,6 +261,8 @@ ActiveRecord::Schema.define(version: 2023_06_14_043021) do
     t.text "info_similar_job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_cluster_id"
+    t.string "logo"
   end
 
   create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

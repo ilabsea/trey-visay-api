@@ -14,8 +14,8 @@ module ApplicationHelper
     SubjectTip.where("subject_code = '#{subject_code}' and tip_type = '#{level}'")
   end
 
-  def css_active_class(controller_name)
-    return "active" if params[:controller] == controller_name
+  def css_active_class(controller_name, *other)
+    return "active" if params[:controller] == controller_name || other.include?(params[:controller])
   end
 
   def display_date(date)

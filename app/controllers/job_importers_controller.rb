@@ -18,7 +18,7 @@ class JobImportersController < ApplicationController
 
     def itemable_attributes
       [
-        :id, :code, :name_km, :name_en, :personality_type,
+        :id, :code, :name_km, :name_en, :job_cluster_id, :personality_type,
         :general_description, :jd_main_task, :jd_environment,
         :jd_technology_skill, :edu_education_level,
         :edu_high_school_supported_subject, :edu_higher_education_skill,

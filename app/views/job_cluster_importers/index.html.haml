@@ -1,0 +1,8 @@
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= t('shared.importing_history', name: t('sidebar.job_cluster'))
+
+  .d-flex.mt-3.mt-md-0.justify-content-end
+    = render "shared/buttons/back_button", url: job_clusters_path
+    = render "shared/buttons/add_new_button", url: new_job_cluster_importer_path, name: t('sidebar.job_cluster')
+
+= render "shared/batches/batch_list"

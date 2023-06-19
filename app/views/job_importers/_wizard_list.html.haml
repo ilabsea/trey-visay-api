@@ -7,6 +7,7 @@
         %th.align-middle.text-center{rowspan: 2}= t("shared.name_km")
         %th.align-middle.text-center{rowspan: 2}= t("shared.name_en")
         %th.align-middle.text-center{rowspan: 2}= t('job.personality_type')
+        %th.align-middle.text-center{rowspan: 2}= t('job.cluster')
         %th.align-middle.text-center{rowspan: 2}= t('job.general_description')
         %th.align-middle.text-center{colspan: 3}= t('job.job_condition')
         %th.align-middle.text-center{colspan: 3}= t('job.education_and_training')
@@ -41,6 +42,7 @@
               = fff.hidden_field :name_km
               = fff.hidden_field :name_en
               = fff.hidden_field :personality_type
+              = fff.hidden_field :job_cluster_id
               = fff.hidden_field :general_description
               = fff.hidden_field :jd_main_task
               = fff.hidden_field :jd_environment
@@ -61,6 +63,7 @@
           %td= item.name_km
           %td= item.name_en
           %td= item.personality_type
+          %td= item.job_cluster_name
           %td= item.general_description
           %td= item.jd_main_task
           %td= item.jd_environment

@@ -45,25 +45,36 @@
         %h6.collapse-header For admin only
 
         - if policy(School).create?
-          %a.collapse-item{ href: schools_path, class: css_active_class('schools') }= t('sidebar.school')
+          %a.collapse-item{ href: schools_path, class: css_active_class('schools', 'school_importers') }
+            = t('sidebar.school')
 
         - if policy(MiddleSchool).create?
-          %a.collapse-item{ href: middle_schools_path, class: css_active_class('middle_schools') }= t('sidebar.middle_school')
+          %a.collapse-item{ href: middle_schools_path, class: css_active_class('middle_schools', 'middle_school_importers') }
+            = t('sidebar.middle_school')
+
+        - if policy(JobCluster).create?
+          %a.collapse-item{ href: job_clusters_path, class: css_active_class('job_clusters', 'job_cluster_importers') }
+            = t('sidebar.job_cluster')
 
         - if policy(Job).create?
-          %a.collapse-item{ href: jobs_path, class: css_active_class('jobs') }= t('sidebar.job')
+          %a.collapse-item{ href: jobs_path, class: css_active_class('jobs', 'job_importers') }
+            = t('sidebar.job')
 
         - if policy(CollegeMajor).create?
-          %a.collapse-item{ href: college_majors_path, class: css_active_class('college_majors') }= t('sidebar.college_major')
+          %a.collapse-item{ href: college_majors_path, class: css_active_class('college_majors', 'college_major_importers') }
+            = t('sidebar.college_major')
 
         - if policy(Video).create?
-          %a.collapse-item{ href: videos_path, class: css_active_class('videos') }= t('sidebar.video')
+          %a.collapse-item{ href: videos_path, class: css_active_class('videos', 'video_importers') }
+            = t('sidebar.video')
 
         - if policy(HollandQuestion).create?
-          %a.collapse-item{ href: holland_questions_path, class: css_active_class('holland_questions') }= t('sidebar.holland_question')
+          %a.collapse-item{ href: holland_questions_path, class: css_active_class('holland_questions', 'holland_question_importers') }
+            = t('sidebar.holland_question')
 
         - if policy(SelfUnderstandingQuestion).create?
-          %a.collapse-item{ href: self_understanding_questions_path, class: css_active_class('self_understanding_questions') }= t('sidebar.self_understanding_question')
+          %a.collapse-item{ href: self_understanding_questions_path, class: css_active_class('self_understanding_questions') }
+            = t('sidebar.self_understanding_question')
 
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }

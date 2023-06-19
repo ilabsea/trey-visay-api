@@ -24,6 +24,8 @@
 #  info_similar_job                  :text(65535)
 #  created_at                        :datetime         not null
 #  updated_at                        :datetime         not null
+#  job_cluster_id                    :string(255)
+#  logo                              :string(255)
 #
 FactoryBot.define do
   factory :job do
