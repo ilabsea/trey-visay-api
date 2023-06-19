@@ -17,6 +17,6 @@ class VideoImportersController < ApplicationController
     end
 
     def itemable_attributes
-      [ :id, :code, :name, :url, :author ]
+      [ :id, :code, :name, :url, :author, video_ids: [] ]
     end
 end

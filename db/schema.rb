@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_16_102718) do
+ActiveRecord::Schema.define(version: 2023_06_19_083149) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(version: 2023_06_16_102718) do
     t.boolean "concerned", default: false
     t.index ["characteristic_id"], name: "index_characteristics_entries_on_characteristic_id"
     t.index ["entry_id"], name: "index_characteristics_entries_on_entry_id"
+  end
+
+  create_table "cluster_videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "video_id"
+    t.string "job_cluster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "college_majors", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

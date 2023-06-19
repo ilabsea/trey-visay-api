@@ -11,11 +11,8 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-require "rails_helper"
+class JobClusterSerializer < ActiveModel::Serializer
+  attributes :id, :code, :name
 
-RSpec.describe JobCluster, type: :model do
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to have_many(:jobs) }
-  it { is_expected.to have_many(:cluster_videos) }
-  it { is_expected.to have_many(:videos).through(:cluster_videos) }
+  has_many :videos
 end

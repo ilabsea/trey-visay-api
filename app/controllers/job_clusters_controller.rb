@@ -6,11 +6,11 @@ class JobClustersController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @job_clusters = pagy(authorize JobCluster.filter(filter_params))
+        @pagy, @job_clusters = pagy(authorize JobCluster.filter(filter_params).includes(:videos))
       }
 
       format.xlsx {
-        @job_clusters = authorize JobCluster.filter(filter_params)
+        @job_clusters = authorize JobCluster.filter(filter_params).includes(:videos)
 
         if @job_clusters.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
           flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
@@ -21,7 +21,7 @@ class JobClustersController < ApplicationController
       }
 
       format.json {
-        @job_clusters = authorize JobCluster.filter(filter_params)
+        @job_clusters = authorize JobCluster.filter(filter_params).includes(:videos)
 
         render json: @job_clusters
       }

@@ -14,6 +14,7 @@
             %th{width: 60} #
             %th= t('shared.code')
             %th= t('shared.name')
+            %th= t('shared.videos')
             %th
 
         %tbody#body-content
@@ -22,6 +23,10 @@
               %td= @pagy.from + index
               %td= job.code
               %td= job.name
+              %td
+                - job.videos.each do |video|
+                  = link_to video.url, target: '_blank' do
+                    = image_tag video.thumbnail, style: 'width: 50px;'
               %td
 
     = render "shared/footers/pagination"

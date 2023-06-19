@@ -42,6 +42,7 @@ class Job < ApplicationRecord
 
   # Association
   belongs_to :job_cluster, optional: true
+  has_many :videos, through: :job_cluster
 
   # Delegation
   delegate :name, to: :job_cluster, prefix: :job_cluster, allow_nil: true

@@ -5,6 +5,7 @@
         %th #
         %th= t('shared.code')
         %th= t("shared.name")
+        %th= t('share.videos')
         %th
 
     %tbody
@@ -18,11 +19,16 @@
               = fff.hidden_field :id
               = fff.hidden_field :code
               = fff.hidden_field :name
+              = fff.select :video_ids, f.object.video_ids, {}, multiple: true, style: "display: none;"
 
         %tr
           %td= index + 1
           %td= item.code
           %td= item.name
+          %td
+            - item.videos.each do |video|
+              = link_to video.url, target: '_blank' do
+                = image_tag video.thumbnail, style: 'width: 50px;'
 
           / Validation status
           %td= render "shared/validation_status", item: item

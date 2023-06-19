@@ -4,7 +4,7 @@ module Api
   module V2
     class JobsController < ::Api::V2::ApiController
       def index
-        pagy, jobs = pagy(Job.all)
+        pagy, jobs = pagy(Job.includes(:videos))
 
         render json: {
           pagy: pagy.vars,
