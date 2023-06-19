@@ -91,6 +91,7 @@ en:
     import_success: "%{count} items were successfully imported!"
     some_invalid_records: There are some invalid records, please check and reimport!
     import_from_file: Import from Excel(.xlsx)
+    import_from_zip_file: Import from compress(.zip) file
     search_by_code_or_name: Search bo code or name
     importing_wizard: "Importing %{name} Wizard"
     importing_history: "Importing %{name} history"

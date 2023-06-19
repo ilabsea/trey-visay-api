@@ -11,7 +11,7 @@ module Spreadsheets
         @school_departments_attributes = []
       end
 
-      def process(row)
+      def process(row, zipfile)
         school.attributes = {
           code: row["school_code"],
           name: row["school_name"],
@@ -21,8 +21,10 @@ module Spreadsheets
           emails: row["emails"],
           website_or_facebook: row["website_or_facebook"],
           kind: row["type"],
-          category: row["category"]
+          category: row["category"],
+          logo: get_logo(row["logo"], zipfile)
         }
+
         set_remove_old_school_department
         set_school_department_and_majors
 
@@ -45,6 +47,21 @@ module Spreadsheets
           return unless school_index.present?
 
           @school_departments_attributes.concat Spreadsheets::Batches::SchoolMajorSpreadsheet.new(school, @rows[school_index..-1]).process
+        end
+
+        def get_logo(filename, zipfile)
+          entry = zipfile.select { |ent| ent.name.split("/").last.split(".").first == "#{filename.to_s.split('.').first}" }.first
+
+          open_file(entry, zipfile) if entry.present?
+        end
+
+        def open_file(entry, zipfile)
+          file_destination = File.join("public/uploads/tmp", entry.name)
+
+          FileUtils.mkdir_p(File.dirname(file_destination))
+          zipfile.extract(entry, file_destination) { true }
+
+          Pathname.new(file_destination).open
         end
     end
   end

@@ -91,6 +91,7 @@ km:
     import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
     some_invalid_records: មានទិន្នន័យ មួយចំនួនមិនត្រឹមត្រូវ សូមធ្វើការត្រួតពិនិត្យ និងបញ្ចូលឡើងវិញ!
     import_from_file: បញ្ចូលទិន្នន័យពី Excel(.xlsx)
+    import_from_zip_file: បញ្ចូលទិន្នន័យពី Zip(.zip)
     search_by_code_or_name: ស្វែងរកតាមលេខកូដ ឬឈ្មោះ
     importing_wizard: "បញ្ចូល%{name} Wizard"
     importing_history: "ប្រវត្តិនៃការបញ្ចូល%{name}តាម Excel"

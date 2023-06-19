@@ -53,6 +53,10 @@ class Spreadsheets::Batches::BaseSpreadsheet
       file.present? && accepted_formats.include?(File.extname(file.path))
     end
 
+    def valid_zipfile?(file)
+      file.present? && [".zip"].include?(File.extname(file.path))
+    end
+
     def accepted_formats
       [".xlsx"]
     end

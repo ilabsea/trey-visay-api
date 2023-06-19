@@ -2,11 +2,13 @@
 - sample_url ||= "/"
 - item ||= @batch
 - form_url ||= '#'
+- download_sample_form_label ||= t('shared.download_sample_form')
+- accept_file_format ||= ".xlsx"
 
 .w-50.m-auto
   .mt-4= "#{t('shared.todo_step')}:"
   %ol.mb-3
-    %li= t('shared.download_sample_form')
+    %li= download_sample_form_label
     %li= t('shared.attach_excel_file')
 
   .card.shadow.mb-2
@@ -15,7 +17,7 @@
 
       %a.btn.btn-link.p-0{ href: sample_url, target: "_blank" }
         %i.fas.fa-cloud-download-alt.fa-sm
-        = t("shared.download_sample_form")
+        = download_sample_form_label
 
   .arrow-wrapper.text-center
     %i.fas.fa-long-arrow-alt-down
@@ -27,7 +29,7 @@
           .card-body
             %span.mr-2 2.
             .form-control.file-control-wrapper
-              = f.file_field :file, accept: ".xlsx"
+              = f.file_field :file, accept: accept_file_format
 
         %small= t('shared.excel_file')
 

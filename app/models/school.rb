@@ -24,7 +24,7 @@
 class School < ApplicationRecord
   include ItemableConcern
 
-  mount_uploader :logo, PhotoUploader
+  mount_uploader :logo, LogoUploader
 
   CATEGORIES = %w[សាលារដ្ឋ សាលាឯកជន អង្គការ].freeze
 

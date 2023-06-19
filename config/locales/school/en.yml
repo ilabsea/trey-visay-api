@@ -12,3 +12,4 @@ en:
     vocational_education: Vocational Education
     major_count: "%{count} majors"
     any_kind: Any level
+    download_sample_form: Download sample file to complete (Zip file .zip)

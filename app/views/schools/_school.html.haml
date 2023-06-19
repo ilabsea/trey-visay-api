@@ -1,6 +1,9 @@
 %tr
   %td= @pagy.from + school_counter
   %td= school.code
+  %td
+    - if school.logo.present?
+      = image_tag school.logo_url, width: 50
   %td= school.name
   %td
     = t("school.#{school.kind}") if school.kind.present?
