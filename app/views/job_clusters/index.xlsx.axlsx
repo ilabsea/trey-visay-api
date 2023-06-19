@@ -2,12 +2,13 @@
 
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "job_clusters") do |sheet|
-  sheet.add_row %w[code name]
+  sheet.add_row %w[code name video_codes]
 
-  @job_clusters.each_with_index do |video, index|
+  @job_clusters.each_with_index do |cluster, index|
     sheet.add_row [
-      video.code,
-      video.name,
-    ], types: [:string, :string]
+      cluster.code,
+      cluster.name,
+      cluster.videos.pluck(:code).join("\;")
+    ], types: [:string, :string, :string]
   end
 end

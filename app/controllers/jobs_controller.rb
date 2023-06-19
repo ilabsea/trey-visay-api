@@ -21,7 +21,7 @@ class JobsController < ApplicationController
       }
 
       format.json {
-        @jobs = authorize Job.filter(filter_params)
+        @jobs = authorize Job.filter(filter_params).includes(:videos)
 
         render json: @jobs
       }

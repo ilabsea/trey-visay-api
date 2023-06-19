@@ -13,7 +13,8 @@ module Spreadsheets
         cluster.attributes = {
           code: row["code"],
           name: row["name"],
-          display_order: row["display_order"]
+          display_order: row["display_order"],
+          video_ids: Video.where(code: row["video_codes"].to_s.split("\;")).pluck(:id)
         }
 
         cluster

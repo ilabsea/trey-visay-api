@@ -37,6 +37,8 @@ class JobSerializer < ActiveModel::Serializer
              :qua_supported_capacity, :qua_characteristic_of_job,
              :info_job_market, :info_similar_job, :value, :updated_at
 
+  has_many :videos
+
   def value
     object.name_km
   end

@@ -15,6 +15,10 @@
 class Video < ApplicationRecord
   include ItemableConcern
 
+  # Association
+  has_many :cluster_videos
+  has_many :job_clusters, through: :cluster_videos
+
   # Callback
   before_create :secure_id
   before_create :secure_code

@@ -22,6 +22,10 @@ class JobCluster < ApplicationRecord
 
   # Association
   has_many :jobs
+  has_many :cluster_videos
+  has_many :videos, through: :cluster_videos
+
+  default_scope { order(display_order: :asc) }
 
   def self.filter(params = {})
     scope = all
