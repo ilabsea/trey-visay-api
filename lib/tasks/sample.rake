@@ -16,7 +16,11 @@ if Rails.env.development? || Rails.env.test?
 
     desc "Loads sample data"
     task load: [:clean_db] do
-      Sample::TreyVisay.load_samples
+      # V1
+      # Sample::TreyVisay.load_samples
+
+      # V2
+      Sample::TreyVisay2.new.load_sample
     end
 
     desc "Export sample data to json"
