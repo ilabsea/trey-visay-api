@@ -50,6 +50,8 @@ module Spreadsheets
         end
 
         def get_logo(filename, zipfile)
+          return unless filename.present?
+
           entry = zipfile.select { |ent| ent.name.split("/").last.split(".").first == "#{filename.to_s.split('.').first}" }.first
 
           open_file(entry, zipfile) if entry.present?
