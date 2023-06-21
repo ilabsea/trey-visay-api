@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative "execute"
 require_relative "self_understanding_question"
 

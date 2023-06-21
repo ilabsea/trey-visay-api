@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show]
     resources :personality_tests, only: [:index, :show]
 
+    resources :holland_quizzes, only: [:show]
+
     get :download, on: :collection
   end
 

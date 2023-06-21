@@ -1,0 +1,60 @@
+- quiz ||= {}
+
+%div.mb-3
+  / ---------------------Phase 1
+  .text-muted.mb-1
+    = t('holland_quiz.test_phase', num: 1) + ": "
+    = t('holland_quiz.self_understanding')
+
+  .shadow-box
+    %table.table
+      %tbody
+        - SelfUnderstandingQuestion.includes(:options).each do |question|
+          %tr
+            %td= question.name
+            %td
+              - response = quiz.self_understanding_responses.select { |res| res.self_understanding_question_id == question.id }.first
+
+              = reponse_value_html(question, response.value).html_safe
+
+.d-flex
+  / ---------------------Phase 2
+  .flex-grow-1.d-flex.flex-column
+    .text-muted.mb-1
+      = t('holland_quiz.test_phase', num: 2) + ": "
+      = t('holland_quiz.holland_test')
+
+    .shadow-box.flex-grow-1
+      %table.table
+        %tbody
+          - quiz.holland_scores.each do |item|
+            %tr
+              %td= t("holland_quiz.type_#{item.personality_type.downcase}")
+              %td= "#{item.score}"
+
+  .mr-3
+
+  / ---------------------Phase 3
+  .flex-grow-1.d-flex.flex-column
+    .text-muted.mb-1
+      = t('holland_quiz.test_phase', num: 3) + ": "
+      = "ជ្រើសរើសមុខជំនាញ ឬអាជីពស័ក្កសម"
+
+    .shadow-box.flex-grow-1
+      .d-flex.mb-2
+        .w-25= t('user.selected_major')
+        %div.d-flex
+          %ul
+            - quiz.holland_major_responses.includes(:college_major).each do |major|
+              %li
+                = major.college_major_name
+                %small.text-primary= "(#{t('user.selected')})" if major.selected
+
+      .d-flex.mb-2
+        .w-25= t('user.selected_job')
+        %div.d-flex
+          %ul
+            - quiz.holland_job_responses.includes(:job).each do |res|
+              %li
+                = res.job_name
+                %small.text-primary= "(#{t('user.selected')})" if res.selected

@@ -1,0 +1,12 @@
+en:
+  holland_quiz:
+    quizzed_at: Quizzed at
+    self_understanding: Self understanding
+    test_phase: "Test phase: %{num}"
+    holland_test: Holland test
+    type_r: Realistic
+    type_i: Investigative
+    type_a: Artistic
+    type_s: Social
+    type_e: Enterprising
+    type_c: Conventional

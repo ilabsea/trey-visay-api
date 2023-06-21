@@ -1,3 +1,8 @@
+/ Title
+.d-sm-flex.align-items-center.justify-content-between.mb-4
+  %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
+
+/ Tab
 %ul.nav.nav-tabs.nav-justified
   %li.nav-item
     %a.nav-link{ href: user_path(@user), class: css_active_class('users') }
@@ -5,8 +10,8 @@
 
   %li.nav-item
     %a.nav-link{ href: user_games_path(@user), class: css_active_class('games') }
-      %span.d-none.d-lg-inline= "ការធ្វើតេស្តវាយតម្លៃមុខរបរនិងអាជីព"
+      %span.d-none.d-lg-inline= "ការធ្វើតេស្តវាយតម្លៃមុខរបរនិងអាជីព(V1)"
 
   %li.nav-item
     %a.nav-link{ href: user_personality_tests_path(@user), class: css_active_class('personality_tests') }
-      %span.d-none.d-lg-inline= "ការធ្វើតេស្តអំពីបុគ្គលិកលក្ខណៈ"
+      %span.d-none.d-lg-inline= "ការធ្វើតេស្តអំពីបុគ្គលិកលក្ខណៈ(V1)"

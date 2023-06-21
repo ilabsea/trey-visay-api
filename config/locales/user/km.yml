@@ -10,11 +10,13 @@ km:
     study_at: រៀននៅសាលា
     class_group: ជាសិស្សក្នុងបណ្តុំថ្នាក់
     student: សិស្ស
-    holland_quiz_result: លទ្ធផលធ្វើតេស្តវាយតម្លៃមុខរបរ និងអាជីព
+    holland_quiz_result: លទ្ធផលតេស្តវាយតម្លៃមុខរបរ និងអាជីព
     quiz_number: "តេស្តលើកទី %{num}"
     selected: ត្រូវបានជ្រើសរើស
     quiz_at: ធ្វើតេស្តនៅ
-    selected_major: ជំនាញដែលបានជ្រើសរើស
-    selected_job: មុខរបរដែលបានជ្រើសរើស
+    selected_major: ជំនាញបានជ្រើសរើស
+    selected_job: មុខរបរបានជ្រើសរើស
     student_personality_type: បុគ្គលិកលក្ខណៈរបស់សិស្ស
     self_understanding: ការឈ្វេងយល់ពីខ្លួនឯង
+    holland_quiz: តេស្តវាយតម្លៃមុខរបរ និងអាជីព
+    multiple_intelligence_result: លទ្ធផលតេស្តពហុបញ្ញា
