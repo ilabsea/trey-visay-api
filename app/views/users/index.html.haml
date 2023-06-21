@@ -12,7 +12,7 @@
   .card-body
     = render "shared/pagination_title", objects: @users
 
-    %table.table-bordered.table
+    %table.table
       %thead
         %tr
           %th{width: 60} #
@@ -20,7 +20,8 @@
           %th= t('user.gender')
           %th= t('user.grade')
           %th= t('user.study_at')
-          %th ការធ្វើតេស្ត
+          %th ការធ្វើតេស្ត(v1)
+          %th= t('user.holland_quiz') + "v2"
 
       %tbody#body-content
         = render partial: 'users'

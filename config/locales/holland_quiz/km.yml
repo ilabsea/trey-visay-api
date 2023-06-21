@@ -1,0 +1,12 @@
+km:
+  holland_quiz:
+    quizzed_at: កាលបរិច្ឆធ្វើតេស្ត
+    self_understanding: ការឈ្វេងយល់ពីខ្លួនឯង
+    test_phase: "តំណាក់កាលទី %{num}"
+    holland_test: តេស្តបុគ្គលិកលក្ខណៈ
+    type_r: ប្រាកដនិយម
+    type_i: ពូកែអង្កេត
+    type_a: សិល្បៈនិយម
+    type_s: សង្គម
+    type_e: ត្រិះរិះពិចារណា
+    type_c: សណ្ដាប់ធ្នាប់

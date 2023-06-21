@@ -1,12 +1,11 @@
 - @users.each_with_index do |user, index|
   %tr
-    %td= link_to @pagy.from + index, user_path(user.id)
+    %td= link_to @pagy.from + index, user_path(user.id), id: 'mylink'
     %td= link_to user.full_name, user_path(user.id)
     %td= user.sex
     %td= user.grade
     %td= user.school_address
     %td
-      = user.holland_quizzes.length
       - user.games.each_with_index do |game, i|
         %div
           = "តេស្តលើកទី #{i + 1}: តេស្តស្វែងយល់អំពីខ្លួនឯង ( តេស្ត #{game.personal_understandings.length}ដង"
@@ -14,3 +13,4 @@
           - fails_count = game.personal_understandings.select{ |p| p.fail? }.length
           = personal_understanding_info(fails_count).html_safe
           = ")"
+    %td= user.holland_quizzes.length

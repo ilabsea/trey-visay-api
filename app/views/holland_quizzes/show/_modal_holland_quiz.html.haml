@@ -1,0 +1,14 @@
+#hollandQuizModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header.header-wrapper
+        %h5#exampleModalLabel.modal-title.header-title
+          / render header here**
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+
+      .modal-body
+        / render body here**
+
+      .modal-footer
+        %button.btn.btn-primary{ "data-dismiss" => "modal", :type => "button"}= t('shared.done')
