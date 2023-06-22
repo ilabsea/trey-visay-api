@@ -6,6 +6,7 @@
         %th.align-middle.text-center{rowspan: 2}= t('shared.code')
         %th.align-middle.text-center{rowspan: 2}= t("shared.name_km")
         %th.align-middle.text-center{rowspan: 2}= t("shared.name_en")
+        %th.align-middle.text-center{rowspan: 2}= t("shared.logo")
         %th.align-middle.text-center{rowspan: 2}= t('job.personality_type')
         %th.align-middle.text-center{rowspan: 2}= t('job.cluster')
         %th.align-middle.text-center{rowspan: 2}= t('job.general_description')
@@ -42,7 +43,6 @@
               = fff.hidden_field :name_km
               = fff.hidden_field :name_en
               = fff.hidden_field :personality_type
-              = fff.hidden_field :job_cluster_id
               = fff.hidden_field :general_description
               = fff.hidden_field :jd_main_task
               = fff.hidden_field :jd_environment
@@ -56,12 +56,16 @@
               = fff.hidden_field :qua_characteristic_of_job
               = fff.hidden_field :info_job_market
               = fff.hidden_field :info_similar_job
+              = fff.hidden_field :job_cluster_id
+              = fff.hidden_field :logo_cache
 
         %tr
           %td= index + 1
           %td= item.code
           %td= item.name_km
           %td= item.name_en
+          %td
+            = image_tag(item.logo_url, width: 50) if item.logo.present?
           %td= item.personality_type
           %td= item.job_cluster_name
           %td= item.general_description

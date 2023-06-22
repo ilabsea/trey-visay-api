@@ -3,13 +3,15 @@
 module Spreadsheets
   module Batches
     class JobSpreadsheet
+      include ::Spreadsheets::AttachmentSpreadsheet
+
       attr_reader :job
 
       def initialize(job)
         @job = job
       end
 
-      def process(row)
+      def process(row, zipfile)
         job.attributes = {
           code: row[0],
           name_km: row[1],
@@ -28,9 +30,10 @@ module Spreadsheets
           qua_characteristic_of_job: row[14],
           info_job_market: row[15],
           info_similar_job: row[16],
+          logo: find_attachment(row[18], zipfile)
         }
 
-        job.job_cluster_id = JobCluster.find_by(code: job[17]) if job[17].present?
+        job.job_cluster = JobCluster.find_by(code: row[17]) if row[17].present?
         job
       end
     end

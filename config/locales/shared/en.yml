@@ -99,3 +99,5 @@ en:
     valid_data_in_province: "total valid data in province <b>%{province_count}</b>"
     url: Url
     author: Author
+    download_sample_form_zip: Download sample file to complete (Zip file .zip)
+    logo: Logo
