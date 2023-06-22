@@ -99,3 +99,5 @@ km:
     valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"
     url: តំណរភ្ជាប់ (Url)
     author: អ្នផលិត
+    download_sample_form_zip: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
+    logo: និមិត្តសញ្ញា

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Spreadsheets::Batches::BaseSpreadsheet
+class Spreadsheets::Batches::BaseWithZipfileSpreadsheet
   attr_reader :batch
 
   def initialize
@@ -11,15 +11,21 @@ class Spreadsheets::Batches::BaseSpreadsheet
   def import(file)
     return unless valid?(file)
 
-    spreadsheet(file).each_with_pagename do |sheet_name, sheet|
-      assign_items(sheet, sheet_name)
-    rescue
-      Rails.logger.warn "unknown handler for sheet: #{sheet_name}"
-    end
+    Zip::File.open(file) do |zipfile|
+      entry = zipfile.select { |ent| ent.name.split(".").last == excel_format }.first
 
-    batch.importing_items = importing_items
-    batch.attributes = batch.attributes.merge(batch_params(file))
-    batch
+      return unless entry.present?
+
+      spreadsheet(entry).each_with_pagename do |sheet_name, sheet|
+        assign_items(sheet, sheet_name)
+      rescue
+        Rails.logger.warn "unknown handler for sheet: #{sheet_name}"
+      end
+
+      batch.importing_items = importing_items(zipfile)
+      batch.attributes = batch.attributes.merge(batch_params(file))
+      batch
+    end
   end
 
   private
@@ -45,8 +51,9 @@ class Spreadsheets::Batches::BaseSpreadsheet
       }
     end
 
-    def spreadsheet(file)
-      Roo::Spreadsheet.open(file)
+    def spreadsheet(entry)
+      ::Zip::IOExtras.copy_stream(stream = StringIO.new, entry.get_input_stream)
+      Roo::Spreadsheet.open(stream, extension: excel_format)
     end
 
     def valid?(file)
@@ -54,14 +61,10 @@ class Spreadsheets::Batches::BaseSpreadsheet
     end
 
     def accepted_formats
-      [".xlsx"]
+      [".zip"]
     end
 
-    def parse_string(data)
-      data.to_s.strip
-    end
-
-    def parse_date(date)
-      DateTime.parse(parse_string(date)) rescue nil
+    def excel_format
+      "xlsx"
     end
 end
