@@ -43,9 +43,15 @@ class Job < ApplicationRecord
   # Association
   belongs_to :job_cluster, optional: true
   has_many :videos, through: :job_cluster
+  has_many :job_majors
+  has_many :majors, through: :job_majors
+  has_many :schools, -> { distinct }, through: :majors
 
   # Delegation
   delegate :name, to: :job_cluster, prefix: :job_cluster, allow_nil: true
+
+  # Nested attributes
+  accepts_nested_attributes_for :job_majors, allow_destroy: true
 
   def name
     self["name_#{I18n.locale}"]

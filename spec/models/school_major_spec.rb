@@ -15,5 +15,8 @@
 require "rails_helper"
 
 RSpec.describe SchoolMajor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:school_department) }
+  it { is_expected.to belong_to(:school).optional }
+  it { is_expected.to belong_to(:department).optional }
+  it { is_expected.to belong_to(:major) }
 end

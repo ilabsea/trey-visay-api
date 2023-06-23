@@ -13,3 +13,5 @@ km:
     major_count: "%{count} ជំនាញ"
     any_kind: គ្រប់កម្រិត
     download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
+    number_of_department: ចំនួន Department
+    number_of_major: ចំនួនជំនាញ

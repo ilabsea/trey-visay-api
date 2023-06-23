@@ -38,8 +38,13 @@ class JobSerializer < ActiveModel::Serializer
              :info_job_market, :info_similar_job, :value, :updated_at
 
   has_many :videos
+  has_many :schools
 
   def value
     object.name_km
+  end
+
+  class SchoolSerializer < ActiveModel::Serializer
+    attributes :id, :name, :logo, :address, :kind
   end
 end

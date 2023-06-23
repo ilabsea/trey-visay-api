@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @jobs = pagy(authorize Job.filter(filter_params))
+        @pagy, @jobs = pagy(authorize Job.filter(filter_params).includes(:schools))
       }
 
       format.xlsx {
@@ -21,7 +21,7 @@ class JobsController < ApplicationController
       }
 
       format.json {
-        @jobs = authorize Job.filter(filter_params).includes(:videos)
+        @jobs = authorize Job.filter(filter_params).includes(:videos, :schools)
 
         render json: @jobs
       }

@@ -1,6 +1,7 @@
 .d-sm-flex.mb-4
   .d-flex.align-items-center.flex-grow-1
-    %h1.h3.mb-0.text-gray-800= @major.name
+    %h1.h3.mb-0.text-gray-800= @major.name + "(#{@major.code})"
+
   = render 'shared/buttons/back_button', url: college_majors_path
 
 #contents.mt-5.mt-md-0
@@ -13,4 +14,4 @@
 
   = field_value(t("college_major.major_in_schools"), @major.majors.map(&:name).join(', ')).html_safe
 
-  = field_value(t("college_major.number_of_schools"), "#{@major.schools.uniq.length}").html_safe
+  = render "shared/school_section", schools: @major.schools

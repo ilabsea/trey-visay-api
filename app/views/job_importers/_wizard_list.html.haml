@@ -59,13 +59,18 @@
               = fff.hidden_field :job_cluster_id
               = fff.hidden_field :logo_cache
 
+              - item.job_majors.each do |job_major|
+                = fff.fields_for :job_majors, job_major do |jmf|
+                  = jmf.fields_for :major, job_major.major do |mj|
+                    = mj.hidden_field :name
+
         %tr
           %td= index + 1
           %td= item.code
           %td= item.name_km
           %td= item.name_en
           %td
-            = image_tag(item.logo_url, width: 50) if item.logo.present?
+            = image_tag(item.logo_url, width: 50, class: 'rounded-circle') if item.logo.present?
           %td= item.personality_type
           %td= item.job_cluster_name
           %td= item.general_description

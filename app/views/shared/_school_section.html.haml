@@ -1,0 +1,17 @@
+- schools ||= []
+
+- if schools.present?
+  .card.my-4.py-2.px-1.border-left-primary
+    %div
+      %small.m-1.font-weight-bold.text-primary
+        = t("sidebar.school")
+
+      - schools.each do |school|
+        .row.m-1
+          .col-12.d-flex.align-items-center.py-2
+            - if school.logo.present?
+              .mr-2= image_tag school.logo_url, width: 30
+
+            %label
+              = school.name
+              = link_to "(#{school.code})", school_path(school), class: 'text'

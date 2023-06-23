@@ -29,7 +29,7 @@ class CollegeMajor < ApplicationRecord
   # Association
   has_many :major_mappings
   has_many :majors, through: :major_mappings
-  has_many :schools, through: :majors
+  has_many :schools, -> { distinct }, through: :majors
 
   # Callback
   before_create :secure_id

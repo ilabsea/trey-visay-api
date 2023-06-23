@@ -12,15 +12,16 @@
           %tr
             %th{width: 60} #
             %th= t('shared.code')
-            %th= t('school.name')
             %th= t('school.logo')
+            %th= t('school.name')
             %th= t('school.type')
             %th= t('school.address')
             %th= t('school.tels')
             %th= t('school.emails')
             %th= t('school.website')
             %th= t('school.category')
-            %th
+            %th= t('school.number_of_department')
+            %th= t('school.number_of_major')
 
         %tbody#body-content
           = render partial: 'school', collection: @schools

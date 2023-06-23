@@ -29,7 +29,7 @@ class CollegeMajorSerializer < ActiveModel::Serializer
              :schools
 
   def schools
-    object.schools.uniq.map do |school|
+    object.schools.map do |school|
       school.slice("id", "code", "name")
     end
   end
