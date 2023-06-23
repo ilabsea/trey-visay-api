@@ -30,12 +30,23 @@ module Spreadsheets
           qua_characteristic_of_job: row[14],
           info_job_market: row[15],
           info_similar_job: row[16],
-          logo: find_attachment(row[18], zipfile)
+          logo: find_attachment(row[18], zipfile),
+          job_majors_attributes: job_majors_attributes(row[10])
         }
 
         job.job_cluster = JobCluster.find_by(code: row[17]) if row[17].present?
         job
       end
+
+      private
+        def job_majors_attributes(edu_higher_education_skill)
+          return [] unless edu_higher_education_skill.present?
+
+          major_names = edu_higher_education_skill.split(" ")
+          major_names.map do |name|
+            { major_attributes: { name: name } }
+          end
+        end
     end
   end
 end

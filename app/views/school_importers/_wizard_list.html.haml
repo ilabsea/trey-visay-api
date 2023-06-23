@@ -50,7 +50,8 @@
           %td= index + 1
           %td= item.name
           %td
-            = image_tag(item.logo_url, width: 50) if item.logo.present?
+            - if item.logo.present?
+              = image_tag(item.logo_url, width: 50, class: 'rounded-circle')
           %td= item.address
           %td= item.phone_numbers
           %td= item.emails

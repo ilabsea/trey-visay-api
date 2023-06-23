@@ -27,7 +27,7 @@
               %td= major.name
               %td= major.personality_type
               %td= major.majors.map(&:name).join(', ')
-              %td= major.schools.uniq.length
+              %td= major.schools.length
               %td.text-right
                 = link_to edit_college_major_path(major), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('college_major.matching_with_major') } do
                   %i.fas.fa-hands

@@ -1,6 +1,6 @@
 %tr
   %td= @pagy.from + school_counter
-  %td= school.code
+  %td= link_to school.code, school_path(school), class: 'text-primary'
   %td
     - if school.logo.present?
       = image_tag school.logo_url, width: 50
@@ -12,5 +12,5 @@
   %td= school.emails
   %td= school.website_or_facebook
   %td= school.category
-  %td
-    = school.school_departments.map {|sd| "#{sd.department.name}(#{t('school.major_count', count: sd.majors.length)})"}.join(" / ")
+  %td= school.school_departments.length
+  %td= school.school_majors.length

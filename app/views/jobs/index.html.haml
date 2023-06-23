@@ -17,6 +17,7 @@
             %th= t('shared.name_en')
             %th= t('shared.logo')
             %th= t('job.cluster')
+            %th= t('college_major.number_of_schools')
             %th
 
         %tbody#body-content
@@ -27,8 +28,9 @@
               %td= job.name_km
               %td= job.name_en
               %td
-                = image_tag(job.logo_url, width: 50) if job.logo.present?
+                = image_tag(job.logo_url, width: 50, class: 'rounded-circle') if job.logo.present?
               %td= job.job_cluster_name
+              %td= job.schools.length
               %td
 
     = render "shared/footers/pagination"
