@@ -30,6 +30,8 @@
 #  deleted_at             :datetime
 #  locale                 :string(255)
 #  counselor_school_id    :string(255)
+#  actived                :boolean          default(TRUE)
+#  gf_user_id             :integer
 #
 # Indexes
 #
@@ -41,6 +43,9 @@ class Account < ApplicationRecord
   acts_as_paranoid
 
   include Accounts::Confirmable
+  include Accounts::GrafanaConcern
+
+  attr_accessor :skip_callback
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -74,6 +79,17 @@ class Account < ApplicationRecord
   # Association
   belongs_to :counselor_school, optional: true
 
+  # Door keeper association
+  has_many :access_grants,
+            class_name: "Doorkeeper::AccessGrant",
+            foreign_key: :resource_owner_id,
+            dependent: :delete_all # or :destroy if you need callbacks
+
+  has_many :access_tokens,
+            class_name: "Doorkeeper::AccessToken",
+            foreign_key: :resource_owner_id,
+            dependent: :delete_all # or :destroy if you need callbacks
+
   # Delegation
   delegate :name, to: :counselor_school, prefix: true, allow_nil: true
 
@@ -83,7 +99,8 @@ class Account < ApplicationRecord
   # Instant method
   def status
     return "archived" if deleted?
-    return "actived" if confirmed?
+    return "actived" if confirmed? && actived?
+    return "deactivated" unless actived?
 
     "pending"
   end

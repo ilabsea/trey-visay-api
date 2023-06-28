@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  use_doorkeeper do
+    controllers token_info: "token_info"
+  end
+
   devise_for :accounts, path: "/", controllers: { confirmations: "confirmations" }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -79,4 +85,13 @@ Rails.application.routes.draw do
   end
 
   mount Pumi::Engine => "/pumi"
+
+  if Rails.env.production?
+    # Sidekiq
+    authenticate :user, lambda { |u| u.primary_admin? } do
+      mount Sidekiq::Web => "/sidekiq"
+    end
+  else
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end

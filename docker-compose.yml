@@ -1,5 +1,9 @@
 version: '3'
 
+volumes:
+  db:
+  bundle:
+
 services:
   db:
     image: mysql:5.7
@@ -8,6 +12,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
       - db:/var/lib/mysql
+    ports:
+      - 3306:3306
 
   web: &rails
     restart: unless-stopped
@@ -26,6 +32,10 @@ services:
     tty: true
     stdin_open: true
 
-volumes:
-  db:
-  bundle:
+  redis:
+    image: redis:7.0.11
+
+  sidekiq:
+    <<: *rails
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    ports: []

@@ -30,7 +30,7 @@ class School < ApplicationRecord
 
   enum kind: {
     higher_education: 1,
-    vocational_education: 2
+    tvet_institute: 2
   }
 
   # has_and_belongs_to_many :careers
@@ -51,7 +51,7 @@ class School < ApplicationRecord
   def self.t_kinds
     [
       [I18n.t("school.higher_education"), "higher_education"],
-      [I18n.t("school.vocational_education"), "vocational_education"]
+      [I18n.t("school.tvet_institute"), "tvet_institute"]
     ]
   end
 

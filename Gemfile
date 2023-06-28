@@ -70,6 +70,15 @@ gem "rubyzip", "~> 1.3.0"
 # Soft delete
 gem "paranoia", "~> 2.6.1"
 
+# Oauth authentication
+gem "doorkeeper", "~> 5.6.6"
+
+# Background process
+gem "sidekiq", "~> 7.1.2"
+
+# Client request
+gem "httparty", "~> 0.21.0"
+
 # Permission
 gem "pundit", "~> 2.3.0"
 

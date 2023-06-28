@@ -30,6 +30,8 @@
 #  deleted_at             :datetime
 #  locale                 :string(255)
 #  counselor_school_id    :string(255)
+#  actived                :boolean          default(TRUE)
+#  gf_user_id             :integer
 #
 # Indexes
 #
@@ -42,6 +44,11 @@ FactoryBot.define do
     password      { FFaker::Internet.password }
     role          { "admin" }
     confirmed_at  { DateTime.now }
+    skip_callback { true }
+
+    trait :allow_callback do
+      skip_callback { false }
+    end
 
     trait :system_admin do
       role { "system_admin" }

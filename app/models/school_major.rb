@@ -23,7 +23,7 @@ class SchoolMajor < ApplicationRecord
   after_create :set_school_and_department
 
   # Delegation
-  delegate :name, to: :major, prefix: :major
+  delegate :name, to: :major, prefix: :major, allow_nil: true
 
   # Instant method
   def major_attributes=(hash)

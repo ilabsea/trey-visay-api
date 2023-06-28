@@ -28,6 +28,8 @@ module SelfUnderstandingResponsesHelper
 
   private
     def icon_with_value(value)
+      return "" unless value.present?
+
       "<div class='d-flex align-items-center text-primary'>" +
         "<span class='fi-circle-check'>" +
           image_tag("/images/check.png", class: "img-circular-small") +

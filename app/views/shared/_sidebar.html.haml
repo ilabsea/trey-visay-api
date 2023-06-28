@@ -7,14 +7,13 @@
     .sidebar-brand-text.mx-3
       = ENV["APP_NAME"]
 
-  / / Divider
-  / %hr.sidebar-divider.my-0/
+  - if policy(:grafana).show?
+    %hr.sidebar-divider.my-0/
 
-  / / Nav Item - Dashboard
-  / %li.nav-item
-  /   %a.nav-link{ href: "#" }
-  /     %i.fas.fa-fw.fa-tachometer-alt
-  /     %span Dashboard
+    %li.nav-item
+      %a.nav-link{href: ENV['GF_DASHBOARD_URL'], target: '_blank'}
+        %i.fa-solid.fa-chart-column
+        %span= t("sidebar.dashboard")
 
   / Divider
   %hr.sidebar-divider/
