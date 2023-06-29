@@ -29,7 +29,7 @@
 #
 class JobSerializer < ActiveModel::Serializer
   attributes :id, :code, :name_km, :name_en, :name, :personality_type,
-             :job_cluster_name, :job_cluster_id, :logo,
+             :logo,
              :general_description, :jd_main_task, :jd_environment,
              :jd_technology_skill, :edu_education_level,
              :edu_high_school_supported_subject, :edu_higher_education_skill,
@@ -37,6 +37,7 @@ class JobSerializer < ActiveModel::Serializer
              :qua_supported_capacity, :qua_characteristic_of_job,
              :info_job_market, :info_similar_job, :value, :updated_at
 
+  belongs_to :job_cluster
   has_many :videos
   has_many :schools
 
