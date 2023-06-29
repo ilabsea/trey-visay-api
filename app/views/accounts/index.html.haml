@@ -27,10 +27,11 @@
       %thead
         %tr
           %th{width: 60} #
-          %th សារអេឡិចត្រូនិច
-          %th តួនាទី
-          %th សាលា
+          %th= t('account.email')
+          %th= t('account.role')
+          %th= t('account.school')
           %th= t('account.status')
+          %th= t('account.grafana')
           %th
 
       %tbody
@@ -42,6 +43,8 @@
             %td= account.counselor_school_name
             %td.status{ class: account.status }
               = t("account.#{account.status}")
+            %td
+              = account.gf_user_id.present? ? "Yes" : nil
             %td
               %div{style: 'text-align: right'}
                 = render 'action_buttons', account: account
