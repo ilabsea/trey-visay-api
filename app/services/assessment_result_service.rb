@@ -15,7 +15,7 @@ class AssessmentResultService
       { code: "date_of_birth", name: "ថ្ងៃខែឆ្នាំកំណើត" },
       { code: "phone_number", name: "លេខទូរស័ព្ទ" },
       { code: "grade", name: "ថ្នាក់ទី" },
-      { code: "high_school_label", name: "រៀននៅសាលា" }
+      { code: "school_address", name: "រៀននៅសាលា" }
     ]
 
     @personal_understanding_columns = [
@@ -137,9 +137,9 @@ class AssessmentResultService
 
     def build_user_info(user)
       desired_columns = @user_info_columns.pluck(:code)
-      desired_columns = desired_columns.delete_if { |x| x == "high_school_label" }
+      desired_columns = desired_columns.delete_if { |x| x == "school_address" }
       arr = user.attributes.values_at(*desired_columns)
-      arr.push user.high_school_label
+      arr.push user.school_address
       arr
     end
 

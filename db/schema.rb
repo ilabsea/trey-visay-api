@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_28_045911) do
+ActiveRecord::Schema.define(version: 2023_06_29_065314) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -173,10 +173,12 @@ ActiveRecord::Schema.define(version: 2023_06_28_045911) do
     t.string "goal"
   end
 
-  create_table "high_schools", primary_key: "code", id: :string, limit: 7, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "high_schools", primary_key: "code", id: :string, limit: 10, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name_km"
     t.string "name_en"
-    t.string "location_code"
+    t.string "district_id"
+    t.string "province_id"
+    t.string "commune_id"
     t.index ["code"], name: "index_high_schools_on_code", unique: true
   end
 
@@ -298,16 +300,6 @@ ActiveRecord::Schema.define(version: 2023_06_28_045911) do
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "middle_schools", id: :string, limit: 8, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
-    t.string "province_id"
-    t.string "district_id"
-    t.string "commune_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

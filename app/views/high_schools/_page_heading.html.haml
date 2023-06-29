@@ -1,26 +1,26 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.middle_school')
+  %h1.h3.mb-0.text-gray-800= t('sidebar.high_school')
 
   %div
-    = render "shared/buttons/download_button", url: middle_schools_path(filter_params.merge(format: :xlsx))
+    = render "shared/buttons/download_button", url: high_schools_path(filter_params.merge(format: :xlsx))
 
     / More Options
-    - if policy(MiddleSchool).create?
+    - if policy(HighSchool).create?
       .btn-group
         %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           %i.fas.fa-ellipsis-v
 
         .dropdown-menu.dropdown-menu-right
-          %a.btn.dropdown-item{ href: new_middle_school_importer_path }
+          %a.btn.dropdown-item{ href: new_high_school_importer_path }
             %i.fas.fa-file-import.drop-menu-icon
             %span= t("shared.import_from_file")
 
-          %a.btn.dropdown-item{ href: middle_school_importers_path }
+          %a.btn.dropdown-item{ href: high_school_importers_path }
             %i.fas.fa-history.drop-menu-icon
-            %span= t('shared.importing_history', name: t('sidebar.middle_school'))
+            %span= t('shared.importing_history', name: t('sidebar.high_school'))
 
           - if current_account.primary_admin?
-            %a.btn.dropdown-item{ href: middle_schools_path(format: :json), target: '_blank' }
+            %a.btn.dropdown-item{ href: high_schools_path(format: :json), target: '_blank' }
               %i.fas.fa-download.drop-menu-icon
               %span= t('shared.download_json')
 

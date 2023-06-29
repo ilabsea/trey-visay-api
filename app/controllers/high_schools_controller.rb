@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-class MiddleSchoolsController < ApplicationController
+class HighSchoolsController < ApplicationController
   helper_method :filter_params
 
   def index
     respond_to do |format|
       format.html {
-        @pagy, @schools = pagy(authorize MiddleSchool.filter(filter_params))
+        @pagy, @schools = pagy(authorize HighSchool.filter(filter_params))
       }
 
       format.xlsx {
-        @schools = authorize MiddleSchool.filter(filter_params)
+        @schools = authorize HighSchool.filter(filter_params)
 
         if @schools.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
           flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
@@ -21,15 +21,19 @@ class MiddleSchoolsController < ApplicationController
       }
 
       format.json {
-        @schools = authorize MiddleSchool.filter(filter_params)
+        @schools = authorize HighSchool.filter(filter_params)
 
         render json: @schools
       }
     end
   end
 
+  def grades
+    render json: User.grades
+  end
+
   private
     def filter_params
-      params.permit(:name)
+      params.permit(:name, :district_id)
     end
 end

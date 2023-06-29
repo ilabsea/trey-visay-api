@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "Api::V2::UsersController", type: :request do
   describe "POST #create" do
     let!(:api_key) { ApiKey.create }
-    let!(:middle_school) { create(:middle_school) }
+    let!(:high_school) { create(:high_school) }
     let!(:params) {
       {
         full_name: "Sokly",
@@ -14,8 +14,8 @@ RSpec.describe "Api::V2::UsersController", type: :request do
         phone_number: "011222333",
         grade: User::GRADES.sample,
         class_group: User.class_groups.keys.sample,
-        middle_school_id: middle_school.id,
-        commune_code: middle_school.commune_id,
+        high_school_id: high_school.code,
+        commune_code: high_school.commune_id,
         device_id: "0ebf40b3",
         device_type: "mobile",
         device_os: "android",

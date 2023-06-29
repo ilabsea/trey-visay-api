@@ -58,7 +58,6 @@ class User < ApplicationRecord
 
   # Associaction
   # V2
-  belongs_to :middle_school, optional: true
   has_many :holland_quizzes, dependent: :destroy
 
   # V1
@@ -75,13 +74,6 @@ class User < ApplicationRecord
 
   # Callback
   before_create :set_username_password
-
-  def high_school_label
-    # high_school_code
-    # return nil if high_school_code.blank?
-
-    # "#{province.name_km} > #{district.name_km} > #{high_school.name_km}"
-  end
 
   def school_address
     return nil unless high_school_code.present?
@@ -100,12 +92,12 @@ class User < ApplicationRecord
   end
 
   def self.filter(params)
-    relation = all
-    relation = relation.where(province_code: params[:province_code]) if params[:province_code].present?
-    relation = relation.where(district_code: params[:district_code]) if params[:district_code].present?
-    relation = relation.where(high_school_code: params[:high_school_code]) if params[:high_school_code].present?
-    relation = relation.where(grade: params[:grade]) if params[:grade].present?
-    relation
+    scop = all
+    scop = scop.where(province_id: params[:province_id]) if params[:province_id].present?
+    scop = scop.where(district_id: params[:district_id]) if params[:district_id].present?
+    scop = scop.where(high_school_code: params[:high_school_code]) if params[:high_school_code].present?
+    scop = scop.where(grade: params[:grade]) if params[:grade].present?
+    scop
   end
 
   private

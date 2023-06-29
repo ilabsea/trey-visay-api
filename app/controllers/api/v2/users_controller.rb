@@ -17,7 +17,7 @@ module Api
         def user_params
           params.require(:user).permit(
             :uuid, :full_name, :sex, :date_of_birth, :phone_number, :grade,
-            :class_group, :high_school_code, :middle_school_id, :registered_at,
+            :class_group, :high_school_code, :registered_at,
             :commune_code, :device_id, :device_type, :device_os, :app_version
           )
         end

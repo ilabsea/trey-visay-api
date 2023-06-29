@@ -26,7 +26,7 @@ class Batch < ApplicationRecord
   has_many :jobs, through: :importing_items, source: :itemable, source_type: "Job"
   has_many :holland_questions, through: :importing_items, source: :itemable, source_type: "HollandQuestion"
   has_many :schools, through: :importing_items, source: :itemable, source_type: "School"
-  has_many :middle_schools, through: :importing_items, source: :itemable, source_type: "MiddleSchool"
+  has_many :high_schools, through: :importing_items, source: :itemable, source_type: "HighSchool"
 
   # Nested attributes
   accepts_nested_attributes_for :importing_items

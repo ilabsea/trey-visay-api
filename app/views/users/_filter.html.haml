@@ -1,25 +1,22 @@
-%form
+= form_for "", url: users_path, method: 'get' do |f|
   .d-flex
     .form-group.mr-2
-      %input{type: 'hidden', name: :province_code, value: params[:province_code]}
-      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/provinces", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-populate-on-load" => "true", "data-pumi-select-target" => "district", name: :province_code, 'data-pumi-select-has-hidden-value' => true}
-        %option{:value => ""}= t('shared.all_provinces')
+      = f.hidden_field(:province_id, value: params[:province_id])
+      = f.select(:province_id, [], {:include_blank => t("shared.all_provinces")}, {:data => {pumi_select_target: "district", pumi_select_collection_url: pumi.provinces_path, pumi_select_collection_label_method: "name_#{I18n.locale}", pumi_select_collection_value_method: "id", pumi_select_populate_on_load: true, pumi_select_has_hidden_value: true}, class: 'form-control custom-select'})
 
     .form-group.mr-2
-      %input{type: 'hidden', name: :district_code, value: params[:district_code]}
-
-      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/pumi/districts?province_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#district", "data-pumi-select-id" => "district", "data-pumi-select-target" => "school", name: 'district_code', 'data-pumi-select-has-hidden-value' => true}
-        %option{:value => ""}= t('shared.all_districts')
+      = f.hidden_field(:district_id, value: params[:district_id])
+      = f.select(:district_id, [], {:include_blank => t("shared.all_districts")}, {:data => {:pumi_select_id => "district", :pumi_select_target => "school", :pumi_select_collection_url => pumi.districts_path(:province_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_#{I18n.locale}", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#district", :pumi_select_has_hidden_value => true}, class: 'form-control custom-select'})
 
     .form-group.mr-2
-      %input{type: 'hidden', name: :high_school_code, value: params[:high_school_code]}
-      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name_km", "data-pumi-select-collection-url" => "/api/v1/high_schools?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
-        %option{:value => ""}= t('shared.all_communes')
+      = f.hidden_field(:high_school_code, value: params[:high_school_code])
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
+        %option{value: ""}= t('shared.all_schools')
 
     .form-group.mr-2
-      %input{type: 'hidden', name: :grade, value: params[:grade]}
-      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "label", "data-pumi-select-collection-url" => "/api/v1/high_schools/grades", "data-pumi-select-collection-value-method" => "value", "data-pumi-select-disabled-class" => "my-disabled-class", "data-pumi-select-disabled-target" => "#klass", "data-pumi-select-id" => "klass", name: 'grade', 'data-pumi-select-has-hidden-value' => true}
-        %option{:value => ""}= t('shared.all_schools')
+      = f.hidden_field(:grade, value: params[:grade])
+      %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "label", "data-pumi-select-collection-url" => "/high_schools/grades", "data-pumi-select-collection-value-method" => "value", "data-pumi-select-disabled-target" => "#grade", "data-pumi-select-id" => "klass", name: 'grade', 'data-pumi-select-has-hidden-value' => true}
+        %option{value: ""}= t('shared.all_grades')
 
     .form-group
-      %button.btn-search.btn.btn-primary{type: 'button'} ស្វែងរក
+      %button.btn-search.btn.btn-primary{type: 'button'}= t('shared.search')

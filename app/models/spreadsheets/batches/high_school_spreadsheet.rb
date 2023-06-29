@@ -2,7 +2,7 @@
 
 module Spreadsheets
   module Batches
-    class MiddleSchoolSpreadsheet
+    class HighSchoolSpreadsheet
       attr_reader :school
 
       def initialize(school)
@@ -14,7 +14,8 @@ module Spreadsheets
 
         school.attributes = {
           code: row["school_code"],
-          name: row["school_name"],
+          name_km: row["name_km"],
+          name_en: row["name_en"] || row["name_km"],
           commune_id: row["commune_id"],
           district_id: commune.try(:district_id),
           province_id: commune.try(:province_id)

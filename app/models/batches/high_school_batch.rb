@@ -16,8 +16,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Batches::MiddleSchoolBatch < Batch
+class Batches::HighSchoolBatch < Batch
   def self.policy_class
-    MiddleSchoolBatchPolicy
+    HighSchoolBatchPolicy
   end
 end
