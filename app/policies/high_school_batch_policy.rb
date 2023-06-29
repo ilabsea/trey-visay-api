@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class MiddleSchoolBatchPolicy < ApplicationPolicy
+class HighSchoolBatchPolicy < ApplicationPolicy
   def index?
     create?
   end

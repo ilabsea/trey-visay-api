@@ -17,12 +17,13 @@
             = ff.fields_for :itemable, item do |fff|
               = fff.hidden_field :id
               = fff.hidden_field :code
-              = fff.hidden_field :name
+              = fff.hidden_field :name_km
+              = fff.hidden_field :name_en
               = fff.hidden_field :commune_id
 
         %tr
           %td= index + 1
-          %td= item.name
+          %td= item.name_km
           %td= "(#{item.commune_id}) #{item.address}"
 
           / Validation status

@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   def index
-    @pagy, @users = pagy(User.filter(params).order(created_at: :desc).includes(:games, :personal_understandings, :high_school, :holland_quizzes))
+    @pagy, @users = pagy(User.filter(filter_params).order(created_at: :desc).includes(:games, :personal_understandings, :high_school, :holland_quizzes))
   end
 
   def download
@@ -19,4 +19,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  private
+    def filter_params
+      params.permit(:province_id, :district_id, :high_school_code, :grade)
+    end
 end

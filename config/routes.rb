@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   resources :schools
   resources :school_importers
 
-  resources :middle_schools
-  resources :middle_school_importers
+  resources :high_schools do
+    get :grades, on: :collection
+  end
+  resources :high_school_importers
 
   resources :jobs
   resources :job_importers
@@ -65,9 +67,6 @@ Rails.application.routes.draw do
       resources :schools, only: [:index, :create]
       resources :games, only: [:create]
       resources :personality_tests, only: [:create]
-      resources :high_schools, only: [:index] do
-        get :grades, on: :collection
-      end
       devise_scope :account do
         post "/accounts/sign_in" => "sessions#create"
         post "/accounts/sign_out" => "sessions#destroy"

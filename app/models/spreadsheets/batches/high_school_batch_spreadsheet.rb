@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Spreadsheets
-  class Batches::MiddleSchoolBatchSpreadsheet < Spreadsheets::Batches::BaseSpreadsheet
+  class Batches::HighSchoolBatchSpreadsheet < Spreadsheets::Batches::BaseSpreadsheet
     private
       def batch_model
-        ::Batches::MiddleSchoolBatch
+        ::Batches::HighSchoolBatch
       end
 
       def assign_items(sheet, sheet_name)
@@ -13,12 +13,12 @@ module Spreadsheets
 
       def importing_items
         codes = @items.map { |r| r["school_code"] }
-        items = MiddleSchool.where(code: codes)
+        items = HighSchool.where(code: codes)
 
         @items.map do |row|
-          item = items.select { |f| f.code == row["school_code"] }.first || MiddleSchool.new
+          item = items.select { |f| f.code == row["school_code"] }.first || HighSchool.new
 
-          batch.importing_items.new(itemable: Spreadsheets::Batches::MiddleSchoolSpreadsheet.new(item).process(row))
+          batch.importing_items.new(itemable: Spreadsheets::Batches::HighSchoolSpreadsheet.new(item).process(row))
         end
       end
   end

@@ -13,11 +13,11 @@ module Sample
           next if index.zero?
 
           name_km = row[2]
-          location_code = row[3]
+          district_id = row[3]
           code = row[4]
 
           school = ::HighSchool.find_or_initialize_by(code: code)
-          school.update_attributes(name_km: name_km, location_code: location_code)
+          school.update_attributes(name_km: name_km, district_id: district_id)
         end
       end
 
@@ -31,7 +31,7 @@ module Sample
           code: school.code,
           label: school.name_km,
           name_en: school.name_en,
-          parent_code: school.location_code
+          parent_code: school.district_id
         }
 
         schools.push(skool)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MiddleSchools::LocationConcern
+module HighSchools::LocationConcern
   extend ActiveSupport::Concern
 
   included do
@@ -33,8 +33,8 @@ module MiddleSchools::LocationConcern
 
     private
       def set_province_id_and_district_id
-        self.province_id ||= commune_id[0..1]
         self.district_id ||= commune_id[0..3]
+        self.province_id ||= district_id[0..1]
       end
   end
 end

@@ -18,7 +18,7 @@ TV.UsersIndex = (() => {
   }
 
   function getQueryString() {
-    let codes = ['province_code', 'district_code', 'high_school_code', 'grade'];
+    let codes = ['province_id', 'district_id', 'high_school_code', 'grade'];
     let arr = [];
 
     for(var i=0; i<codes.length; i++) {

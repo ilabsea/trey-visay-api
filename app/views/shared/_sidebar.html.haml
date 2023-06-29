@@ -47,9 +47,9 @@
           %a.collapse-item{ href: schools_path, class: css_active_class('schools', 'school_importers') }
             = t('sidebar.school')
 
-        - if policy(MiddleSchool).create?
-          %a.collapse-item{ href: middle_schools_path, class: css_active_class('middle_schools', 'middle_school_importers') }
-            = t('sidebar.middle_school')
+        - if policy(HighSchool).create?
+          %a.collapse-item{ href: high_schools_path, class: css_active_class('high_schools', 'high_school_importers') }
+            = t('sidebar.high_school')
 
         - if policy(JobCluster).create?
           %a.collapse-item{ href: job_clusters_path, class: css_active_class('job_clusters', 'job_cluster_importers') }

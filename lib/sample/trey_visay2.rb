@@ -11,7 +11,7 @@ module Sample
 
       create_batch("HollandQuestionBatch", "holland_question.xlsx")
       create_batch("SchoolBatch", "schools.zip")
-      create_batch("MiddleSchoolBatch", "middle_school.xlsx")
+      create_batch("HighSchoolBatch", "high_school.xlsx")
       create_batch("VideoBatch", "video.xlsx")
       create_batch("JobClusterBatch", "job_cluster.xlsx")
       create_batch("JobBatch", "job.xlsx")
