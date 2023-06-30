@@ -32,6 +32,8 @@
 #  counselor_school_id    :string(255)
 #  actived                :boolean          default(TRUE)
 #  gf_user_id             :integer
+#  province_id            :string(255)
+#  district_id            :string(255)
 #
 # Indexes
 #
@@ -60,7 +62,7 @@ FactoryBot.define do
 
     trait :counselor do
       role { "counselor" }
-      counselor_school_id { CounselorSchool.create(name: "school_name").id }
+      high_school_ids { [create(:high_school).id] }
     end
   end
 end

@@ -16,18 +16,14 @@
 #  index_high_schools_on_code  (code) UNIQUE
 #
 class HighSchoolSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :province_id, :district_id, :commune_id,
-             :province, :district, :commune
+  attributes :id, :code, :name, :name_km, :name_en, :province_id, :district_id, :commune_id,
+             :province, :district, :commune, :parent_code, :label
 
-  def province
-    object.province
+  def parent_code
+    object.district_id
   end
 
-  def district
-    object.district
-  end
-
-  def commune
-    object.commune
+  def label
+    object.name_km
   end
 end
