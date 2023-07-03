@@ -2,6 +2,9 @@
   = simple_form_for @account, defaults: { input_html: { class: 'form-horizontal' } } do |f|
     = f.input :email, label: t('account.email'), input_html: { readonly: @account.persisted? }
 
+    = f.input :full_name, label: t('account.full_name')
+    = f.input :phone_number, label: t('account.phone_number')
+
     = f.input :role, label: t('account.role'), collection: Account::ROLES, input_html: { class: 'role custom-select' }
 
     .school.d-none

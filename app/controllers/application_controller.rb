@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include Pagy::Backend
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ::Pundit::NotAuthorizedError, with: :render_unauthorized
 
   before_action :authenticate_account!
   before_action :set_locale
@@ -56,10 +56,8 @@ class ApplicationController < ActionController::Base
       render options
     end
 
-    def user_not_authorized
-      policy_name = exception.policy.class.to_s.underscore
-
-      flash[:error] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
-      redirect_back(fallback_location: root_path)
+    def render_unauthorized
+      flash[:alert] = I18n.t("shared.unauthorized_alert_message")
+      redirect_to(request.referrer || root_path)
     end
 end

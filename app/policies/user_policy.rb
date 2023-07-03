@@ -2,9 +2,10 @@
 
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      return scope.all if user.primary_admin? || user.admin?
+
+      scope.where(high_school_code: user.high_school_ids)
+    end
   end
 end
