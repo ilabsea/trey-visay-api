@@ -16,8 +16,8 @@
 #  index_high_schools_on_code  (code) UNIQUE
 #
 class HighSchoolSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :name_km, :name_en, :province_id, :district_id, :commune_id,
-             :province, :district, :commune, :parent_code, :label
+  attributes :id, :code, :name, :name_km, :name_en, :province_id, :district_id,
+             :province, :district, :parent_code, :label
 
   def parent_code
     object.district_id
