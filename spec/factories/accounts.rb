@@ -34,6 +34,8 @@
 #  gf_user_id             :integer
 #  province_id            :string(255)
 #  district_id            :string(255)
+#  full_name              :string(255)
+#  phone_number           :string(255)
 #
 # Indexes
 #
