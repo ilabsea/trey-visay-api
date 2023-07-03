@@ -2,9 +2,7 @@
 .d-sm-flex.align-items-center.justify-content-between.mb-4
   %h1.h3.mb-0.text-gray-800 អ្នកប្រើប្រាស់
 
-  %a#btn-download.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm{ href: download_users_path, target: :_blank }
-    %i.fas.fa-download.fa-sm.text-white-50
-    ទាញយកលទ្ធផល
+  = render "shared/buttons/download_button", url: users_path(filter_params.merge(format: :xlsx))
 
 = render 'filter'
 
