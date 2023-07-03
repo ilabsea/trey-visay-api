@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+# Users sheet-------------
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "app_user") do |sheet|
+  sheet.add_row %w[id full_name gender date_of_birth phone_number school_name grade class_group app_vesion registered_at device_type device_os]
+
+  @users.each_with_index do |user, index|
+    row = [
+      user.id,
+      user.full_name,
+      user.sex,
+      user.date_of_birth,
+      user.phone_number,
+      user.school_address,
+      user.grade,
+      user.class_group,
+      user.app_version,
+      user.registered_at,
+      user.device_type,
+      user.device_os
+    ]
+
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end
