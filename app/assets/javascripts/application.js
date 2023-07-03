@@ -32,6 +32,7 @@
 //= require games/show
 //= require personality_tests/show
 //= require users/index
+//= require users/new
 //= require college_majors/edit
 
 $(document).on('turbolinks:load', function() {

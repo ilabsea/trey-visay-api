@@ -32,6 +32,8 @@
 #  counselor_school_id    :string(255)
 #  actived                :boolean          default(TRUE)
 #  gf_user_id             :integer
+#  province_id            :string(255)
+#  district_id            :string(255)
 #
 # Indexes
 #
@@ -44,6 +46,7 @@ class Account < ApplicationRecord
 
   include Accounts::Confirmable
   include Accounts::GrafanaConcern
+  include Accounts::OauthProvider
 
   attr_accessor :skip_callback
 
@@ -71,27 +74,16 @@ class Account < ApplicationRecord
   # Validation
   validates :email, presence: true
   validates :role, presence: true
-  validates :counselor_school_id, presence: true, if: -> { counselor? }
+  validates :province_id, presence: true, if: :counselor?
+  validates :district_id, presence: true, if: :counselor?
+  validates :high_school_ids, presence: true, if: :counselor?
 
   # Constant
   ROLES = [["អ្នកគ្រប់គ្រង", "admin"], ["អ្នកប្រឹក្សាយោបល់", "counselor"]]
 
   # Association
-  belongs_to :counselor_school, optional: true
-
-  # Door keeper association
-  has_many :access_grants,
-            class_name: "Doorkeeper::AccessGrant",
-            foreign_key: :resource_owner_id,
-            dependent: :delete_all # or :destroy if you need callbacks
-
-  has_many :access_tokens,
-            class_name: "Doorkeeper::AccessToken",
-            foreign_key: :resource_owner_id,
-            dependent: :delete_all # or :destroy if you need callbacks
-
-  # Delegation
-  delegate :name, to: :counselor_school, prefix: true, allow_nil: true
+  has_many :account_high_schools
+  has_many :high_schools, through: :account_high_schools
 
   # Scope
   default_scope { order(updated_at: :desc) }

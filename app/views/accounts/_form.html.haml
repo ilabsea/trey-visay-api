@@ -4,7 +4,23 @@
 
     = f.input :role, label: t('account.role'), collection: Account::ROLES, input_html: { class: 'role custom-select' }
 
-    = f.input :counselor_school_id, label: t('account.school'), collection: CounselorSchool.pluck(:name, :id), input_html: { class: 'custom-select' }
+    .school.d-none
+      = render partial: "shared/select_field", locals: { f: f, field_name: "province_id", select_id: "province", select_target: "district", select_collection_url: pumi.provinces_path, select_populate_on_load: true }
+
+      = render partial: "shared/select_field", locals: { f: f, field_name: "district_id", select_id: "district", select_target: "school", select_collection_url: pumi.districts_path(:province_id => "FILTER"), select_disabled_target: "#district" }
+
+      .form-group.mr-2
+        = f.label(:high_school_ids) do
+          = t("account.school")
+          %abbr{title: "required"} *
+
+        .d-none
+          = f.input :high_school_ids, as: :select, input_html: { multiple: true }
+
+        %select.form-control.custom-select{ "data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'account[high_school_ids][]', 'data-pumi-select-has-hidden-value' => true, multiple: true, 'data-pumi-select-hidden-values' => @account.high_school_ids, class: ('is-invalid' if f.object.errors["high_school_ids"].present?) }
+          %option{value: ""}= t('shared.all_schools')
+
+        .invalid-feedback.d-block= f.object.errors["high_school_ids"].join(';')
 
     .actions
       = link_to t('shared.cancel'), accounts_path, class: 'btn btn-secondary'

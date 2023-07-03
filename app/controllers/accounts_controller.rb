@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ edit update archive resend_confirmation]
 
   def index
-    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(filter_params).includes(:counselor_school)))
+    @pagy, @accounts = pagy(policy_scope(authorize Account.filter(filter_params).includes(:high_schools)))
   end
 
   def show
@@ -72,7 +72,7 @@ class AccountsController < ApplicationController
     end
 
     def account_params
-      params.require(:account).permit(:email, :role, :counselor_school_id)
+      params.require(:account).permit(:email, :role, :province_id, :district_id, high_school_ids: [])
     end
 
     def filter_params

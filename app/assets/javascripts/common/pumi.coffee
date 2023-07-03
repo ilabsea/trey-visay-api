@@ -47,7 +47,13 @@ pumi =
 
     pumi.selectHasHiddenValue().each ->
       select = $(this)
-      pumi.setDataAttribute(select, 'default-value', $($.find("[name='#{select.attr('name')}']")).val())
+      value = $($.find("[name='#{select.attr('name')}']")).val()
+
+      # Custom here to support multiple select
+      if select.prop('multiple')
+        value = select.data(pumi.dataAttributeTag('hidden-values'))
+
+      pumi.setDataAttribute(select, 'default-value', value)
 
   populateFromAjax: (select, filterValue) ->
     collectionUrl = pumi.getDataAttribute(select, 'collection-url')

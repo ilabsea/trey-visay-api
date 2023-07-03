@@ -7,7 +7,7 @@
     %span.d-none.d-md-inline= t('shared.add_new', name: t('account.account'))
 
 / Nav tabs
-%ul.nav.nav-tabs.nav-justified
+%ul.nav.nav-tabs
   %li.nav-item
     %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
       %i.fas.fa-users
@@ -23,7 +23,7 @@
   .card-body
     = render "shared/pagination_title", objects: @accounts
 
-    %table.table-bordered.table
+    %table.table
       %thead
         %tr
           %th{width: 60} #
@@ -40,13 +40,17 @@
             %td= @pagy.from + index
             %td= link_to account.email, edit_account_path(account.id)
             %td= I18n.t("account.#{account.role}")
-            %td= account.counselor_school_name
+            %td
+              = account.high_schools.map(&:name).join(", ")
+              - if account.district_id.present?
+                = "(#{Pumi::District.find_by_id(account.district_id).address_km})"
+
             %td.status{ class: account.status }
               = t("account.#{account.status}")
             %td
               = account.gf_user_id.present? ? "Yes" : nil
             %td
-              %div{style: 'text-align: right'}
+              .d-flex.justify-content-end
                 = render 'action_buttons', account: account
 
     = render "shared/footers/pagination"
