@@ -33,7 +33,7 @@
 require "csv"
 
 class User < ApplicationRecord
-  include Users::LocationConcern
+  include HighSchools::LocationConcern
 
   mount_uploader :photo, ::PhotoUploader
 

@@ -15,7 +15,7 @@ RSpec.describe "Api::V2::UsersController", type: :request do
         grade: User::GRADES.sample,
         class_group: User.class_groups.keys.sample,
         high_school_id: high_school.code,
-        commune_code: high_school.commune_id,
+        district_id: high_school.district_id,
         device_id: "0ebf40b3",
         device_type: "mobile",
         device_os: "android",
