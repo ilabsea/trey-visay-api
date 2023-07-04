@@ -11,6 +11,7 @@
 #  display_order :integer          default(1)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  relevant      :string(255)
 #
 FactoryBot.define do
   factory :self_understanding_question do

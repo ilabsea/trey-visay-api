@@ -26,6 +26,13 @@ module SelfUnderstandingResponsesHelper
     icon_with_value(value)
   end
 
+  def display_question?(question, responses)
+    return true unless question.operator.present?
+
+    relevant_fv = responses.select { |res| res.self_understanding_question_code == question.relevant_question_code }.first
+    relevant_fv.value.send(question.operator, question.relevant_question_value) if relevant_fv.present?
+  end
+
   private
     def icon_with_value(value)
       return "" unless value.present?
