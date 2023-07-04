@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Visits") do |sheet|
+  sheet.add_row [
+    t("visit.device_id"),
+    t("visit.page"),
+    t("visit.pageable"),
+    t("visit.platform"),
+    t("visit.visit_date"),
+    t("shared.created_at")
+  ]
+
+  @visits.each do |visit|
+    row = [
+      visit.user.display_device_id,
+      visit.page_name,
+      visit.pageable_name,
+      visit.device_os,
+      visit.visit_date,
+      visit.created_at
+    ]
+
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end

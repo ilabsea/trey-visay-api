@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_03_092432) do
+ActiveRecord::Schema.define(version: 2023_07_04_070938) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -357,6 +357,22 @@ ActiveRecord::Schema.define(version: 2023_07_03_092432) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "pages", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name_km"
+    t.string "name_en"
+    t.string "parent_id"
+    t.integer "visits_count"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lft"], name: "index_pages_on_lft"
+    t.index ["rgt"], name: "index_pages_on_rgt"
+  end
+
   create_table "personal_understandings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
@@ -542,6 +558,16 @@ ActiveRecord::Schema.define(version: 2023_07_03_092432) do
     t.string "name"
     t.string "url"
     t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "visits", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "page_id"
+    t.integer "user_id"
+    t.datetime "visit_date"
+    t.string "pageable_id"
+    t.string "pageable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

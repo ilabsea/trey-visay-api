@@ -1,0 +1,14 @@
+%tr
+  %td{ style: "padding-left:#{16*page.level}px" }= num
+  %td= page.code
+  %td= page.name_km
+  %td= page.name_en
+  %td= link_to page.visits_count, visits_path(page_ids: [page.id]), target: "_blank"
+  %td= timeago(page.created_at).html_safe
+  %td= timeago(page.updated_at).html_safe
+  %td
+    .d-flex.justify-content-end
+      = render 'shared/buttons/edit_button', object: page, url: edit_page_path(page)
+
+- page.children.each_with_index do |p, i|
+  = render "page", page: p, num: "#{num}.#{i + 1}"

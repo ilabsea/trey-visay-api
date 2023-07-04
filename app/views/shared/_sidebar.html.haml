@@ -33,6 +33,12 @@
         %i.fas.fa-fw.fa-user
         %span= t('account.account')
 
+  - if policy(Visit).index?
+    %li.nav-item{class: css_active_class('visits')}
+      %a.nav-link{ href: visits_path }
+        %i.fas.fa-fw.fa-eye
+        %span= t('sidebar.visit')
+
   - if current_account.primary_admin? || current_account.admin?
     / Manage Content
     %li.nav-item
@@ -76,10 +82,24 @@
             %a.collapse-item{ href: self_understanding_questions_path, class: css_active_class('self_understanding_questions') }
               = t('sidebar.self_understanding_question')
 
+    / Manage Settings
+    %li.nav-item
+      %a.nav-link.collapsed{"aria-controls" => "collapseSetting", "aria-expanded" => "true", "data-target" => "#collapseSetting", "data-toggle" => "collapse", :href => "#"}
+        %i.fas.fa-fw.fa-wrench
+        %span= t('sidebar.settings')
+
+      #collapseSetting.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordionSidebar"}
+        .bg-white.py-2.collapse-inner.rounded
+          %h6.collapse-header Application setting
+
+          - if policy(Page).index?
+            %a.collapse-item{ href: pages_path, class: css_active_class('pages') }
+              = t('sidebar.page')
+
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation
-      %span អំពីកម្មវិធី
+      %span= t('shared.about')
 
   / Divider
   %hr.sidebar-divider.d-none.d-md-block/

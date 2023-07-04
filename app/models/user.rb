@@ -81,6 +81,12 @@ class User < ApplicationRecord
     "#{high_school_name_km} #{address}"
   end
 
+  def display_device_id
+    return device_id if device_id.length <= 6
+
+    device_id.first(3) + "..." + device_id.last(3)
+  end
+
   def self.grades
     [
       { value: 9, label: 9 },
