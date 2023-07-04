@@ -1,0 +1,31 @@
+/ Page Heading
+= render "page_heading"
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @visits
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('visit.device_id')
+            %th= t('visit.page')
+            %th= t('visit.pageable')
+            %th= t('visit.platform')
+            %th= t('visit.visit_date')
+            %th= t('shared.created_at')
+
+        %tbody#body-content
+          - @visits.each_with_index do |visit, index|
+            %tr
+              %td= @pagy.from + index
+              %td= visit.user.display_device_id
+              %td= visit.page_name
+              %td= visit.pageable_name
+              %td.text-capitalize= visit.device_os
+              %td= timeago(visit.visit_date).html_safe
+              %td= timeago(visit.created_at).html_safe
+
+    = render "shared/footers/pagination"

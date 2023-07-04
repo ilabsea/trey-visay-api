@@ -70,6 +70,9 @@ gem "rubyzip", "~> 1.3.0"
 # Soft delete
 gem "paranoia", "~> 2.6.1"
 
+# Nested level
+gem "awesome_nested_set", "~> 3.5.0"
+
 # Oauth authentication
 gem "doorkeeper", "~> 5.6.6"
 
