@@ -13,8 +13,12 @@
 #  updated_at    :datetime         not null
 #  relevant      :string(255)
 #
-require "rails_helper"
+class SelfUnderstandingQuestionSerializer < ActiveModel::Serializer
+  attributes :id, :code, :name, :type, :relevant, :display_order
 
-RSpec.describe SelfUnderstandingQuestion, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  has_many :options
+
+  class SelfUnderstandingOptionSerializer < ActiveModel::Serializer
+    attributes :id, :code, :name, :value
+  end
 end

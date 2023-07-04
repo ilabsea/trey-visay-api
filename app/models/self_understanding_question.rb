@@ -11,6 +11,7 @@
 #  display_order :integer          default(1)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  relevant      :string(255)
 #
 class SelfUnderstandingQuestion < ApplicationRecord
   # Association
@@ -33,4 +34,24 @@ class SelfUnderstandingQuestion < ApplicationRecord
 
   # Scope
   default_scope { order(display_order: :asc) }
+
+  def relevant_question_code
+    relevant.to_s.split("||")[0]
+  end
+
+  def relevant_question_value
+    relevant.to_s.split("||")[2]
+  end
+
+  def operators
+    {
+      "=": "=="
+    }
+  end
+
+  def operator
+    operant = relevant.to_s.split("||")[1]
+
+    operators[operant.to_s.to_sym]
+  end
 end

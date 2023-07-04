@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Question") do |sheet|
+  sheet.add_row %w[code name type relevant]
+
+  @questions.each_with_index do |question, index|
+    sheet.add_row [
+      question.code,
+      question.name,
+      question.type,
+      question.relevant
+    ], types: [:string, :string, :string, :string]
+  end
+end
+
+wb.add_worksheet(name: "Option") do |sheet|
+  sheet.add_row %w[question_code code name value]
+
+  @questions.each_with_index do |question, index|
+    next unless question.options.present?
+
+    question.options.each do |option|
+      sheet.add_row [
+        question.code,
+        option.code,
+        option.name,
+        option.value
+      ], types: [:string, :string, :string, :string]
+    end
+  end
+end

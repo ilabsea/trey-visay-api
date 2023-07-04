@@ -9,13 +9,14 @@
   .shadow-box
     %table.table
       %tbody
-        - SelfUnderstandingQuestion.includes(:options).each do |question|
-          %tr
-            %td= question.name
-            %td
-              - response = quiz.self_understanding_responses.select { |res| res.self_understanding_question_id == question.id }.first
+        - @questions.each do |question|
+          - if display_question?(question, quiz.self_understanding_responses)
+            %tr
+              %td= question.name
+              %td
+                - response = quiz.self_understanding_responses.select { |res| res.self_understanding_question_id == question.id }.first
 
-              = reponse_value_html(question, response.value).html_safe
+                = reponse_value_html(question, response.try(:value)).html_safe
 
 .d-flex
   / ---------------------Phase 2
@@ -45,7 +46,7 @@
         .w-25= t('user.selected_major')
         %div.d-flex
           %ul
-            - quiz.holland_major_responses.includes(:college_major).each do |major|
+            - @holland_major_responses.each do |major|
               %li
                 = major.college_major_name
                 %small.text-primary= "(#{t('user.selected')})" if major.selected
@@ -54,7 +55,7 @@
         .w-25= t('user.selected_job')
         %div.d-flex
           %ul
-            - quiz.holland_job_responses.includes(:job).each do |res|
+            - @holland_job_responses.each do |res|
               %li
                 = res.job_name
                 %small.text-primary= "(#{t('user.selected')})" if res.selected

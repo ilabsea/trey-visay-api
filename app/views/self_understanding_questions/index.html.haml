@@ -1,5 +1,4 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.self_understanding_question')
+= render "page_heading"
 
 .card.shadow.mb-4
   .card-body
@@ -12,8 +11,9 @@
             %th{width: 60} #
             %th= t('shared.code')
             %th= t('shared.name')
-            %th= "Type"
-            %th= "Options"
+            %th= t('holland_quiz.type')
+            %th= t('holland_quiz.options')
+            %th= t('holland_quiz.relevant')
 
         %tbody#body-content
           - @questions.each_with_index do |question, index|
@@ -22,7 +22,7 @@
               %td= question.code
               %td= question.name
               %td= question.type
-              %td
-                = question.options.map(&:name).join(', ')
+              %td= question.options.map(&:name).join(', ')
+              %td= question.relevant
 
     = render "shared/footers/pagination"

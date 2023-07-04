@@ -10,3 +10,6 @@ en:
     type_s: Social
     type_e: Enterprising
     type_c: Conventional
+    type: Type
+    options: Options
+    relevant: Criteria

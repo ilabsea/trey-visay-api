@@ -8,7 +8,7 @@ module Sample
         question.update({
           name: row["name"],
           type: row["type"],
-          display_order: row["display_order"]
+          relevant: row["relevant"]
         })
       end
     end
