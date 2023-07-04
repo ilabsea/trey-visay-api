@@ -2,15 +2,14 @@
 
 require "rails_helper"
 
-RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
-  describe "POST #create" do
-    let!(:api_key) { ApiKey.create }
-    let!(:user)    { create(:user) }
+RSpec.describe HollandQuizJob, type: :job do
+  describe "perfom" do
+    let!(:user) { create(:user) }
+    let!(:quiz) { create(:holland_quiz, user: user) }
     let!(:college_majors) { create_list(:college_major, 3) }
     let!(:jobs) { create_list(:job, 3) }
     let!(:self_understanding_question) { create(:self_understanding_question, :with_options) }
     let!(:holland_question) { create(:holland_question) }
-    let!(:headers)  { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
 
     let(:params)   {
       {
@@ -44,32 +43,17 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
         ]
       }
     }
-    let(:json_response) { JSON.parse(response.body) }
 
     before {
-      post "/api/v2/holland_quizzes", headers: headers, params: { holland_quiz: params }
+      subject.perform(quiz.id, params.as_json)
     }
 
-    it "add a holland_quiz job" do
-      expect(HollandQuizJob.jobs.count).to eq(1)
-    end
-
-    it "render status created" do
-      expect(response.status).to eq(201)
-    end
-  end
-
-  describe "PUT #update" do
-    let!(:api_key) { ApiKey.create }
-    let!(:user)    { create(:user) }
-    let!(:quiz)    { create(:holland_quiz, user: user) }
-    let(:params)   { { user_id: user.id, quizzed_at: DateTime.yesterday.to_s } }
-    let(:headers)  { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
-
-    it "add a holland_quiz job" do
-      expect {
-        put "/api/v2/holland_quizzes/#{quiz.id}", headers: headers, params: { holland_quiz: params }
-      }.to change(HollandQuizJob.jobs, :size).by(1)
+    it "update quiz" do
+      expect(quiz.self_understanding_responses.length).to eq(1)
+      expect(quiz.holland_scores.length).to eq(2)
+      expect(quiz.holland_responses.length).to eq(1)
+      expect(quiz.holland_major_responses.length).to eq(3)
+      expect(quiz.holland_job_responses.length).to eq(3)
     end
   end
 end
