@@ -28,6 +28,7 @@
 #  device_os        :integer
 #  app_version      :integer
 #  registered_at    :datetime
+#  other_grade      :integer
 #
 
 require "csv"
@@ -38,7 +39,7 @@ class User < ApplicationRecord
   mount_uploader :photo, ::PhotoUploader
 
   GRADES = %w[9 10 11 12 other].freeze
-  PLATFORMS = [["Android", "android"], ["iOs", "ios"]]
+  PLATFORMS = [["Android", "android"], ["iOs", "ios"], ["Other", "other"]]
 
   # Enum
   enum class_group: {
@@ -55,6 +56,12 @@ class User < ApplicationRecord
     android: 1,
     ios: 2,
     other: 3
+  }
+
+  enum other_grade: {
+    under_grade_nine: 1,
+    university_student: 2,
+    other_occupation: 3
   }
 
   # Associaction
@@ -86,6 +93,10 @@ class User < ApplicationRecord
     return device_id if device_id.length <= 6
 
     device_id.first(3) + "..." + device_id.last(3)
+  end
+
+  def display_grade
+    grade == "other" && other_grade.present? ? I18n.t("user.#{other_grade}") : grade
   end
 
   def self.grades

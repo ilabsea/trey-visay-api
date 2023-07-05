@@ -3,7 +3,9 @@
     %td= link_to @pagy.from + index, user_path(user.id), id: 'mylink'
     %td= link_to user.full_name, user_path(user.id)
     %td= user.sex
-    %td= user.grade
+    %td= user.display_grade
+    %td
+      = t("user.#{user.class_group}") if user.class_group.present?
     %td= user.school_address
     %td
       - user.games.each_with_index do |game, i|
