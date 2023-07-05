@@ -88,6 +88,10 @@ gem "pundit", "~> 2.3.0"
 # Pagination
 gem "pagy", "~> 6.0.2"
 
+# for daterange picker
+gem "momentjs-rails", "~> 2.29.4.1"
+gem "bootstrap-daterangepicker-rails", "~> 3.0.4"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 

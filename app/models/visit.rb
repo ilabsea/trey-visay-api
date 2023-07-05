@@ -58,7 +58,7 @@ class Visit < ApplicationRecord
     scope = all
     scope = scope.where("visit_date BETWEEN ? AND ?", params[:start_date], params[:end_date]) if params[:start_date].present? && params[:end_date].present?
     scope = scope.where(page_id: params[:page_ids]) if params[:page_ids].present?
-    scope = scope.joins(:app_user).where('users.device_os': params[:platform]) if params[:platform].present?
+    scope = scope.joins(:user).where('users.device_os': params[:platform]) if params[:platform].present?
     scope
   end
 end

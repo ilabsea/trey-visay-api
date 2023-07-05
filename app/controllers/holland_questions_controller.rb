@@ -12,8 +12,8 @@ class HollandQuestionsController < ApplicationController
       format.xlsx {
         @holland_questions = authorize HollandQuestion.filter(filter_params).order(display_order: :asc)
 
-        if @holland_questions.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
-          flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
+        if @holland_questions.length > Settings.max_download_record
+          flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
           redirect_to holland_questions_url
         else
           render xlsx: "index", filename: "holland_questions#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"

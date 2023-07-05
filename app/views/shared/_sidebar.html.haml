@@ -27,11 +27,7 @@
       %i.fas.fa-fw.fa-mobile-retro
       %span អ្នកប្រើប្រាស់ App
 
-  - if policy(Account).create?
-    %li.nav-item{class: css_active_class('accounts')}
-      %a.nav-link{ href: accounts_path }
-        %i.fas.fa-fw.fa-user
-        %span= t('account.account')
+
 
   - if policy(Visit).index?
     %li.nav-item{class: css_active_class('visits')}
@@ -92,6 +88,10 @@
         .bg-white.py-2.collapse-inner.rounded
           %h6.collapse-header Application setting
 
+          - if policy(Account).create?
+            %a.collapse-item{ href: accounts_path, class: css_active_class('accounts') }
+              = t('sidebar.account')
+
           - if policy(Page).index?
             %a.collapse-item{ href: pages_path, class: css_active_class('pages') }
               = t('sidebar.page')
@@ -99,7 +99,7 @@
   %li.nav-item{class: css_active_class('abouts')}
     %a.nav-link{ href: about_path }
       %i.fas.fa-fw.fa-circle-exclamation
-      %span= t('shared.about')
+      %span= t('sidebar.about')
 
   / Divider
   %hr.sidebar-divider.d-none.d-md-block/

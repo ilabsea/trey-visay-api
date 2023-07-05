@@ -1,0 +1,11 @@
+%div{'data-language-code' => I18n.locale, style: 'min-width: 280px;' }
+  #daterange.input-group
+    .form-control.pointer.d-flex.align-items-center
+      %span{'data-placeholder' => t('shared.search_by_date')}= t('shared.search_by_date')
+
+    %a.input-group-append.pointer
+      .input-group-text
+        %i.far.fa-calendar
+
+  %input.start-date{ type: 'hidden', name: 'start_date', value: params[:start_date] }
+  %input.end-date{ type: 'hidden', name: 'end_date', value: params[:end_date] }

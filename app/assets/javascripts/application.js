@@ -20,6 +20,16 @@
 //= require sb-admin-2
 //= require chart.bundle.min
 //= require tagify.min
+
+// for daterange picker
+//= require moment
+//= require moment/km.js
+//= require daterangepicker
+//= require bootstrap-select.min
+//= require common/date_locale
+//= require common/daterange_picker
+//= require common/select_picker
+
 //= require common/pumi
 
 //= require application/namespace
@@ -29,21 +39,26 @@
 //= require common/timeago
 //= require common/sidebar
 
+// Accordion
+//= require common/toggle_collapse
+
 //= require games/show
 //= require personality_tests/show
 //= require users/index
 //= require users/new
 //= require college_majors/edit
+//= require visits/index
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();
   TV.Common.WizardNew.init();
   TV.Common.Timeago.init();
   TV.Common.Sidebar.init();
+  TV.Common.SelectPicker.init();
+
   $("[role='tooltip']").remove();
   $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 
   let currentPage = TV.Util.getCurrentPage();
-  console.log(currentPage)
   !!TV[currentPage] && TV[currentPage].init();
 });

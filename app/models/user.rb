@@ -38,6 +38,7 @@ class User < ApplicationRecord
   mount_uploader :photo, ::PhotoUploader
 
   GRADES = %w[9 10 11 12 other].freeze
+  PLATFORMS = [["Android", "android"], ["iOs", "ios"]]
 
   # Enum
   enum class_group: {

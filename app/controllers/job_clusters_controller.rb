@@ -12,8 +12,8 @@ class JobClustersController < ApplicationController
       format.xlsx {
         @job_clusters = authorize JobCluster.filter(filter_params).includes(:videos)
 
-        if @job_clusters.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
-          flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
+        if @job_clusters.length > Settings.max_download_record
+          flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
           redirect_to job_cluster_url
         else
           render xlsx: "index", filename: "job_cluster_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
