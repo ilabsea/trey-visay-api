@@ -12,8 +12,8 @@ class JobsController < ApplicationController
       format.xlsx {
         @jobs = authorize Job.filter(filter_params)
 
-        if @jobs.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
-          flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
+        if @jobs.length > Settings.max_download_record
+          flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
           redirect_to jobs_url
         else
           render xlsx: "index", filename: "jobs_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"

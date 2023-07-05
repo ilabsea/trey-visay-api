@@ -27,4 +27,6 @@
         = select_tag :grade, options_for_select(User.grades.pluck(:label, :value), params[:grade]), include_blank: t('shared.all_grades'), class: 'custom-select'
 
     .form-group
-      %button.btn-search.btn.btn-primary{type: 'button'}= t('shared.search')
+      %button.btn-search.btn.btn-primary{type: 'button'}
+        %i.fas.fa-search
+        = t('shared.search')

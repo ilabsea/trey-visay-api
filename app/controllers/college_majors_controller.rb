@@ -13,8 +13,8 @@ class CollegeMajorsController < ApplicationController
       format.xlsx {
         @majors = authorize CollegeMajor.filter(filter_params)
 
-        if @majors.length > ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i
-          flash[:alert] = t("shared.file_size_is_too_big", max_record: ENV["MAXIMUM_DOWNLOAD_RECORDS"].to_i)
+        if @majors.length > Settings.max_download_record
+          flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
           redirect_to majors_url
         else
           render xlsx: "index", filename: "majors_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
