@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "multiple_intelligence_category") do |sheet|
+  sheet.add_row %w[code name_km name_en description appropriate_learning_method suitable_job]
+
+  @categories.each_with_index do |school, index|
+    row = [
+      school.code,
+      school.name_km,
+      school.name_en,
+      school.description,
+      school.appropriate_learning_method,
+      school.suitable_job,
+    ]
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end

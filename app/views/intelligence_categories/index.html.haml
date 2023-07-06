@@ -1,0 +1,33 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: intelligence_categories_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @categories
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name_km')
+            %th= t('shared.name_en')
+            %th= t('shared.general_description')
+            %th= t('intelligence.appropriate_learning_method')
+            %th= t('intelligence.suitable_job')
+
+        %tbody#body-content
+          - @categories.each_with_index do |category, index|
+            %tr
+              %td= @pagy.from + index
+              %td= category.code
+              %td= category.name_km
+              %td= category.name_en
+              %td= category.description
+              %td= category.appropriate_learning_method
+              %td= category.suitable_job
+
+    = render "shared/footers/pagination"
