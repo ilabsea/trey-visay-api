@@ -26,9 +26,6 @@
 //= require moment/km.js
 //= require daterangepicker
 //= require bootstrap-select.min
-//= require common/date_locale
-//= require common/daterange_picker
-//= require common/select_picker
 
 //= require common/pumi
 
@@ -38,6 +35,9 @@
 //= require common/wizard_new
 //= require common/timeago
 //= require common/sidebar
+//= require common/date_locale
+//= require common/daterange_picker
+//= require common/select_picker
 
 // Accordion
 //= require common/toggle_collapse

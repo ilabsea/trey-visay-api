@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   resources :visits
   resources :pages
+  resources :intelligence_categories
+  resources :intelligence_category_importers
 
   # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
   as :account do

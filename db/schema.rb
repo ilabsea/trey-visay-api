@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_05_081754) do
+ActiveRecord::Schema.define(version: 2023_07_05_090143) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -251,6 +251,17 @@ ActiveRecord::Schema.define(version: 2023_07_05_081754) do
     t.string "itemable_id"
     t.string "itemable_type"
     t.string "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "intelligence_categories", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "code"
+    t.string "name_km"
+    t.string "name_en"
+    t.text "description"
+    t.text "appropriate_learning_method"
+    t.text "suitable_job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
