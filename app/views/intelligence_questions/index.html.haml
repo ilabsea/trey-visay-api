@@ -1,0 +1,27 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: intelligence_questions_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @questions
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name')
+            %th= t('sidebar.intelligence_category')
+
+        %tbody#body-content
+          - @questions.each_with_index do |question, index|
+            %tr
+              %td= @pagy.from + index
+              %td= question.code
+              %td= question.name
+              %td= question.intelligence_category_name
+
+    = render "shared/footers/pagination"
