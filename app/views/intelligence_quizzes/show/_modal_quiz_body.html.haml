@@ -1,0 +1,9 @@
+- quiz ||= {}
+
+.shadow-box
+  %table.table
+    %tbody
+      - quiz.intelligence_scores.each do |item|
+        %tr
+          %td= item.intelligence_category_name
+          %td= "#{item.score}"

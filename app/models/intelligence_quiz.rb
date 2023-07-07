@@ -11,9 +11,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-FactoryBot.define do
-  factory :holland_quiz do
-    user
-    quizzed_at { Time.now }
-  end
+class IntelligenceQuiz < Quiz
+  # Association
+  has_many :intelligence_responses, inverse_of: :quiz, dependent: :destroy
+  has_many :intelligence_scores, inverse_of: :quiz, dependent: :destroy
+
+  # Nested attributes
+  include IntelligenceQuizzes::NestedAttributeConcern
 end

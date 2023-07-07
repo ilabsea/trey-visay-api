@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :personality_tests, only: [:index, :show]
 
     resources :holland_quizzes, only: [:show]
+    resources :intelligence_quizzes, only: [:show]
 
     get :download, on: :collection
   end
@@ -87,6 +88,7 @@ Rails.application.routes.draw do
       resources :schools, only: [:index]
       resources :jobs, only: [:index]
       resources :holland_quizzes, only: [:create, :update]
+      resources :intelligence_quizzes, only: [:create, :update]
       resources :users, only: [:create]
       resources :videos, only: [:index]
       resources :visits, only: [:create]

@@ -11,9 +11,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-FactoryBot.define do
-  factory :holland_quiz do
-    user
-    quizzed_at { Time.now }
-  end
+class Quiz < ApplicationRecord
+  # Association
+  belongs_to :user
+
+  # Callback
+  before_create :secure_id
+
+  # Scope
+  default_scope { order(quizzed_at: :asc) }
 end

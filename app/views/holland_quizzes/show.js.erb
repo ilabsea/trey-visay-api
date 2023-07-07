@@ -1,3 +1,3 @@
-$("#hollandQuizModal").find(".header-title").html("<%= j render(partial: 'holland_quizzes/show/modal_holland_quiz_header', locals: {quiz: @quiz})%>");
-$("#hollandQuizModal .modal-body").html("<%=j render(partial: 'holland_quizzes/show/modal_holland_quiz_body', locals: {quiz: @quiz})%>");
+$("#hollandQuizModal").find(".header-title").html("<%= j render(partial: 'holland_quizzes/show/modal_quiz_header', locals: {quiz: @quiz})%>");
+$("#hollandQuizModal .modal-body").html("<%=j render(partial: 'holland_quizzes/show/modal_quiz_body', locals: {quiz: @quiz})%>");
 $("#hollandQuizModal").modal("show");
