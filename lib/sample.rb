@@ -12,4 +12,7 @@ require "sample/trey_visay"
 
 # For V2
 require "sample/self_understanding_question"
+require "sample/user"
+require "sample/holland_quiz"
+require "sample/intelligence_quiz"
 require "sample/trey_visay2"

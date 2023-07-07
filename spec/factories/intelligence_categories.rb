@@ -16,5 +16,7 @@
 #
 FactoryBot.define do
   factory :intelligence_category do
+    name_km { FFaker::Name.name }
+    name_en { FFaker::Name.name }
   end
 end

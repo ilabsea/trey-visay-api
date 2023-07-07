@@ -16,7 +16,7 @@
 class Visit < ApplicationRecord
   # Association
   belongs_to :page, counter_cache: true
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :pageable, polymorphic: true, optional: true
 
   # Callback

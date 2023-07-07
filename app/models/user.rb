@@ -67,6 +67,7 @@ class User < ApplicationRecord
   # Associaction
   # V2
   has_many :holland_quizzes, dependent: :destroy
+  has_many :intelligence_quizzes, dependent: :destroy
 
   # V1
   belongs_to :high_school, foreign_key: :high_school_code, optional: true
@@ -82,6 +83,7 @@ class User < ApplicationRecord
 
   # Callback
   before_create :set_username_password
+  before_validation :set_district_id
 
   def school_address
     return nil unless high_school_code.present?
@@ -96,7 +98,11 @@ class User < ApplicationRecord
   end
 
   def display_grade
-    grade == "other" && other_grade.present? ? I18n.t("user.#{other_grade}") : grade
+    grade_other? && other_grade.present? ? I18n.t("user.#{other_grade}") : grade
+  end
+
+  def grade_other?
+    grade == "other"
   end
 
   def self.grades
@@ -122,5 +128,9 @@ class User < ApplicationRecord
     def set_username_password
       self.username ||= full_name
       self.password ||= SecureRandom.uuid[0..5]
+    end
+
+    def set_district_id
+      self.district_id ||= high_school.try(:district_id)
     end
 end

@@ -1,0 +1,3 @@
+$("#intelligenceQuizModal").find(".header-title").html("<%= j render(partial: 'intelligence_quizzes/show/modal_quiz_header', locals: {quiz: @quiz})%>");
+$("#intelligenceQuizModal .modal-body").html("<%=j render(partial: 'intelligence_quizzes/show/modal_quiz_body', locals: {quiz: @quiz})%>");
+$("#intelligenceQuizModal").modal("show");

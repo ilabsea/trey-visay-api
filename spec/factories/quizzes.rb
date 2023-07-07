@@ -12,8 +12,6 @@
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :holland_quiz do
-    user
-    quizzed_at { Time.now }
+  factory :quiz do
   end
 end

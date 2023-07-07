@@ -14,5 +14,8 @@
 #
 FactoryBot.define do
   factory :intelligence_question do
+    code { "q_0#{rand(1..35)}" }
+    name { "ខ្ញុំចេះលេងឧបករណ៍តន្ត្រី" }
+    intelligence_category
   end
 end
