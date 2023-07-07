@@ -23,9 +23,13 @@ class IntelligenceCategory < ApplicationRecord
   before_create :secure_id
   before_create :secure_code
 
+  def name
+    self["name_#{I18n.locale}"]
+  end
+
   def self.filter(params = {})
     scope = all
-    scope = scope.where("code LIKE ? OR name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("code LIKE ? OR name_km LIKE ? OR name_en LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope
   end
 end

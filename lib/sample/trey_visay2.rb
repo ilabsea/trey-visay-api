@@ -10,6 +10,7 @@ module Sample
       Sample::SelfUnderstandingQuestion.new.import
 
       create_batch("IntelligenceCategoryBatch", "multiple_intelligence_category.xlsx")
+      create_batch("IntelligenceQuestionBatch", "multiple_intelligence_question.xlsx")
       create_batch("HollandQuestionBatch", "holland_question.xlsx")
       create_batch("SchoolBatch", "schools.zip")
       create_batch("HighSchoolBatch", "high_school.xlsx")
