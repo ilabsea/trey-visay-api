@@ -67,6 +67,8 @@ Rails.application.routes.draw do
       post :resend_confirmation
       put :archive
       put :restore
+      put :enable_dashboard
+      put :disable_dashboard
     end
   end
 

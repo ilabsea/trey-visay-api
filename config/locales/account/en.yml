@@ -26,3 +26,7 @@ en:
     grafana: Dashboard account
     full_name: Full name
     phone_number: Phone number
+    enable_dashboard_successfully: enable account in dashboard successfully! The account %{email} will be able to access dashboard in the next few minutes!
+    disable_dashboard_successfully: disable account from dashboard successfully! The account %{email} will not be able access dashboard in the next few minutes!
+    enable_dashboard: enable account in dashboard
+    disable_dashboard: disable account from dashboard

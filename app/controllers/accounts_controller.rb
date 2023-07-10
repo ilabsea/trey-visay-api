@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ edit update archive resend_confirmation]
+  before_action :set_account, only: %i[edit update archive resend_confirmation enable_dashboard disable_dashboard]
 
   def index
     @pagy, @accounts = pagy(policy_scope(authorize Account.filter(filter_params).includes(:high_schools)))
@@ -64,6 +64,18 @@ class AccountsController < ApplicationController
     @account.send_confirmation_instructions
 
     redirect_to accounts_url, notice: I18n.t("account.resend_confirmation_successfully")
+  end
+
+  def enable_dashboard
+    @account.add_to_grafana_async
+
+    redirect_to accounts_url, notice: I18n.t("account.enable_dashboard_successfully", email: @account.email)
+  end
+
+  def disable_dashboard
+    @account.remove_from_grafana_async
+
+    redirect_to accounts_url, notice: I18n.t("account.disable_dashboard_successfully", email: @account.email)
   end
 
   private

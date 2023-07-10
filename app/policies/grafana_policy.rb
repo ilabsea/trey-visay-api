@@ -8,6 +8,7 @@ class GrafanaPolicy
   end
 
   def show?
-    ENV["GF_DASHBOARD_URL"].present? && (user.primary_admin? || user.admin?)
+    ENV["GF_DASHBOARD_URL"].present? &&
+    (user.primary_admin? || user.admin? || user.gf_user_id.present?)
   end
 end
