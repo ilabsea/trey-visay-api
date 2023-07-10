@@ -39,6 +39,14 @@ class AccountPolicy < ApplicationPolicy
     update?
   end
 
+  def enable_dashboard?
+    record.confirmed? && record.gf_user_id.blank?
+  end
+
+  def disable_dashboard?
+    record.confirmed? && record.gf_user_id.present?
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve

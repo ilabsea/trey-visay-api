@@ -20,19 +20,19 @@ module Accounts::GrafanaConcern
       Grafana.new.remove_user(self)
     end
 
+    def add_to_grafana_async
+      return if unallow_access_dashboard?
+
+      AccountJob.perform_async("add_to_dashboard", id) if gf_user_id.nil?
+    end
+
+    def remove_from_grafana_async
+      return if unallow_access_dashboard?
+
+      AccountJob.perform_async("remove_from_dashboard", id) if gf_user_id.present?
+    end
+
     private
-      def add_to_grafana_async
-        return if unallow_access_dashboard?
-
-        AccountJob.perform_async("add_to_dashboard", id) if gf_user_id.nil?
-      end
-
-      def remove_from_grafana_async
-        return if unallow_access_dashboard?
-
-        AccountJob.perform_async("remove_from_dashboard", id) if gf_user_id.present?
-      end
-
       def was_activated?
         saved_change_to_actived? && actived?
       end
