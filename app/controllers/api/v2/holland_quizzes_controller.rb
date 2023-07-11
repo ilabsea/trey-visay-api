@@ -32,7 +32,7 @@ module Api
 
         def holland_quiz_params
           params.require(:holland_quiz).permit(
-            :user_id, :quizzed_at,
+            :user_id, :quizzed_at, :finished_at,
             self_understanding_responses_attributes: [:self_understanding_question_code, :value],
             holland_scores_attributes: [:personality_type, :score],
             holland_responses_attributes: [:holland_question_code, :value],

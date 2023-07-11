@@ -16,6 +16,7 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
       {
         user_id: user.id,
         quizzed_at: DateTime.yesterday.to_s,
+        finished_at: (DateTime.yesterday + 10.minutes).to_s,
         self_understanding_responses_attributes: [
           {
             self_understanding_question_code: self_understanding_question.code,

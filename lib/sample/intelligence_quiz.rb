@@ -16,9 +16,12 @@ module Sample
 
     private
       def create_intelligence_quiz
+        quizzed_at = @user.registered_at + rand(1..20).minutes
+
         ::IntelligenceQuiz.create(
           user: @user,
-          quizzed_at: @user.registered_at + rand(1..20).minutes,
+          quizzed_at: quizzed_at,
+          finished_at: quizzed_at + rand(20..30).minutes,
           intelligence_responses_attributes: intelligence_responses_attributes,
           intelligence_scores_attributes: intelligence_scores_attributes,
         )

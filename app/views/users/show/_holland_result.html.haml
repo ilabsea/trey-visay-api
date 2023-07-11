@@ -10,6 +10,7 @@
           %th{width: 60} #
           %th= t('shared.quiz')
           %th= t('shared.quizzed_at')
+          %th= t('shared.finished_at')
 
       %tbody
         - @user.holland_quizzes.each_with_index do |quiz, i|
@@ -18,6 +19,7 @@
             %td
               = link_to t('user.quiz_number', num: i + 1), user_holland_quiz_path(@user, quiz), remote: true
             %td= timeago(quiz.quizzed_at, 'datetime').html_safe
+            %td= timeago(quiz.finished_at, 'datetime').html_safe
 
   / Multiple Intelligence Test
   %div
@@ -30,6 +32,7 @@
           %th{width: 60} #
           %th= t('shared.quiz')
           %th= t('shared.quizzed_at')
+          %th= t('shared.finished_at')
 
       %tbody
         - @user.intelligence_quizzes.each_with_index do |quiz, i|
@@ -38,6 +41,7 @@
             %td
               = link_to t('user.quiz_number', num: i + 1), user_intelligence_quiz_path(@user, quiz), remote: true
             %td= timeago(quiz.quizzed_at, 'datetime').html_safe
+            %td= timeago(quiz.finished_at, 'datetime').html_safe
 
 = render "holland_quizzes/show/modal_quiz", modal_id: "hollandQuizModal"
 = render "holland_quizzes/show/modal_quiz", modal_id: "intelligenceQuizModal"

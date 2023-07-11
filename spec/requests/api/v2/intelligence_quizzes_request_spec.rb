@@ -14,6 +14,7 @@ RSpec.describe "Api::V2::IntelligenceQuizzesController", type: :request do
       {
         user_id: user.id,
         quizzed_at: DateTime.yesterday.to_s,
+        finished_at: (DateTime.yesterday + rand(20..30).minutes).to_s,
         intelligence_scores_attributes: [
           { intelligence_category_code: intelligence_category.code, score: 40 },
         ],
