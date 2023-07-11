@@ -32,7 +32,7 @@ module Api
 
         def intelligence_quiz_params
           params.require(:intelligence_quiz).permit(
-            :user_id, :quizzed_at,
+            :user_id, :quizzed_at, :finished_at,
             intelligence_scores_attributes: [:intelligence_category_code, :score],
             intelligence_responses_attributes: [:intelligence_question_code, :value]
           )

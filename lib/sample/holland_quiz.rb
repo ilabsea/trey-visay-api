@@ -16,9 +16,12 @@ module Sample
 
     private
       def create_holland_quiz
+        quizzed_at = @user.registered_at + rand(1..20).minutes
+
         ::HollandQuiz.create(
           user: @user,
-          quizzed_at: @user.registered_at + rand(1..20).minutes,
+          quizzed_at: quizzed_at,
+          finished_at: quizzed_at + rand(10..20).minutes,
           self_understanding_responses_attributes: self_understanding_responses_attributes,
           holland_responses_attributes: holland_responses_attributes,
           holland_scores_attributes: holland_scores_attributes,

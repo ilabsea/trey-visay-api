@@ -107,3 +107,4 @@ en:
     general_description: General description
     quizzed_at: Quizzed at
     quiz: Quiz
+    finished_at: Finished at
