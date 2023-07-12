@@ -88,6 +88,9 @@ gem "pundit", "~> 2.3.0"
 # Pagination
 gem "pagy", "~> 6.0.2"
 
+# Cross-origin
+gem "rack-cors", "~> 2.0.1"
+
 # for daterange picker
 gem "momentjs-rails", "~> 2.29.4.1"
 gem "bootstrap-daterangepicker-rails", "~> 3.0.4"
