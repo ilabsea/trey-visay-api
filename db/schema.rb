@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_11_092553) do
+ActiveRecord::Schema.define(version: 2023_07_12_071007) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -472,6 +472,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_092553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "finished_at"
+    t.integer "self_understanding_score"
   end
 
   create_table "school_departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -515,6 +516,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_092553) do
     t.integer "display_order", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
   end
 
   create_table "self_understanding_questions", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -586,6 +588,10 @@ ActiveRecord::Schema.define(version: 2023_07_11_092553) do
     t.integer "app_version"
     t.datetime "registered_at"
     t.integer "other_grade"
+    t.integer "holland_quizzes_count", default: 0
+    t.integer "intelligence_quizzes_count", default: 0
+    t.boolean "is_complete_grade_twelve"
+    t.boolean "is_self_understanding"
   end
 
   create_table "videos", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

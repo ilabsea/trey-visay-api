@@ -7,8 +7,8 @@ module Sample
     def simulate(count = 1)
       count.times.each do |i|
         user = create_user
-        ::Sample::HollandQuiz.new(user).simulate
-        ::Sample::IntelligenceQuiz.new(user).simulate
+        ::Sample::HollandQuiz.new(user).simulate if [true, false].sample
+        ::Sample::IntelligenceQuiz.new(user).simulate if [true, false].sample
       end
     end
 

@@ -8,7 +8,7 @@ module Sample
         return unless question.present?
 
         option = question.options.find_or_initialize_by(code: row["code"])
-        option.update(name: row["name"], value: row["value"])
+        option.update(name: row["name"], value: row["value"], score: row["score"])
       end
     end
   end

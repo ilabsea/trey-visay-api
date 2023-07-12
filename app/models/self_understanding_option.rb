@@ -12,6 +12,7 @@
 #  display_order                  :integer          default(1)
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
+#  score                          :integer
 #
 class SelfUnderstandingOption < ApplicationRecord
   # Association

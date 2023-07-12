@@ -15,6 +15,7 @@
 class SelfUnderstandingResponse < ApplicationRecord
   belongs_to :quiz, class_name: :HollandQuiz, foreign_key: :holland_quiz_id
   belongs_to :question, class_name: :SelfUnderstandingQuestion, foreign_key: :self_understanding_question_id
+  has_one :user, through: :quiz
 
   # Callback
   before_create :secure_id

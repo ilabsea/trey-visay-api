@@ -12,7 +12,7 @@ class HollandQuizJob
     def quiz_params(params)
       ActionController::Parameters.new(params)
         .permit(
-          :user_id, :quizzed_at, :finished_at,
+          :user_id, :quizzed_at, :finished_at, :self_understanding_score,
           self_understanding_responses_attributes: [:self_understanding_question_code, :value],
           holland_scores_attributes: [:personality_type, :score],
           holland_responses_attributes: [:holland_question_code, :value],
