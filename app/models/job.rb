@@ -46,6 +46,7 @@ class Job < ApplicationRecord
   has_many :job_majors
   has_many :majors, through: :job_majors
   has_many :schools, -> { distinct }, through: :majors
+  has_many :holland_job_responses
 
   # Delegation
   delegate :name, :code, to: :job_cluster, prefix: :job_cluster, allow_nil: true

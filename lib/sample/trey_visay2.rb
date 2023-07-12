@@ -7,6 +7,7 @@ module Sample
   class TreyVisay2
     def load_sample
       Sample::Execute.load("accounts", {})
+      Sample::Location.load
       Sample::SelfUnderstandingQuestion.new.import
 
       create_batch("IntelligenceCategoryBatch", "multiple_intelligence_category.xlsx")
