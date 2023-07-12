@@ -15,5 +15,7 @@
 require "rails_helper"
 
 RSpec.describe SelfUnderstandingResponse, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to(:quiz).class_name("HollandQuiz").with_foreign_key(:holland_quiz_id) }
+  it { is_expected.to belong_to(:question).class_name("SelfUnderstandingQuestion").with_foreign_key(:self_understanding_question_id) }
+  it { is_expected.to have_one(:user).through(:quiz) }
 end

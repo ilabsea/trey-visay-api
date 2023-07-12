@@ -15,4 +15,4 @@
           - fails_count = game.personal_understandings.select{ |p| p.fail? }.length
           = personal_understanding_info(fails_count).html_safe
           = ")"
-    %td= user.holland_quizzes.length
+    %td= user.quizzes_count

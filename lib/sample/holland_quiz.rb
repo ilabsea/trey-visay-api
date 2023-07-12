@@ -23,6 +23,7 @@ module Sample
           quizzed_at: quizzed_at,
           finished_at: quizzed_at + rand(10..20).minutes,
           self_understanding_responses_attributes: self_understanding_responses_attributes,
+          self_understanding_score: self_understanding_score,
           holland_responses_attributes: holland_responses_attributes,
           holland_scores_attributes: holland_scores_attributes,
           holland_major_responses_attributes: holland_major_responses_attributes,
@@ -55,12 +56,29 @@ module Sample
       end
 
       def self_understanding_responses_attributes
-        ::SelfUnderstandingQuestion.all.map do |question|
+        @self_understanding_responses_attributes ||= ::SelfUnderstandingQuestion.all.map do |question|
           {
             self_understanding_question_code: question.code,
-            value: question.options.sample.try(:value) || Job.all.sample.name_km
+            value: question.options.sample.try(:value) || ([true, false].sample ? Job.all.sample.name_km : nil)
           }
         end
+      end
+
+      def self_understanding_score
+        score = 0
+
+        ::SelfUnderstandingQuestion.all.includes(:options).each do |question|
+          res = self_understanding_responses_attributes.select { |att| att[:self_understanding_question_code] == question.code }.first
+
+          if question.type == "Fields::SelectoneField"
+            option = question.options.select { |opt| opt.value == res[:value] }.first
+            score += option.score
+          else
+            score += 1 if res[:value].present?
+          end
+        end
+
+        score
       end
 
       def holland_responses_attributes
