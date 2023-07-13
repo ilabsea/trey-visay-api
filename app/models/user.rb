@@ -44,6 +44,7 @@ class User < ApplicationRecord
 
   GRADES = %w[9 10 11 12 other].freeze
   PLATFORMS = [["Android", "android"], ["iOs", "ios"], ["Other", "other"]]
+  PUBLIC_USER_ID = 0
 
   # Enum
   enum class_group: {
@@ -81,6 +82,7 @@ class User < ApplicationRecord
 
   # Validation
   validates :grade, inclusion: { in: GRADES }, allow_nil: true
+  validates :full_name, presence: true
 
   # Delegation
   delegate :name_km, to: :high_school, prefix: :high_school, allow_nil: true
@@ -96,7 +98,7 @@ class User < ApplicationRecord
   end
 
   def display_device_id
-    return device_id if device_id.length <= 6
+    return device_id if device_id.to_s.length <= 6
 
     device_id.first(3) + "..." + device_id.last(3)
   end

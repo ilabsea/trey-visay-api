@@ -12,8 +12,16 @@
 #  pageable_type :string(255)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  device_os     :integer
 #
 class Visit < ApplicationRecord
+  # Enum
+  enum device_os: {
+    android: 1,
+    ios: 2,
+    other: 3
+  }
+
   # Association
   belongs_to :page, counter_cache: true
   belongs_to :user, optional: true
@@ -26,7 +34,7 @@ class Visit < ApplicationRecord
   # Delegation
   delegate :name, :code, to: :page, prefix: true, allow_nil: true
   delegate :name, to: :pageable, prefix: true, allow_nil: true
-  delegate :device_os, to: :user, prefix: false, allow_nil: true
+  delegate :display_device_id, to: :user, prefix: false, allow_nil: true
 
   # Nested attribute
   accepts_nested_attributes_for :page, reject_if: lambda { |attributes|

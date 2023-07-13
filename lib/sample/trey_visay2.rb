@@ -9,6 +9,7 @@ module Sample
       Sample::Execute.load("accounts", {})
       Sample::Location.load
       Sample::SelfUnderstandingQuestion.new.import
+      User.create(id: 0, full_name: "public", registered_at: Time.now)
 
       create_batch("IntelligenceCategoryBatch", "multiple_intelligence_category.xlsx")
       create_batch("IntelligenceQuestionBatch", "multiple_intelligence_question.xlsx")

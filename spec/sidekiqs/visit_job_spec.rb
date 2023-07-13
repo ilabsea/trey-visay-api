@@ -7,6 +7,7 @@ RSpec.describe VisitJob, type: :job do
     let!(:user) { create(:user) }
     let(:valid_params) { {
       user_id: user.id, visit_date: Time.now,
+      device_os: Visit.device_os.keys.sample,
       pageable_id: "", pageable_type: "Page",
       page_attributes: { code: "page_one", name_km: "Page one", parent_code: nil }
     }}

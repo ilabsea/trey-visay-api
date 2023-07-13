@@ -13,7 +13,7 @@ wb.add_worksheet(name: "Visits") do |sheet|
 
   @visits.each do |visit|
     row = [
-      visit.user.display_device_id,
+      visit.display_device_id,
       visit.page_name,
       visit.pageable_name,
       visit.device_os,
