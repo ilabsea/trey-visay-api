@@ -37,8 +37,6 @@ TV.Common.WizardNew = (() => {
   }
 
   function displayFile() {
-    console.log("displayFile")
-
     $('.file-wrapper').addClass('d-none');
     $('.display-file').removeClass('d-none');
 
@@ -46,7 +44,6 @@ TV.Common.WizardNew = (() => {
   }
 
   function displaySelectInput() {
-    console.log("displaySelectInput")
     $('.file-wrapper').removeClass('d-none');
     $('.display-file').addClass('d-none');
 

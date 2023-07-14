@@ -23,6 +23,7 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
             value: self_understanding_question.options.first.value
           }
         ],
+        self_understanding_score: rand(8),
         holland_scores_attributes: [
           { personality_type: "R", score: 40 },
           { personality_type: "I", score: 30 }

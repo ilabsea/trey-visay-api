@@ -12,7 +12,7 @@ module Api
       private
         def visit_params
           params.require(:visit).permit(
-            :user_id, :visit_date, :pageable_id, :pageable_type,
+            :user_id, :visit_date, :pageable_id, :pageable_type, :device_os,
             page_attributes: [:code, :name, :parent_code]
           )
         end

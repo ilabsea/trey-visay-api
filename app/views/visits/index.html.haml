@@ -22,11 +22,11 @@
           - @visits.each_with_index do |visit, index|
             %tr
               %td= @pagy.from + index
-              %td= visit.user.display_device_id
+              %td= visit.display_device_id
               %td= visit.page_name
               %td= visit.pageable_name
               %td.text-capitalize= visit.device_os
-              %td= timeago(visit.visit_date).html_safe
-              %td= timeago(visit.created_at).html_safe
+              %td= timeago(visit.visit_date, 'datetime').html_safe
+              %td= timeago(visit.created_at, 'datetime').html_safe
 
     = render "shared/footers/pagination"
