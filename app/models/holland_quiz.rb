@@ -29,14 +29,14 @@ class HollandQuiz < Quiz
   include HollandQuizzes::NestedAttributeConcern
 
   # Callback
-  after_create :set_user_complete_grade_twelve_and_self_undertanding
+  after_save :update_user_supporting_dashboard
 
   private
-    def set_user_complete_grade_twelve_and_self_undertanding
-      is_complete_grade_twelve = self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").blank?
+    def update_user_supporting_dashboard
       user.update(
-        is_complete_grade_twelve: is_complete_grade_twelve,
-        is_self_understanding: self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE
+        is_complete_grade_twelve: self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").blank?,
+        is_self_understanding: self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE,
+        is_selected_major_or_career: (holland_major_response_ids.present? || holland_job_response_ids.present?)
       )
     end
 end
