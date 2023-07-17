@@ -19,6 +19,6 @@ class SelfUnderstandingQuestionSerializer < ActiveModel::Serializer
   has_many :options
 
   class SelfUnderstandingOptionSerializer < ActiveModel::Serializer
-    attributes :id, :code, :name, :value
+    attributes :id, :code, :name, :value, :score
   end
 end
