@@ -1,0 +1,15 @@
+.d-sm-flex.mb-4
+  .d-flex.align-items-center.flex-grow-1
+    %h1.h3.mb-0.text-gray-800= @major.name + "(#{@major.code})"
+
+  = render 'shared/buttons/back_button', url: majors_path
+
+#contents.mt-5.mt-md-0
+  - ['code', 'name', 'parent_name', 'personality_type', 'general_info'].each do |field|
+    = field_value(t("major.#{field}"), @major[field]).html_safe
+
+  - ['orien_orientation_subjects', 'orien_study_condition', 'orien_graduation_condition', 'curriculum', 'teaching_and_learning_process', 'gain_knowledge', 'worthy_career', 'recommendation'].each do |field|
+
+    = field_value(t("major.#{field}"), @major[field]).html_safe
+
+  = render "shared/school_section", schools: @major.schools

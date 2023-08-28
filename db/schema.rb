@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2023_08_31_094132) do
-
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
     t.integer "account_id"
@@ -133,23 +132,6 @@ ActiveRecord::Schema.define(version: 2023_08_31_094132) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "college_majors", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
-    t.string "personality_type"
-    t.text "general_info"
-    t.text "orien_orientation_subjects"
-    t.text "orien_study_condition"
-    t.text "orien_graduation_condition"
-    t.text "curriculum"
-    t.text "teaching_and_learning_process"
-    t.text "gain_knowledge"
-    t.text "worthy_career"
-    t.text "recommendation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "counselor_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -160,6 +142,7 @@ ActiveRecord::Schema.define(version: 2023_08_31_094132) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grade"
   end
 
   create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -203,10 +186,10 @@ ActiveRecord::Schema.define(version: 2023_08_31_094132) do
 
   create_table "holland_major_responses", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "holland_quiz_id"
-    t.string "college_major_id"
     t.boolean "selected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "major_id"
   end
 
   create_table "holland_questions", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -346,6 +329,19 @@ ActiveRecord::Schema.define(version: 2023_08_31_094132) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.string "parent_code"
+    t.string "personality_type"
+    t.text "general_info"
+    t.text "orien_orientation_subjects"
+    t.text "orien_study_condition"
+    t.text "orien_graduation_condition"
+    t.text "curriculum"
+    t.text "teaching_and_learning_process"
+    t.text "gain_knowledge"
+    t.text "worthy_career"
+    t.text "recommendation"
+    t.integer "grade"
   end
 
   create_table "oauth_access_grants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

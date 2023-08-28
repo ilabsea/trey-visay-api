@@ -26,5 +26,6 @@ class SchoolDepartment < ApplicationRecord
   # Instant method
   def department_attributes=(hash)
     self.department = Department.find_or_create_by(name: hash[:name])
+    self.department.update_columns(grade: hash[:grade])
   end
 end

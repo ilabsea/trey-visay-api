@@ -1,8 +1,0 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('shared.importing_history', name: t('sidebar.college_major'))
-
-  .d-flex.mt-3.mt-md-0.justify-content-end
-    = render "shared/buttons/back_button", url: college_majors_path
-    = render "shared/buttons/add_new_button", url: new_college_major_importer_path, name: t('sidebar.college_major')
-
-= render "shared/batches/batch_list"

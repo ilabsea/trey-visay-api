@@ -1,0 +1,38 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "major_list") do |sheet|
+  sheet.add_row ["major_code", "major_name", "major_parent_code", "personality_type", nil, nil, t("major.general_info"), t("major.orienation_subject_and_condition"), nil, nil, t("major.curriculum"), t("major.teaching_and_learning_process"), t("major.gain_knowledge"), t("major.worthy_career"), t("major.recommendation")]
+  sheet.add_row [nil, nil, nil, "Code1", "Code2", "Code3", nil, t("major.orien_orientation_subjects"), t("major.orien_study_condition"), t("major.orien_graduation_condition") ]
+  sheet.merge_cells "A1:A2"
+  sheet.merge_cells "B1:B2"
+  sheet.merge_cells "C1:C2"
+  sheet.merge_cells "D1:F1"
+  sheet.merge_cells "G1:G2"
+  sheet.merge_cells "H1:J1"
+  sheet.merge_cells "K1:K2"
+  sheet.merge_cells "L1:L2"
+  sheet.merge_cells "M1:M2"
+  sheet.merge_cells "N1:N2"
+  sheet.merge_cells "O1:O2"
+
+  @majors.each_with_index do |major, index|
+    sheet.add_row [
+      major.code,
+      major.name,
+      major.parent_code,
+      major.personality_type.to_s[0],
+      major.personality_type.to_s[1],
+      major.personality_type.to_s[2],
+      major.general_info,
+      major.orien_orientation_subjects,
+      major.orien_study_condition,
+      major.orien_graduation_condition,
+      major.curriculum,
+      major.teaching_and_learning_process,
+      major.gain_knowledge,
+      major.worthy_career,
+      major.recommendation
+    ], types: [:string]
+  end
+end

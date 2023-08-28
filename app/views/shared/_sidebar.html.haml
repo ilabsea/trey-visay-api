@@ -62,8 +62,8 @@
             %a.collapse-item{ href: jobs_path, class: css_active_class('jobs', 'job_importers') }
               = t('sidebar.job')
 
-          - if policy(CollegeMajor).create?
-            %a.collapse-item{ href: college_majors_path, class: css_active_class('college_majors', 'college_major_importers') }
+          - if policy(Major).create?
+            %a.collapse-item{ href: majors_path, class: css_active_class('majors', 'major_importers') }
               = t('sidebar.college_major')
 
           - if policy(Video).create?

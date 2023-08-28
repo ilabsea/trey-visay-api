@@ -6,7 +6,7 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
   describe "POST #create" do
     let!(:api_key) { ApiKey.create }
     let!(:user)    { create(:user) }
-    let!(:college_majors) { create_list(:college_major, 3) }
+    let!(:majors) { create_list(:major, 3) }
     let!(:jobs) { create_list(:job, 3) }
     let!(:self_understanding_question) { create(:self_understanding_question, :with_options) }
     let!(:holland_question) { create(:holland_question) }
@@ -35,9 +35,9 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
           }
         ],
         holland_major_responses_attributes: [
-          { college_major_code: college_majors[0].code, selected: true },
-          { college_major_code: college_majors[1].code, selected: false },
-          { college_major_code: college_majors[2].code, selected: false }
+          { major_code: majors[0].code, selected: true },
+          { major_code: majors[1].code, selected: false },
+          { major_code: majors[2].code, selected: false }
         ],
         holland_job_responses_attributes: [
           { job_code: jobs[0].code, selected: true },

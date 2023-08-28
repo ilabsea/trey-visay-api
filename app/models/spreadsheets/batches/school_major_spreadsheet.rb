@@ -35,7 +35,7 @@ module Spreadsheets
 
         def new_department(row)
           @current = {
-            department_attributes: { name: row["department_name"] },
+            department_attributes: { name: row["department_name"], grade: Department.grades[row["grade"]] },
             school_majors_attributes: [{ major_attributes: { name: row["major_name"] } }]
           }
         end
