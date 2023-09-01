@@ -67,4 +67,10 @@ class Spreadsheets::Batches::BaseWithZipfileSpreadsheet
     def excel_format
       "xlsx"
     end
+
+    def format_code(code)
+      return code.to_i.to_s if code.kind_of? Float
+
+      code.to_s
+    end
 end

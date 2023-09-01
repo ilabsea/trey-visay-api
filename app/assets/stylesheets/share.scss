@@ -131,3 +131,10 @@
   background: rgba(white, 0.8);
   height: auto;
 }
+
+.trancate-column {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}

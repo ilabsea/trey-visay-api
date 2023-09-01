@@ -4,28 +4,25 @@
 #
 # Table name: jobs
 #
-#  id                                :string(255)      not null, primary key
-#  code                              :string(255)
-#  name_km                           :string(255)
-#  name_en                           :string(255)
-#  personality_type                  :string(255)
-#  general_description               :text(65535)
-#  jd_main_task                      :text(65535)
-#  jd_environment                    :string(255)
-#  jd_technology_skill               :string(255)
-#  edu_education_level               :string(255)
-#  edu_high_school_supported_subject :string(255)
-#  edu_higher_education_skill        :string(255)
-#  qua_supported_knowledge           :string(255)
-#  qua_supported_skill               :string(255)
-#  qua_supported_capacity            :string(255)
-#  qua_characteristic_of_job         :string(255)
-#  info_job_market                   :text(65535)
-#  info_similar_job                  :text(65535)
-#  created_at                        :datetime         not null
-#  updated_at                        :datetime         not null
-#  job_cluster_id                    :string(255)
-#  logo                              :string(255)
+#  id                            :string(255)      not null, primary key
+#  code                          :string(255)
+#  name_km                       :string(255)
+#  name_en                       :string(255)
+#  personality_type              :string(255)
+#  general_description           :text(65535)
+#  jd_main_task                  :text(65535)
+#  jd_environment                :string(255)
+#  jd_work_style                 :string(255)
+#  edu_education_level           :string(255)
+#  edu_subjects_at_high_school   :string(255)
+#  edu_majors_at_university      :string(255)
+#  personal_competency_knowledge :string(255)
+#  personal_competency_skill     :string(255)
+#  personal_competency_ability   :string(255)
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#  job_cluster_id                :string(255)
+#  logo                          :string(255)
 #
 FactoryBot.define do
   factory :job do

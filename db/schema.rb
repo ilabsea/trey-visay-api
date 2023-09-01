@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_17_050114) do
+ActiveRecord::Schema.define(version: 2023_08_31_094132) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -303,16 +303,13 @@ ActiveRecord::Schema.define(version: 2023_07_17_050114) do
     t.text "general_description"
     t.text "jd_main_task"
     t.string "jd_environment"
-    t.string "jd_technology_skill"
+    t.string "jd_work_style"
     t.string "edu_education_level"
-    t.string "edu_high_school_supported_subject"
-    t.string "edu_higher_education_skill"
-    t.string "qua_supported_knowledge"
-    t.string "qua_supported_skill"
-    t.string "qua_supported_capacity"
-    t.string "qua_characteristic_of_job"
-    t.text "info_job_market"
-    t.text "info_similar_job"
+    t.string "edu_subjects_at_high_school"
+    t.string "edu_majors_at_university"
+    t.string "personal_competency_knowledge"
+    t.string "personal_competency_skill"
+    t.string "personal_competency_ability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "job_cluster_id"

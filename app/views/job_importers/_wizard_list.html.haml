@@ -12,23 +12,19 @@
         %th.align-middle.text-center{rowspan: 2}= t('job.general_description')
         %th.align-middle.text-center{colspan: 3}= t('job.job_condition')
         %th.align-middle.text-center{colspan: 3}= t('job.education_and_training')
-        %th.align-middle.text-center{colspan: 4}= t('job.mandate_qualification')
-        %th.align-middle.text-center{colspan: 2}= t('job.additional_info')
+        %th.align-middle.text-center{colspan: 3}= t('job.mandate_qualification')
         %th.align-middle.text-center{rowspan: 2}= t('shared.is_valid')
 
       %tr
         %th.align-top.text-center= t('job.jd_main_task')
         %th.align-top.text-center= t('job.jd_environment')
-        %th.align-top.text-center= t('job.jd_technology_skill')
+        %th.align-top.text-center= t('job.jd_work_style')
         %th.align-top.text-center= t('job.edu_education_level')
-        %th.align-top.text-center= t('job.edu_high_school_supported_subject')
-        %th.align-top.text-center= t('job.edu_higher_education_skill')
-        %th.align-top.text-center= t('job.qua_supported_knowledge')
-        %th.align-top.text-center= t('job.qua_supported_skill')
-        %th.align-top.text-center= t('job.qua_supported_capacity')
-        %th.align-top.text-center= t('job.qua_characteristic_of_job')
-        %th.align-top.text-center= t('job.info_job_market')
-        %th.align-top.text-center= t('job.info_similar_job')
+        %th.align-top.text-center= t('job.edu_subjects_at_high_school')
+        %th.align-top.text-center= t('job.edu_majors_at_university')
+        %th.align-top.text-center= t('job.personal_competency_knowledge')
+        %th.align-top.text-center= t('job.personal_competency_skill')
+        %th.align-top.text-center= t('job.personal_competency_ability')
 
     %tbody
       - @batch.importing_items.each_with_index do |importing_item, index|
@@ -44,18 +40,17 @@
               = fff.hidden_field :name_en
               = fff.hidden_field :personality_type
               = fff.hidden_field :general_description
+
               = fff.hidden_field :jd_main_task
               = fff.hidden_field :jd_environment
-              = fff.hidden_field :jd_technology_skill
+              = fff.hidden_field :jd_work_style
               = fff.hidden_field :edu_education_level
-              = fff.hidden_field :edu_high_school_supported_subject
-              = fff.hidden_field :edu_higher_education_skill
-              = fff.hidden_field :qua_supported_knowledge
-              = fff.hidden_field :qua_supported_skill
-              = fff.hidden_field :qua_supported_capacity
-              = fff.hidden_field :qua_characteristic_of_job
-              = fff.hidden_field :info_job_market
-              = fff.hidden_field :info_similar_job
+              = fff.hidden_field :edu_subjects_at_high_school
+              = fff.hidden_field :edu_majors_at_university
+              = fff.hidden_field :personal_competency_knowledge
+              = fff.hidden_field :personal_competency_skill
+              = fff.hidden_field :personal_competency_ability
+
               = fff.hidden_field :job_cluster_id
               = fff.hidden_field :logo_cache
 
@@ -73,19 +68,16 @@
             = image_tag(item.logo_url, width: 50, class: 'rounded-circle') if item.logo.present?
           %td= item.personality_type
           %td= item.job_cluster_name
-          %td= item.general_description
-          %td= item.jd_main_task
-          %td= item.jd_environment
-          %td= item.jd_technology_skill
-          %td= item.edu_education_level
-          %td= item.edu_high_school_supported_subject
-          %td= item.edu_higher_education_skill
-          %td= item.qua_supported_knowledge
-          %td= item.qua_supported_skill
-          %td= item.qua_supported_capacity
-          %td= item.qua_characteristic_of_job
-          %td= item.info_job_market
-          %td= item.info_similar_job
+          %td.trancate-column= item.general_description
+          %td.trancate-column= item.jd_main_task
+          %td.trancate-column= item.jd_environment
+          %td.trancate-column= item.jd_work_style
+          %td.trancate-column= item.edu_education_level
+          %td.trancate-column= item.edu_subjects_at_high_school
+          %td.trancate-column= item.edu_majors_at_university
+          %td.trancate-column= item.personal_competency_knowledge
+          %td.trancate-column= item.personal_competency_skill
+          %td.trancate-column= item.personal_competency_ability
 
           / Validation status
           %td= render "shared/validation_status", item: item

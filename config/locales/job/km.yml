@@ -5,16 +5,13 @@ km:
     general_description: ការពណ៌នាទូទៅ
     jd_main_task: ភារកិច្ចចម្បងៗ
     jd_environment: បរិយាកាសការងារ
-    jd_technology_skill: ជំនាញផ្នែកតិចណូឡូជី
+    jd_work_style: ចរិតលក្ខណៈនៃអាជីព
     edu_education_level: កម្រិតវប្បធម៌ទាមទារ
-    edu_high_school_supported_subject: មុខវិជ្ជាគាំទ្រនៅមធ្យមសិក្សា
-    edu_higher_education_skill: ជំនាញ/ឯកទេសនៅឧត្តមសិក្សា
-    qua_supported_knowledge: ចំណេះដឹងគាំទ្រ
-    qua_supported_skill: ជំនាញគាំទ្រ
-    qua_supported_capacity: សមត្ថភាពគាំទ្រ
-    qua_characteristic_of_job: ចរិតលក្ខណៈនៃអាជីព
-    info_job_market: ទីផ្សារការងារ
-    info_similar_job: អាជីពប្រហាក់ប្រហែល
+    edu_subjects_at_high_school: ជំនាញគាំទ្រនៅមធ្យមសិក្សា
+    edu_majors_at_university: ជំនាញឬឯកទេសនៅឧត្តមសិក្សា
+    personal_competency_knowledge: ចំណេះដឹងគាំទ្រ
+    personal_competency_skill: ជំនាញគាំទ្រ
+    personal_competency_ability: សមត្ថភាពគាំទ្រ
     job_condition: លក្ខខណ្ឌការងារ
     education_and_training: ការសិក្សាអប់រំ និងបណ្តុះបណ្តាល
     mandate_qualification: គុណវុឌ្ឍគាំទ្រសំខាន់ៗ
