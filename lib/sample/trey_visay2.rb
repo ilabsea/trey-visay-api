@@ -9,7 +9,7 @@ module Sample
       Sample::Execute.load("accounts", {})
       Sample::Location.load
       Sample::SelfUnderstandingQuestion.new.import
-      User.create(id: 0, full_name: "public", registered_at: Time.now)
+      ::User.create(id: 0, full_name: "public", registered_at: Time.now)
 
       create_batch("IntelligenceCategoryBatch", "multiple_intelligence_category.xlsx")
       create_batch("IntelligenceQuestionBatch", "multiple_intelligence_question.xlsx")
@@ -18,7 +18,7 @@ module Sample
       create_batch("HighSchoolBatch", "high_school.xlsx")
       create_batch("VideoBatch", "video.xlsx")
       create_batch("JobClusterBatch", "job_cluster.xlsx")
-      create_batch("JobBatch", "job.xlsx")
+      create_batch("JobBatch", "jobs.zip")
       create_batch("CollegeMajorBatch", "college_major.xlsx")
     end
 

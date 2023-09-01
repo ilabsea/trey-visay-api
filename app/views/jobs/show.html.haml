@@ -13,7 +13,7 @@
       .col-4= t("job.#{field}")
       .col-8= @job[field] || 'N/A'
 
-  - {job_condition: ['jd_main_task', 'jd_environment', 'jd_technology_skill'],education_and_training: ['edu_education_level', 'edu_high_school_supported_subject', 'edu_higher_education_skill'], mandate_qualification: ['qua_supported_knowledge', 'qua_supported_skill', 'qua_supported_capacity', 'qua_characteristic_of_job'], additional_info: ['info_job_market', 'info_similar_job']}.each do |key, value|
+  - {job_condition: %w(jd_main_task jd_environment jd_work_style), education_and_training: %w(edu_education_level  edu_subjects_at_high_school edu_majors_at_university), mandate_qualification: %w(personal_competency_knowledge personal_competency_skill personal_competency_ability)}.each do |key, value|
 
     .card.mb-4.py-2.px-1.border-left-primary
       %div

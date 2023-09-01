@@ -3,18 +3,15 @@ en:
     job: Job
     personality_type: Personality type
     general_description: General description
-    jd_main_task: Main task
-    jd_environment: Job environment
-    jd_technology_skill: Technology skill
+    jd_main_task: Tasks
+    jd_environment: Work Environment
+    jd_work_style: Work Styles
     edu_education_level: Education level
-    edu_high_school_supported_subject: High school support subject
-    edu_higher_education_skill: Higher education skill
-    qua_supported_knowledge: Supported knowledge
-    qua_supported_skill: Supported skill
-    qua_supported_capacity: Supported capacity
-    qua_characteristic_of_job: Characteristic of job
-    info_job_market: Job market
-    info_similar_job: Similar job
+    edu_subjects_at_high_school: Subjects at high school
+    edu_majors_at_university: Majors at university
+    personal_competency_knowledge: Knowledge
+    personal_competency_skill: Skills
+    personal_competency_ability: Abilities
     job_condition: Job condition
     education_and_training: Education and training
     mandate_qualification: Mandate qualification

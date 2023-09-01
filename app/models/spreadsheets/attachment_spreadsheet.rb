@@ -17,4 +17,10 @@ module Spreadsheets::AttachmentSpreadsheet
 
     Pathname.new(file_destination).open
   end
+
+  def format_code(code)
+    return code.to_i.to_s if code.kind_of? Float
+
+    code.to_s
+  end
 end
