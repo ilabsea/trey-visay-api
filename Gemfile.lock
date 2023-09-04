@@ -212,7 +212,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     net-ssh (7.0.1)
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.15.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -226,7 +226,7 @@ GEM
       ast (~> 2.4.1)
     popper_js (1.16.1)
     public_suffix (5.0.1)
-    puma (4.3.12)
+    puma (5.6.7)
       nio4r (~> 2.0)
     pumi (0.13.2)
     pundit (2.3.0)
@@ -444,7 +444,7 @@ DEPENDENCIES
   oj
   pagy (~> 6.0.2)
   paranoia (~> 2.6.1)
-  puma (~> 4.3.12)
+  puma (~> 5.6.7)
   pumi
   pundit (~> 2.3.0)
   rack-cors (~> 2.0.1)
