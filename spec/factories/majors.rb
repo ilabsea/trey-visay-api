@@ -22,18 +22,8 @@
 #  recommendation                :text(65535)
 #  grade                         :integer
 #
-
-class MajorSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :personality_type, :general_info,
-             :orien_orientation_subjects, :orien_study_condition,
-             :orien_graduation_condition, :curriculum,
-             :teaching_and_learning_process, :gain_knowledge,
-             :worthy_career, :recommendation, :updated_at,
-             :schools, :grade
-
-  def schools
-    object.schools.map do |school|
-      school.slice("id", "code", "name")
-    end
+FactoryBot.define do
+  factory :major do
+    name { FFaker::Name.name }
   end
 end

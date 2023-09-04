@@ -2,21 +2,16 @@
 
 accounts = [
   {
-    email: "sokly@kawsang.com",
-    password: "123456",
-    password_confirmation: "123456",
-    is_admin: true,
+    email: "admin@kawsang.com",
     role: "primary_admin"
   },
   {
-    email: "sokly1@kawsang.com",
-    password: "123456",
-    password_confirmation: "123456",
+    email: "sokly@kawsang.com",
     role: "admin"
   }
 ]
 
 accounts.each do |account|
-  acc = Account.create!(account)
+  acc = ::Account.new(account.merge({ password: "123456" }))
   acc.confirm
 end

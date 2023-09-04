@@ -36,8 +36,8 @@ Rails.application.routes.draw do
   resources :job_clusters
   resources :job_cluster_importers
 
-  resources :college_majors
-  resources :college_major_importers
+  resources :majors
+  resources :major_importers
 
   resources :self_understanding_questions
   resources :holland_questions
@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v2 do
-      resources :college_majors, only: [:index]
+      resources :majors, only: [:index]
       resources :schools, only: [:index]
       resources :jobs, only: [:index]
       resources :holland_quizzes, only: [:create, :update]

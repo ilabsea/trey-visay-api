@@ -24,9 +24,9 @@ module HollandQuizzes::NestedAttributeConcern
 
     def holland_major_responses_attributes=(attributes)
       attributes.each do |attribute|
-        attribute[:college_major_id] ||= CollegeMajor.find_by(code: attribute[:college_major_code]).try(:id)
+        attribute[:major_id] ||= Major.find_by(code: attribute[:major_code]).try(:id)
 
-        self.holland_major_responses.new(attribute.slice(:college_major_id, :selected))
+        self.holland_major_responses.new(attribute.slice(:major_id, :selected))
       end
     end
 

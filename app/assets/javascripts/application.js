@@ -46,7 +46,6 @@
 //= require personality_tests/show
 //= require users/index
 //= require users/new
-//= require college_majors/edit
 //= require visits/index
 
 $(document).on('turbolinks:load', function() {

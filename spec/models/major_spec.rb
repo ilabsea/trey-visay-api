@@ -4,10 +4,23 @@
 #
 # Table name: majors
 #
-#  id         :bigint(8)        not null, primary key
-#  name       :string(255)      not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                            :bigint(8)        not null, primary key
+#  name                          :string(255)      not null
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#  code                          :string(255)
+#  parent_code                   :string(255)
+#  personality_type              :string(255)
+#  general_info                  :text(65535)
+#  orien_orientation_subjects    :text(65535)
+#  orien_study_condition         :text(65535)
+#  orien_graduation_condition    :text(65535)
+#  curriculum                    :text(65535)
+#  teaching_and_learning_process :text(65535)
+#  gain_knowledge                :text(65535)
+#  worthy_career                 :text(65535)
+#  recommendation                :text(65535)
+#  grade                         :integer
 #
 
 require "rails_helper"
@@ -15,10 +28,11 @@ require "rails_helper"
 RSpec.describe Major, type: :model do
   it { is_expected.to validate_presence_of(:name) }
 
-  it { is_expected.to have_many(:major_mappings) }
-  it { is_expected.to have_many(:college_majors).through(:major_mappings) }
-
   it { is_expected.to have_many(:school_majors) }
   it { is_expected.to have_many(:schools).through(:school_majors) }
   it { is_expected.to have_many(:school_departments).through(:school_majors) }
+  it { is_expected.to have_many(:departments).through(:school_majors) }
+
+  it { is_expected.to have_many(:importing_items) }
+  it { is_expected.to have_many(:batches).through(:importing_items) }
 end

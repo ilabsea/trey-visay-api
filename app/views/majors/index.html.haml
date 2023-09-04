@@ -1,0 +1,34 @@
+/ Page Heading
+= render "page_heading"
+
+= render 'shared/filters/name_code_filter', url: majors_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @majors
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name')
+            %th= t('shared.parent')
+            %th= t('job.personality_type')
+            %th= t('major.number_of_schools')
+            %th
+
+        %tbody#body-content
+          - @majors.each_with_index do |major, index|
+            %tr
+              %td= @pagy.from + index
+              %td= major.code
+              %td= link_to major.name, major_path(major), class: 'text-primary'
+              %td= major.parent.try(:name)
+              %td= major.personality_type
+              %td= school_list_tooltip(major).html_safe
+              %td.text-right
+                = render "shared/buttons/edit_button", object: major, url: edit_major_path(major)
+
+    = render "shared/footers/pagination"
