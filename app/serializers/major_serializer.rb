@@ -29,7 +29,7 @@ class MajorSerializer < ActiveModel::Serializer
              :orien_graduation_condition, :curriculum,
              :teaching_and_learning_process, :gain_knowledge,
              :worthy_career, :recommendation, :updated_at,
-             :schools, :grade
+             :schools, :grade, :parent_code
 
   def schools
     object.schools.map do |school|
