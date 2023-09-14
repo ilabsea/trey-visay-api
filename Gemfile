@@ -77,7 +77,7 @@ gem "awesome_nested_set", "~> 3.5.0"
 gem "doorkeeper", "~> 5.6.6"
 
 # Background process
-gem "sidekiq", "~> 7.1.2"
+gem "sidekiq", "~> 7.1.3"
 
 # Client request
 gem "httparty", "~> 0.21.0"
