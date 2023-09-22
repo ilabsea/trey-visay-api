@@ -32,10 +32,10 @@ module Sample
       end
 
       def holland_major_responses_attributes
-        majors = ::CollegeMajor.where("personality_type LIKE ?", "#{top_personality_type}%").sample(3)
+        majors = ::Major.where("personality_type LIKE ?", "#{top_personality_type}%").sample(3)
         majors.map.with_index do |major, index|
           {
-            college_major_code: major.code,
+            major_code: major.code,
             selected: index == 0
           }
         end
@@ -95,7 +95,7 @@ module Sample
       end
 
       def holland_scores_attributes
-        @holland_scores_attributes ||= HollandQuestion::PERSONALITY_TYPES.map do |personality_type|
+        @holland_scores_attributes ||= ::HollandQuestion::PERSONALITY_TYPES.map do |personality_type|
           question_codes = holland_questions.select { |question| question.personality_type == personality_type }.pluck(:code)
           {
             personality_type: personality_type,

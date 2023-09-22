@@ -21,7 +21,7 @@ en:
     last_sign_in_via: Last sign in via %{type}
     primary_admin: Primary admin
     admin: Admin
-    counselor: Counselor
+    counselor: School counselor
     school: School
     grafana: Dashboard account
     full_name: Full name
@@ -30,3 +30,5 @@ en:
     disable_dashboard_successfully: disable account from dashboard successfully! The account %{email} will not be able access dashboard in the next few minutes!
     enable_dashboard: enable account in dashboard
     disable_dashboard: disable account from dashboard
+    trainer: Trainer
+    location: Location

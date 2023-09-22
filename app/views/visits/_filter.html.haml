@@ -21,5 +21,3 @@
 
       .filter-input.ml-2
         = select_tag 'platform', options_for_select(User::PLATFORMS, params[:platform]), include_blank: t('visit.any_platform'), "data-none-selected-text" => t('visit.any_platform'), class: 'selectpicker form-control'
-
-

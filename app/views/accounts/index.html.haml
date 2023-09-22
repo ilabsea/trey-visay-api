@@ -23,7 +23,7 @@
   .card-body
     = render "shared/pagination_title", objects: @accounts
 
-    %table.table
+    %table.table.table-hover
       %thead
         %tr
           %th{width: 60} #
@@ -31,6 +31,7 @@
           %th= t('account.full_name')
           %th= t('account.phone_number')
           %th= t('account.role')
+          %th= t('account.location')
           %th= t('account.school')
           %th= t('account.status')
           %th= t('account.grafana')
@@ -45,9 +46,11 @@
             %td= account.phone_number
             %td= I18n.t("account.#{account.role}")
             %td
-              = account.high_schools.map(&:name).join(", ")
-              - if account.district_id.present?
-                = "(#{Pumi::District.find_by_id(account.district_id).address_km})"
+              = account.provinces.pluck(:name_km).join(", ") if account.trainer?
+
+              = Pumi::District.find_by_id(account.district_id).address_km if account.counselor?
+            %td
+              = account.high_schools.map(&:name).join(", ") if account.counselor?
 
             %td.status{ class: account.status }
               = t("account.#{account.status}")

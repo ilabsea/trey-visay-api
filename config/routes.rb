@@ -25,9 +25,8 @@ Rails.application.routes.draw do
   resources :schools
   resources :school_importers
 
-  resources :high_schools do
-    get :grades, on: :collection
-  end
+  get "/pumi/provinces" => "provinces#index"
+  resources :high_schools
   resources :high_school_importers
 
   resources :jobs

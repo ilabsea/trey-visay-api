@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @users = pagy(policy_scope(User.filter(filter_params).order(created_at: :desc).includes(:games, :personal_understandings, :high_school)))
+        @pagy, @users = pagy(authorize policy_scope(User.filter(filter_params).order(created_at: :desc).includes(:games, :personal_understandings, :high_school)))
       }
 
       format.xlsx {
