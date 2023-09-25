@@ -21,9 +21,9 @@ class HollandQuiz < Quiz
   belongs_to :user, counter_cache: true
   has_many :self_understanding_responses, inverse_of: :quiz, dependent: :destroy
   has_many :holland_responses, inverse_of: :quiz, dependent: :destroy
-  has_many :holland_major_responses, inverse_of: :quiz, dependent: :destroy
-  has_many :holland_job_responses, inverse_of: :quiz, dependent: :destroy
-  has_many :holland_scores, inverse_of: :quiz
+  has_many :holland_major_responses, inverse_of: :quiz, dependent: :destroy, foreign_key: :holland_quiz_id
+  has_many :holland_job_responses, inverse_of: :quiz, dependent: :destroy, foreign_key: :holland_quiz_id
+  has_many :holland_scores, inverse_of: :quiz, foreign_key: :holland_quiz_id
 
   # Nested attributes
   include HollandQuizzes::NestedAttributeConcern

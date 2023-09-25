@@ -30,7 +30,7 @@ class SchoolSerializer < ActiveModel::Serializer
     object.school_departments.map do |sd|
       {
         name: sd.department_name,
-        majors: sd.school_majors.map{|sm| {name: sm.major.name, id: sm.major.id}}
+        majors: sd.school_majors.map { |sm| { name: sm.major.name, id: sm.major.id } }
       }
     end
   end

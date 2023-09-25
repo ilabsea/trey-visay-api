@@ -24,3 +24,46 @@ wb.add_worksheet(name: "app_user") do |sheet|
     sheet.add_row row, types: row.length.times.map { |i| :string }
   end
 end
+
+# Users sheet-------------Holland test
+wb.add_worksheet(name: "Holland Test") do |sheet|
+  sheet.add_row [
+    "id",
+    "app_user_id",
+    "holland_code 1st",
+    "holland_code 2nd",
+    "holland_code 3rd",
+    "major_selection 1st",
+    "major_selection 2nd",
+    "major_selection 3rd",
+    "final_major_selection",
+    "career_selection 1st",
+    "career_selection 2nd",
+    "career_selection 3rd",
+    "final_career_selection"
+  ]
+
+  @holland_quizzes.each_with_index do |quiz, index|
+    row = [quiz.id, quiz.user_id]
+
+    row.concat quiz.holland_scores.take(3).pluck(:personality_type)
+    row.concat 3.times.map { |i| quiz.holland_major_responses[i].try(:major_name) }
+    row.push quiz.holland_major_responses.select { |hm| hm.selected? }.first.try(:major_name)
+    row.concat 3.times.map { |i| quiz.holland_job_responses[i].try(:job_name) }
+    row.push quiz.holland_job_responses.select { |hm| hm.selected? }.first.try(:job_name)
+
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end
+
+# Users sheet-------------Multi Intelligence test
+wb.add_worksheet(name: "Multiple Itelligence Test") do |sheet|
+  sheet.add_row ["id", "app_user_id", "category 1st", "category 2nd", "category 3rd"]
+
+  @intelligence_quizzes.each_with_index do |quiz, index|
+    row = [quiz.id, quiz.user_id]
+    row.concat quiz.intelligence_scores.take(3).map(&:intelligence_category_name)
+
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end

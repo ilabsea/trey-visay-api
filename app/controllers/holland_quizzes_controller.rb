@@ -6,7 +6,7 @@ class HollandQuizzesController < ApplicationController
   def show
     @quiz = HollandQuiz.find(params[:id])
     @questions = SelfUnderstandingQuestion.includes(:options)
-    @holland_major_responses = @quiz.holland_major_responses.includes(:college_major)
+    @holland_major_responses = @quiz.holland_major_responses.includes(:major)
     @holland_job_responses = @quiz.holland_job_responses.includes(:job)
   end
 

@@ -23,5 +23,5 @@ class HollandMajorResponse < ApplicationRecord
   scope :selected, -> { where(selected: true) }
 
   # Delegation
-  delegate :name, to: :college_major, prefix: :college_major
+  delegate :name, to: :major, prefix: :major
 end

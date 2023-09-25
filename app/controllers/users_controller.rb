@@ -16,6 +16,9 @@ class UsersController < ApplicationController
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
           redirect_to users_url
         else
+          @holland_quizzes = HollandQuiz.where(user_id: @users.pluck(:id)).includes(:holland_scores, holland_major_responses: :major, holland_job_responses: :job)
+          @intelligence_quizzes = IntelligenceQuiz.where(user_id: @users.pluck(:id)).includes(intelligence_scores: :intelligence_category)
+
           render xlsx: "index", filename: "users_#{Time.new.strftime('%Y%m%d_%H_%M_%S')}.xlsx"
         end
       }
