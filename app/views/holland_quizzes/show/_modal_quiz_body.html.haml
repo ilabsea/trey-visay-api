@@ -48,7 +48,7 @@
           %ul
             - @holland_major_responses.each do |major|
               %li
-                = major.college_major_name
+                = major.major_name
                 %small.text-primary= "(#{t('user.selected')})" if major.selected
 
       .d-flex.mb-2
