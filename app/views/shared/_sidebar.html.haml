@@ -85,6 +85,10 @@
             %a.collapse-item{ href: intelligence_questions_path, class: css_active_class('intelligence_questions', 'intelligence_question_importers') }
               = t('sidebar.intelligence_question')
 
+          - if policy(CareerWebsite).create?
+            %a.collapse-item{ href: career_websites_path, class: css_active_class('career_websites', 'career_website_importers') }
+              = t('sidebar.career_website')
+
     / Manage Settings
     %li.nav-item
       %a.nav-link.collapsed{"aria-controls" => "collapseSetting", "aria-expanded" => "true", "data-target" => "#collapseSetting", "data-toggle" => "collapse", :href => "#"}

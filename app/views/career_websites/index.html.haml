@@ -1,0 +1,38 @@
+/ Page Heading
+= render "page_heading"
+= render 'shared/filters/name_code_filter', url: career_websites_path
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/pagination_title", objects: @career_websites
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.name')
+            %th= t('video.logo')
+            %th= t('video.url')
+            %th= t('shared.description')
+            %th
+
+        %tbody#body-content
+          - @career_websites.each_with_index do |web, index|
+            %tr
+              %td= @pagy.from + index
+              %td= web.name
+              %td
+                - if web.logo.present?
+                  = image_tag web.logo_url, width: 24, height: 24
+              %td= web.url
+              %td= web.description
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: web, url: edit_career_website_path(web)
+
+                  = render 'shared/buttons/delete_button', object: web,  message: { type: t('sidebar.career_website'), name: web.name, url: career_website_path(web) }
+
+    = render "shared/footers/pagination"
+
+= render 'shared/modals/confirm_delete_modal'

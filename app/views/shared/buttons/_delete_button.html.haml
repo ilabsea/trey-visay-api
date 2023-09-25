@@ -1,10 +1,6 @@
 - message ||= {}
 
 - if policy(object).destroy?
-  %a.btn.btn-danger.btn-xs{:rel => "nofollow", :href => account_path(account.id), "data-method" => "delete",  data: { confirm: 'តើអ្នពិតជាចង់លុបគណនេយ្យនេះមែនទេ?' }}
-    %span.glyphicon.glyphicon-remove
-    លុបចោល
-
-  / %span{ data: { 'bs-toggle': 'tooltip', 'bs-placement': 'top' }, title: t('shared.delete') }
-  /   %button.btn.btn-circle.btn-sm.btn-outline-danger{ "data-bs-target" => "#confirmModal", "data-bs-toggle" => "modal", "data-bs-message" => message, :type => "button" }
-  /     %i.fas.fa-trash-alt
+  %span{ data: { 'toggle': 'tooltip', 'placement': 'top' }, title: t('shared.delete') }
+    %button.btn.btn-circle.btn-sm.btn-outline-danger{ "data-target" => "#confirmModal", "data-toggle" => "modal", "data-message" => message.to_json, :type => "button" }
+      %i.fas.fa-trash-alt

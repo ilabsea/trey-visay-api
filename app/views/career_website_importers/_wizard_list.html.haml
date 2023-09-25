@@ -1,0 +1,36 @@
+.table-responsive
+  %table.table.table-hover.pretty
+    %thead
+      %tr
+        %th #
+        %th= t("school.name")
+        %th= t('school.logo')
+        %th= t('school.url')
+        %th= t('school.description')
+        %th= t('shared.is_valid')
+
+    %tbody
+      - @batch.importing_items.each_with_index do |importing_item, index|
+        - item = importing_item.itemable
+        - if item.valid?
+          = f.fields_for :importing_items, importing_item do |ff|
+            = ff.hidden_field :itemable_id
+            = ff.hidden_field :itemable_type
+            = ff.fields_for :itemable, item do |fff|
+              = fff.hidden_field :id
+              = fff.hidden_field :name
+              = fff.hidden_field :url
+              = fff.hidden_field :description
+              = fff.hidden_field :logo_cache
+
+        %tr
+          %td= index + 1
+          %td= item.name
+          %td
+            - if item.logo.present?
+              = image_tag(item.logo_url, width: 24, class: 'rounded-circle')
+          %td= item.url
+          %td= item.description
+
+          / Validation status
+          %td= render "shared/validation_status", item: item

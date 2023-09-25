@@ -38,6 +38,8 @@
 //= require common/date_locale
 //= require common/daterange_picker
 //= require common/select_picker
+//= require common/logo
+//= require common/confirm_modal
 
 // Accordion
 //= require common/toggle_collapse
@@ -47,6 +49,7 @@
 //= require users/index
 //= require users/new
 //= require visits/index
+//= require career_websites/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();
@@ -54,6 +57,7 @@ $(document).on('turbolinks:load', function() {
   TV.Common.Timeago.init();
   TV.Common.Sidebar.init();
   TV.Common.SelectPicker.init();
+  TV.Common.ConfirmModal.init();
 
   $("[role='tooltip']").remove();
   $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
