@@ -18,8 +18,19 @@ TV.AccountsNew = do ->
   handleDisplaySchool = (role) ->
     if role == TARGET_ROLE
       showSchool()
+      hideProvinces()
+    else if role == "trainer"
+      hideSchool()
+      showProvinces()
     else
       hideSchool()
+      hideProvinces()
+
+  showProvinces = () ->
+    $('.provinces').removeClass('d-none')
+
+  hideProvinces = () ->
+    $('.provinces').addClass('d-none')
 
   showSchool = ->
     $('.school').removeClass('d-none')

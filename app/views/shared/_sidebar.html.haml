@@ -22,12 +22,11 @@
   .sidebar-heading
     Interface
 
-  %li.nav-item{class: [css_active_class('users'), ('active' if request.path.split("/")[1].blank?)]}
-    %a.nav-link{ href: users_path }
-      %i.fas.fa-fw.fa-mobile-retro
-      %span អ្នកប្រើប្រាស់ App
-
-
+  - if policy(User).index?
+    %li.nav-item{class: [css_active_class('users'), ('active' if request.path.split("/")[1].blank?)]}
+      %a.nav-link{ href: users_path }
+        %i.fas.fa-fw.fa-mobile-retro
+        %span អ្នកប្រើប្រាស់ App
 
   - if policy(Visit).index?
     %li.nav-item{class: css_active_class('visits')}

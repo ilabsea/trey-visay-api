@@ -65,7 +65,8 @@ class Account < ApplicationRecord
   enum role: {
     primary_admin: 1,
     admin: 2,
-    counselor: 3
+    counselor: 3,
+    trainer: 4
   }
 
   # Callback
@@ -79,13 +80,20 @@ class Account < ApplicationRecord
   validates :province_id, presence: true, if: :counselor?
   validates :district_id, presence: true, if: :counselor?
   validates :high_school_ids, presence: true, if: :counselor?
+  validates :province_ids, presence: true, if: :trainer?
 
   # Constant
-  ROLES = [["អ្នកគ្រប់គ្រង", "admin"], ["អ្នកប្រឹក្សាយោបល់", "counselor"]]
+  ROLES = [
+    ["អ្នកគ្រប់គ្រង", "admin"],
+    ["គ្រូប្រឹក្សាតាមសាលារៀន", "counselor"],
+    ["គ្រូឧទ្ទេសថ្នាក់ជាតិ", "trainer"]
+  ]
 
   # Association
   has_many :account_high_schools
   has_many :high_schools, through: :account_high_schools
+  has_many :account_provinces
+  has_many :provinces, through: :account_provinces
 
   # Scope
   default_scope { order(updated_at: :desc) }

@@ -21,15 +21,11 @@ class HighSchoolsController < ApplicationController
       }
 
       format.json {
-        @schools = authorize HighSchool.filter(filter_params)
+        @schools = HighSchool.filter(filter_params)
 
         render json: @schools
       }
     end
-  end
-
-  def grades
-    render json: User.grades
   end
 
   private

@@ -21,7 +21,7 @@ km:
     last_sign_in_via: ចូលចុងក្រោយតាមរយៈ %{type}
     primary_admin: Primary admin
     admin: អ្នកគ្រប់គ្រង
-    counselor: អ្នកប្រឹក្សាយោបល់
+    counselor: គ្រូប្រឹក្សាតាមសាលារៀន
     school: សាលា
     grafana: គណនីស្ថិតិ
     full_name: ឈ្មោះពេញ
@@ -30,3 +30,5 @@ km:
     disable_dashboard_successfully: បញ្ជូនសំណើបិទគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងមិនអាចចូលប្រើផ្ទាំងស្ថិតិនៅនៅបន្តិចទៀត!
     enable_dashboard: បើកដំណើរការគណនីស្ថិតិ
     disable_dashboard: បិទដំណើរការគណនីស្ថិតិ
+    trainer: គ្រូឧទ្ទេសថ្នាក់ជាតិ
+    location: ទីតាំង

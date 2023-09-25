@@ -95,7 +95,7 @@ class User < ApplicationRecord
   def school_address
     return nil unless high_school_code.present?
 
-    "#{high_school_name_km} #{address}"
+    "#{high_school_name_km} #{high_school.location.address_km}"
   end
 
   def display_device_id
