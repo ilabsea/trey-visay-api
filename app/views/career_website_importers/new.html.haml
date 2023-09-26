@@ -1,0 +1,4 @@
+= render "shared/headers/progress_arrow_header", title: t("shared.importing_wizard", name: t('sidebar.career_website'))
+
+= render "shared/forms/wizard_form", cancel_url: career_websites_path, sample_url: '/sample/career_websites.zip', item: @batch, form_url: career_website_importers_path, download_sample_form_label: t('school.download_sample_form'), accept_file_format: ".zip"
+

@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   resources :intelligence_questions
   resources :intelligence_question_importers
 
+  resources :career_websites
+  resources :career_website_importers
+
   # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
   as :account do
     match "/confirmation" => "confirmations#update", via: :put, as: :update_account_confirmation
@@ -93,6 +96,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :videos, only: [:index]
       resources :visits, only: [:create]
+      resources :career_websites, only: [:index]
     end
   end
 

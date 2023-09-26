@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "career_website") do |sheet|
+  sheet.add_row %w[id name url description logo]
+
+  @career_websites.each_with_index do |web, index|
+    row = [
+      web.id,
+      web.name,
+      web.url,
+      web.description,
+      web.logo_url
+    ]
+
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end
