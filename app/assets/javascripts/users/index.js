@@ -8,6 +8,13 @@ TV.UsersIndex = (() => {
   function init() {
     onClickSearch();
     onClickDownload();
+    handleDisplaySearchButton();
+  }
+
+  function handleDisplaySearchButton() {
+    if(!$(".filter-wrapper .form-group").length) {
+      $(".filter-wrapper .search-button").remove();
+    }
   }
 
   function onClickSearch() {

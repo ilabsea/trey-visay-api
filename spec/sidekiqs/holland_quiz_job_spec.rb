@@ -32,9 +32,9 @@ RSpec.describe HollandQuizJob, type: :job do
           }
         ],
         holland_major_responses_attributes: [
-          { college_major_code: majors[0].code, selected: true },
-          { college_major_code: majors[1].code, selected: false },
-          { college_major_code: majors[2].code, selected: false }
+          { major_code: majors[0].code, selected: true },
+          { major_code: majors[1].code, selected: false },
+          { major_code: majors[2].code, selected: false }
         ],
         holland_job_responses_attributes: [
           { job_code: jobs[0].code, selected: true },

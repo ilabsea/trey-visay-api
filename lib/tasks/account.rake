@@ -2,10 +2,15 @@
 
 namespace :account do
   desc "Migrate role and confirm"
-  task migrate_role_and_confirm: :environment do
+  task migrate_role_and_high_school: :environment do
     Account.all.each do |account|
-      account.update(role: get_role(account), counselor_school_id: get_counselor_school_id(account))
-      account.confirm
+      school = get_high_school(account)
+      account.update(
+        role: get_role(account),
+        high_school_ids: [school.try(:id)],
+        province_id: school.try(:province_id),
+        district_id: school.try(:district_id)
+      )
     end
   end
 
@@ -14,9 +19,18 @@ namespace :account do
       account.is_admin? ? "admin" : "counselor"
     end
 
-    def get_counselor_school_id(account)
+    def get_high_school(account)
       return nil unless account.is_counsellor?
+      school_name = get_school_name[account.schools[0]] || account.schools[0]
 
-      CounselorSchool.find_by(name: account.schools[0]).try(:id)
+      HighSchool.find_by(name_km: school_name)
+    end
+
+    def get_school_name
+      {
+        "វិទ្យាល័យហ.សពាមជីកង": "វិទ្យាល័យហ៊ុនសែនពាមជីកង",
+        "សាលាជំនាន់ថ្មីវិទ្យាល័យព្រះស៊ីសុវត្ថិ": "វិទ្យាល័យព្រះស៊ីសុវត្ថិ",
+        "វិទ្យាល័យជាស៊ីមព្រែកអញ្ចាញ": "វិទ្យាល័យព្រែកអញ្ជាញ"
+      }
     end
 end

@@ -1,6 +1,3 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= "អ្នកប្រើប្រាស់ឈ្មោះ #{@user.full_name}"
-
 = render "users/tab_header"
 
 .card.shadow.mb-4
@@ -94,42 +91,9 @@
               %div
                 %audio{controls: true, class: 'embed-responsive-item'}
                   %source{src: @game.audio.url}
-          %br
-          %br
-
-          - if @schools.present? || @game.goal_career.unknown_schools.present?
-            សាលាខាងក្រោមនេះមានបង្រៀនមុខវិជ្ជាដែលអ្នកចង់រៀន
-            %br
-            %br
-
-            - if unknown_schools = @game.goal_career.unknown_schools.presence
-              .shadow-box
-                .meddium-margin-bottom
-                  %h4.strong-text= unknown_schools
-              %br
-
-            - if @schools.present?
-              .shadow-box
-                .content-box
-                  .content-display
-                    - @schools.each do |school|
-                      - blank_department_majors = school.majors.select { |major| major.department_id == nil }
-                      .meddium-margin-bottom{ 'data-toggle' => 'modal', 'data-target' => '#modal-school', 'data-school' => school.to_json, 'data-departments' => school.departments.to_json(include: :majors), 'data-majors' => blank_department_majors.to_json }
-                        %span.fi-circle-check
-                          = image_tag school.logo_url, class: 'img-circular-small'
-                        %h4.strong-text= school.name
-                        %span.glyphicon.glyphicon-equalizer.text-primary
-                        %span= school.category
-                        %br
-                        %span.glyphicon.glyphicon-map-marker.text-primary
-                        %span= school.address
-                        .clear
-                        %hr
-              %br
 
 = render 'modal_first_test', :personal_understandings => @game.personal_understandings
 = render 'modal_second_test_one', :subject => @game.subject
 = render 'modal_second_test_two', :entries => @game.entries
 = render 'modal_second_test_three', :careers => @game.careers
 = render 'modal_second_test_four'
-/ = render 'modal_school'

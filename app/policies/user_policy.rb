@@ -21,6 +21,7 @@ class UserPolicy < ApplicationPolicy
     def resolve
       return scope.all if user.primary_admin? || user.admin?
       return scope.where(province_id: user.province_ids) if user.trainer?
+      return scope.where(grade: "other") if user.in_school_other?
 
       scope.where(high_school_code: user.high_school_ids)
     end

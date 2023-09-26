@@ -96,7 +96,7 @@ class Account < ApplicationRecord
   has_many :provinces, through: :account_provinces
 
   # Scope
-  default_scope { order(updated_at: :desc) }
+  default_scope { order(created_at: :desc) }
 
   # Instant method
   def status
@@ -109,6 +109,10 @@ class Account < ApplicationRecord
 
   def display_name
     email.split("@").first.upcase
+  end
+
+  def in_school_other?
+    high_school_ids.include? "other"
   end
 
   # Class methods

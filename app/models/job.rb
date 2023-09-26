@@ -57,7 +57,7 @@ class Job < ApplicationRecord
 
   def self.filter(params = {})
     scope = all
-    scope = scope.where("code LIKE ? OR name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope = scope.where(job_cluster_id: params[:job_cluster_id]) if params[:job_cluster_id].present?
     scope
   end
