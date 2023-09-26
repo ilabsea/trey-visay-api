@@ -3,8 +3,9 @@
 namespace :account do
   desc "Migrate role and confirm"
   task migrate_role_and_high_school: :environment do
-    Account.all.each do |account|
+    Account.where(role: nil).each do |account|
       school = get_high_school(account)
+      account.skip_confirmation!
       account.update(
         role: get_role(account),
         high_school_ids: [school.try(:id)],
@@ -21,7 +22,7 @@ namespace :account do
 
     def get_high_school(account)
       return nil unless account.is_counsellor?
-      school_name = get_school_name[account.schools[0]] || account.schools[0]
+      school_name = get_school_name[account.schools[0].to_sym] || account.schools[0]
 
       HighSchool.find_by(name_km: school_name)
     end

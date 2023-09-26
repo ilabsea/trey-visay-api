@@ -1,14 +1,21 @@
-FROM kakadachheang/nginx-rails:2.5
+FROM ruby:2.7.4
+
+LABEL maintainer="Sokly Heng <sokly@kawsang.com>"
 
 # Install dependencies
 RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential mysql-client nodejs && \
-  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get install -y build-essential default-mysql-client nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir /app
+WORKDIR /app
 
 # Install gem bundle
-COPY Gemfile /app/
-COPY Gemfile.lock /app/
-RUN bundle install --jobs 3 --deployment --without development test
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+
+RUN gem install bundler:2.1.4 && \
+  bundle install --jobs 20 --deployment --without development test
 
 # Install the application
 COPY . /app
@@ -17,9 +24,12 @@ COPY . /app
 RUN if [ -d .git ]; then git describe --always > VERSION; fi
 
 # Precompile assets
-RUN bundle exec rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=secret
+RUN bundle exec rake assets:precompile RAILS_ENV=production
 
 ENV RAILS_LOG_TO_STDOUT=true
+ENV RACK_ENV=production
+ENV RAILS_ENV=production
+EXPOSE 80
 
 # Add scripts
 COPY docker/runit-web-run /etc/service/web/run
