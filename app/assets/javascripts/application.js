@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function() {
   TV.Common.Timeago.init();
   TV.Common.Sidebar.init();
   TV.Common.SelectPicker.init();
-  TV.Common.ConfirmModal.init();
+  TV.Common.ConfirmModal.init("confirmDeleteModal");
 
   $("[role='tooltip']").remove();
   $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
