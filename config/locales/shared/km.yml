@@ -42,9 +42,9 @@ km:
     confirm_publish: បញ្ជាក់ការចេញផ្សាយ %{name}
     are_you_sure_to_publish: តើអ្នកប្រាកដជាចេញផ្សាយ%{type} <b>%{name}</b> នេះជាសាធារណៈមែនទេ?
     yes_publish: បាទ/ចាស, ចេញផ្សាយ!
-    province: ខេត្ត
-    district: ស្រុក
-    commune: ឃុំ
+    province: ខេត្ត/ក្រុង
+    district: ស្រុក/ខណ្ឌ
+    commune: ឃុំ/សង្កាត់
     village: ភូមិ
     street: ផ្លូវ
     house_number: ផ្ទះលេខ
@@ -100,7 +100,7 @@ km:
     url: តំណរភ្ជាប់ (Url)
     author: អ្នផលិត
     download_sample_form_zip: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
-    logo: និមិត្តសញ្ញា
+    logo: រូបនិមិត្តសញ្ញា
     all_grades: គ្រប់ថ្នាក់
     please_select: សូមជ្រើសរើស
     search_by_date: ស្វែងរកតាមកាលបរិច្ឆេទ

@@ -15,6 +15,7 @@
             %th= t('shared.code')
             %th= t('shared.name_km')
             %th= t('shared.name_en')
+            %th= t('job.personality_type')
             %th= t('shared.logo')
             %th= t('job.cluster')
             %th= t('major.number_of_schools')
@@ -27,6 +28,7 @@
               %td= link_to job.code, job_path(job), class: 'text-primary'
               %td= job.name_km
               %td= job.name_en
+              %td= job.personality_type
               %td
                 = image_tag(job.logo_url, width: 50, class: 'rounded-circle') if job.logo.present?
               %td= job.job_cluster_name

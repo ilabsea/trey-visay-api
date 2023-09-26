@@ -11,7 +11,7 @@
   - ['name_km', 'name_en', 'personality_type', 'job_cluster_name', 'general_description'].each do |field|
     .row.mb-1
       .col-4= t("job.#{field}")
-      .col-8= @job[field] || 'N/A'
+      .col-8= @job.send(field) || 'N/A'
 
   - {job_condition: %w(jd_main_task jd_environment jd_work_style), education_and_training: %w(edu_education_level  edu_subjects_at_high_school edu_majors_at_university), mandate_qualification: %w(personal_competency_knowledge personal_competency_skill personal_competency_ability)}.each do |key, value|
 
@@ -21,6 +21,6 @@
         - value.each do |field|
           .row.m-1
             .col-4= t("job.#{field}")
-            .col-8= @job[field] || 'N/A'
+            .col-8= @job.send(field) || 'N/A'
 
   = render "shared/school_section", schools: @job.schools

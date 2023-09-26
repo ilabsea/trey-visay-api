@@ -19,6 +19,7 @@
 #  updated_at          :datetime         not null
 #  code                :string(255)
 #  kind                :integer
+#  province_id         :string(255)
 #
 
 class School < ApplicationRecord
