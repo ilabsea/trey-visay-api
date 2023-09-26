@@ -1,5 +1,5 @@
 = form_for "", url: users_path, method: 'get' do |f|
-  .d-flex
+  .d-flex.filter-wrapper
     - if current_account.primary_admin? || current_account.admin? || current_account.trainer?
       .form-group.mr-2
         = f.hidden_field(:province_id, value: params[:province_id])
@@ -17,14 +17,14 @@
       .form-group.mr-2
         = select_tag :grade, options_for_select(User.grades.pluck(:label, :value), params[:grade]), include_blank: t('shared.all_grades'), class: 'custom-select'
 
-    - if current_account.counselor?
+    - if current_account.counselor? && !current_account.in_school_other?
       .form-group.mr-2
         = select_tag :high_school_code, options_for_select(HighSchool.where(code: current_account.high_school_ids).pluck(:name_km, :code), params[:high_school_code]), include_blank: (current_account.high_school_ids.length > 1 ? t('shared.all_schools') : false), class: 'custom-select'
 
       .form-group.mr-2
         = select_tag :grade, options_for_select(User.grades.pluck(:label, :value), params[:grade]), include_blank: t('shared.all_grades'), class: 'custom-select'
 
-    .form-group
+    .search-button
       %button.btn-search.btn.btn-primary{type: 'button'}
         %i.fas.fa-search
         = t('shared.search')

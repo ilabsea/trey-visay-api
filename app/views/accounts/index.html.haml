@@ -48,9 +48,9 @@
             %td
               = account.provinces.pluck(:name_km).join(", ") if account.trainer?
 
-              = Pumi::District.find_by_id(account.district_id).address_km if account.counselor?
+              = Pumi::District.find_by_id(account.district_id).try(:address_km) if account.counselor?
             %td
-              = account.high_schools.map(&:name).join(", ") if account.counselor?
+              = account.high_schools.map(&:name_km).join(", ") if account.counselor?
 
             %td.status{ class: account.status }
               = t("account.#{account.status}")

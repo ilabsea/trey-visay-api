@@ -38,13 +38,13 @@ class Major < ApplicationRecord
 
   # Validation
   validates :name, presence: true
-  validates :code, uniqueness: true, allow_nil: true
 
   # Delegation
   delegate :name, to: :parent, prefix: true, allow_nil: true
 
   # Callback
   after_commit :update_vocational_grade
+  before_create :secure_code
 
   # Scope
   scope :roots, -> { where(parent_code: nil) }
@@ -59,5 +59,14 @@ class Major < ApplicationRecord
   private
     def update_vocational_grade
       update_columns(grade: (departments.vocational_grade.present? ? "vocational_grade" : nil))
+    end
+
+    def secure_code
+      self.code ||= "major_#{sprintf('%04d', Major.maximum(:id).to_i.next)}"
+
+      return unless self.class.exists?(code: code)
+
+      self.code = SecureRandom.uuid[0..5]
+      secure_code
     end
 end

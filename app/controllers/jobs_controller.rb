@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @jobs = pagy(authorize Job.filter(filter_params).includes(:schools))
+        @pagy, @jobs = pagy(authorize Job.filter(filter_params).order(:code, created_at: :desc).includes(:schools))
       }
 
       format.xlsx {

@@ -28,6 +28,9 @@ class Video < ApplicationRecord
   validates :url, http_url: true
   validates :author, presence: true
 
+  # Scope
+  default_scope { order(created_at: :desc) }
+
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?

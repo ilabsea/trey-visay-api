@@ -326,13 +326,6 @@ ActiveRecord::Schema.define(version: 2023_09_22_044854) do
     t.string "version"
   end
 
-  create_table "major_mappings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "major_id"
-    t.string "college_major_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
