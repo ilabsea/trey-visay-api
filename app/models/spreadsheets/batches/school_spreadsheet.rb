@@ -18,7 +18,8 @@ module Spreadsheets
           code: row["school_code"],
           name: row["school_name"],
           address: row["address"],
-          province: Pumi::Province.find_by_id(row["province_code"]).try(:name_km),
+          province: province(row).try(:name_km),
+          province_id: province(row).try(:id),
           phone_numbers: row["tels"],
           emails: row["emails"],
           website_or_facebook: row["website_or_facebook"],
@@ -49,6 +50,12 @@ module Spreadsheets
           return unless school_index.present?
 
           @school_departments_attributes.concat Spreadsheets::Batches::SchoolMajorSpreadsheet.new(school, @rows[school_index..-1]).process
+        end
+
+        def province(row)
+          code = sprintf "%02d", row["province_code"].to_i
+
+          Pumi::Province.find_by_id(code)
         end
     end
   end

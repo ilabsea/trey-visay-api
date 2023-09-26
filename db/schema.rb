@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_25_062638) do
+ActiveRecord::Schema.define(version: 2023_09_26_062704) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -335,13 +335,6 @@ ActiveRecord::Schema.define(version: 2023_09_25_062638) do
     t.string "version"
   end
 
-  create_table "major_mappings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "major_id"
-    t.string "college_major_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -527,6 +520,7 @@ ActiveRecord::Schema.define(version: 2023_09_25_062638) do
     t.datetime "updated_at", null: false
     t.string "code"
     t.integer "kind"
+    t.string "province_id"
   end
 
   create_table "self_understanding_options", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
