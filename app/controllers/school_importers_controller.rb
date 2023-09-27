@@ -19,7 +19,7 @@ class SchoolImportersController < ApplicationController
     def itemable_attributes
       [
         :id, :code, :name, :address, :province, :phone_numbers, :emails, :website_or_facebook,
-        :kind, :category, :logo_cache,
+        :kind, :category, :logo_cache, :province_id,
         school_departments_attributes: [
           :id, :_destroy,
           department_attributes: [:name],
