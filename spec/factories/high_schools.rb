@@ -10,6 +10,7 @@
 #  district_id :string(255)
 #  province_id :string(255)
 #  commune_id  :string(255)
+#  deleted_at  :datetime
 #
 # Indexes
 #
@@ -19,6 +20,6 @@ FactoryBot.define do
   factory :high_school do
     name_km       { FFaker::Name.name }
     name_en       { FFaker::Name.name }
-    commune_id    { Pumi::Commune.all.sample.id }
+    district_id   { Pumi::District.all.sample.id }
   end
 end

@@ -40,6 +40,7 @@
 //= require common/select_picker
 //= require common/logo
 //= require common/confirm_modal
+//= require common/toggle_advance_search
 
 // Accordion
 //= require common/toggle_collapse
@@ -58,6 +59,7 @@ $(document).on('turbolinks:load', function() {
   TV.Common.Sidebar.init();
   TV.Common.SelectPicker.init();
   TV.Common.ConfirmModal.init("confirmDeleteModal");
+  TV.Common.toggleAdvanceSearch.init();
 
   $("[role='tooltip']").remove();
   $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });

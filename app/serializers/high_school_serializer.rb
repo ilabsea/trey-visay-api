@@ -10,6 +10,7 @@
 #  district_id :string(255)
 #  province_id :string(255)
 #  commune_id  :string(255)
+#  deleted_at  :datetime
 #
 # Indexes
 #

@@ -10,6 +10,7 @@
 #  district_id :string(255)
 #  province_id :string(255)
 #  commune_id  :string(255)
+#  deleted_at  :datetime
 #
 # Indexes
 #
@@ -17,14 +18,20 @@
 #
 
 class HighSchool < ApplicationRecord
+  acts_as_paranoid
+
   include HighSchools::LocationConcern
   include ItemableConcern
 
   # Association
   has_many :users, foreign_key: :high_school_code
 
+  validates :name_km, presence: true
+  validates :district_id, presence: true
+
   # Callback
-  before_create :generate_code
+  before_create :secure_code
+  before_create :set_name_en
 
   # Scope
   default_scope { order(district_id: :asc) }
@@ -39,15 +46,20 @@ class HighSchool < ApplicationRecord
 
   def self.filter(params = {})
     scope = all
-    scope = scope.where("code LIKE ? OR name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where(province_id: params[:province_id]) if params[:province_id].present?
     scope = scope.where(district_id: params[:district_id]) if params[:district_id].present?
     scope
   end
 
   private
-    def generate_code
+    def secure_code
       num = self.class.where("district_id": district_id).length + 1
 
       self.code ||= "#{district_id}#{sprintf("%03d", num)}"
+    end
+
+    def set_name_en
+      self.name_en ||= name_km
     end
 end

@@ -1,0 +1,24 @@
+.container{style: 'width: 50%'}
+  = simple_form_for @school do |f|
+    = f.input :name_km, label: t('shared.name_km')
+    = f.input :name_en, label: t('shared.name_en')
+
+    #province.form-group
+      = f.label(:province_id, required: true)
+      = f.hidden_field(:province_id)
+      = f.select(:province_id, [], {:include_blank => "Please select"}, {:data => {:pumi_select_target => "district", :pumi_select_collection_url => pumi.provinces_path, :pumi_select_collection_label_method => "name_km", :pumi_select_collection_value_method => "id", :pumi_select_populate_on_load => true, :pumi_select_has_hidden_value => true}, class: 'select-location form-control'})
+
+    - if error_msg = f.object.errors["province_id"].presence
+      .invalid-feedback.d-block= error_msg.join('; ')
+
+    #district.form-group
+      = f.label(:district_id, required: true)
+      = f.hidden_field(:district_id)
+      = f.select(:district_id, [], {:include_blank => "Please select"}, {:data => {:pumi_select_id => "district", :pumi_select_target => "commune", :pumi_select_collection_url => pumi.districts_path(:province_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_km", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#district", :pumi_select_disabled_class => "my-disabled-class", :pumi_select_has_hidden_value => true}, class: 'select-location form-control'})
+
+      - if error_msg = f.object.errors["district_id"].presence
+        .invalid-feedback.d-block= error_msg.join('; ')
+
+    .actions.mt-5
+      = link_to t('shared.cancel'), high_schools_path, class: 'btn btn-secondary'
+      = f.submit t('shared.save'), class: 'btn btn-primary'

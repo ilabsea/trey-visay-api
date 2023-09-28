@@ -1,8 +1,6 @@
 / Page Heading
 = render "page_heading"
 
-= render 'shared/filters/name_code_filter', url: high_schools_path
-
 .card.shadow.mb-4
   .card-body
     = render "shared/pagination_title", objects: @schools
@@ -25,5 +23,11 @@
               %td= school.name
               %td= "(#{school.district_id}) #{school.address}"
               %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: school, url: edit_high_school_path(school)
+
+                  = render 'shared/buttons/delete_button', object: school,  message: { type: t('sidebar.high_school'), name: school.name, url: high_school_path(school) }
 
     = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"
