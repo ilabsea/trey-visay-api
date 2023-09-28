@@ -5,6 +5,10 @@ class ApplicationRecord < ActiveRecord::Base
 
   strip_attributes
 
+  def logo_or_default
+    logo_url || "default_logo.png"
+  end
+
   private
     def secure_id
       self.id ||= SecureRandom.hex(4)

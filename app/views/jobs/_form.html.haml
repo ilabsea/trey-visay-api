@@ -1,0 +1,33 @@
+.container.w-75
+  = simple_form_for @job, defaults: { input_html: { class: 'form-horizontal' } } do |f|
+    = render "shared/forms/logo", object: @job, f: f
+    = f.input :code, input_html: { readonly: @job.persisted? }, label: t('shared.code')
+    = f.input :name_km, label: t('job.name_km')
+    = f.input :name_en, label: t('job.name_en')
+    = f.input :personality_type, label: t('job.personality_type')
+
+    = f.input :job_cluster_id, label: t('job.job_cluster_name'), as: :select, collection: JobCluster.pluck(:name, :id)
+
+    = f.input :general_description, label: t('job.general_description')
+
+    %fieldset
+      %legend.h5= t('job.job_condition')
+      = f.input :jd_main_task, label: t('job.jd_main_task')
+      = f.input :jd_environment, label: t('job.jd_environment')
+      = f.input :jd_work_style, label: t('job.jd_work_style')
+
+    %fieldset
+      %legend.h5= t('job.education_and_training')
+      = f.input :edu_education_level, label: t('job.edu_education_level')
+      = f.input :edu_subjects_at_high_school, label: t('job.edu_subjects_at_high_school')
+      = f.input :edu_majors_at_university, label: t('job.edu_majors_at_university')
+
+    %fieldset
+      %legend.h5= t('job.mandate_qualification')
+      = f.input :personal_competency_knowledge, label: t('job.personal_competency_knowledge')
+      = f.input :personal_competency_skill, label: t('job.personal_competency_skill')
+      = f.input :personal_competency_ability, label: t('job.personal_competency_ability')
+
+    .actions.text-right
+      = link_to t('shared.cancel'), jobs_path, class: 'btn btn-secondary'
+      = f.submit t("shared.save"), class: 'btn btn-primary'

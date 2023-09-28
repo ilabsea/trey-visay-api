@@ -23,10 +23,6 @@ class CareerWebsite < ApplicationRecord
   # Callback
   before_create :secure_id
 
-  def logo_or_default
-    logo_url || "default_logo.png"
-  end
-
   def self.filter(params = {})
     scope = all
     scope = scope.where("name LIKE ?", "%#{params[:name].strip}%") if params[:name].present?
