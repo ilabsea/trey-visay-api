@@ -1,0 +1,18 @@
+.container.w-75
+  = simple_form_for @major, defaults: { input_html: { class: 'form-horizontal' } } do |f|
+
+    = f.input :code, input_html: { readonly: @major.persisted? }
+    = f.input :name
+    = f.input :personality_type
+    = f.input :general_info
+    = f.input :orien_orientation_subjects
+    = f.input :orien_study_condition
+    = f.input :orien_graduation_condition
+    = f.input :curriculum
+    = f.input :teaching_and_learning_process
+    = f.input :gain_knowledge
+    = f.input :worthy_career
+
+    .actions.text-right
+      = link_to t('shared.cancel'), majors_path, class: 'btn btn-secondary'
+      = f.submit t("shared.save"), class: 'btn btn-primary'

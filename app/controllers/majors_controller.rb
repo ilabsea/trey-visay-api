@@ -2,7 +2,7 @@
 
 class MajorsController < ApplicationController
   helper_method :filter_params
-  before_action :set_major, only: [:show, :edit, :update]
+  before_action :set_major, only: [:show, :edit, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -32,16 +32,35 @@ class MajorsController < ApplicationController
   def show
   end
 
+  def new
+    @major = authorize Major.new
+  end
+
+  def create
+    @major = authorize Major.new(major_params)
+
+    if @major.save
+      redirect_to majors_url, notice: "Major was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
-    @majors = Major.all
   end
 
   def update
     if @major.update(major_params)
-      redirect_to @major
+      redirect_to @major, notice: "High school was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @major.destroy
+
+    redirect_to majors_url, notice: "Major was successfully destroyed."
   end
 
   private

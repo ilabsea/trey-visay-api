@@ -21,6 +21,7 @@
 #  worthy_career                 :text(65535)
 #  recommendation                :text(65535)
 #  grade                         :integer
+#  deleted_at                    :datetime
 #
 
 class MajorSerializer < ActiveModel::Serializer
