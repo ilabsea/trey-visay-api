@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VideosController < ApplicationController
-  helper_method :filter_params
+  before_action :authorize_video, only: [:edit, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -26,10 +26,50 @@ class VideosController < ApplicationController
         render json: @videos
       }
     end
+
+    def new
+      @video = authorize Video.new
+    end
+
+    def create
+      @video = authorize Video.new(video_params)
+
+      if @video.save
+        redirect_to videos_url, notice: "Video was successfully created."
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    def edit
+    end
+
+    def update
+      if @video.update(video_params)
+        redirect_to videos_url, notice: "Video was successfully updated."
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @video.destroy
+
+      redirect_to videos_url, notice: "Video was destroyed successfully"
+    end
   end
 
   private
     def filter_params
       params.permit(:name)
+    end
+    helper_method :filter_params
+
+    def authorize_video
+      @video = authorize Video.find(params[:id])
+    end
+
+    def video_params
+      params.require(:video).permit(:code, :name, :url, :author)
     end
 end

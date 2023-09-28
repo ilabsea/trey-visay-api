@@ -110,8 +110,11 @@ en:
     finished_at: Finished at
     any_province: Any province
     any_district: Any district
+    title: Title
 
     new_career_website: New career website
     edit_career_website: Edit career website
     new_high_school: New high school
     edit_high_school: Edit high school
+    new_video: New video
+    edit_video: Edit video

@@ -1,0 +1,10 @@
+.container{style: 'width: 50%'}
+  = simple_form_for @video do |f|
+    = f.input :code, label: t('shared.code'), readonly: @video.persisted?
+    = f.input :name, label: t('shared.title')
+    = f.input :url, label: t('shared.url')
+    = f.input :author, label: t('shared.author')
+
+    .actions.mt-5
+      = link_to t('shared.cancel'), videos_path, class: 'btn btn-secondary'
+      = f.submit t('shared.save'), class: 'btn btn-primary'

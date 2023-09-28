@@ -11,8 +11,11 @@
 #  author     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  deleted_at :datetime
 #
 class Video < ApplicationRecord
+  acts_as_paranoid
+
   include ItemableConcern
 
   # Association
@@ -25,6 +28,7 @@ class Video < ApplicationRecord
 
   # Validation
   validates :name, presence: true
+  validates :url, presence: true
   validates :url, http_url: true
   validates :author, presence: true
 

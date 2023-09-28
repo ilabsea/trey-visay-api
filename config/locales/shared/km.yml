@@ -98,7 +98,7 @@ km:
     search_by_name: ស្វែងរកតាមឈ្មោះ
     valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"
     url: តំណរភ្ជាប់ (Url)
-    author: អ្នផលិត
+    author: អ្នកផលិត
     download_sample_form_zip: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
     logo: រូបនិមិត្តសញ្ញា
     all_grades: គ្រប់ថ្នាក់
@@ -110,8 +110,11 @@ km:
     finished_at: បញ្ចប់តេស្តនៅ
     any_province: គ្រប់ខេត្ត/ក្រុង
     any_district: គ្រប់ស្រុក/ខ័ណ្ឌ
+    title: ចំណងជើង
 
     new_career_website: មជ្ឈមណ្ឌលការងារថ្មី
     edit_career_website: កែតម្រូវមជ្ឈមណ្ឌលការងារ
     new_high_school: គ្រឹស្ថានមធ្យមសិក្សាថ្មី
     edit_high_school: កែតម្រូវគ្រឹស្ថានមធ្យមសិក្សា
+    new_video: វីដេអូថ្មី
+    edit_video: កែតម្រូវវីដេអូ
