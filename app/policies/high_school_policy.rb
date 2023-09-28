@@ -2,7 +2,7 @@
 
 class HighSchoolPolicy < ApplicationPolicy
   def index?
-    create?
+    user.primary_admin? || user.admin?
   end
 
   def show?
