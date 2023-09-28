@@ -104,7 +104,7 @@ Rails.application.routes.draw do
 
   if Rails.env.production?
     # Sidekiq
-    authenticate :user, lambda { |u| u.primary_admin? } do
+    authenticate :account, lambda { |u| u.primary_admin? } do
       mount Sidekiq::Web => "/sidekiq"
     end
   else
