@@ -20,9 +20,12 @@
 #  code                :string(255)
 #  kind                :integer
 #  province_id         :string(255)
+#  deleted_at          :datetime
 #
 
 class School < ApplicationRecord
+  acts_as_paranoid
+
   include ItemableConcern
 
   mount_uploader :logo, LogoUploader
@@ -40,8 +43,10 @@ class School < ApplicationRecord
   has_many :school_majors
   has_many :majors, through: :school_majors
 
-  # validates :category, inclusion: { in: CATEGORIES }
   validates :name, presence: true
+
+  # Callback
+  before_create :secure_code
 
   accepts_nested_attributes_for :school_departments, allow_destroy: true
 
@@ -61,5 +66,9 @@ class School < ApplicationRecord
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope = scope.where(kind: params[:kind]) if params[:kind].present?
     scope
+  end
+
+  def self.categories
+    ['public', 'private', 'ngo']
   end
 end

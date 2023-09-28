@@ -20,6 +20,7 @@
 #  code                :string(255)
 #  kind                :integer
 #  province_id         :string(255)
+#  deleted_at          :datetime
 #
 
 require "rails_helper"

@@ -11,6 +11,8 @@
 #  updated_at    :datetime         not null
 #
 class SchoolDepartment < ApplicationRecord
+  attr_accessor :major_list
+
   # Association
   belongs_to :school
   belongs_to :department
@@ -25,7 +27,19 @@ class SchoolDepartment < ApplicationRecord
 
   # Instant method
   def department_attributes=(hash)
+    return unless hash[:name].present?
+
     self.department = Department.find_or_create_by(name: hash[:name])
-    self.department.update_columns(grade: hash[:grade])
+    self.department.update_columns(grade: hash[:grade].presence || nil)
+  end
+
+  def major_list
+    majors.map(&:name).join(", ")
+  end
+
+  def major_list=(names)
+    self.majors = names.to_s.split(",").map do |name|
+      Major.where(name: name.strip).first_or_create!
+    end
   end
 end

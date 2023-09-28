@@ -4,7 +4,7 @@
 
 .card.shadow.mb-4
   .card-body
-    = render "shared/pagination_title", objects: @schools
+    = render "shared/headers/pagy_label"
 
     .table-responsive.mb-4
       %table.table.table-hover.pretty
@@ -25,6 +25,29 @@
             %th= t('school.number_of_major')
 
         %tbody#body-content
-          = render partial: 'school', collection: @schools
+          - @schools.each_with_index do |school, index|
+            %tr
+              %td= @pagy.from + index
+              %td= link_to school.code, school_path(school), class: 'text-primary'
+              %td
+                = image_tag(school.logo_url, width: 24) if school.logo.present?
+              %td= school.name
+              %td.trancate-column
+                = t("school.#{school.kind}") if school.kind.present?
+              %td.trancate-column= school.address
+              %td= school.province
+              %td.trancate-column= school.phone_numbers
+              %td.trancate-column= school.emails
+              %td.trancate-column= school.website_or_facebook
+              %td= school.category
+              %td= school.school_departments.length
+              %td= school.school_majors.length
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: school, url: edit_school_path(school)
+
+                  = render 'shared/buttons/delete_button', object: school,  message: { type: t('sidebar.school'), name: school.name, url: school_path(school) }
 
     = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"

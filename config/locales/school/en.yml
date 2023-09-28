@@ -16,3 +16,11 @@ en:
     number_of_department: "# of departments"
     number_of_major: "# of majors"
     tvet_institute: TVET
+    new_school: New school
+    edit_school: Edit school
+    private: Private
+    public: Public
+    ngo: NGO
+    vocational_grade: Vocational grade
+    add_department: + Add Department
+    department_name: Department name

@@ -1,0 +1,21 @@
+.container.w-75
+  = simple_form_for @school do |f|
+    = render "shared/forms/logo", object: @school, f: f
+    = f.input :code, label: t('school.code'), readonly: @school.persisted?
+    = f.input :name, label: t('school.name')
+    = f.input :address, label: t('school.address')
+    = f.input :province_id, label: t('shared.province'), as: :select, collection: Pumi::Province.all.pluck(:name_km, :id)
+    = f.input :phone_numbers, label: t('school.phone_numbers')
+    = f.input :emails, label: t('school.emails')
+    = f.input :website_or_facebook, label: t('school.website')
+    = f.input :category, label: t('school.category'), as: :select, collection: School.categories.map{ |c,v| [t("school.#{c}"), c]}
+    = f.input :kind, label: t('school.type'), as: :select, collection:  School.kinds.map{ |k,v| [t("school.#{k}"), k] }
+
+    = f.fields_for :school_departments, f.object.school_departments do |df|
+      = render 'school_department_fields', f: df
+
+    = link_to_add_fields t('school.add_department'), f, :school_departments, class: 'btn btn-outline-secondary'
+
+    .actions.mt-5
+      = link_to t('shared.cancel'), schools_path, class: 'btn btn-secondary'
+      = f.submit t('shared.save'), class: 'btn btn-primary'

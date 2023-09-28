@@ -3,7 +3,7 @@
     = render partial: "shared/no_data", locals: { items: @batches }
 
     - if @batches.present?
-      = render "shared/pagination_title", objects: @batches
+      = render "shared/headers/pagy_label"
 
       .table-responsive
         %table.table.table-hover.pretty

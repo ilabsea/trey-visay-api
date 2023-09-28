@@ -4,7 +4,7 @@ module Api
   module V2
     class MajorsController < ::Api::V2::ApiController
       def index
-        pagy, majors = pagy(Major.includes(:schools))
+        pagy, majors = pagy(Major.where.not(personality_type: nil).includes(:schools))
 
         render json: {
           pagy: pagy.vars,
