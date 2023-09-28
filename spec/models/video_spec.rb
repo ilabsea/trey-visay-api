@@ -11,6 +11,7 @@
 #  author     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  deleted_at :datetime
 #
 require "rails_helper"
 
@@ -19,6 +20,7 @@ RSpec.describe Video, type: :model do
   it { is_expected.to have_many(:batches).through(:importing_items) }
 
   it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:url) }
   it { is_expected.to validate_presence_of(:author) }
   it { is_expected.to have_many(:cluster_videos) }
   it { is_expected.to have_many(:job_clusters).through(:cluster_videos) }

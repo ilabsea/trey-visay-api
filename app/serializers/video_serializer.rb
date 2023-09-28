@@ -11,6 +11,7 @@
 #  author     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  deleted_at :datetime
 #
 class VideoSerializer < ActiveModel::Serializer
   attributes :id, :code, :name, :url, :author, :updated_at
