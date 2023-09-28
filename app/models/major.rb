@@ -21,6 +21,7 @@
 #  worthy_career                 :text(65535)
 #  recommendation                :text(65535)
 #  grade                         :integer
+#  deleted_at                    :datetime
 #
 
 class Major < ApplicationRecord
@@ -38,12 +39,14 @@ class Major < ApplicationRecord
 
   # Validation
   validates :name, presence: true
+  validates :code, uniqueness: true
 
   # Delegation
   delegate :name, to: :parent, prefix: true, allow_nil: true
 
   # Callback
-  after_commit :update_vocational_grade
+  after_create :update_vocational_grade
+  after_update :update_vocational_grade
   before_create :secure_code
 
   # Scope

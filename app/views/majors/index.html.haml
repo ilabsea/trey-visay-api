@@ -28,7 +28,11 @@
               %td= major.parent.try(:name)
               %td= major.personality_type
               %td= school_list_tooltip(major).html_safe
-              %td.text-right
-                = render "shared/buttons/edit_button", object: major, url: edit_major_path(major)
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: major, url: edit_major_path(major)
+                  = render 'shared/buttons/delete_button', object: major,  message: { type: t('sidebar.major'), name: major.name, url: major_path(major) }
 
     = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"
