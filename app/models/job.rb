@@ -23,8 +23,11 @@
 #  updated_at                    :datetime         not null
 #  job_cluster_id                :string(255)
 #  logo                          :string(255)
+#  deleted_at                    :datetime
 #
 class Job < ApplicationRecord
+  acts_as_paranoid
+
   include ItemableConcern
 
   mount_uploader :logo, ::LogoUploader

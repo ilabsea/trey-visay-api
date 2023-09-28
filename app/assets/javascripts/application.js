@@ -51,6 +51,7 @@
 //= require users/new
 //= require visits/index
 //= require career_websites/form
+//= require jobs/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

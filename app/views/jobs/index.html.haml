@@ -18,7 +18,6 @@
             %th= t('job.personality_type')
             %th= t('shared.logo')
             %th= t('job.cluster')
-            %th= t('major.number_of_schools')
             %th
 
         %tbody#body-content
@@ -32,7 +31,12 @@
               %td
                 = image_tag(job.logo_url, width: 50, class: 'rounded-circle') if job.logo.present?
               %td= job.job_cluster_name
-              %td= job.schools.length
               %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: job, url: edit_job_path(job)
+
+                  = render 'shared/buttons/delete_button', object: job,  message: { type: t('sidebar.job'), name: job.name, url: job_path(job) }
 
     = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"
