@@ -108,5 +108,10 @@ km:
     quizzed_at: កាលបរិច្ឆេទធ្វើតេស្ត
     quiz: តេស្ត
     finished_at: បញ្ចប់តេស្តនៅ
+    any_province: គ្រប់ខេត្ត/ក្រុង
+    any_district: គ្រប់ស្រុក/ខ័ណ្ឌ
+
     new_career_website: មជ្ឈមណ្ឌលការងារថ្មី
     edit_career_website: កែតម្រូវមជ្ឈមណ្ឌលការងារ
+    new_high_school: គ្រឹស្ថានមធ្យមសិក្សាថ្មី
+    edit_high_school: កែតម្រូវគ្រឹស្ថានមធ្យមសិក្សា
