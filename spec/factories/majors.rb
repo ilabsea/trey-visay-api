@@ -26,5 +26,6 @@
 FactoryBot.define do
   factory :major do
     name { FFaker::Name.name }
+    personality_type { "ESA" }
   end
 end

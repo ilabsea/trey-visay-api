@@ -1,0 +1,19 @@
+%fieldset.fieldset
+  %legend.w-auto.ml-2
+    .d-flex.align-items-center
+      .d-inline-block
+        = f.fields_for :department, f.object.department || f.object.build_department do |df|
+          .d-flex
+            = df.input :name, label: false, wrapper_html: { class: 'mb-0 filter-input mr-1'}, placeholder: t("school.department_name")
+
+            = df.input :grade, as: :select, collection: Department.grades.map{ |k,v| [t("school.#{k}"), k] }, label: false,
+            wrapper_html: { class: 'mb-0'}
+
+      .action.mb-0
+        = f.hidden_field :_destroy
+        = link_to '#', class: "remove_fields btn btn-link" do
+          %i.fa.fa-trash-alt.icon-delete.text-danger
+
+  / Majors
+  .p-2
+    = f.input :major_list, label: t('sidebar.college_major'), input_html: {  'data-tags': Major.pluck(:name).to_json, class: 'major-list' }

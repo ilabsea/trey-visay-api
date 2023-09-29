@@ -41,6 +41,7 @@
 //= require common/logo
 //= require common/confirm_modal
 //= require common/toggle_advance_search
+//= require common/tag_list
 
 // Accordion
 //= require common/toggle_collapse
@@ -52,6 +53,7 @@
 //= require visits/index
 //= require career_websites/form
 //= require jobs/form
+//= require schools/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();
