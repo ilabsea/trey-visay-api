@@ -31,17 +31,12 @@ class JobSerializer < ActiveModel::Serializer
              :jd_main_task, :jd_environment, :jd_work_style,
              :edu_education_level, :edu_subjects_at_high_school, :edu_majors_at_university,
              :personal_competency_knowledge, :personal_competency_skill, :personal_competency_ability,
-             :logo, :value, :updated_at
+             :logo, :value, :updated_at, :deleted_at
 
   belongs_to :job_cluster
   has_many :videos
-  has_many :schools
 
   def value
     object.name_km
-  end
-
-  class SchoolSerializer < ActiveModel::Serializer
-    attributes :id, :name, :logo, :address, :kind
   end
 end
