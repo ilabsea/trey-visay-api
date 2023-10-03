@@ -2,7 +2,7 @@
 
 class PagePolicy < ApplicationPolicy
   def index?
-    user.primary_admin? || user.admin?
+    user.primary_admin?
   end
 
   def show?

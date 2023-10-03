@@ -40,11 +40,11 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def enable_dashboard?
-    record.confirmed? && record.gf_user_id.blank?
+    create? && record.confirmed? && record.gf_user_id.blank?
   end
 
   def disable_dashboard?
-    record.confirmed? && record.gf_user_id.present?
+    create? && record.confirmed? && record.gf_user_id.present?
   end
 
   class Scope < Scope

@@ -5,35 +5,25 @@
 
   / Topbar Navbar
   %ul.navbar-nav.ml-auto
-    / Nav Item - Search Dropdown (Visible Only XS)
-    %li.nav-item.dropdown.no-arrow.d-sm-none
-      %a#searchDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"}
-        %i.fas.fa-search.fa-fw
-      / Dropdown - Messages
-      .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in{"aria-labelledby" => "searchDropdown"}
-        %form.form-inline.mr-auto.w-100.navbar-search
-          .input-group
-            %input.form-control.bg-light.border-0.small{"aria-describedby" => "basic-addon2", "aria-label" => "Search", placeholder: "Search for...", type: "text"}/
-            .input-group-append
-              %button.btn.btn-primary{type: "button"}
-                %i.fas.fa-search.fa-sm
-
-    / Todo: with switch language
-    / .topbar-divider.d-none.d-sm-block
-
     / Nav Item - User Information
     %li.nav-item.dropdown.no-arrow
       %a#userDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"}
-        %span.mr-2.d-none.d-lg-inline.text-gray-600.small= current_account.display_name
+        .d-none.d-lg-inline
+          .d-flex.flex-column.align-items-center.mr-1
+            %span.text-gray-600.small= current_account.display_name
+            %small= t("account.#{current_account.role}")
 
         .d-flex.align-items-center.justify-content-center.img-profile.rounded-circle.border
           %i.fas.fa-user.fa-fw
 
       / Dropdown - User Information
       .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in{"aria-labelledby" => "userDropdown"}
-        .dropdown-item
-          %i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
-          = current_account.email
+        .dropdown-item.d-flex.align-items-center
+          %span.mr-2
+            %i.fas.fa-user.fa-sm.fa-fw.text-gray-400
+          .d-flex.flex-column
+            %span= current_account.email
+            %small.text-gray-400= t("account.role") + ": " + t("account.#{current_account.role}")
 
         .dropdown-divider
 
