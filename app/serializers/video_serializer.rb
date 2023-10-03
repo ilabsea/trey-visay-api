@@ -14,5 +14,5 @@
 #  deleted_at :datetime
 #
 class VideoSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :url, :author, :updated_at
+  attributes :id, :code, :name, :url, :author, :updated_at, :deleted_at
 end
