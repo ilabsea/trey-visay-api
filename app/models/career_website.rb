@@ -11,8 +11,11 @@
 #  logo        :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  deleted_at  :datetime
 #
 class CareerWebsite < ApplicationRecord
+  acts_as_paranoid
+
   mount_uploader :logo, ::LogoUploader
 
   # Validation
@@ -26,6 +29,7 @@ class CareerWebsite < ApplicationRecord
   def self.filter(params = {})
     scope = all
     scope = scope.where("name LIKE ?", "%#{params[:name].strip}%") if params[:name].present?
+    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 end
