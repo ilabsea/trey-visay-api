@@ -70,6 +70,6 @@ class School < ApplicationRecord
   end
 
   def self.categories
-    ['public', 'private', 'ngo']
+    ["public", "private", "ngo"]
   end
 end
