@@ -62,6 +62,7 @@ class Job < ApplicationRecord
     scope = all
     scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope = scope.where(job_cluster_id: params[:job_cluster_id]) if params[:job_cluster_id].present?
+    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 
