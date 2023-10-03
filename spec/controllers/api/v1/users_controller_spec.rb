@@ -20,18 +20,18 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     context "success" do
-      it { expect { post :create, { params: attributes } }.to change(User, :count).by(1) }
+      it { expect { post :create, params: attributes }.to change(User, :count).by(1) }
     end
 
     context "photo" do
       before(:each) do
-        post :create, { params: attributes  }
+        post :create, params: attributes
       end
 
       it { expect(User.find_by(uuid: user_uuid).photo).not_to be_nil }
 
       it "has no a photo" do
-        post :create, { params: attributes.merge("photo": "")  }
+        post :create, params: attributes.merge("photo": "")
         expect(User.find_by(uuid: user_uuid).photo.present?).to be_falsey
       end
     end
