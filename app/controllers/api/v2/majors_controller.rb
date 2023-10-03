@@ -4,13 +4,18 @@ module Api
   module V2
     class MajorsController < ::Api::V2::ApiController
       def index
-        pagy, majors = pagy(Major.where.not(personality_type: nil).includes(:schools))
+        pagy, majors = pagy(Major.filter(filter_params).having_personality_type.with_deleted.includes(:schools))
 
         render json: {
           pagy: pagy.vars,
           majors: ActiveModel::Serializer::CollectionSerializer.new(majors, serializer: MajorSerializer)
         }
       end
+
+      private
+        def filter_params
+          params.permit(:updated_at)
+        end
     end
   end
 end

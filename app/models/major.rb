@@ -25,6 +25,8 @@
 #
 
 class Major < ApplicationRecord
+  acts_as_paranoid
+
   include ItemableConcern
   # Enum
   enum grade: Department.grades
@@ -51,11 +53,13 @@ class Major < ApplicationRecord
 
   # Scope
   scope :roots, -> { where(parent_code: nil) }
+  scope :having_personality_type, -> { where.not(personality_type: nil) }
 
   # Class method
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name].strip}%", "%#{params[:name].strip}%") if params[:name].present?
+    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 
