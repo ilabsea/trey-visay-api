@@ -65,6 +65,7 @@ class School < ApplicationRecord
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope = scope.where(kind: params[:kind]) if params[:kind].present?
+    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 

@@ -97,6 +97,8 @@ Rails.application.routes.draw do
       resources :videos, only: [:index]
       resources :visits, only: [:create]
       resources :career_websites, only: [:index]
+
+      get "*path" => "api#routing_error"
     end
   end
 
