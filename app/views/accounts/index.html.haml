@@ -1,22 +1,4 @@
-/ Page Heading
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('account.accounts')
-
-  %a.d-sm-inline-block.btn.btn-sm.btn-primary.shadow-sm{ href: new_account_path }
-    %i.fas.fa-plus.fa-sm.text-white-50
-    %span.d-none.d-md-inline= t('shared.add_new', name: t('account.account'))
-
-/ Nav tabs
-%ul.nav.nav-tabs
-  %li.nav-item
-    %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
-      %i.fas.fa-users
-      %span.d-none.d-lg-inline= t("user.all")
-
-  %li.nav-item
-    %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
-      %i.fas.fa-user-times
-      %span.d-none.d-lg-inline= t("user.archived")
+= render "page_heading"
 
 / Content
 .card.shadow.mb-4

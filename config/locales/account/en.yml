@@ -22,6 +22,7 @@ en:
     primary_admin: Primary admin
     admin: Admin
     counselor: School counselor
+    trainer: National Trainer
     school: School
     grafana: Dashboard account
     full_name: Full name
@@ -30,5 +31,5 @@ en:
     disable_dashboard_successfully: disable account from dashboard successfully! The account %{email} will not be able access dashboard in the next few minutes!
     enable_dashboard: enable account in dashboard
     disable_dashboard: disable account from dashboard
-    trainer: Trainer
     location: Location
+    search_by_email: Search by email

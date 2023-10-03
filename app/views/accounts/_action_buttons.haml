@@ -1,3 +1,4 @@
+/ Archive section
 - if account.deleted?
   / Restore
   = link_to restore_account_path(account), class: "btn btn-circle btn-sm btn-outline-warning mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('shared.restore') }, method: :put do
@@ -14,16 +15,17 @@
       %button.disabled.btn.btn-circle.btn-sm.btn-outline-danger
         %i.fas.fa-trash-alt
 
+  / Active section
 - else
+  - if policy(account).enable_dashboard?
+    = link_to enable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary", data: {toggle: 'tooltip', placement: 'top', title: t('account.enable_dashboard')}, method: :put do
+      %i.fas.fa-user-plus
+
+  - if policy(account).disable_dashboard?
+    = link_to disable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary", data: {toggle: 'tooltip', placement: 'top', title: t('account.disable_dashboard')}, method: :put do
+      %i.fas.fa-user-minus
+
   - if policy(account).archive?
-    - if policy(account).enable_dashboard?
-      = link_to enable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary", data: {toggle: 'tooltip', placement: 'top', title: t('account.enable_dashboard')}, method: :put do
-        %i.fas.fa-user-plus
-
-    - if policy(account).disable_dashboard?
-      = link_to disable_dashboard_account_path(account), class: "btn btn-circle btn-sm btn-outline-secondary", data: {toggle: 'tooltip', placement: 'top', title: t('account.disable_dashboard')}, method: :put do
-        %i.fas.fa-user-minus
-
     - unless account.confirmed?
       / Resend confirmation
       = link_to resend_confirmation_account_path(account), :method => :post, class: "btn btn-circle btn-sm btn-outline-success mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('account.resend_confirmation') } do
