@@ -13,5 +13,9 @@ namespace :user do
     User.where(is_complete_grade_twelve: false).find_each do |user|
       user.update_columns(potential_drop_off: true)
     end
+
+    User.where(is_complete_grade_twelve: true).find_each do |user|
+      user.update_columns(potential_drop_off: false)
+    end
   end
 end
