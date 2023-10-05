@@ -87,6 +87,9 @@ gem "pundit", "~> 2.3.0"
 # Pagination
 gem "pagy", "~> 6.0.2"
 
+gem "wicked_pdf", "~> 2.7.0"
+gem "wkhtmltopdf-binary", "~> 0.12.6.6"
+
 # Cross-origin
 gem "rack-cors", "~> 2.0.1"
 

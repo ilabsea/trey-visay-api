@@ -1,0 +1,13 @@
+.card.shadow.mb-4
+  .card-body
+    %h4.title
+      = t('user.multiple_intelligence_result') + ": "
+      = t('user.quiz_number', num: num)
+      %small= "(#{t('user.quiz_at')}: #{display_datetime(quiz.quizzed_at)})".html_safe
+
+    %table.table
+      %tbody
+        - quiz.intelligence_scores.each do |item|
+          %tr
+            %td= item.intelligence_category_name
+            %td= "#{item.score}"

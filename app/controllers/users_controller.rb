@@ -37,7 +37,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = authorize User.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        @questions = SelfUnderstandingQuestion.includes(:options)
+        @holland_quizzes = @user.holland_quizzes.includes(:self_understanding_responses, :holland_scores, holland_major_responses: :major, holland_job_responses: :job)
+        @intelligence_quizzes = @user.intelligence_quizzes.includes(intelligence_scores: :intelligence_category)
+
+        render pdf: "treyvisay_user_#{@user.full_name}"
+      end
+    end
   end
 
   private

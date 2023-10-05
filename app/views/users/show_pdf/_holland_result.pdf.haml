@@ -1,0 +1,60 @@
+.card.shadow.mb-4
+  .card-body
+    %h4.title
+      = t('user.holland_quiz_result') + ": "
+      = t('user.quiz_number', num: num)
+      %small= "(#{t('user.quiz_at')}: #{display_datetime(quiz.quizzed_at)})".html_safe
+
+    / ---------------------Phase 1
+    %h5.text-muted.mb-1
+      = t('holland_quiz.test_phase', num: 1) + ": "
+      = t('holland_quiz.self_understanding')
+
+    %table.table
+      %tbody
+        - @questions.each do |question|
+          - if display_question?(question, quiz.self_understanding_responses)
+            %tr
+              %td= question.name
+              %td
+                - response = quiz.self_understanding_responses.select { |res| res.self_understanding_question_id == question.id }.first
+
+                = reponse_value_html(question, response.try(:value)).html_safe
+
+    / ---------------------Phase 2
+    %h5.text-muted.mb-1
+      = t('holland_quiz.test_phase', num: 2) + ": "
+      = t('holland_quiz.holland_test')
+
+    %table.table
+      %tbody
+        - quiz.holland_scores.each do |item|
+          %tr
+            %td= t("holland_quiz.type_#{item.personality_type.downcase}")
+            %td= "#{item.score}"
+
+
+    / ---------------------Phase 3
+    %h5.text-muted.mb-1
+      = t('holland_quiz.test_phase', num: 3) + ": "
+      = "ជ្រើសរើសមុខជំនាញ ឬអាជីពស័ក្កសម"
+
+    %table.table
+      %tbody
+        %tr
+          %td= t('user.selected_major')
+          %td
+            %ul
+              - quiz.holland_major_responses.each do |res|
+                %li
+                  = res.major.name
+                  %small.text-primary= "(#{t('user.selected')})" if res.selected
+
+        %tr
+          %td= t('user.selected_job')
+          %td
+            %ul
+              - quiz.holland_job_responses.each do |res|
+                %li
+                  = res.job.name
+                  %small.text-primary= "(#{t('user.selected')})" if res.selected

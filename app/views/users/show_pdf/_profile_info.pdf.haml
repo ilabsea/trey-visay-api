@@ -1,0 +1,33 @@
+.card.shadow.mb-4
+  .card-body
+    %h4.title= t('user.personal_info')
+
+    %table.table
+      %tbody
+        %tr
+          %td= t('user.full_name')
+          %td= " : #{@user.full_name}"
+
+        %tr
+          %td= t('user.gender')
+          %td= " : #{@user.sex}"
+
+        %tr
+          %td= t('user.date_of_birth')
+          %td= " : #{@user.date_of_birth}"
+
+        %tr
+          %td= t('user.phone_number')
+          %td= " : #{@user.phone_number}"
+
+        %tr
+          %td= t('user.grade')
+          %td= " : #{@user.display_grade}"
+
+        %tr
+          %td= t('user.class_group')
+          %td= " : #{@user.class_group}"
+
+        %tr
+          %td= t('user.study_at')
+          %td= " : #{@user.school_address}"
