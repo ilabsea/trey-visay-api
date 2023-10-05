@@ -1,0 +1,7 @@
+= render "users/show_pdf/profile_info"
+
+- @holland_quizzes.each_with_index do |quiz, index|
+  = render "users/show_pdf/holland_result", quiz: quiz, num: index + 1
+
+- @intelligence_quizzes.each_with_index do |quiz, index|
+  = render "users/show_pdf/intelligence_result", quiz: quiz, num: index + 1

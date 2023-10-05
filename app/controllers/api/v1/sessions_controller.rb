@@ -34,11 +34,11 @@ module Api
           self.resource = Account.find_for_database_authentication email: params[:account][:email]
           return invalid_attempt :invalid, :unauthorized unless resource
           return invalid_attempt :unconfirmed, :unauthorized unless resource.active_for_authentication?
-          return invalid_attempt :invalid, :unauthorized unless resource.valid_password? params[:account][:password]
+          invalid_attempt :invalid, :unauthorized unless resource.valid_password? params[:account][:password]
         end
 
         def check_params
-          return invalid_attempt :invalid, :unauthorized unless params[:account]
+          invalid_attempt :invalid, :unauthorized unless params[:account]
         end
 
         def invalid_attempt(reason, status)

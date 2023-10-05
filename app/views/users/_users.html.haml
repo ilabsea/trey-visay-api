@@ -19,3 +19,7 @@
           = personal_understanding_info(fails_count).html_safe
           = ")"
     %td= user.quizzes_count
+    %td
+      = link_to user_path(user, format: 'pdf'), class: "btn btn-circle btn-sm btn-outline-dark mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('user.view_as_pdf')}, target: '_blank' do
+        = image_tag 'pdf.png', size: 14
+
