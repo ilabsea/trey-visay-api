@@ -22,3 +22,11 @@
           %a.btn.dropdown-item{ href: videos_path(format: :json), target: '_blank' }
             %i.fas.fa-download.drop-menu-icon
             %span= t('shared.download_json')
+
+/ Filter
+= form_for "", url: videos_path, method: 'get' do |f|
+  .d-flex
+    = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')
+
+    .ml-2
+      = render "shared/buttons/search_button"

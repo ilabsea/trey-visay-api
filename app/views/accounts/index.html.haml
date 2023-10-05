@@ -5,42 +5,43 @@
   .card-body
     = render "shared/headers/pagy_label"
 
-    %table.table.table-hover
-      %thead
-        %tr
-          %th{width: 60} #
-          %th= t('account.email')
-          %th= t('account.full_name')
-          %th= t('account.phone_number')
-          %th= t('account.role')
-          %th= t('account.location')
-          %th= t('account.school')
-          %th= t('account.status')
-          %th= t('account.grafana')
-          %th
-
-      %tbody
-        - @accounts.each_with_index do |account, index|
+    .table-responsive.mb-4
+      %table.table.table-hover
+        %thead
           %tr
-            %td= @pagy.from + index
-            %td= link_to account.email, edit_account_path(account.id)
-            %td= account.full_name
-            %td= account.phone_number
-            %td= I18n.t("account.#{account.role}")
-            %td
-              = account.provinces.pluck(:name_km).join(", ") if account.trainer?
+            %th{width: 60} #
+            %th= t('account.email')
+            %th= t('account.full_name')
+            %th= t('account.phone_number')
+            %th= t('account.role')
+            %th= t('account.location')
+            %th= t('account.school')
+            %th= t('account.status')
+            %th= t('account.grafana')
+            %th
 
-              = Pumi::District.find_by_id(account.district_id).try(:address_km) if account.counselor?
-            %td
-              = account.high_schools.map(&:name_km).join(", ") if account.counselor?
+        %tbody
+          - @accounts.each_with_index do |account, index|
+            %tr
+              %td= @pagy.from + index
+              %td= link_to account.email, edit_account_path(account.id)
+              %td= account.full_name
+              %td= account.phone_number
+              %td= I18n.t("account.#{account.role}")
+              %td
+                = account.provinces.pluck(:name_km).join(", ") if account.trainer?
 
-            %td.status{ class: account.status }
-              = t("account.#{account.status}")
-            %td
-              = account.gf_user_id.present? ? "Yes" : nil
-            %td
-              .d-flex.justify-content-end
-                = render 'action_buttons', account: account
+                = Pumi::District.find_by_id(account.district_id).try(:address_km) if account.counselor?
+              %td
+                = account.high_schools.map(&:name_km).join(", ") if account.counselor?
+
+              %td.status{ class: account.status }
+                = t("account.#{account.status}")
+              %td
+                = account.gf_user_id.present? ? "Yes" : nil
+              %td
+                .d-flex.justify-content-end
+                  = render 'action_buttons', account: account
 
     = render "shared/footers/pagination"
 

@@ -47,6 +47,7 @@ class User < ApplicationRecord
   GRADES = %w[9 10 11 12 other].freeze
   PLATFORMS = [["Android", "android"], ["iOs", "ios"], ["Other", "other"]]
   PUBLIC_USER_ID = 0
+  GENDERS = ["ប្រុស", "ស្រី", "ផ្សេងៗ"]
 
   # Enum
   enum class_group: {
@@ -127,13 +128,16 @@ class User < ApplicationRecord
     ]
   end
 
-  def self.filter(params)
-    scop = all
-    scop = scop.where(province_id: params[:province_id]) if params[:province_id].present?
-    scop = scop.where(district_id: params[:district_id]) if params[:district_id].present?
-    scop = scop.where(high_school_code: params[:high_school_code]) if params[:high_school_code].present?
-    scop = scop.where(grade: params[:grade]) if params[:grade].present?
-    scop
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("LOWER(full_name) LIKE ?", "%#{params[:name].strip}%") if params[:name].present?
+    scope = scope.where(province_id: params[:province_id]) if params[:province_id].present?
+    scope = scope.where(district_id: params[:district_id]) if params[:district_id].present?
+    scope = scope.where(high_school_code: params[:high_school_code]) if params[:high_school_code].present?
+    scope = scope.where(grade: params[:grade]) if params[:grade].present?
+    scope = scope.where(sex: params[:gender]) if params[:gender].present?
+    scope = scope.where(class_group: params[:class_group]) if params[:class_group].present?
+    scope
   end
 
   private

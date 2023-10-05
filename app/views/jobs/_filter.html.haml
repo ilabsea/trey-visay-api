@@ -1,12 +1,9 @@
 = form_for "", url: jobs_path, method: 'get' do |f|
   .d-flex
-    .form-group.filter-input
-      = text_field_tag(:name, params[:name], class: 'form-control', placeholder: t('shared.search_by_code_or_name'))
+    = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')
 
     - options = JobCluster.all.map.with_index{ |cluster, index| ["#{index+1}.#{cluster.name}", cluster.id]}
     = select_tag :job_cluster_id, options_for_select(options, params[:job_cluster_id]), class: 'custom-select filter-input ml-2', prompt: t('job.any_cluster')
+
     .ml-2
-      %button.btn.btn-primary{type: :submit}
-        .d-flex.align-items-center
-          %i.fas.fa-search.mr-2
-          = t('shared.search')
+      = render "shared/buttons/search_button"

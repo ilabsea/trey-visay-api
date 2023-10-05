@@ -23,3 +23,13 @@
           %a.btn.dropdown-item{ href: majors_path(format: :json), target: '_blank' }
             %i.fas.fa-download.drop-menu-icon
             %span= t('shared.download_json')
+
+/ Filter
+= form_for "", url: majors_path, method: 'get' do |f|
+  .d-flex
+    = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')
+
+    = select_tag :kind, options_for_select(School.t_kinds, params[:kind]), class: 'custom-select filter-input ml-2', prompt: t('school.any_kind')
+
+    .ml-2
+      = render "shared/buttons/search_button"

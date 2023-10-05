@@ -1,30 +1,41 @@
 = form_for "", url: users_path, method: 'get' do |f|
-  .d-flex.filter-wrapper
-    - if current_account.primary_admin? || current_account.admin? || current_account.trainer?
-      .form-group.mr-2
-        = f.hidden_field(:province_id, value: params[:province_id])
-        = f.select(:province_id, [], {:include_blank => t("shared.all_provinces")}, {:data => {pumi_select_target: "district", pumi_select_collection_url: pumi.provinces_path, pumi_select_collection_label_method: "name_#{I18n.locale}", pumi_select_collection_value_method: "id", pumi_select_populate_on_load: true, pumi_select_has_hidden_value: true}, class: 'form-control custom-select'})
+  .d-flex
+    = render 'shared/filters/filter_name'
 
-      .form-group.mr-2
-        = f.hidden_field(:district_id, value: params[:district_id])
-        = f.select(:district_id, [], {:include_blank => t("shared.all_districts")}, {:data => {:pumi_select_id => "district", :pumi_select_target => "school", :pumi_select_collection_url => pumi.districts_path(:province_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_#{I18n.locale}", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#district", :pumi_select_has_hidden_value => true}, class: 'form-control custom-select'})
+    .ml-3
+      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
 
-      .form-group.mr-2
-        = f.hidden_field(:high_school_code, value: params[:high_school_code])
-        %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
-          %option{value: ""}= t('shared.all_schools')
+    / Search button
+    .ml-2
+      = render "shared/buttons/search_button"
 
-      .form-group.mr-2
+  / Advance filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      - if current_account.primary_admin? || current_account.admin? || current_account.trainer?
+        .mr-2
+          = f.hidden_field(:province_id, value: params[:province_id])
+          = f.select(:province_id, [], {:include_blank => t("shared.all_provinces")}, {:data => {pumi_select_target: "district", pumi_select_collection_url: pumi.provinces_path, pumi_select_collection_label_method: "name_#{I18n.locale}", pumi_select_collection_value_method: "id", pumi_select_populate_on_load: true, pumi_select_has_hidden_value: true}, class: 'form-control custom-select'})
+
+        .mr-2
+          = f.hidden_field(:district_id, value: params[:district_id])
+          = f.select(:district_id, [], {:include_blank => t("shared.all_districts")}, {:data => {:pumi_select_id => "district", :pumi_select_target => "school", :pumi_select_collection_url => pumi.districts_path(:province_id => "FILTER"), :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_#{I18n.locale}", :pumi_select_collection_value_method => "id", :pumi_select_disabled_target => "#district", :pumi_select_has_hidden_value => true}, class: 'form-control custom-select'})
+
+        .mr-2
+          = f.hidden_field(:high_school_code, value: params[:high_school_code])
+          %select.form-control.custom-select{"data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", name: 'high_school_code', 'data-pumi-select-has-hidden-value' => true}
+            %option{value: ""}= t('shared.all_schools')
+
+      - elsif current_account.counselor? && !current_account.in_school_other?
+        .mr-2
+          = select_tag :high_school_code, options_for_select(HighSchool.where(code: current_account.high_school_ids).pluck(:name_km, :code), params[:high_school_code]), include_blank: (current_account.high_school_ids.length > 1 ? t('shared.all_schools') : false), class: 'custom-select'
+
+      .mr-2
         = select_tag :grade, options_for_select(User.grades.pluck(:label, :value), params[:grade]), include_blank: t('shared.all_grades'), class: 'custom-select'
 
-    - if current_account.counselor? && !current_account.in_school_other?
-      .form-group.mr-2
-        = select_tag :high_school_code, options_for_select(HighSchool.where(code: current_account.high_school_ids).pluck(:name_km, :code), params[:high_school_code]), include_blank: (current_account.high_school_ids.length > 1 ? t('shared.all_schools') : false), class: 'custom-select'
+      .mr-2
+        = select_tag :gender, options_for_select(User::GENDERS, params[:gender]), include_blank: t('user.all_gender'), class: 'custom-select'
 
-      .form-group.mr-2
-        = select_tag :grade, options_for_select(User.grades.pluck(:label, :value), params[:grade]), include_blank: t('shared.all_grades'), class: 'custom-select'
+      .mr-2
+        = select_tag :gender, options_for_select(User.class_groups.keys.map{|group| [t("user.#{group}"), group]}, params[:gender]), include_blank: t('user.all_class_group'), class: 'custom-select'
 
-    .search-button
-      %button.btn-search.btn.btn-primary{type: 'button'}
-        %i.fas.fa-search
-        = t('shared.search')

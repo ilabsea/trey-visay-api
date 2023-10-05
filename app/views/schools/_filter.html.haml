@@ -4,8 +4,6 @@
       = text_field_tag(:name, params[:name], class: 'form-control', placeholder: t('shared.search_by_code_or_name'))
 
     = select_tag :kind, options_for_select(School.t_kinds, params[:kind]), class: 'custom-select filter-input ml-2', prompt: t('school.any_kind')
+
     .ml-2
-      %button.btn.btn-primary{type: :submit}
-        .d-flex.align-items-center
-          %i.fas.fa-search.mr-2
-          = t('shared.search')
+      = render "shared/buttons/search_button"

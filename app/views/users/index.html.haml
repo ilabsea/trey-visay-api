@@ -1,7 +1,5 @@
 / Page Heading
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800 អ្នកប្រើប្រាស់
-
+= render "shared/headers/page_heading", title: t('sidebar.app_user') do
   = render "shared/buttons/download_button", url: users_path(filter_params.merge(format: :xlsx))
 
 = render 'filter'
