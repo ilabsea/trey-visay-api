@@ -1,4 +1,4 @@
-FROM ruby:2.7.4
+FROM ruby:3.1.2
 
 LABEL maintainer="Sokly Heng <sokly@kawsang.com>"
 
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 
-RUN gem install bundler:2.1.4 && \
+RUN gem install bundler:2.3.7 && \
   bundle install --jobs 20 --deployment --without development test
 
 # Install the application

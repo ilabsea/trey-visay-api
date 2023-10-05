@@ -28,16 +28,16 @@ RSpec.describe Api::V1::GamesController, type: :controller do
 
     context "with valid attributes" do
       it "create a new game with success status" do
-        expect { post :create, { params: valid_attributes  } }.to change(Game, :count).by(1)
-        expect { post :create, { params: valid_attributes  } }.to change(CareerGame, :count).by(1)
-        expect { post :create, { params: valid_attributes  } }.to change(Subject, :count).by(1)
-        expect { post :create, { params: valid_attributes  } }.to change(PersonalUnderstanding, :count).by(1)
+        expect { post :create, params: valid_attributes }.to change(Game, :count).by(1)
+        expect { post :create, params: valid_attributes }.to change(CareerGame, :count).by(1)
+        expect { post :create, params: valid_attributes }.to change(Subject, :count).by(1)
+        expect { post :create, params: valid_attributes }.to change(PersonalUnderstanding, :count).by(1)
       end
     end
 
     context "with invalid attributes with invaid uuid" do
       it "create a new game with success status" do
-        expect { post :create, { params: invalid_attributes } }.to change(Game, :count).by(0)
+        expect { post :create, params: invalid_attributes }.to change(Game, :count).by(0)
       end
     end
   end
