@@ -8,5 +8,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body.devise-form{id: css_id_name}
-    = render 'shared/notify_message'
-    = yield
+    = render "shared/notify_message"
+
+    .column
+      .wrapper.medium-width
+        = render 'layouts/logo'
+
+        .d-flex.flex-column.align-items-center.justify-content-center
+          = yield

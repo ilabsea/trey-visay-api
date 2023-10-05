@@ -40,6 +40,8 @@ gem "jbuilder", "~> 2.7"
 # gem 'bcrypt', '~> 3.1.7'
 
 gem "devise", "~> 4.8.1"
+gem "omniauth-rails_csrf_protection", "~> 1.0.1"
+gem "omniauth-google-oauth2", "~> 1.1.1"
 
 gem "haml", "~>5.0.4"
 gem "strip_attributes", "~> 1.8.0"

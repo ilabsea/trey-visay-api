@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     controllers token_info: "token_info"
   end
 
-  devise_for :accounts, path: "/", controllers: { confirmations: "confirmations" }
+  devise_for :accounts, path: "/", controllers: { confirmations: "confirmations", omniauth_callbacks: "accounts/omniauth_callbacks" }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "users#index"

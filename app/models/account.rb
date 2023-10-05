@@ -57,7 +57,8 @@ class Account < ApplicationRecord
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   serialize :schools, Array
 
@@ -121,6 +122,12 @@ class Account < ApplicationRecord
     scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
     scope = scope.only_deleted if params[:archived] == "true"
     scope
+  end
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = Account.where(email: data["email"]).first
+    user
   end
 
   private

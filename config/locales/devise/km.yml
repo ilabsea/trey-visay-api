@@ -1,0 +1,86 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+km:
+  devise:
+    no_account: "លោកអ្នកមិនមានគណនីនៅក្នុងប្រព័ន្ធនេះទេ!"
+    confirmations:
+      confirmed: "អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវបានបញ្ជាក់ដោយជោគជ័យ"
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីម៉ែលមួយជាមួយការណែនាំអំពីរបៀបបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកនៅប៉ុន្មាននាទី"
+      send_paranoid_instructions: "ប្រសិនបើអាសយដ្ឋានអ៊ីមែលរបស់អ្នកមាននៅក្នុងប្រព័ន្ធរបស់យើង អ្នកនឹងទទួលបានអ៊ីម៉ែលដោយមានការណែនាំអំពីរបៀបបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកក្នុងប៉ុន្មាននាទី"
+    failure:
+      already_authenticated: "អ្នកបានចូលរួចហើយ"
+      inactive: "គណនីរបស់អ្នកមិនទាន់ដំណើរការនៅឡើយទេ"
+      invalid: "%{authentication_keys} ឬលេខសម្ងាត់មិនត្រឹមត្រូវ"
+      locked: "គណនីរបស់អ្នកជាប់សោ"
+      last_attempt: "អ្នកអាចព្យាយាមម្តងទៀតមុនពេលគណនីរបស់អ្នកត្រូវបានចាក់សោ"
+      not_found_in_database: "%{authentication_keys} ឬលេខសម្ងាត់មិនត្រឹមត្រូវ"
+      timeout: "ការបញ្ចូលរបស់អ្នកបានផុតកំណត់។ សូមចូលម្តងទៀតដើម្បីបន្ត"
+      unauthenticated: "អ្នកត្រូវចូលឬចុះឈ្មោះមុនពេលបន្"
+      unconfirmed: "អ្នកត្រូវបញ្ជាក់អាសយដ្ឋានអ៊ីមែលរបស់អ្នកមុនពេលបន្ត"
+      account:
+        unauthenticated: 'សូមបញ្ចូលគណនី'
+        invalid: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
+        not_found_in_database: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
+    mailer:
+      confirmation_instructions:
+        subject: "ការណែនាំបញ្ជាក់"
+      reset_password_instructions:
+        subject: "កំណត់ការណែនាំពាក្យសម្ងាត់ឡើងវិញ"
+      unlock_instructions:
+        subject: "ការណែនាំដោះសោ"
+      email_changed:
+        subject: "បានផ្លាស់ប្ដូរអ៊ីមែល"
+      password_change:
+        subject: "បានផ្លាស់ប្ដូរពាក្យសម្ងាត់"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    passwords:
+      no_token: "អ្នកមិនអាចចូលប្រើទំព័រនេះដោយមិនចាំបាច់មកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ទេ។ ប្រសិនបើអ្នកមកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ឡើងវិញសូមប្រាកដថាអ្នកបានប្រើ URL ដែលបានផ្តល់ឱ្យ"
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញក្នុងរយៈពេលពីរឬបីនាទី"
+      send_paranoid_instructions: "ប្រសិនបើអាសយដ្ឋានអ៊ីមែលរបស់អ្នកមានក្នុងប្រព័ន្ធរបស់យើងអ្នកនឹងទទួលបានការសង្គ្រោះពាក្យសម្ងាត់នៅអាសយដ្ឋានអ៊ីមែលរបស់អ្នកក្នុងរយៈពេលពីរបីនាទី"
+      updated: "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានផ្លាស់ប្តូរដោយជោគជ័យ"
+      updated_not_active: "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានផ្លាស់ប្តូរដោយជោគជ័យ"
+      account:
+        send_instructions: 'អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញក្នុងរយៈពេលពីរឬបីនាទី'
+    registrations:
+      destroyed: "លាហើយ! គណនីរបស់អ្នកត្រូវបានលុបចោលដោយជោគជ័យ។ យើងសង្ឃឹមថានឹងជួបអ្នកម្តងទៀតឆាប់ៗ"
+      signed_up: "ស្វាគមន៍! អ្នកបានចុះឈ្មោះដោយជោគជ័យ"
+      signed_up_but_inactive: "អ្នកបានចុះឈ្មោះដោយជោគជ័យ តែគណនីរបស់អ្នកមិនទាន់សកម្ម"
+      signed_up_but_locked: "អ្នកបានចុះឈ្មោះដោយជោគជ័យ តែគណនីរបស់អ្នកត្រូវបានចាក់សោ"
+      signed_up_but_unconfirmed: "សារដែលមានការបញ្ជាក់ត្រូវបានផ្ញើទៅអាសយដ្ឋានអ៊ីមែលរបស់អ្នក។ សូមអនុវត្តតាមការណែនាំដើម្បីធ្វើឱ្យគណនីរបស់អ្នកសកម្ម"
+      update_needs_confirmation: "អ្នកបានធ្វើបច្ចុប្បន្នភាពគណនីរបស់អ្នកដោយជោគជ័យប៉ុន្តែយើងត្រូវផ្ទៀងផ្ទាត់អាសយដ្ឋានអ៊ីមែលថ្មីរបស់អ្នក។ សូមពិនិត្យអ៊ីមែលរបស់អ្នកហើយអនុវត្តតាមតំណបញ្ជាក់ដើម្បីបញ្ជាក់អាសយដ្ឋានអ៊ីមែលថ្មីរបស់អ្នក"
+      updated: "គណនីរបស់អ្នកត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ"
+      updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again"
+    sessions:
+      signed_in: "ចូលបានដោយជោគជ័យ"
+      signed_out: "ចាកចេញដោយជោគជ័យ"
+      already_signed_out: "ចាកចេញដោយជោគជ័យ"
+      account:
+        signed_in: 'ចូលបានដោយជោគជ័យ'
+    unlocks:
+      send_instructions: "អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបដោះសោគណនីរបស់អ្នកនៅប៉ុន្មាននាទី"
+      send_paranoid_instructions: "ប្រសិនបើគណនីរបស់អ្នកត្រឹមត្រូវ អ្នកនឹងទទួលបានអ៊ីម៉ែលដែលមានការណែនាំអំពីរបៀបដោះសោវាក្នុងរយៈពេលពីរឬបីនាទី"
+      unlocked: "គណនីរបស់អ្នកត្រូវបានដោះសោដោយជោគជ័យ។ សូមចូលដើម្បីបន្"
+    email: 'អ៊ីមែល'
+    password: 'ពាក្យសម្ងាត់'
+    remember_me: 'ចងចាំខ្ញុំ'
+    sign_in: 'ចូលគណនី'
+    forgot_your_password: 'ភ្លេចលេខសំងាត់?'
+    dont_receive_unlock_instruction: "តើអ្នកមិនបានទទួលការណែនាំអំពីការដោះសោទេឬ?"
+    sign_in_with: "ចូលគណនីជាមួយ %{omniauth}"
+    send_me_reset_pwd_instruction: 'សូមផ្ញើការណែនាំពាក្យសម្ងាត់ខ្ញុំឡើងវិញ'
+    change_your_password: ប្តូរលេខសម្ងាត់
+    new_password: លេខសម្ងាត់ថ្មី
+    confirm_new_password: បញ្ជាក់លេខសំងាត់ថ្មី
+    change_my_password: ផ្លាស់ប្តូរពាក្យសម្ងាត់របស់ខ្ញុំ
+  errors:
+    messages:
+      already_confirmed: "ត្រូវបានបញ្ជាក់រួចហើយសូមសាកល្បងចូល"
+      confirmation_period_expired: "ត្រូវបញ្ជាក់នៅក្នុង %{period}, សូមស្នើថ្មីមួយ"
+      expired: "បានផុតកំណត់សូមស្នើសំណើថ្មី"
+      not_found: "រកមិនឃើញ"
+      not_locked: "មិនត្រូវបានចាក់សោ"
+      not_saved:
+        one: "កំហុស 1 ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
+        other: "កំហុស %{count} ត្រូវបានហាមឃាត់ %{resource} នេះពីការសង្រ្គោះ:"
