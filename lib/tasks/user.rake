@@ -7,4 +7,11 @@ namespace :user do
       user.update_columns(registered_at: user.created_at)
     end
   end
+
+  desc "migrate user potential drop off"
+  task migrate_potential_drop_off: :environment do
+    User.where(is_complete_grade_twelve: false).find_each do |user|
+      user.update_columns(potential_drop_off: true)
+    end
+  end
 end

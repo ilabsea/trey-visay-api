@@ -34,6 +34,7 @@
 #  is_complete_grade_twelve    :boolean
 #  is_self_understanding       :boolean
 #  is_selected_major_or_career :boolean
+#  potential_drop_off          :boolean
 #
 
 require "csv"
