@@ -1,0 +1,4 @@
+- unless signed_in?
+  = link_to new_account_session_path, class: 'btn btn-light' do
+    %i.fa-solid.fa-chevron-left
+    %span.text-primary= t('shared.back')
