@@ -1,0 +1,17 @@
+.logo-wrapper.mr-5.d-flex.flex-column.justify-content-center
+  = link_to t("devise.sign_in"), url_for(anchor: :login_form), class: "btn btn-primary position-absolute d-lg-none", style: "top: 30px; right: 30px;"
+
+  %h3.title.text-center
+    = ENV['APP_NAME']
+
+    - if shortcut_name = ENV['APP_SHORTCUT_NAME'].presence
+      = "(#{shortcut_name})"
+
+  .logo-image-wrapper.flex-row.text-center.justify-content-conter
+    = image_tag 'logo.png', size: '120x120', class: 'logo'
+
+  %footer
+    .qr-code.text-center.mt-4
+      = link_to "ទាញយកកម្មវិធី / Download App", ENV['APP_PLAY_STORE_URL'], target: "_blank", class: 'text-white'
+      %br
+      = image_tag 'qr-code.png', alt: 'TreyVisay QR code', class: 'qr-code-img mt-3 rounded'

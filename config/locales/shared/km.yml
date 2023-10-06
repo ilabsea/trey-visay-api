@@ -17,8 +17,6 @@ km:
     confirm_delete: បញ្ជាក់ការលុបការ %{name}
     restore: ស្តារឡើងវិញ
     archive: Archive
-    activate: បើកដំណើរការគណនី
-    deactivate: បិទដំណើរការគណនី
     code: លេខកូដ
     name: ឈ្មោះ
     pagination_title: "បង្ហាញទិន្ន័យ <b>%{from}</b> - <b>%{to}</b> នៃចំនួនសរុប <b>%{total}</b>"
@@ -47,7 +45,6 @@ km:
     commune: ឃុំ/សង្កាត់
     village: ភូមិ
     street: ផ្លូវ
-    house_number: ផ្ទះលេខ
     name_en: ឈ្មោះជាភាសាអង់គ្លេស
     name_km: ឈ្មោះជាភាសាខ្មែរ
     platform: Platform
@@ -57,8 +54,6 @@ km:
     download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Excel file .xlsx)
     attach_excel_file: ភ្ជាប់គម្រូឯកសារដែលបំពេញរួចមកវិញ
     congratulation: អបអរសាទរ!
-    show_list: បង្ហាញទិន្នន័យ
-    download_list: ទាញយកទិន្នន័យ
     excel_file: ឯកសារ Excel (អតិបរិមា 150 KB)
     todo_step: ជំហ៊ានដែលត្រូវធ្វើ
     _yes: បាទ/ចាស ខ្ញុំយល់ព្រម
@@ -76,8 +71,6 @@ km:
     preview: ផ្ទៀងផ្ទាត់
     new: ថ្មី
     invalid: មិនត្រឹមត្រូវ
-    drag_to_sort: អូសដើម្បីតម្រៀបលំដាប់
-    display_total: "បង្ហាញទិន្ន័យសរុប <b>%{total_count}</b>"
     copy: ថតចម្លង
     logout: ចាកចេញ
     all_provinces: គ្រប់ខេត្ត/ក្រុង
@@ -86,7 +79,6 @@ km:
     all_schools: គ្រប់សាលា
     at_least_one_valid_item: ត្រូវមានទិន្នន័យដែលត្រឹមត្រូវយ៉ាងហោចណាស់ 1
     yes_i_approve: "បាទ/ចាស ខ្ញុំយល់ព្រម"
-    confirm_message: "មានទិន្នន័យសរុប <b>%{total_count}</b> ក្នុងខេត្តចំនួន <b>%{province_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
     confirm_message_no_province: "មានទិន្នន័យសរុប <b>%{total_count}</b> នឹងត្រូវបញ្ចូលក្នុងប្រព័ន្ធ! តើអ្នកយល់ព្រមឬទេ?"
     import_success: "ទិន្នន័យចំនួន %{count} ត្រូវបានបញ្ចូលដោយជោគជ័យ"
     some_invalid_records: មានទិន្នន័យ មួយចំនួនមិនត្រឹមត្រូវ សូមធ្វើការត្រួតពិនិត្យ និងបញ្ចូលឡើងវិញ!
@@ -96,7 +88,6 @@ km:
     importing_wizard: "បញ្ចូល%{name} Wizard"
     importing_history: "ប្រវត្តិនៃការបញ្ចូល%{name}តាម Excel"
     search_by_name: ស្វែងរកតាមឈ្មោះ
-    valid_data_in_province: "ទិន្នន័យត្រឹមត្រូវមានក្នុងខេត្តចំនួន <b>%{province_count}</b>"
     url: តំណរភ្ជាប់ (Url)
     author: អ្នកផលិត
     download_sample_form_zip: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
@@ -118,3 +109,4 @@ km:
     edit_high_school: កែតម្រូវគ្រឹស្ថានមធ្យមសិក្សា
     new_video: វីដេអូថ្មី
     edit_video: កែតម្រូវវីដេអូ
+    about_us: អំពីកម្មវិធី
