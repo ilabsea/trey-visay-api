@@ -1,9 +1,7 @@
 %div{style: 'width: 70%; margin: 0 auto;'}
   - unless account_signed_in?
     .d-flex.my-4
-      %button.btn.btn-light
-        %i.fa-solid.fa-chevron-left
-        = link_to t('shared.back'), new_account_session_path
+      = render "btn_back"
 
   .card.shadow.mb-4
     .card-body

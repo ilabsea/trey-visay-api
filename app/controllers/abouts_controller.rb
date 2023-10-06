@@ -7,6 +7,12 @@ class AboutsController < ApplicationController
   def show
   end
 
+  def terms_and_conditions
+  end
+
+  def privacy_policy
+  end
+
   private
     def set_layout
       signed_in? ? "layouts/application" : "layouts/sidebar_less"

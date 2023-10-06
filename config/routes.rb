@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   end
 
   resource :about, only: [:show]
+  get "/privacy-policy", to: "abouts#privacy_policy"
+  get "/terms-and-conditions", to: "abouts#terms_and_conditions"
 
   resources :accounts do
     member do
