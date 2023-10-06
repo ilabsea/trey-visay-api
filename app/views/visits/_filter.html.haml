@@ -2,18 +2,15 @@
   .d-flex.form-group
     = render "shared/filters/date_filter"
 
-    %div.mx-2
-      .btn-search-wrapper.d-block.d-md-flex
-        %a.btn.btn-outline-secondary.advance-search{"aria-controls" => "collapseFilter", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseFilter", :role => "button"}
-          %span.d-none.d-lg-inline= t('shared.advance_search')
-          %i.fas.fa-angle-down
+    .ml-3
+      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_visit"
 
-    %button.btn-search.btn.btn-primary{type: 'submit'}
-      %i.fas.fa-search
-      = t('shared.search')
+    / Search button
+    .ml-2
+      = render "shared/buttons/search_button"
 
   / Advance filter
-  #collapseFilter.collapse.collapse-filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2
       .filter-input.tooltips{ 'data-bs-toggle' => 'tooltip' }
         - options = nested_set_options(Page) {|i| "#{'-' * i.level} #{i.name}" }

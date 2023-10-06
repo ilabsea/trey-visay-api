@@ -25,3 +25,11 @@
             %a.btn.dropdown-item{ href: career_websites_path(format: :json), target: '_blank' }
               %i.fas.fa-download.drop-menu-icon
               %span= t('shared.download_json')
+
+/ Filter
+= form_for "", url: career_websites_path, method: 'get' do |f|
+  .d-flex
+    = render "shared/filters/filter_name"
+
+    .ml-2
+      = render "shared/buttons/search_button"

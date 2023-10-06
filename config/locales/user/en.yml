@@ -8,7 +8,6 @@ en:
     phone_number: Phone number
     grade: Grade
     study_at: Study at
-    class_group: Class group
     student: Student
     holland_quiz_result: Holland test result
     quiz_number: "Quiz %{num}"
@@ -32,3 +31,5 @@ en:
     other_occupation: Other occupation
     high_potential_drop_off: Is highly potential to drop off grade 12
     view_as_pdf: View as pdf
+    all_gender: All genders
+    all_class_group: All class groups

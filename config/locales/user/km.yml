@@ -8,7 +8,6 @@ km:
     phone_number: លេខទូរស័ព្ទ
     grade: ជាសិស្សថ្នាក់ទី
     study_at: រៀននៅសាលា
-    class_group: ជាសិស្សក្នុងបណ្តុំថ្នាក់
     student: សិស្ស
     holland_quiz_result: លទ្ធផលតេស្តវាយតម្លៃមុខរបរ និងអាជីព
     quiz_number: "តេស្តលើកទី %{num}"
@@ -32,3 +31,5 @@ km:
     other_occupation: មុខរបរផ្សេងៗ
     high_potential_drop_off: មានសក្ដានុពលខ្ពស់ក្នុងការបោះបង់ការសិក្សានៅថ្នាក់ទី12
     view_as_pdf: បើកមើលជា Pdf
+    all_gender: គ្រប់យ៉ែនឌ័រ
+    all_class_group: គ្រប់បណ្តុំថ្នាក់
