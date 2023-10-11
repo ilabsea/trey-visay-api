@@ -20,7 +20,5 @@ module TreyVisayApi
     config.i18n.default_locale = :km
     config.i18n.fallbacks = [:en]
     config.i18n.available_locales = [:en, :km]
-
-    ENV.update YAML.load_file("config/application.yml")[Rails.env] rescue {}
   end
 end

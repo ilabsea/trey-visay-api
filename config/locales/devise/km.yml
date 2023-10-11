@@ -23,18 +23,18 @@ km:
         not_found_in_database: 'ការបញ្ចូលមិនត្រឹមត្រូវ'
     mailer:
       confirmation_instructions:
-        subject: "ការណែនាំបញ្ជាក់"
+        subject: "ត្រីវិស័យ៖ ការណែនាំបញ្ជាក់គណនី"
       reset_password_instructions:
-        subject: "កំណត់ការណែនាំពាក្យសម្ងាត់ឡើងវិញ"
+        subject: "ត្រីវិស័យ៖ កំណត់ការណែនាំពាក្យសម្ងាត់ឡើងវិញ"
       unlock_instructions:
-        subject: "ការណែនាំដោះសោ"
+        subject: "ត្រីវិស័យ៖ ការណែនាំដោះសោ"
       email_changed:
-        subject: "បានផ្លាស់ប្ដូរអ៊ីមែល"
+        subject: "ត្រីវិស័យ៖ បានផ្លាស់ប្ដូរអ៊ីមែល"
       password_change:
-        subject: "បានផ្លាស់ប្ដូរពាក្យសម្ងាត់"
+        subject: "ត្រីវិស័យ៖ បានផ្លាស់ប្ដូរពាក្យសម្ងាត់"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "មិនអាចផ្ទៀងផ្ទាត់អ្នកពី %{kind} បានទេ ដោយសារ \"%{reason}\""
+      success: "បានផ្ទៀងផ្ទាត់ដោយជោគជ័យពីគណនី %{kind}"
     passwords:
       no_token: "អ្នកមិនអាចចូលប្រើទំព័រនេះដោយមិនចាំបាច់មកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ទេ។ ប្រសិនបើអ្នកមកពីអ៊ីមែលកំណត់ពាក្យសម្ងាត់ឡើងវិញសូមប្រាកដថាអ្នកបានប្រើ URL ដែលបានផ្តល់ឱ្យ"
       send_instructions: "អ្នកនឹងទទួលបានអ៊ីមែលដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់របស់អ្នកឡើងវិញក្នុងរយៈពេលពីរឬបីនាទី"
