@@ -3,8 +3,8 @@
     = render "shared/forms/logo", object: @career_website, f: f
     = f.input :name, label: t('shared.name')
     = f.input :url, label: t('shared.url')
-    = f.input :description, label: t('shared.descrtion')
+    = f.input :description, label: t('shared.description')
 
-    .actions
+    .actions.text-right
       = link_to t('shared.cancel'), career_websites_path, class: 'btn btn-secondary'
       = f.submit t('shared.save'), class: 'btn btn-primary'

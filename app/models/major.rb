@@ -40,7 +40,7 @@ class Major < ApplicationRecord
   has_many :departments, through: :school_majors
 
   # Validation
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :code, uniqueness: true
 
   # Delegation

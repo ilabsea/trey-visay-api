@@ -1,7 +1,7 @@
 .container.w-75
   = simple_form_for @job, defaults: { input_html: { class: 'form-horizontal' } } do |f|
     = render "shared/forms/logo", object: @job, f: f
-    = f.input :code, input_html: { readonly: @job.persisted? }, label: t('shared.code')
+    = f.input :code, input_html: { readonly: true }, label: t('shared.code')
     = f.input :name_km, label: t('job.name_km')
     = f.input :name_en, label: t('job.name_en')
     = f.input :personality_type, label: t('job.personality_type')

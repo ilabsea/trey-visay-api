@@ -3,7 +3,7 @@ km:
     school: គ្រឹះស្ថានឧត្តមសិក្សា
     name: ឈ្មោះ
     address: អាស័យដ្ឋាន
-    type: ប្រភេទ
+    type: កម្រិតសិក្សា
     category: Category
     tels: ទូរស័ព្ទ
     emails: អ៊ីម៉ែល
@@ -11,15 +11,15 @@ km:
     higher_education: ការអប់រំកំរិតឧត្តម
     vocational_education: ការអប់រំវិជ្ជាជីវៈ
     major_count: "%{count} ជំនាញ"
-    any_kind: គ្រប់កម្រិត
+    any_kind: គ្រប់កម្រិតសិក្សា
     download_sample_form: ទាញយកគម្រូឯកសារទៅបំពេញ (Zip file .zip)
     number_of_department: ចំនួន Department
     number_of_major: ចំនួនជំនាញ
     tvet_institute: TVET
     new_school: គ្រឹះស្ថានឧត្តមសិក្សាថ្មី
     edit_school: កែតម្រូវគ្រឹះស្ថានឧត្តមសិក្សា
-    private: ឯកជន
-    public: រដ្ឋ
+    private: សាលាឯកជន
+    public: សាលារដ្ឋ
     ngo: អង្គការ
     vocational_grade: ថ្នាក់វិជ្ជាជីវៈ
     add_department: + បន្ថែមដេប៉ាតេម៉ង់
