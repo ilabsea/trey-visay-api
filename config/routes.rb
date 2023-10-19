@@ -93,6 +93,7 @@ Rails.application.routes.draw do
       resources :majors, only: [:index]
       resources :schools, only: [:index]
       resources :jobs, only: [:index]
+      resources :job_clusters, only: [:index]
       resources :holland_quizzes, only: [:create, :update]
       resources :intelligence_quizzes, only: [:create, :update]
       resources :users, only: [:create]

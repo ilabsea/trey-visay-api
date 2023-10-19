@@ -14,7 +14,8 @@ module Spreadsheets
           code: row["code"],
           name: row["name"],
           display_order: row["display_order"],
-          video_ids: Video.where(code: row["video_codes"].to_s.split("\;")).pluck(:id)
+          video_ids: Video.where(code: row["video_codes"].to_s.split("\;")).pluck(:id),
+          recommendation: row["recommendation"]
         }
 
         cluster

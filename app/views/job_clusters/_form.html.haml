@@ -1,0 +1,18 @@
+.container.w-75
+  = simple_form_for @job_cluster, defaults: { input_html: { class: 'form-horizontal' } } do |f|
+    = f.input :name, label: t('shared.name')
+
+    / Video list
+    .form-group
+      %label= t('job.video_list')
+
+      %input.video-list{value: @job_cluster.video_ids, 'data-tags': Video.all.map{ |v| { value: v.id, name: v.name, avatar: v.thumbnail } }.to_json }
+
+      - @job_cluster.video_ids.each.with_index do |id, index|
+        %input{ type: 'hidden', name: "job_cluster[video_ids][]", value: id, class: tagify_class(id) }
+
+    = f.input :recommendation, label: t('shared.recommendation')
+
+    .actions.text-right
+      = link_to t('shared.cancel'), job_clusters_path, class: 'btn btn-secondary'
+      = f.submit t("shared.save"), class: 'btn btn-primary'

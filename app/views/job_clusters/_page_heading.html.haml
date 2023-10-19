@@ -5,7 +5,7 @@
     = render "shared/buttons/download_button", url: job_clusters_path(filter_params.merge(format: :xlsx))
 
     / More Options
-    - if policy(Job).create?
+    - if policy(JobCluster).create?
       .btn-group
         %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           %i.fas.fa-ellipsis-v
@@ -23,4 +23,3 @@
             %a.btn.dropdown-item{ href: job_clusters_path(format: :json), target: '_blank' }
               %i.fas.fa-download.drop-menu-icon
               %span= t('shared.download_json')
-

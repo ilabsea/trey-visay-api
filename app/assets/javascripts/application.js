@@ -20,6 +20,7 @@
 //= require sb-admin-2
 //= require chart.bundle.min
 //= require tagify.min
+//= require jquery.richtext
 
 // for daterange picker
 //= require moment
@@ -54,6 +55,7 @@
 //= require career_websites/form
 //= require jobs/form
 //= require schools/form
+//= require job_clusters/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

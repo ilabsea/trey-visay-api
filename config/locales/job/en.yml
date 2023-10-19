@@ -24,3 +24,6 @@ en:
     job_cluster_name: Job cluster
     new_job: New job
     edit_job: Edit job
+    new_job_cluster: New career cluster
+    edit_job_cluster: Edit career cluster
+    video_list: Video list

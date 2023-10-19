@@ -55,4 +55,8 @@ module ApplicationHelper
 
     link_to(name, "#", class: "add_#{association} btn add_association #{option[:class]}", data: { id: id, fields: fields.gsub("\n", "") })
   end
+
+  def tagify_class(value)
+    "tagify-item-" + value
+  end
 end

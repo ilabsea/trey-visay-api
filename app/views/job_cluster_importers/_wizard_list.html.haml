@@ -5,7 +5,8 @@
         %th #
         %th= t('shared.code')
         %th= t("shared.name")
-        %th= t('share.videos')
+        %th= t('job.video_list')
+        %th= t('shared.recommendation')
         %th
 
     %tbody
@@ -19,6 +20,7 @@
               = fff.hidden_field :id
               = fff.hidden_field :code
               = fff.hidden_field :name
+              = fff.hidden_field :recommendation
               = fff.select :video_ids, f.object.video_ids, {}, multiple: true, style: "display: none;"
 
         %tr
@@ -29,6 +31,7 @@
             - item.videos.each do |video|
               = link_to video.url, target: '_blank' do
                 = image_tag video.thumbnail, style: 'width: 50px;'
+          %td= item.recommendation
 
           / Validation status
           %td= render "shared/validation_status", item: item
