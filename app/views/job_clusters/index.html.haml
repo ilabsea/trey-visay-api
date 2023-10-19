@@ -14,7 +14,8 @@
             %th{width: 60} #
             %th= t('shared.code')
             %th= t('shared.name')
-            %th= t('shared.videos')
+            %th= t('job.video_list')
+            %th= t('shared.recommendation')
             %th
 
         %tbody#body-content
@@ -27,6 +28,11 @@
                 - job.videos.each do |video|
                   = link_to video.url, target: '_blank' do
                     = image_tag video.thumbnail, style: 'width: 50px;'
+              %td= job.recommendation
               %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: job, url: edit_job_cluster_path(job)
+
+                  = render 'shared/buttons/delete_button', object: job,  message: { type: t('sidebar.job'), name: job.name, url: job_cluster_path(job) }
 
     = render "shared/footers/pagination"

@@ -24,3 +24,6 @@ km:
     job_cluster_name: ផ្នែក
     new_job: អាជីពការងារថ្មី
     edit_job: កែតម្រូវអាជីពការងារ
+    new_job_cluster: ចង្កោមអាជីពថ្មី
+    edit_job_cluster: កែតម្រូវចង្កោមអាជីព
+    video_list: បណ្ដុំវីដេអូ

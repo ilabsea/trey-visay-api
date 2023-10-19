@@ -54,6 +54,7 @@
 //= require career_websites/form
 //= require jobs/form
 //= require schools/form
+//= require job_clusters/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

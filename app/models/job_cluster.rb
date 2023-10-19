@@ -4,14 +4,18 @@
 #
 # Table name: job_clusters
 #
-#  id            :string(255)      not null, primary key
-#  code          :string(255)
-#  name          :string(255)
-#  display_order :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id             :string(255)      not null, primary key
+#  code           :string(255)
+#  name           :string(255)
+#  display_order  :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  recommendation :text(65535)
+#  deleted_at     :datetime
 #
 class JobCluster < ApplicationRecord
+  acts_as_paranoid
+
   # Validation
   validates :name, presence: true
 
@@ -30,6 +34,7 @@ class JobCluster < ApplicationRecord
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 end

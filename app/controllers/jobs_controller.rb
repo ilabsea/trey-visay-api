@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class JobsController < ApplicationController
-  before_action :authorize_job, only: [:edit, :update, :destroy]
+  before_action :authorize_job, only: [:show, :edit, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -29,7 +29,6 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
   end
 
   def new
