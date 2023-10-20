@@ -4,7 +4,8 @@
       %tr
         %th #
         %th= t('shared.code')
-        %th= t("shared.name")
+        %th= t('shared.name')
+        %th= t('shared.logo')
         %th= t('job.video_list')
         %th= t('shared.recommendation')
         %th
@@ -20,17 +21,25 @@
               = fff.hidden_field :id
               = fff.hidden_field :code
               = fff.hidden_field :name
+              = fff.hidden_field :logo_cache
               = fff.hidden_field :recommendation
-              = fff.select :video_ids, f.object.video_ids, {}, multiple: true, style: "display: none;"
+
+              - item.cluster_videos.each do |cluster_video|
+                = fff.fields_for :cluster_videos, cluster_video do |sdf|
+                  = sdf.hidden_field :id
+                  = sdf.hidden_field :video_id
+                  = sdf.hidden_field :_destroy
 
         %tr
           %td= index + 1
           %td= item.code
           %td= item.name
           %td
-            - item.videos.each do |video|
-              = link_to video.url, target: '_blank' do
-                = image_tag video.thumbnail, style: 'width: 50px;'
+            = image_tag(item.logo_url, width: 36, class: 'rounded-circle') if item.logo.present?
+          %td
+            - item.cluster_videos.select { |cv| !cv._destroy }.each do |cluster_video|
+              = link_to cluster_video.video.url, target: '_blank' do
+                = image_tag cluster_video.video.thumbnail, width: 50
           %td= item.recommendation
 
           / Validation status

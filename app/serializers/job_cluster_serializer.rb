@@ -12,9 +12,11 @@
 #  updated_at     :datetime         not null
 #  recommendation :text(65535)
 #  deleted_at     :datetime
+#  logo           :string(255)
 #
 class JobClusterSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :recommendation
+  attributes :id, :code, :name, :logo, :recommendation,
+             :updated_at, :deleted_at
 
   has_many :videos
 end

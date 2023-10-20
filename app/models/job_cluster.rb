@@ -12,9 +12,15 @@
 #  updated_at     :datetime         not null
 #  recommendation :text(65535)
 #  deleted_at     :datetime
+#  logo           :string(255)
 #
 class JobCluster < ApplicationRecord
   acts_as_paranoid
+
+  include ItemableConcern
+
+  # Uploader
+  mount_uploader :logo, ::LogoUploader
 
   # Validation
   validates :name, presence: true
@@ -28,6 +34,8 @@ class JobCluster < ApplicationRecord
   has_many :jobs
   has_many :cluster_videos
   has_many :videos, through: :cluster_videos
+
+  accepts_nested_attributes_for :cluster_videos, allow_destroy: true
 
   default_scope { order(display_order: :asc) }
 

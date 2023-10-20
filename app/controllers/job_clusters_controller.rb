@@ -71,7 +71,7 @@ class JobClustersController < ApplicationController
 
     def job_cluster_params
       params.require(:job_cluster).permit(
-        :name, :recommendation, video_ids: []
+        :name, :recommendation, :logo, :remove_logo, video_ids: []
       )
     end
 end
