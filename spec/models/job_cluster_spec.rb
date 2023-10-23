@@ -12,6 +12,7 @@
 #  updated_at     :datetime         not null
 #  recommendation :text(65535)
 #  deleted_at     :datetime
+#  logo           :string(255)
 #
 require "rails_helper"
 

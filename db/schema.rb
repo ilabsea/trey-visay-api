@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_19_102208) do
+ActiveRecord::Schema.define(version: 2023_10_20_071132) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -290,6 +290,7 @@ ActiveRecord::Schema.define(version: 2023_10_19_102208) do
     t.datetime "updated_at", null: false
     t.text "recommendation"
     t.datetime "deleted_at"
+    t.string "logo"
   end
 
   create_table "job_majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

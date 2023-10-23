@@ -17,6 +17,6 @@ class JobClusterImportersController < ApplicationController
     end
 
     def itemable_attributes
-      [ :id, :code, :name, :display_order, :video_ids, :recommendation ]
+      [ :id, :code, :name, :display_order, :logo_cache, :recommendation, cluster_videos_attributes: [:id, :video_id, :_destroy]]
     end
 end

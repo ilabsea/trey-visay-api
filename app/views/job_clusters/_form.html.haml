@@ -1,5 +1,7 @@
 .container.w-75
   = simple_form_for @job_cluster, defaults: { input_html: { class: 'form-horizontal' } } do |f|
+    = render "shared/forms/logo", object: @job_cluster, f: f
+
     = f.input :name, label: t('shared.name')
 
     / Video list
@@ -8,6 +10,7 @@
 
       %input.video-list{value: @job_cluster.video_ids, 'data-tags': Video.all.map{ |v| { value: v.id, name: v.name, avatar: v.thumbnail } }.to_json }
 
+      %input{ type: 'hidden', name: "job_cluster[video_ids][]" }
       - @job_cluster.video_ids.each.with_index do |id, index|
         %input{ type: 'hidden', name: "job_cluster[video_ids][]", value: id, class: tagify_class(id) }
 

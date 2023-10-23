@@ -6,6 +6,7 @@ TV.Job_clustersNew = (() => {
   }
 
   function init() {
+    TV.Common.Logo.init();
     initVideoTagify();
     initRecommendationRichText();
   }
