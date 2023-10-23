@@ -57,7 +57,7 @@
             %a.collapse-item{ href: high_schools_path, class: css_active_class('high_schools', 'high_school_importers') }
               = t('sidebar.high_school')
 
-          - if policy(JobCluster).create?
+          - if policy(JobCluster).update?
             %a.collapse-item{ href: job_clusters_path, class: css_active_class('job_clusters', 'job_cluster_importers') }
               = t('sidebar.job_cluster')
 

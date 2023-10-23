@@ -2,11 +2,7 @@
 
 class JobClusterPolicy < ApplicationPolicy
   def index?
-    create?
-  end
-
-  def show?
-    create?
+    update?
   end
 
   def create?
@@ -14,7 +10,7 @@ class JobClusterPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    user.primary_admin? || user.admin?
   end
 
   def destroy?
