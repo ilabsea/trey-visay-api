@@ -37,5 +37,5 @@
         = select_tag :gender, options_for_select(User::GENDERS, params[:gender]), include_blank: t('user.all_gender'), class: 'custom-select'
 
       .mr-2
-        = select_tag :gender, options_for_select(User.class_groups.keys.map{|group| [t("user.#{group}"), group]}, params[:gender]), include_blank: t('user.all_class_group'), class: 'custom-select'
+        = select_tag :class_group, options_for_select(User.class_groups.keys.map{|group| [t("user.#{group}"), group]}, params[:class_group]), include_blank: t('user.all_class_group'), class: 'custom-select'
 

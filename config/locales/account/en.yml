@@ -33,3 +33,4 @@ en:
     disable_dashboard: disable account from dashboard
     location: Location
     search_by_email: Search by email
+    all_role: All roles

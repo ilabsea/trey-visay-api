@@ -1,16 +1,17 @@
-.container{style: 'width: 50%'}
+.container.w-50
   = simple_form_for @account, defaults: { input_html: { class: 'form-horizontal' } } do |f|
     = f.input :email, label: t('account.email'), input_html: { readonly: @account.persisted? }
 
     = f.input :full_name, label: t('account.full_name')
     = f.input :phone_number, label: t('account.phone_number')
 
-    = f.input :role, label: t('account.role'), collection: Account::ROLES, input_html: { class: 'role custom-select' }
+    = f.input :role, label: t('account.role'), collection: policy(Account).roles, input_html: { class: 'role custom-select' }
 
     .provinces.form-group{class: ('d-none' unless @account.trainer?)}
       = f.label :province_ids do
         = t('shared.province')
         %abbr{title: "required"} *
+      = hidden_field_tag "account[province_ids][]", nil
       = select_tag 'account[province_ids][]', options_for_select(Pumi::Province.all.pluck(:name_km, :id), f.object.province_ids), "data-none-selected-text" => t('shared.please_select'), multiple: true, class: 'selectpicker form-control'
       - if errors = f.object.errors[:province_ids].presence
         .invalid-feedback.d-block= errors.join(';')
@@ -29,7 +30,6 @@
           = f.input :high_school_ids, as: :select, input_html: { multiple: true }
 
         %select.form-control.custom-select{ "data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'account[high_school_ids][]', 'data-pumi-select-has-hidden-value' => true, multiple: true, 'data-pumi-select-hidden-values' => @account.high_school_ids, class: ('is-invalid' if f.object.errors["high_school_ids"].present?) }
-          %option{value: ""}= t('shared.all_schools')
 
         .invalid-feedback.d-block= f.object.errors["high_school_ids"].join(';')
 

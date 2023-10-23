@@ -9,6 +9,8 @@
 #  account_id     :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  province_id    :string(255)
+#  district_id    :string(255)
 #
 FactoryBot.define do
   factory :account_high_school do
