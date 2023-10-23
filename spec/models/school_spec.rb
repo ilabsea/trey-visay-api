@@ -21,6 +21,7 @@
 #  kind                :integer
 #  province_id         :string(255)
 #  deleted_at          :datetime
+#  display_order       :integer
 #
 
 require "rails_helper"

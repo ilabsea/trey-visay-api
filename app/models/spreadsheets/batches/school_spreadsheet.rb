@@ -25,6 +25,7 @@ module Spreadsheets
           website_or_facebook: row["website_or_facebook"],
           kind: row["type"],
           category: row["category"],
+          display_order: row["display_order"],
           logo: find_attachment(row["logo"], zipfile)
         }
 

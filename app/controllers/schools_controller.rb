@@ -75,7 +75,7 @@ class SchoolsController < ApplicationController
 
     def school_params
       params.require(:school).permit(
-        :code, :name, :logo, :remove_logo, :address, :phone_numbers,
+        :code, :name, :logo, :remove_logo, :address, :phone_numbers, :display_order,
         :emails, :website_or_facebook, :category, :kind, :province_id,
         school_departments_attributes: [ :id, :major_list, :_destroy, department_attributes: [:name, :grade] ]
       )
