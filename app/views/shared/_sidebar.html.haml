@@ -53,6 +53,10 @@
             %a.collapse-item{ href: majors_path, class: css_active_class('majors', 'major_importers') }
               = t('sidebar.college_major')
 
+          - if policy(PersonalityType).update?
+            %a.collapse-item{ href: personality_types_path, class: css_active_class('personality_types', 'personality_type_importers') }
+              = t('sidebar.personality_type')
+
           - if policy(HighSchool).create?
             %a.collapse-item{ href: high_schools_path, class: css_active_class('high_schools', 'high_school_importers') }
               = t('sidebar.high_school')

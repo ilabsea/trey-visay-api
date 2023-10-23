@@ -1,0 +1,41 @@
+/ Page Heading
+= render "page_heading"
+
+.card.shadow.mb-4
+  .card-body
+    = render "shared/headers/pagy_label"
+
+    .table-responsive.mb-4
+      %table.table.table-hover.pretty
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('shared.code')
+            %th= t('shared.name_km')
+            %th= t('shared.name_en')
+            %th= t('personality_type.description')
+            %th= t('personality_type.personal_value')
+            %th= t('personality_type.skill_and_ability')
+            %th= t('shared.recommendation')
+            %th
+
+        %tbody#body-content
+          - @personality_types.each_with_index do |personality_type, index|
+            %tr
+              %td= @pagy.from + index
+              %td= personality_type.code
+              %td= personality_type.name_km
+              %td= personality_type.name_en
+              %td.trancate-column= personality_type.description
+              %td.trancate-column= personality_type.personal_value
+              %td.trancate-column= personality_type.skill_and_ability
+              %td.trancate-column= personality_type.recommendation
+              %td
+                .d-flex.justify-content-end
+                  = render "shared/buttons/edit_button", object: personality_type, url: edit_personality_type_path(personality_type)
+
+                  = render 'shared/buttons/delete_button', object: personality_type,  message: { type: t('sidebar.personality_type'), name: personality_type.name, url: personality_type_path(personality_type) }
+
+    = render "shared/footers/pagination"
+
+= render "shared/modals/confirm_delete_modal"

@@ -1,0 +1,13 @@
+.container.w-75
+  = simple_form_for @personality_type do |f|
+    = f.input :code, label: t('shared.code')
+    = f.input :name_km, label: t('shared.name_km')
+    = f.input :name_en, label: t('shared.name_en')
+    = f.input :description, label: t('personality_type.description')
+    = f.input :personal_value, label: t('personality_type.personal_value')
+    = f.input :skill_and_ability, label: t('personality_type.skill_and_ability')
+    = f.input :recommendation, label: t('shared.recommendation')
+
+    .actions.mt-5.text-right
+      = link_to t('shared.cancel'), personality_types_path, class: 'btn btn-secondary'
+      = f.submit t('shared.save'), class: 'btn btn-primary'

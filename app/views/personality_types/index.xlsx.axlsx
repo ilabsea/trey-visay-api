@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "personality_types") do |sheet|
+  sheet.add_row %w[code name_km name_en description personal_value skill_and_ability recommendation]
+
+  @personality_types.each_with_index do |personality_type, index|
+    row = [
+      personality_type.code,
+      personality_type.name_km,
+      personality_type.name_en,
+      personality_type.description,
+      personality_type.personal_value,
+      personality_type.skill_and_ability,
+      personality_type.recommendation
+    ]
+    sheet.add_row row, types: row.length.times.map { |i| :string }
+  end
+end

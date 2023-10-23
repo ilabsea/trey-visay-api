@@ -103,7 +103,6 @@ km:
     any_district: គ្រប់ស្រុក/ខ័ណ្ឌ
     title: ចំណងជើង
     recommendation: អនុសាសន៍
-
     new_career_website: មជ្ឈមណ្ឌលការងារថ្មី
     edit_career_website: កែតម្រូវមជ្ឈមណ្ឌលការងារ
     new_high_school: គ្រឹស្ថានមធ្យមសិក្សាថ្មី
@@ -111,3 +110,6 @@ km:
     new_video: វីដេអូថ្មី
     edit_video: កែតម្រូវវីដេអូ
     about_us: អំពីកម្មវិធី
+    create_success: "%{name}ត្រូវបានបញ្ចូលដោយជោគជ័យ"
+    update_success: "%{name}ត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ"
+    delete_success: "%{name}ត្រូវបានលុបដោយជោគជ័យ"

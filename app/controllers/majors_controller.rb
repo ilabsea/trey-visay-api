@@ -40,7 +40,7 @@ class MajorsController < ApplicationController
     @major = authorize Major.new(major_params)
 
     if @major.save
-      redirect_to majors_url, notice: "Major was successfully created."
+      redirect_to majors_url, notice: I18n.t("shared.create_success", name: I18n.t("sidebar.college_major"))
     else
       render :new, status: :unprocessable_entity
     end
@@ -51,7 +51,7 @@ class MajorsController < ApplicationController
 
   def update
     if @major.update(major_params)
-      redirect_to @major, notice: "High school was successfully updated."
+      redirect_to @major, notice: I18n.t("shared.update_success", name: I18n.t("sidebar.college_major"))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -60,7 +60,7 @@ class MajorsController < ApplicationController
   def destroy
     @major.destroy
 
-    redirect_to majors_url, notice: "Major was successfully destroyed."
+    redirect_to majors_url, notice: I18n.t("shared.delete_success", name: I18n.t("sidebar.college_major"))
   end
 
   private

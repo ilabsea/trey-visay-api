@@ -2,13 +2,14 @@
 
 TV.Job_clustersNew = (() => {
   return {
-    init: init
+    init: init,
+    initRecommendationRichText: initRecommendationRichText
   }
 
   function init() {
     TV.Common.Logo.init();
     initVideoTagify();
-    initRecommendationRichText();
+    initRecommendationRichText('#job_cluster_recommendation');
   }
 
   function initVideoTagify() {
@@ -100,8 +101,8 @@ TV.Job_clustersNew = (() => {
     }
   }
 
-  function initRecommendationRichText() {
-    $('#job_cluster_recommendation').richText({
+  function initRecommendationRichText(domId) {
+    $(domId).richText({
       // text formatting
       bold: true,
       italic: true,
