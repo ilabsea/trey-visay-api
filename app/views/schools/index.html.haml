@@ -14,6 +14,7 @@
             %th= t('shared.code')
             %th= t('school.logo')
             %th= t('school.name')
+            %th= t('school.display_order')
             %th= t('school.type')
             %th= t('school.address')
             %th= t('shared.province')
@@ -32,6 +33,7 @@
               %td
                 = image_tag(school.logo_url, width: 24) if school.logo.present?
               %td= school.name
+              %td= school.display_order
               %td.trancate-column
                 = t("school.#{school.kind}") if school.kind.present?
               %td.trancate-column= school.address

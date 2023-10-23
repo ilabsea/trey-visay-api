@@ -21,6 +21,7 @@
 #  kind                :integer
 #  province_id         :string(255)
 #  deleted_at          :datetime
+#  display_order       :integer
 #
 
 class School < ApplicationRecord
@@ -47,12 +48,13 @@ class School < ApplicationRecord
 
   # Callback
   before_create :secure_code
+  before_create :set_display_order
 
+  # Nested attribute
   accepts_nested_attributes_for :school_departments, allow_destroy: true
 
-  def display_id
-    "school_#{id}"
-  end
+  # Scope
+  default_scope { order(display_order: :asc) }
 
   def self.t_kinds
     [

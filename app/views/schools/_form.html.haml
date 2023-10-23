@@ -3,6 +3,7 @@
     = render "shared/forms/logo", object: @school, f: f
     = f.input :code, label: t('school.code'), readonly: @school.persisted?
     = f.input :name, label: t('school.name')
+    = f.input :display_order, label: t('school.display_order')
     = f.input :address, label: t('school.address')
     = f.input :province_id, label: t('shared.province'), as: :select, collection: Pumi::Province.all.pluck(:name_km, :id)
     = f.input :phone_numbers, label: t('school.phone_numbers')

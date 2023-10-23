@@ -21,12 +21,13 @@
 #  kind                :integer
 #  province_id         :string(255)
 #  deleted_at          :datetime
+#  display_order       :integer
 #
 
 class SchoolSerializer < ActiveModel::Serializer
   attributes :id, :name, :logo, :address, :province, :phone_numbers, :faxes,
              :emails, :website_or_facebook, :mailbox, :category, :departments,
-             :kind, :province_id, :updated_at, :deleted_at
+             :kind, :province_id, :updated_at, :deleted_at, :display_order
 
   def departments
     object.school_departments.map do |sd|
