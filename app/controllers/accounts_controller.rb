@@ -88,6 +88,6 @@ class AccountsController < ApplicationController
     end
 
     def filter_params
-      params.permit(:email, :archived)
+      params.permit(:email, :role, :archived, :province_id, :district_id, :high_school_code)
     end
 end

@@ -4,6 +4,14 @@ TV.AccountsNew = do ->
   init = ->
     initDisplayLocalNgo()
     onChangeRole()
+    onSubmitForm()
+
+  onSubmitForm = ->
+    $(".simple_form").on "submit", (e) ->
+      if $("#account_role").val() == TARGET_ROLE
+        $("[name='account[province_ids][]']").remove();
+
+      return true;
 
   initDisplayLocalNgo = ->
     if !!$('.role').val() && $('.role').val() == TARGET_ROLE

@@ -74,12 +74,11 @@ class Account < ApplicationRecord
   before_create :reset_authentication_token
   before_save :ensure_authentication_token
   before_create :ensure_authentication_token
+  after_commit :clean_unused_account_high_school, if: -> { saved_change_to_attribute("role") && counselor? }
 
   # Validation
   validates :email, presence: true
   validates :role, presence: true
-  validates :province_id, presence: true, if: :counselor?
-  validates :district_id, presence: true, if: :counselor?
   validates :high_school_ids, presence: true, if: :counselor?
   validates :province_ids, presence: true, if: :trainer?
 
@@ -93,8 +92,7 @@ class Account < ApplicationRecord
   # Association
   has_many :account_high_schools
   has_many :high_schools, through: :account_high_schools
-  has_many :account_provinces
-  has_many :provinces, through: :account_provinces
+  has_many :provinces, through: :account_high_schools
 
   # Scope
   default_scope { order(created_at: :desc) }
@@ -120,6 +118,10 @@ class Account < ApplicationRecord
   def self.filter(params = {})
     scope = all
     scope = scope.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
+    scope = scope.where(role: params[:role]) if params[:role].present?
+    scope = scope.joins(:account_high_schools).where("account_high_schools.province_id = ?", params[:province_id]) if params[:province_id].present?
+    scope = scope.joins(:account_high_schools).where("account_high_schools.district_id = ? OR account_high_schools.district_id = 'all'", params[:district_id]) if params[:district_id].present?
+    scope = scope.joins(:account_high_schools).where("account_high_schools.high_school_id = ? OR account_high_schools.high_school_id = 'all'", params[:high_school_code]) if params[:high_school_code].present?
     scope = scope.only_deleted if params[:archived] == "true"
     scope
   end
@@ -144,5 +146,10 @@ class Account < ApplicationRecord
     def refresh_authentication_token
       ensure_authentication_token
       save!
+    end
+
+    def clean_unused_account_high_school
+      schools = account_high_schools.where(high_school_id: "all")
+      schools.delete_all
     end
 end

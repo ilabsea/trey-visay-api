@@ -47,6 +47,10 @@ class AccountPolicy < ApplicationPolicy
     create? && record.confirmed? && record.gf_user_id.present?
   end
 
+  def roles
+    Account::ROLES
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve

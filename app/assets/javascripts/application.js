@@ -50,13 +50,13 @@
 //= require games/show
 //= require personality_tests/show
 //= require users/index
-//= require users/new
 //= require visits/index
 //= require career_websites/form
 //= require jobs/form
 //= require schools/form
 //= require job_clusters/form
 //= require personality_types/form
+//= require accounts/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

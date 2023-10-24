@@ -15,6 +15,13 @@ namespace :account do
     end
   end
 
+  desc "Migrate role and confirm"
+  task migrate_high_school: :environment do
+    AccountHighSchool.all.each do |ah|
+      ah.update_columns(province_id: ah.high_school.province_id, district_id: ah.high_school.district_id)
+    end
+  end
+
   private
     def get_role(account)
       account.is_admin? ? "admin" : "counselor"

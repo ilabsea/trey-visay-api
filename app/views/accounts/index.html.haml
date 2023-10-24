@@ -27,7 +27,7 @@
               %td= link_to account.email, edit_account_path(account.id)
               %td= account.full_name
               %td= account.phone_number
-              %td= I18n.t("account.#{account.role}")
+              %td.trancate-column= I18n.t("account.#{account.role}")
               %td
                 = account.provinces.pluck(:name_km).join(", ") if account.trainer?
 
