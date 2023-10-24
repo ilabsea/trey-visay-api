@@ -103,7 +103,6 @@ en:
     any_district: Any district
     title: Title
     recommendation: Recommendation
-
     new_career_website: New career website
     edit_career_website: Edit career website
     new_high_school: New high school
@@ -111,3 +110,6 @@ en:
     new_video: New video
     edit_video: Edit video
     about_us: About application
+    create_success: "%{name} was successfully created."
+    update_success: "%{name} was successfully updated."
+    delete_success: "%{name} was successfully deleted."
