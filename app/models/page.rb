@@ -36,7 +36,7 @@ class Page < ApplicationRecord
   end
 
   def self.filter(params)
-    keyword = params[:name].to_s.downcase
+    keyword = params[:name].to_s.downcase.strip
     scope = all
     scope = scope.where("LOWER(code) LIKE ? OR name_km LIKE ? OR name_en LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%") if keyword.present?
     scope

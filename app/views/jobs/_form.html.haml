@@ -28,6 +28,4 @@
       = f.input :personal_competency_skill, label: t('job.personal_competency_skill')
       = f.input :personal_competency_ability, label: t('job.personal_competency_ability')
 
-    .actions.text-right
-      = link_to t('shared.cancel'), jobs_path, class: 'btn btn-secondary'
-      = f.submit t("shared.save"), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: jobs_path, f: f

@@ -34,6 +34,7 @@ class Job < ApplicationRecord
 
   # Validation
   validates :name_km, presence: true
+  validates :job_cluster_id, presence: true
 
   # Callback
   before_create :secure_id

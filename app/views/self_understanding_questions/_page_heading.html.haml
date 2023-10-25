@@ -1,15 +1,19 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.self_understanding_question')
+= content_for :title do
+  = t('sidebar.self_understanding_question')
 
-  %div
-    = render "shared/buttons/download_button", url: self_understanding_questions_path(format: :xlsx)
+.d-flex.flex-row-reverse.flex-wrap
+  .d-flex
+    %div= render "shared/buttons/download_button", url: self_understanding_questions_path(filter_params.merge(format: :xlsx))
 
     / More Options
-    .btn-group
-      %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        %i.fas.fa-ellipsis-v
+    = render "shared/buttons/more_button" do
+      = render "shared/buttons/download_json_button", url: self_understanding_questions_path(format: :json)
 
-      .dropdown-menu.dropdown-menu-right
-        %a.btn.dropdown-item{ href: self_understanding_questions_path(format: :json), target: '_blank' }
-          %i.fas.fa-download.drop-menu-icon
-          %span= t('shared.download_json')
+  / Filter
+  .flex-grow-1
+    = form_for "", url: self_understanding_questions_path, method: 'get' do |f|
+      .d-flex
+        = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')
+
+        .ml-2
+          = render "shared/buttons/search_button"

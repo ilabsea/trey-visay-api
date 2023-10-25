@@ -54,4 +54,10 @@ class SelfUnderstandingQuestion < ApplicationRecord
 
     operators[operant.to_s.to_sym]
   end
+
+  def self.filter(params = {})
+    scope = all
+    scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name].strip}%", "%#{params[:name].strip}%") if params[:name].present?
+    scope
+  end
 end

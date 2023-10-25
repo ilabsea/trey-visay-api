@@ -17,6 +17,4 @@
 
     = link_to_add_fields t('school.add_department'), f, :school_departments, class: 'btn btn-outline-secondary'
 
-    .actions.mt-5
-      = link_to t('shared.cancel'), schools_path, class: 'btn btn-secondary'
-      = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: schools_path, f: f

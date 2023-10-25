@@ -1,3 +1,4 @@
-= render "shared/headers/page_heading", title: t("job.new_job")
+= content_for :title do
+  = t('job.new_job')
 
 = render "form"

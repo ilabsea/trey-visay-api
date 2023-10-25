@@ -1,26 +1,34 @@
-= render "shared/headers/page_heading", title: t('sidebar.job') do
+= content_for :title do
+  = t('sidebar.job')
 
-  .d-flex
-    .mr-2= render "shared/buttons/download_button", url: jobs_path(filter_params.merge(format: :xlsx))
+= form_for "", url: jobs_path, method: 'get' do |f|
+  .d-flex.flex-row-reverse.flex-wrap
+    .d-flex
+      .mr-2= render "shared/buttons/download_button", url: jobs_path(filter_params.merge(format: :xlsx))
 
-    = render "shared/buttons/add_new_button", url: new_job_path
+      - if policy(Job).create?
+        = render "shared/buttons/add_new_button", url: new_job_path
 
-    / More Options
-    - if policy(Job).create?
-      %button.btn.btn-sm{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        %i.fas.fa-ellipsis-v
+        / More Options
+        = render "shared/buttons/more_button" do
+          = render "shared/buttons/import_from_file_button", url: new_job_importer_path, title: t("shared.import_from_zip_file")
 
-      .dropdown-menu.dropdown-menu-right
-        %a.btn.dropdown-item{ href: new_job_importer_path }
-          %i.fas.fa-file-import.drop-menu-icon
-          %span= t("shared.import_from_zip_file")
+          = render "shared/buttons/importing_history_button", name: t('sidebar.job'), url: job_importers_path
 
-        %a.btn.dropdown-item{ href: job_importers_path }
-          %i.fas.fa-history.drop-menu-icon
-          %span= t('shared.importing_history', name: t('sidebar.job'))
+          = render "shared/buttons/download_json_button", url: jobs_path(format: :json)
 
-        - if current_account.primary_admin?
-          %a.btn.dropdown-item{ href: jobs_path(format: :json), target: '_blank' }
-            %i.fas.fa-download.drop-menu-icon
-            %span= t('shared.download_json')
+    .d-flex.flex-grow-1
+      = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')
 
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_school"
+
+      .ml-2
+        = render "shared/buttons/search_button"
+
+  / Advance filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      .mr-2
+        - options = JobCluster.all.map.with_index{ |cluster, index| ["#{index+1}.#{cluster.name}", cluster.id]}
+        = select_tag :job_cluster_id, options_for_select(options, params[:job_cluster_id]), class: 'custom-select filter-input ml-2', prompt: t('job.any_cluster')

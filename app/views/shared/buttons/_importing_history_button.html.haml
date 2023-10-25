@@ -1,0 +1,6 @@
+- url ||= ""
+- name ||= ""
+
+%a.btn.dropdown-item{ href: url }
+  %i.fas.fa-history.drop-menu-icon
+  %span= t('shared.importing_history', name: name)

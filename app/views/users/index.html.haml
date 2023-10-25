@@ -1,8 +1,5 @@
 / Page Heading
-= render "shared/headers/page_heading", title: t('sidebar.app_user') do
-  = render "shared/buttons/download_button", url: users_path(filter_params.merge(format: :xlsx))
-
-= render 'filter'
+= render "page_heading"
 
 .card.shadow.mb-4
   .card-body

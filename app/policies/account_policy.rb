@@ -48,7 +48,9 @@ class AccountPolicy < ApplicationPolicy
   end
 
   def roles
-    Account::ROLES
+    return Account::ROLES if user.primary_admin?
+
+    Account::ROLES[1..-1]
   end
 
   class Scope < Scope

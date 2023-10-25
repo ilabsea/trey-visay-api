@@ -1,4 +1,4 @@
-.container{style: 'width: 50%'}
+.container.w-50
   = simple_form_for @school do |f|
     = f.input :name_km, label: t('shared.name_km')
     = f.input :name_en, label: t('shared.name_en')
@@ -19,6 +19,4 @@
       - if error_msg = f.object.errors["district_id"].presence
         .invalid-feedback.d-block= error_msg.join('; ')
 
-    .actions.mt-5
-      = link_to t('shared.cancel'), high_schools_path, class: 'btn btn-secondary'
-      = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: high_schools_path, f: f

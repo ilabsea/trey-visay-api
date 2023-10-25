@@ -16,6 +16,4 @@
 
     = f.input :recommendation, label: t('shared.recommendation')
 
-    .actions.text-right
-      = link_to t('shared.cancel'), job_clusters_path, class: 'btn btn-secondary'
-      = f.submit t("shared.save"), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: job_clusters_path, f: f

@@ -1,24 +1,35 @@
-= render "shared/headers/page_heading", title: t('school.school') do
-  .d-flex
-    .mr-2= render "shared/buttons/download_button", url: schools_path(filter_params.merge(format: :xlsx))
+= content_for :title do
+  = t('sidebar.school')
 
-    = render "shared/buttons/add_new_button", url: new_school_path
+= form_for "", url: schools_path, method: 'get' do |f|
+  .d-flex.flex-row-reverse.flex-wrap
+    .d-flex
+      .mr-2= render "shared/buttons/download_button", url: schools_path(filter_params.merge(format: :xlsx))
 
-    / More Options
-    - if policy(School).create?
-      %button.btn.btn-sm{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        %i.fas.fa-ellipsis-v
+      = render "shared/buttons/add_new_button", url: new_school_path
 
-      .dropdown-menu.dropdown-menu-right
-        %a.btn.dropdown-item{ href: new_school_importer_path }
-          %i.fas.fa-file-import.drop-menu-icon
-          %span= t("shared.import_from_zip_file")
+      / More Options
+      - if policy(School).create?
+        = render "shared/buttons/more_button" do
+          = render "shared/buttons/import_from_file_button", url: new_school_importer_path, title: t("shared.import_from_zip_file")
 
-        %a.btn.dropdown-item{ href: school_importers_path }
-          %i.fas.fa-history.drop-menu-icon
-          %span= t('shared.importing_history', name: t('sidebar.school'))
+          = render "shared/buttons/importing_history_button", name: t('sidebar.school'), url: school_importers_path
 
-        - if current_account.primary_admin?
-          %a.btn.dropdown-item{ href: schools_path(format: :json), target: '_blank' }
-            %i.fas.fa-download.drop-menu-icon
-            %span= t('shared.download_json')
+          = render "shared/buttons/download_json_button", url: schools_path(format: :json)
+
+    / Filter
+    .d-flex.flex-grow-1
+      = render 'shared/filters/filter_name', placeholder: t('shared.search_by_code_or_name')
+
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_school"
+
+      / Search button
+      .ml-2
+        = render "shared/buttons/search_button"
+
+  / Advance filter
+  #collapseOne.accordion-collapse.collapse.collapse-filter
+    .d-flex.m-2
+      .mr-2
+        = select_tag :kind, options_for_select(School.t_kinds, params[:kind]), class: 'custom-select filter-input ml-2', prompt: t('school.any_kind')

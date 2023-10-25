@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class SelfUnderstandingQuestionsController < ApplicationController
-  helper_method :filter_params
-
   def index
     respond_to do |format|
       format.html {
-        @pagy, @questions = pagy(authorize SelfUnderstandingQuestion.includes(:options))
+        @pagy, @questions = pagy(authorize_questions)
       }
 
       format.xlsx {
-        @questions = authorize SelfUnderstandingQuestion.includes(:options)
+        @questions = authorize_questions
 
         if @questions.length > Settings.max_download_record
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
@@ -21,10 +19,20 @@ class SelfUnderstandingQuestionsController < ApplicationController
       }
 
       format.json {
-        @questions = authorize SelfUnderstandingQuestion.includes(:options)
+        @questions = authorize_questions
 
         render json: @questions
       }
     end
   end
+
+  private
+    def filter_params
+      params.permit(:name)
+    end
+    helper_method :filter_params
+
+    def authorize_questions
+      authorize SelfUnderstandingQuestion.filter(filter_params).includes(:options)
+    end
 end
