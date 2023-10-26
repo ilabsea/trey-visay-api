@@ -28,6 +28,8 @@ class Major < ApplicationRecord
   acts_as_paranoid
 
   include ItemableConcern
+  include Majors::PersonalityTypeConcern
+
   # Enum
   enum grade: Department.grades
 
@@ -41,7 +43,6 @@ class Major < ApplicationRecord
 
   # Validation
   validates :name, presence: true, uniqueness: true
-  validates :code, uniqueness: true
 
   # Delegation
   delegate :name, to: :parent, prefix: true, allow_nil: true

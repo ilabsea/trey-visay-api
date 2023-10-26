@@ -36,4 +36,7 @@ RSpec.describe Major, type: :model do
 
   it { is_expected.to have_many(:importing_items) }
   it { is_expected.to have_many(:batches).through(:importing_items) }
+
+  it { is_expected.to have_many(:major_personality_types) }
+  it { is_expected.to have_many(:personality_types).through(:major_personality_types) }
 end

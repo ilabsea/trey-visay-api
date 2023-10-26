@@ -13,4 +13,6 @@
     = f.input :gain_knowledge, label: t('major.gain_knowledge')
     = f.input :worthy_career, label: t('major.worthy_career')
 
+    = f.input :recommendation, label: t('shared.recommendation')
+
     = render "shared/buttons/submit_and_cancel_button", cancel_url: majors_path, f: f

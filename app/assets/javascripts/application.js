@@ -57,6 +57,7 @@
 //= require job_clusters/form
 //= require personality_types/form
 //= require accounts/form
+//= require majors/form
 
 $(document).on('turbolinks:load', function() {
   TV.Common.Copy.init();

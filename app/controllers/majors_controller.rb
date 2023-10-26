@@ -74,7 +74,7 @@ class MajorsController < ApplicationController
         :orien_orientation_subjects, :orien_study_condition,
         :orien_graduation_condition, :curriculum,
         :teaching_and_learning_process, :gain_knowledge,
-        :worthy_career
+        :worthy_career, :recommendation
       )
     end
 
