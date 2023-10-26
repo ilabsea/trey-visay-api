@@ -1,3 +1,4 @@
-= render "shared/headers/page_heading", title: t('personality_type.new_personality_type')
+= content_for :title do
+  = t('personality_type.new_personality_type')
 
 = render 'form'

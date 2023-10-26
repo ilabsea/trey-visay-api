@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class IntelligenceCategoriesController < ApplicationController
-  helper_method :filter_params
-
   def index
     respond_to do |format|
       format.html {
-        @pagy, @categories = pagy(authorize IntelligenceCategory.filter(filter_params))
+        @pagy, @categories = pagy(authorize_categories)
       }
 
       format.xlsx {
-        @categories = authorize IntelligenceCategory.filter(filter_params)
+        @categories = authorize_categories
 
         if @categories.length > Settings.max_download_record
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
@@ -21,7 +19,7 @@ class IntelligenceCategoriesController < ApplicationController
       }
 
       format.json {
-        @categories = authorize IntelligenceCategory.filter(filter_params)
+        @categories = authorize authorize_categories
 
         render json: @categories
       }
@@ -31,5 +29,10 @@ class IntelligenceCategoriesController < ApplicationController
   private
     def filter_params
       params.permit(:name)
+    end
+    helper_method :filter_params
+
+    def authorize_categories
+      authorize IntelligenceCategory.filter(filter_params)
     end
 end

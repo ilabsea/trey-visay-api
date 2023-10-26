@@ -1,18 +1,21 @@
 / Page Heading
-= render "shared/headers/page_heading", title: t('account.accounts') do
-  = render "shared/buttons/add_new_button", url: new_account_path
+= content_for :title do
+  = t('account.accounts')
 
 / Nav tabs
-%ul.nav.nav-tabs
-  %li.nav-item
-    %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
-      %i.fas.fa-users
-      %span.d-none.d-lg-inline= t("user.all")
+.d-flex
+  %ul.nav.nav-tabs.flex-grow-1
+    %li.nav-item
+      %a.nav-link{href: accounts_path, class: ('active' if params[:archived].blank?) }
+        %i.fas.fa-users
+        %span.d-none.d-lg-inline= t("user.all")
 
-  %li.nav-item
-    %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
-      %i.fas.fa-user-times
-      %span.d-none.d-lg-inline= t("user.archived")
+    %li.nav-item
+      %a.nav-link{ href: accounts_path(archived: true), class:  ('active' if params[:archived].present?) }
+        %i.fas.fa-user-times
+        %span.d-none.d-lg-inline= t("user.archived")
+
+  = render "shared/buttons/add_new_button", url: new_account_path
 
 / Filter
 = form_for "", url: accounts_path, method: 'get' do |f|

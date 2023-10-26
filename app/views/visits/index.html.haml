@@ -1,6 +1,5 @@
 / Page Heading
 = render "page_heading"
-= render "filter"
 
 .card.shadow.mb-4
   .card-body
@@ -11,7 +10,6 @@
         %thead
           %tr
             %th{width: 60} #
-            %th= t('visit.device_id')
             %th= t('visit.page')
             %th= t('visit.pageable')
             %th= t('visit.platform')
@@ -22,7 +20,6 @@
           - @visits.each_with_index do |visit, index|
             %tr
               %td= @pagy.from + index
-              %td= visit.display_device_id
               %td= visit.page_name
               %td= visit.pageable_name
               %td.text-capitalize= visit.device_os

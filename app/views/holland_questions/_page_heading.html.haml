@@ -1,20 +1,18 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.holland_question')
+= content_for :title do
+  = t('sidebar.holland_question')
 
-  %div
-    = render "shared/buttons/download_button", url: holland_questions_path(filter_params.merge(format: :xlsx))
+.d-flex.flex-row-reverse.flex-wrap
+  .d-flex
+    %div= render "shared/buttons/download_button", url: holland_questions_path(filter_params.merge(format: :xlsx))
 
     / More Options
-    - if policy(Job).create?
-      .btn-group
-        %button.btn{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %i.fas.fa-ellipsis-v
+    - if policy(HollandQuestion).create?
+      = render "shared/buttons/more_button" do
+        = render "shared/buttons/import_from_file_button", url: new_holland_question_importer_path
 
-        .dropdown-menu.dropdown-menu-right
-          %a.btn.dropdown-item{ href: new_holland_question_importer_path }
-            %i.fas.fa-file-import.drop-menu-icon
-            %span= t("shared.import_from_file")
+        = render "shared/buttons/importing_history_button", name: t('sidebar.holland_question'), url: holland_question_importers_path
 
-          %a.btn.dropdown-item{ href: holland_question_importers_path }
-            %i.fas.fa-history.drop-menu-icon
-            %span= t('shared.importing_history', name: t('sidebar.holland_question'))
+  / Filter
+  .flex-grow-1
+    = form_for "", url: holland_questions_path, method: 'get' do |f|
+      = render "shared/filters/filter_name", placeholder: t('shared.search_by_code_or_name')

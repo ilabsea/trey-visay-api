@@ -84,6 +84,7 @@ class Account < ApplicationRecord
 
   # Constant
   ROLES = [
+    ["អ្នកគ្រប់គ្រងប្រព័ន្ធ", "primary_admin"],
     ["អ្នកគ្រប់គ្រង", "admin"],
     ["គ្រូប្រឹក្សាតាមសាលារៀន", "counselor"],
     ["គ្រូឧទ្ទេសថ្នាក់ជាតិ", "trainer"]

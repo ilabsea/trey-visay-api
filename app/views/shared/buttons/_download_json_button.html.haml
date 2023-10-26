@@ -1,0 +1,6 @@
+- url ||= ""
+
+- if current_account.primary_admin?
+  %a.btn.dropdown-item{ href: url, target: '_blank' }
+    %i.fas.fa-download.drop-menu-icon
+    %span= t('shared.download_json')

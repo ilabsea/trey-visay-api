@@ -1,42 +1,34 @@
-.d-sm-flex.align-items-center.justify-content-between.mb-4
-  %h1.h3.mb-0.text-gray-800= t('sidebar.high_school')
+= content_for :title do
+  = t('sidebar.high_school')
 
-  %div.d-flex
-    .mr-2= render "shared/buttons/download_button", url: high_schools_path(filter_params.merge(format: :xlsx))
-
-    = render "shared/buttons/add_new_button", url: new_high_school_path
-
-    / More Options
-    - if policy(HighSchool).create?
-      %button.btn.btn-sm{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        %i.fas.fa-ellipsis-v
-
-      .dropdown-menu.dropdown-menu-right
-        %a.btn.dropdown-item{ href: new_high_school_importer_path }
-          %i.fas.fa-file-import.drop-menu-icon
-          %span= t("shared.import_from_file")
-
-        %a.btn.dropdown-item{ href: high_school_importers_path }
-          %i.fas.fa-history.drop-menu-icon
-          %span= t('shared.importing_history', name: t('sidebar.high_school'))
-
-        - if current_account.primary_admin?
-          %a.btn.dropdown-item{ href: high_schools_path(format: :json), target: '_blank' }
-            %i.fas.fa-download.drop-menu-icon
-            %span= t('shared.download_json')
-
-/ Filter
 = form_for "", url: high_schools_path, method: 'get' do |f|
-  .d-flex
-    = render 'shared/filters/filter_name', placeholder: t('shared.search_by_code_or_name')
+  .d-flex.flex-row-reverse.flex-wrap
+    .d-flex
+      .mr-2= render "shared/buttons/download_button", url: high_schools_path(filter_params.merge(format: :xlsx))
 
-    .ml-3
-      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_high_school"
+      = render "shared/buttons/add_new_button", url: new_high_school_path
 
-    / Search button
-    .ml-2
-      = render "shared/buttons/search_button"
+      / More Options
+      - if policy(HighSchool).create?
+        = render "shared/buttons/more_button" do
+          = render "shared/buttons/import_from_file_button", url: new_high_school_importer_path
 
+          = render "shared/buttons/importing_history_button", name: t('sidebar.high_school'), url: high_school_importers_path
+
+          = render "shared/buttons/download_json_button", url: high_schools_path(format: :json)
+
+    / Filter
+    .d-flex.flex-grow-1
+      = render 'shared/filters/filter_name', placeholder: t('shared.search_by_code_or_name')
+
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_high_school"
+
+      / Search button
+      .ml-2
+        = render "shared/buttons/search_button"
+
+  / Advance filter
   #collapseOne.accordion-collapse.collapse.collapse-filter
     .d-flex.m-2
       #province.filter-input.mr-2

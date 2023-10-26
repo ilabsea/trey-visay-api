@@ -1,13 +1,21 @@
+= content_for :title do
+  = t('sidebar.app_user')
+
 = form_for "", url: users_path, method: 'get' do |f|
-  .d-flex
-    = render 'shared/filters/filter_name'
+  .d-flex.flex-row-reverse.flex-wrap
+    .d-flex
+      .mr-2= render "shared/buttons/download_button", url: users_path(filter_params.merge(format: :xlsx))
 
-    .ml-3
-      = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
+    / Filter
+    .d-flex.flex-grow-1
+      = render 'shared/filters/filter_name'
 
-    / Search button
-    .ml-2
-      = render "shared/buttons/search_button"
+      .ml-3
+        = render "shared/buttons/advance_search_button", toggler_variable: "advance_search_app_user"
+
+      / Search button
+      .ml-2
+        = render "shared/buttons/search_button"
 
   / Advance filter
   #collapseOne.accordion-collapse.collapse.collapse-filter

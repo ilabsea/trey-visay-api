@@ -1,10 +1,8 @@
-.container{style: 'width: 50%'}
+.container.w-50
   = simple_form_for @video do |f|
     = f.input :code, label: t('shared.code'), readonly: true
     = f.input :name, label: t('shared.title')
     = f.input :url, label: t('shared.url')
     = f.input :author, label: t('shared.author')
 
-    .actions.mt-5.text-right
-      = link_to t('shared.cancel'), videos_path, class: 'btn btn-secondary'
-      = f.submit t('shared.save'), class: 'btn btn-primary'
+    = render "shared/buttons/submit_and_cancel_button", cancel_url: videos_path, f: f

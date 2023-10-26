@@ -1,3 +1,4 @@
-= render "shared/headers/page_heading", title: t('major.edit_major')
+= content_for :title do
+  = t('major.edit_major')
 
 = render "form"

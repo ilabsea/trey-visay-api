@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  helper_method :filter_params
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_page, only: [:edit, :update, :destroy]
 
   def index
     @pages = authorize Page.filter(filter_params).includes(:children)
-  end
-
-  def show
   end
 
   def new
@@ -46,12 +42,13 @@ class PagesController < ApplicationController
     def filter_params
       params.permit(:name)
     end
+    helper_method :filter_params
 
     def page_params
       params.require(:page).permit(:code, :name_km, :name_en, :parent_id)
     end
 
-    def set_page
+    def authorize_page
       @page = authorize Page.find(params[:id])
     end
 end

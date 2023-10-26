@@ -1,34 +1,35 @@
-.d-sm-flex.mb-4
+= content_for :title do
   .d-flex.align-items-center.flex-grow-1
-    - if @school.logo.present?
-      .mr-2= image_tag @school.logo_url, width: 50
+    .mr-2= image_tag(@school.logo_url, width: 50) if @school.logo.present?
     %h1.h3.mb-0.text-gray-800
-      = @school.name
-      = "(#{@school.code})"
-  %div
-    = render 'shared/buttons/back_button', url: schools_path
+      = "#{@school.name}(#{@school.code})"
 
-#contents.mt-5.mt-md-0
-  .row.mb-1
-    .col-3= t('school.type')
-    .col-9
-      - if @school.kind.present?
-        = t("school.#{@school.kind}") + "(#{@school.kind})"
-  .row.mb-1
-    .col-3= t('school.address')
-    .col-9= @school.address
-  .row.mb-1
-    .col-3= t('school.tels')
-    .col-9= @school.phone_numbers
-  .row.mb-1
-    .col-3= t('school.emails')
-    .col-9= @school.emails
-  .row.mb-1
-    .col-3= t('school.website')
-    .col-9= @school.website_or_facebook
-  .row.mb-1
-    .col-3= t('school.category')
-    .col-9= @school.category
+#contents.mt-md-0
+  .d-flex.flex-wrap.flex-row-reverse
+    %div
+      = render 'shared/buttons/back_button', url: schools_path
+
+    .flex-grow-1
+      .row.mb-1
+        .col-3= t('school.type')
+        .col-9
+          - if @school.kind.present?
+            = t("school.#{@school.kind}") + "(#{@school.kind})"
+      .row.mb-1
+        .col-3= t('school.address')
+        .col-9= @school.address
+      .row.mb-1
+        .col-3= t('school.tels')
+        .col-9= @school.phone_numbers
+      .row.mb-1
+        .col-3= t('school.emails')
+        .col-9= @school.emails
+      .row.mb-1
+        .col-3= t('school.website')
+        .col-9= @school.website_or_facebook
+      .row.mb-1
+        .col-3= t('school.category')
+        .col-9= @school.category
 
   .mt-3
     - @school.school_departments.each do |sdepartment|

@@ -1,3 +1,4 @@
-= render "shared/headers/page_heading", title: t('shared.new_video')
+= content_for :title do
+  = t('shared.new_video')
 
 = render 'form'
