@@ -4,7 +4,7 @@ module Api
   module V2
     class MajorsController < ::Api::V2::ApiController
       def index
-        pagy, majors = pagy(Major.filter(filter_params).having_personality_type.with_deleted.includes(:schools))
+        pagy, majors = pagy(Major.filter(filter_params).having_personality_type.with_deleted.includes(:schools, major_personality_types: :personality_type))
 
         render json: {
           pagy: pagy.vars,

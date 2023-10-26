@@ -25,7 +25,7 @@ class Visit < ApplicationRecord
   # Association
   belongs_to :page, counter_cache: true
   belongs_to :user, optional: true
-  belongs_to :pageable, polymorphic: true, optional: true
+  belongs_to :pageable, -> { with_deleted }, polymorphic: true, optional: true
 
   # Callback
   before_create :secure_id

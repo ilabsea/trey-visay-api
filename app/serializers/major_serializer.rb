@@ -37,4 +37,13 @@ class MajorSerializer < ActiveModel::Serializer
       school.slice("id", "code", "name")
     end
   end
+
+  def recommendation
+    object.recommendation || main_personality_type.try(:recommendation)
+  end
+
+  private
+    def main_personality_type
+      @main_personality_type ||= object.major_personality_types[0].try(:personality_type)
+    end
 end

@@ -38,10 +38,9 @@ class School < ApplicationRecord
     tvet_institute: 2
   }
 
-  # has_and_belongs_to_many :careers
   has_many :school_departments, inverse_of: :school, dependent: :destroy
   has_many :departments, through: :school_departments
-  has_many :school_majors
+  has_many :school_majors, inverse_of: :school, dependent: :destroy
   has_many :majors, through: :school_majors
 
   validates :name, presence: true

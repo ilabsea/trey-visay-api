@@ -22,8 +22,5 @@ RSpec.describe PersonalityType, type: :model do
   it { is_expected.to validate_presence_of(:code) }
   it { is_expected.to validate_presence_of(:name_km) }
   it { is_expected.to validate_presence_of(:name_en) }
-  it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_presence_of(:personal_value) }
-  it { is_expected.to validate_presence_of(:skill_and_ability) }
   it { is_expected.to validate_presence_of(:recommendation) }
 end

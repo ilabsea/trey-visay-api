@@ -15,6 +15,7 @@
             %th= t('shared.parent')
             %th= t('job.personality_type')
             %th= t('major.number_of_schools')
+            %th= t('major.recommendation')
             %th
 
         %tbody#body-content
@@ -26,6 +27,7 @@
               %td= major.parent.try(:name)
               %td= major.personality_type
               %td= school_list_tooltip(major).html_safe
+              %td.trancate-column= major.recommendation
               %td
                 .d-flex.justify-content-end
                   = render "shared/buttons/edit_button", object: major, url: edit_major_path(major)

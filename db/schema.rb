@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_24_024337) do
+ActiveRecord::Schema.define(version: 2023_10_26_080108) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -336,6 +336,14 @@ ActiveRecord::Schema.define(version: 2023_10_24_024337) do
     t.string "version"
   end
 
+  create_table "major_personality_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "major_id"
+    t.string "personality_type_id"
+    t.integer "display_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -410,6 +418,7 @@ ActiveRecord::Schema.define(version: 2023_10_24_024337) do
     t.integer "children_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["lft"], name: "index_pages_on_lft"
     t.index ["rgt"], name: "index_pages_on_rgt"
   end

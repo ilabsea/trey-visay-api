@@ -25,9 +25,10 @@ class PersonalityType < ApplicationRecord
   validates :name_km, presence: true
   validates :name_en, presence: true
   validates :recommendation, presence: true
-  validates :description, presence: true
-  validates :personal_value, presence: true
-  validates :skill_and_ability, presence: true
+
+  # Association
+  has_many :major_personality_types
+  has_many :majors, through: :major_personality_types
 
   # Callback
   before_create :secure_id
