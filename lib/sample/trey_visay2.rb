@@ -17,9 +17,10 @@ module Sample
       create_batch("SchoolBatch", "schools.zip")
       create_batch("HighSchoolBatch", "high_school.xlsx")
       create_batch("VideoBatch", "video.xlsx")
-      create_batch("JobClusterBatch", "job_cluster.xlsx")
+      create_batch("JobClusterBatch", "job_cluster.zip")
       create_batch("JobBatch", "jobs.zip")
       create_batch("MajorBatch", "majors.xlsx")
+      create_batch("CareerWebsiteBatch", "career_websites.zip")
     end
 
     private
