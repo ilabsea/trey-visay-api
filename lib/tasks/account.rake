@@ -15,7 +15,7 @@ namespace :account do
     end
   end
 
-  desc "Migrate role and confirm"
+  desc "Migrate account high school to have province_id and district_id"
   task migrate_high_school: :environment do
     AccountHighSchool.all.each do |ah|
       ah.update_columns(province_id: ah.high_school.province_id, district_id: ah.high_school.district_id)

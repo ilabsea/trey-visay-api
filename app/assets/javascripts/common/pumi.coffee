@@ -88,6 +88,9 @@ pumi =
       pumi.setDataAttribute(select, 'options', options)
       pumi.toggleEnableSelect(select, false)
 
+  resetSelectAndHiddenInput: (select) ->
+    $($.find("[name='#{select.attr('name')}']")).val(null)
+
   filterSelectByValue: (select, filterValue) ->
     staticPumiOptions = pumi.getDataAttribute(select, 'options')
     select.empty()
@@ -97,7 +100,12 @@ pumi =
 
     $.each staticPumiOptions, (i) ->
       pumiOption = staticPumiOptions[i]
-      select.append($('<option>').text(pumiOption.text).val(pumiOption.value)) if !pumiOption.value || pumiOption.value.match(///^#{filterValue}///)
+
+      # គ្រប់សាលា គ្របស្រុក/ខណ្ឌ
+      if !pumiOption.value || pumiOption.value.match(///^#{filterValue}///)
+        select.append($('<option>').text(pumiOption.text).val(pumiOption.value))
+
+        pumi.resetSelectAndHiddenInput(select)
 
     pumi.populateFromAjax(select, filterValue) if !!filterValue
 
