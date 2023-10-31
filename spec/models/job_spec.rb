@@ -24,6 +24,7 @@
 #  job_cluster_id                :string(255)
 #  logo                          :string(255)
 #  deleted_at                    :datetime
+#  recommendation                :text(65535)
 #
 require "rails_helper"
 

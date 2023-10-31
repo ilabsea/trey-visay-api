@@ -16,6 +16,7 @@
             %th= t('job.personality_type')
             %th= t('shared.logo')
             %th= t('job.cluster')
+            %th= t('shared.recommendation')
             %th
 
         %tbody#body-content
@@ -29,6 +30,7 @@
               %td
                 = image_tag(job.logo_url, width: 50, class: 'rounded-circle') if job.logo.present?
               %td= job.job_cluster_name
+              %td.trancate-column= job.recommendation
               %td
                 .d-flex.justify-content-end
                   = render "shared/buttons/edit_button", object: job, url: edit_job_path(job)

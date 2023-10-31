@@ -15,8 +15,7 @@
 #  logo           :string(255)
 #
 class JobClusterSerializer < ActiveModel::Serializer
-  attributes :id, :code, :name, :logo, :recommendation,
-             :updated_at, :deleted_at
+  attributes :id, :code, :name, :logo, :updated_at, :deleted_at
 
   has_many :videos
 end

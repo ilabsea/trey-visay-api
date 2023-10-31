@@ -20,7 +20,7 @@ class JobImportersController < ApplicationController
       [
         :id, :code, :name_km, :name_en, :job_cluster_id, :personality_type,
         :general_description, :jd_main_task, :jd_environment,
-        :jd_technology_skill, :edu_education_level,
+        :jd_technology_skill, :edu_education_level, :recommendation,
         :edu_high_school_supported_subject, :edu_higher_education_skill,
         :qua_supported_knowledge, :qua_supported_skill,
         :qua_supported_capacity, :qua_characteristic_of_job,

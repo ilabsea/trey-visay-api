@@ -21,7 +21,7 @@
             %tr
               %td= @pagy.from + index
               %td= visit.page_name
-              %td= visit.pageable_name
+              %td= visit.page_detail
               %td.text-capitalize= visit.device_os
               %td= timeago(visit.visit_date, 'datetime').html_safe
               %td= timeago(visit.created_at, 'datetime').html_safe

@@ -27,7 +27,8 @@ module Spreadsheets
           personal_competency_knowledge: row[13],
           personal_competency_skill: row[14],
           personal_competency_ability: row[15],
-          logo: find_attachment(row[17], zipfile)
+          logo: find_attachment(row[17], zipfile),
+          recommendation: row[18]
         }
 
         job.job_cluster = JobCluster.find_by(code: row[16]) if row[16].present?

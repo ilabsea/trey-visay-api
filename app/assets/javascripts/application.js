@@ -52,9 +52,9 @@
 //= require users/index
 //= require visits/index
 //= require career_websites/form
-//= require jobs/form
 //= require schools/form
 //= require job_clusters/form
+//= require jobs/form
 //= require personality_types/form
 //= require accounts/form
 //= require majors/form

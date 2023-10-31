@@ -7,20 +7,7 @@ TV.MajorsNew = (() => {
 
   function init() {
     TV.Job_clustersNew.initRecommendationRichText('#major_recommendation');
-    onSubmitForm();
-  }
-
-  function onSubmitForm() {
-    $(".simple_form").on("submit", function(e) {
-      let dom = $("#major_recommendation");
-      let content = dom.val().replace(/<\/?[^>]+(>|$)/g, "");
-
-      if(!content) {
-        dom.val(null);
-      }
-
-      return true;
-    })
+    TV.Job_clustersNew.onSubmitForm($('#major_recommendation'));
   }
 })();
 

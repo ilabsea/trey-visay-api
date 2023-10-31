@@ -3,9 +3,6 @@
     = f.input :code, label: t('shared.code')
     = f.input :name_km, label: t('shared.name_km')
     = f.input :name_en, label: t('shared.name_en')
-    = f.input :description, label: t('personality_type.description')
-    = f.input :personal_value, label: t('personality_type.personal_value')
-    = f.input :skill_and_ability, label: t('personality_type.skill_and_ability')
     = f.input :recommendation, label: t('shared.recommendation')
 
     = render "shared/buttons/submit_and_cancel_button", cancel_url: personality_types_path, f: f

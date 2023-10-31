@@ -61,6 +61,12 @@ class Visit < ApplicationRecord
               .first
   end
 
+  def page_detail
+    return if pageable_type == "Page"
+
+    pageable_name
+  end
+
   # Class method
   def self.filter(params = {})
     scope = all
