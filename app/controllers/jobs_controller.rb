@@ -76,7 +76,7 @@ class JobsController < ApplicationController
       params.require(:job).permit(
         :code, :name_km, :name_en, :personality_type, :general_description,
         :jd_main_task, :jd_environment, :jd_work_style, :edu_education_level,
-        :edu_subjects_at_high_school, :edu_majors_at_university,
+        :edu_subjects_at_high_school, :edu_majors_at_university, :recommendation,
         :personal_competency_knowledge, :personal_competency_skill,
         :personal_competency_ability, :job_cluster_id, :logo, :remove_logo
       )

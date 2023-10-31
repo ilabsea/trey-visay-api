@@ -24,10 +24,11 @@
 #  job_cluster_id                :string(255)
 #  logo                          :string(255)
 #  deleted_at                    :datetime
+#  recommendation                :text(65535)
 #
 class JobSerializer < ActiveModel::Serializer
   attributes :id, :code, :name_km, :name_en, :name, :personality_type,
-             :general_description,
+             :general_description, :recommendation,
              :jd_main_task, :jd_environment, :jd_work_style,
              :edu_education_level, :edu_subjects_at_high_school, :edu_majors_at_university,
              :personal_competency_knowledge, :personal_competency_skill, :personal_competency_ability,
@@ -38,5 +39,17 @@ class JobSerializer < ActiveModel::Serializer
 
   def value
     object.name_km
+  end
+
+  def logo
+    object.logo.presence || object.job_cluster.logo
+  end
+
+  def recommendation
+    object.recommendation || object.job_cluster.recommendation
+  end
+
+  class JobClusterSerializer < ActiveModel::Serializer
+    attributes :id, :code, :name
   end
 end

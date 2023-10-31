@@ -2,14 +2,28 @@
 
 TV.Job_clustersNew = (() => {
   return {
-    init: init,
-    initRecommendationRichText: initRecommendationRichText
+    init,
+    initRecommendationRichText,
+    onSubmitForm
   }
 
   function init() {
     TV.Common.Logo.init();
     initVideoTagify();
     initRecommendationRichText('#job_cluster_recommendation');
+    onSubmitForm($("#job_cluster_recommendation"));
+  }
+
+  function onSubmitForm(dom) {
+    $(".simple_form").on("submit", function(e) {
+      let content = dom.val().replace(/<\/?[^>]+(>|$)/g, "");
+
+      if(!content) {
+        dom.val(null);
+      }
+
+      return true;
+    })
   }
 
   function initVideoTagify() {

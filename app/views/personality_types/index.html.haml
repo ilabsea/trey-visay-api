@@ -13,9 +13,6 @@
             %th= t('shared.code')
             %th= t('shared.name_km')
             %th= t('shared.name_en')
-            %th= t('personality_type.description')
-            %th= t('personality_type.personal_value')
-            %th= t('personality_type.skill_and_ability')
             %th= t('shared.recommendation')
             %th
 
@@ -26,9 +23,6 @@
               %td= personality_type.code
               %td= personality_type.name_km
               %td= personality_type.name_en
-              %td.trancate-column= personality_type.description
-              %td.trancate-column= personality_type.personal_value
-              %td.trancate-column= personality_type.skill_and_ability
               %td.trancate-column= personality_type.recommendation
               %td
                 .d-flex.justify-content-end

@@ -7,6 +7,8 @@ TV.JobsNew = (() => {
 
   function init() {
     TV.Common.Logo.init();
+    TV.Job_clustersNew.initRecommendationRichText('#job_recommendation');
+    TV.Job_clustersNew.onSubmitForm($('#job_recommendation'));
   }
 
 })();

@@ -24,9 +24,12 @@
 #  job_cluster_id                :string(255)
 #  logo                          :string(255)
 #  deleted_at                    :datetime
+#  recommendation                :text(65535)
 #
 FactoryBot.define do
   factory :job do
     name_km { FFaker::Name.name }
+
+    job_cluster
   end
 end

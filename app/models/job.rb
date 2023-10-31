@@ -24,6 +24,7 @@
 #  job_cluster_id                :string(255)
 #  logo                          :string(255)
 #  deleted_at                    :datetime
+#  recommendation                :text(65535)
 #
 class Job < ApplicationRecord
   acts_as_paranoid
@@ -61,7 +62,7 @@ class Job < ApplicationRecord
 
   def self.filter(params = {})
     scope = all
-    scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
+    scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name].strip}%", "%#{params[:name].strip}%") if params[:name].present?
     scope = scope.where(job_cluster_id: params[:job_cluster_id]) if params[:job_cluster_id].present?
     scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
     scope

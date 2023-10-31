@@ -13,6 +13,7 @@
         %th.align-middle.text-center{colspan: 3}= t('job.job_condition')
         %th.align-middle.text-center{colspan: 3}= t('job.education_and_training')
         %th.align-middle.text-center{colspan: 3}= t('job.mandate_qualification')
+        %th.align-middle.text-center{rowspan: 2}= t('shared.recommendation')
         %th.align-middle.text-center{rowspan: 2}= t('shared.is_valid')
 
       %tr
@@ -50,6 +51,7 @@
               = fff.hidden_field :personal_competency_knowledge
               = fff.hidden_field :personal_competency_skill
               = fff.hidden_field :personal_competency_ability
+              = fff.hidden_field :recommendation
 
               = fff.hidden_field :job_cluster_id
               = fff.hidden_field :logo_cache
@@ -78,6 +80,7 @@
           %td.trancate-column= item.personal_competency_knowledge
           %td.trancate-column= item.personal_competency_skill
           %td.trancate-column= item.personal_competency_ability
+          %td.trancate-column= item.recommendation
 
           / Validation status
           %td= render "shared/validation_status", item: item

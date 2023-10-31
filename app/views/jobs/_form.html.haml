@@ -28,4 +28,6 @@
       = f.input :personal_competency_skill, label: t('job.personal_competency_skill')
       = f.input :personal_competency_ability, label: t('job.personal_competency_ability')
 
+    = f.input :recommendation, label: t('shared.recommendation')
+
     = render "shared/buttons/submit_and_cancel_button", cancel_url: jobs_path, f: f
