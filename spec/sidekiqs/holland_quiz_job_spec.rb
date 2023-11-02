@@ -23,7 +23,11 @@ RSpec.describe HollandQuizJob, type: :job do
         ],
         holland_scores_attributes: [
           { personality_type: "R", score: 40 },
-          { personality_type: "I", score: 30 }
+          { personality_type: "I", score: 30 },
+          { personality_type: "C", score: 50 },
+          { personality_type: "A", score: 10 },
+          { personality_type: "E", score: 45 },
+          { personality_type: "S", score: 20 }
         ],
         holland_responses_attributes: [
           {
@@ -48,9 +52,9 @@ RSpec.describe HollandQuizJob, type: :job do
       subject.perform(quiz.id, params.as_json)
     }
 
-    it "update quiz" do
+    it "updates quiz" do
       expect(quiz.self_understanding_responses.length).to eq(1)
-      expect(quiz.holland_scores.length).to eq(2)
+      expect(quiz.holland_scores.pluck(:personality_type, :display_order)).to eq([["C", 1], ["E", 2], ["R", 3], ["I", 4], ["S", 5], ["A", 6]])
       expect(quiz.holland_responses.length).to eq(1)
       expect(quiz.holland_major_responses.length).to eq(3)
       expect(quiz.holland_job_responses.length).to eq(3)

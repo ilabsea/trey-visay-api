@@ -6,12 +6,38 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
   describe "POST #create" do
     let!(:api_key) { ApiKey.create }
     let!(:user)    { create(:user) }
-    let!(:majors) { create_list(:major, 3) }
-    let!(:jobs) { create_list(:job, 3) }
-    let!(:self_understanding_question) { create(:self_understanding_question, :with_options) }
-    let!(:holland_question) { create(:holland_question) }
+
     let!(:headers)  { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
 
+    let(:params)   {
+      {
+        user_id: user.id,
+        quizzed_at: DateTime.yesterday.to_s
+      }
+    }
+    let(:json_response) { JSON.parse(response.body) }
+
+    before {
+      post "/api/v2/holland_quizzes", headers: headers, params: { holland_quiz: params }
+    }
+
+    it "add a holland_quiz job" do
+      expect(HollandQuizJob.jobs.count).to eq(1)
+    end
+
+    it "render status created" do
+      expect(response.status).to eq(201)
+    end
+  end
+
+  describe "PUT #update" do
+    let!(:api_key) { ApiKey.create }
+    let!(:user)    { create(:user) }
+    let!(:majors)  { create_list(:major, 3) }
+    let!(:jobs)    { create_list(:job, 3) }
+    let!(:self_understanding_question) { create(:self_understanding_question, :with_options) }
+    let!(:holland_question) { create(:holland_question) }
+    let!(:quiz)    { create(:holland_quiz, user: user) }
     let(:params)   {
       {
         user_id: user.id,
@@ -46,26 +72,6 @@ RSpec.describe "Api::V2::HollandQuizzesController", type: :request do
         ]
       }
     }
-    let(:json_response) { JSON.parse(response.body) }
-
-    before {
-      post "/api/v2/holland_quizzes", headers: headers, params: { holland_quiz: params }
-    }
-
-    it "add a holland_quiz job" do
-      expect(HollandQuizJob.jobs.count).to eq(1)
-    end
-
-    it "render status created" do
-      expect(response.status).to eq(201)
-    end
-  end
-
-  describe "PUT #update" do
-    let!(:api_key) { ApiKey.create }
-    let!(:user)    { create(:user) }
-    let!(:quiz)    { create(:holland_quiz, user: user) }
-    let(:params)   { { user_id: user.id, quizzed_at: DateTime.yesterday.to_s } }
     let(:headers)  { { "ACCEPT" => "application/json", "Authorization" => "Token #{api_key.access_token}" } }
 
     it "add a holland_quiz job" do

@@ -4,7 +4,13 @@ module HollandQuizzes::NestedAttributeConcern
   extend ActiveSupport::Concern
 
   included do
-    accepts_nested_attributes_for :holland_scores
+    def holland_scores_attributes=(attributes)
+      attributes.sort_by { |obj| -obj[:score] }.each_with_index do |attribute, index|
+        attribute[:display_order] = index + 1
+
+        self.holland_scores.new(attribute)
+      end
+    end
 
     def self_understanding_responses_attributes=(attributes)
       attributes.each do |attribute|

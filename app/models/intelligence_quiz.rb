@@ -12,6 +12,7 @@
 #  updated_at               :datetime         not null
 #  finished_at              :datetime
 #  self_understanding_score :integer
+#  display_order            :integer
 #
 class IntelligenceQuiz < Quiz
   # Association
@@ -21,4 +22,7 @@ class IntelligenceQuiz < Quiz
 
   # Nested attributes
   include IntelligenceQuizzes::NestedAttributeConcern
+
+  # Callback
+  before_create :set_display_order
 end
