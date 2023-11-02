@@ -1,6 +1,9 @@
 .card.shadow.mb-4
   .card-body
-    %h4.title= t('user.personal_info')
+    %h4.title
+      = t('user.personal_info')
+      - if @user.potential_drop_off
+        %small.text-danger.text-small= "(#{t('user.high_potential_drop_off')})"
 
     %table.table
       %tbody

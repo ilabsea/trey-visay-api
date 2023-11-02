@@ -10,6 +10,7 @@
 #  score            :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  display_order    :integer
 #
 FactoryBot.define do
   factory :holland_score do

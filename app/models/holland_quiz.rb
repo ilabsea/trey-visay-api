@@ -12,6 +12,7 @@
 #  updated_at               :datetime         not null
 #  finished_at              :datetime
 #  self_understanding_score :integer
+#  display_order            :integer
 #
 class HollandQuiz < Quiz
   # Constant
@@ -29,15 +30,17 @@ class HollandQuiz < Quiz
   include HollandQuizzes::NestedAttributeConcern
 
   # Callback
-  after_save :update_user_supporting_dashboard
+  before_create :set_display_order
+  after_create :update_user_supporting_dashboard
 
   private
+    # Update to user for only first test
     def update_user_supporting_dashboard
-      user.update(
-        potential_drop_off: self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").present?,
-        is_complete_grade_twelve: self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").blank?,
-        is_self_understanding: self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE,
-        is_selected_major_or_career: (holland_major_response_ids.present? || holland_job_response_ids.present?)
-      )
+      attributes = {}
+      attributes[:is_selected_major_or_career] = (holland_major_response_ids.present? || holland_job_response_ids.present?) if user.is_selected_major_or_career.nil?
+      attributes[:potential_drop_off] = self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").present? if user.potential_drop_off.nil?
+      attributes[:is_self_understanding] = self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE if user.is_self_understanding.nil?
+
+      user.update(attributes)
     end
 end

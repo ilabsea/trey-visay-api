@@ -12,6 +12,7 @@
 #  updated_at               :datetime         not null
 #  finished_at              :datetime
 #  self_understanding_score :integer
+#  display_order            :integer
 #
 FactoryBot.define do
   factory :intelligence_quiz do

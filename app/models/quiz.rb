@@ -12,6 +12,7 @@
 #  updated_at               :datetime         not null
 #  finished_at              :datetime
 #  self_understanding_score :integer
+#  display_order            :integer
 #
 class Quiz < ApplicationRecord
   # Callback
@@ -19,4 +20,9 @@ class Quiz < ApplicationRecord
 
   # Scope
   default_scope { order(quizzed_at: :asc) }
+
+  private
+    def set_display_order
+      self.display_order = self.class.where(user_id: user_id).maximum(:display_order).to_i + 1
+    end
 end
