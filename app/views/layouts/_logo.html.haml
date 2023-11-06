@@ -1,17 +1,53 @@
-.logo-wrapper.mr-5.d-flex.flex-column.justify-content-center
+.logo-wrapper.d-flex.flex-column.justify-content-center.text-center
+  / Sign in button
   = link_to t("devise.sign_in"), url_for(anchor: :login_form), class: "btn btn-primary position-absolute d-lg-none", style: "top: 30px; right: 30px;"
 
-  %h3.title.text-center
-    = ENV['APP_NAME']
+  / App name
+  %h3.title= ENV['APP_NAME']
 
-    - if shortcut_name = ENV['APP_SHORTCUT_NAME'].presence
-      = "(#{shortcut_name})"
-
-  .logo-image-wrapper.flex-row.text-center.justify-content-conter
+  / Logo
+  .logo-image-wrapper.flex-row.justify-content-conter
     = image_tag 'logo.png', size: '120x120', class: 'logo'
 
-  %footer
-    .qr-code.text-center.mt-4
-      = link_to "ទាញយកកម្មវិធី / Download App", ENV['APP_PLAY_STORE_URL'], target: "_blank", class: 'text-white'
-      %br
-      = image_tag 'qr-code.png', alt: 'TreyVisay QR code', class: 'qr-code-img mt-3 rounded'
+  .d-flex.justify-content-center
+    / Implemented by
+    .mr-5.d-flex.flex-column
+      %p.paragraph
+        %strong.text-white សហការផលិតដោយ
+
+      .flex-grow-1.d-flex.align-items-center
+        = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
+          = image_tag 'about/moeys.png', width: 65
+
+        = link_to 'http://www.kapekh.org', target: "_blank" do
+          = image_tag 'about/kape.png', width: 70
+
+    / Developed by
+    .d-flex.flex-column
+      %p.paragraph
+        %strong.text-white អភិវឌ្ឍន៍ដោយ
+
+      .flex-grow-1.d-flex.align-items-center
+        .card.p-2
+          = link_to 'http://ilabsoutheastasia.org', target: "_blank" do
+            = image_tag 'about/ilab.png', width: 180
+
+  / Funded by
+  %p.paragraph
+    %strong.text-white គាំទ្រថវិកាពី
+
+  .d-inline-block.card.p-2
+    = link_to 'https://www.usaid.gov/cambodia', target: "_blank" do
+      = image_tag 'about/usaid.png', width: 140
+
+    = link_to 'https://www.development-innovations.org/', target: "_blank", class: 'mx-3' do
+      = image_tag 'about/di.png', width: 140
+
+    = link_to 'https://spidercenter.org/', target: "_blank" do
+      = image_tag 'about/spider.png', width: 140
+
+  / Download
+  .qr-code.mt-4
+    = link_to "ទាញយកកម្មវិធី / Download App", ENV['APP_PLAY_STORE_URL'], target: "_blank", class: 'text-white'
+    %br
+    = image_tag 'qr-code.png', alt: 'TreyVisay QR code', class: 'qr-code-img mt-3 rounded'
