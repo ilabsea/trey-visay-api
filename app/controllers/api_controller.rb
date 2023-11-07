@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApiController < ActionController::Base
+  protect_from_forgery with: :null_session
   before_action :http_basic_authentication
 
   around_action :rescue_with_check_api_docs
