@@ -36,6 +36,7 @@
 #  district_id            :string(255)
 #  full_name              :string(255)
 #  phone_number           :string(255)
+#  version                :integer          default(1)
 #
 # Indexes
 #
@@ -70,6 +71,9 @@ class Account < ApplicationRecord
     trainer: 4
   }
 
+  # Constant
+  SYSTEM_VERSION = ENV.fetch("SYSTEM_VERSION") { 2 }
+
   # Callback
   before_create :reset_authentication_token
   before_save :ensure_authentication_token
@@ -81,6 +85,8 @@ class Account < ApplicationRecord
   validates :role, presence: true
   validates :high_school_ids, presence: true, if: :counselor?
   validates :province_ids, presence: true, if: :trainer?
+
+  before_validation :set_version
 
   # Constant
   ROLES = [
@@ -152,5 +158,9 @@ class Account < ApplicationRecord
     def clean_unused_account_high_school
       schools = account_high_schools.where(high_school_id: "all")
       schools.delete_all
+    end
+
+    def set_version
+      self.version ||= SYSTEM_VERSION
     end
 end

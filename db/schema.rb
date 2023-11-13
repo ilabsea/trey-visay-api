@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_02_022445) do
+ActiveRecord::Schema.define(version: 2023_11_13_065436) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_11_02_022445) do
     t.string "district_id"
     t.string "full_name"
     t.string "phone_number"
+    t.integer "version", default: 1
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end

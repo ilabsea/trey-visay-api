@@ -17,5 +17,5 @@ require "rails_helper"
 RSpec.describe AccountHighSchool, type: :model do
   it { is_expected.to belong_to(:account) }
   it { is_expected.to belong_to(:high_school).optional }
-  it { is_expected.to belong_to(:province).with_foreign_key(:province_id).class_name("Location") }
+  it { is_expected.to belong_to(:province).with_foreign_key(:province_id).class_name("Location").optional }
 end

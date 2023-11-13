@@ -18,6 +18,8 @@
             %th= t('account.school')
             %th= t('account.status')
             %th= t('account.grafana')
+            %th= t('shared.created_at')
+            %th= t('shared.updated_at')
             %th
 
         %tbody
@@ -33,12 +35,18 @@
 
                 = Pumi::District.find_by_id(account.district_id).try(:address_km) if account.counselor?
               %td
-                = account.high_schools.map(&:name_km).join(", ") if account.counselor?
+                .d-flex
+                  = account.high_schools.map(&:name_km).join(", ") if account.counselor?
+
+                  - if account.in_school_other? && account.version == 1
+                    %span.ml-1{'data-toggle': 'tooltip', 'data-title': t("account.need_to_update")}
+                      %i.fa-solid.fa-circle-info.text-danger
 
               %td.status{ class: account.status }
                 = t("account.#{account.status}")
-              %td
-                = account.gf_user_id.present? ? "Yes" : nil
+              %td= account.gf_user_id.present? ? "Yes" : nil
+              %td= timeago(account.created_at).html_safe
+              %td= timeago(account.updated_at).html_safe
               %td
                 .d-flex.justify-content-end
                   = render 'action_buttons', account: account
