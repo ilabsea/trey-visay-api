@@ -34,3 +34,4 @@ en:
     location: Location
     search_by_email: Search by email
     all_role: All roles
+    need_to_update: This account is from version 1 and needs to be updated to have a specific role and location!

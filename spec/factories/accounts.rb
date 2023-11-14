@@ -36,6 +36,7 @@
 #  district_id            :string(255)
 #  full_name              :string(255)
 #  phone_number           :string(255)
+#  version                :integer          default(1)
 #
 # Indexes
 #

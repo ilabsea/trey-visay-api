@@ -14,7 +14,7 @@
 #
 class AccountHighSchool < ApplicationRecord
   belongs_to :high_school, optional: true
-  belongs_to :province, foreign_key: :province_id, class_name: "Location"
+  belongs_to :province, foreign_key: :province_id, class_name: "Location", optional: true
   belongs_to :account
 
   before_validation :assign_location

@@ -20,7 +20,7 @@ class AccountPolicy < ApplicationPolicy
   def archive?
     return false if record.id == user.id
 
-    create? && !record.primary_admin?
+    create?
   end
 
   def restore?
