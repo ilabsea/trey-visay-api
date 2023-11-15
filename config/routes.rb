@@ -60,6 +60,8 @@ Rails.application.routes.draw do
   resources :personality_types
   resources :personality_type_importers
 
+  resource  :user_delete_information, only: [:show, :destroy]
+
   # https://github.com/plataformatec/devise/wiki/How-To:-Override-confirmations-so-users-can-pick-their-own-passwords-as-part-of-confirmation-activation
   as :account do
     match "/confirmation" => "confirmations#update", via: :put, as: :update_account_confirmation

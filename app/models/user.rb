@@ -35,11 +35,14 @@
 #  is_self_understanding       :boolean
 #  is_selected_major_or_career :boolean
 #  potential_drop_off          :boolean
+#  deleted_at                  :datetime
 #
 
 require "csv"
 
 class User < ApplicationRecord
+  acts_as_paranoid
+
   include HighSchools::LocationConcern
 
   mount_uploader :photo, ::PhotoUploader
@@ -74,8 +77,9 @@ class User < ApplicationRecord
 
   # Associaction
   # V2
-  has_many :holland_quizzes, dependent: :destroy
-  has_many :intelligence_quizzes, dependent: :destroy
+  has_many :holland_quizzes
+  has_many :intelligence_quizzes
+  has_many :visits
 
   # V1
   belongs_to :high_school, foreign_key: :high_school_code, optional: true
@@ -86,6 +90,7 @@ class User < ApplicationRecord
   # Validation
   validates :grade, inclusion: { in: GRADES }, allow_nil: true
   validates :full_name, presence: true
+  validates :uuid, presence: true
 
   # Delegation
   delegate :name_km, to: :high_school, prefix: :high_school, allow_nil: true
@@ -116,6 +121,13 @@ class User < ApplicationRecord
 
   def quizzes_count
     holland_quizzes_count + intelligence_quizzes_count
+  end
+
+  def self.find_for_archive(params = {})
+    user = find_or_initialize_by(params.slice(:uuid, :full_name))
+    user.errors.add(:uuid, I18n.t("user.cannot_be_blank")) if params[:uuid].blank?
+    user.errors.add(:full_name, I18n.t("user.cannot_be_blank")) if params[:full_name].blank?
+    user
   end
 
   def self.grades
