@@ -9,6 +9,7 @@ RSpec.describe "Api::V2::UsersController", type: :request do
     let!(:params) {
       {
         full_name: "Sokly",
+        uuid: SecureRandom.uuid,
         sex: "female",
         date_of_birth: 20.years.ago.to_date,
         phone_number: "011222333",

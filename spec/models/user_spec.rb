@@ -35,6 +35,7 @@
 #  is_self_understanding       :boolean
 #  is_selected_major_or_career :boolean
 #  potential_drop_off          :boolean
+#  deleted_at                  :datetime
 #
 
 require "rails_helper"
@@ -45,4 +46,32 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many(:personality_tests) }
   it { is_expected.to have_many(:personal_understandings).through(:games) }
   it { is_expected.to validate_inclusion_of(:grade).in_array(%w(9 10 11 12 other)) }
+
+  describe ".find_for_archive" do
+    let!(:user1) { create(:user) }
+
+    context "Missing uuid and full_name" do
+      it "returns error missing uuid and full_name" do
+        user = User.find_for_archive
+        expect(user.errors[:uuid]).not_to be_nil
+        expect(user.errors[:full_name]).not_to be_nil
+      end
+    end
+
+    context "Invalid info" do
+      it "returns nil" do
+        user = User.find_for_archive(uuid: "abc", full_name: "abc")
+
+        expect(user.persisted?).to be_falsey
+      end
+    end
+
+    context "Valid info" do
+      it "returns the user" do
+        user = User.find_for_archive(uuid: user1.uuid, full_name: user1.full_name)
+
+        expect(user.persisted?).to be_truthy
+      end
+    end
+  end
 end

@@ -35,13 +35,14 @@
 #  is_self_understanding       :boolean
 #  is_selected_major_or_career :boolean
 #  potential_drop_off          :boolean
+#  deleted_at                  :datetime
 #
 
 FactoryBot.define do
   factory :user do
     username      { FFaker::Name.name }
     full_name     { FFaker::Name.name }
-    uuid          { FFaker::Name.name }
+    uuid          { SecureRandom.uuid }
     password      { FFaker::Name.name }
   end
 end

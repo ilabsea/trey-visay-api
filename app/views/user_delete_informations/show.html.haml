@@ -1,0 +1,10 @@
+.form-wrapper#login_form
+  %h2.font-weight-normal.text-center.mb-4
+    = t('user.delete_info_request')
+
+  = simple_form_for @user, url: user_delete_information_path,  method: :delete do |f|
+    = f.input :uuid, label: t('user.user_uuid')
+    = f.input :full_name, label: t('user.user_fullname')
+
+    .actions.form-group
+      = f.submit t("user.send_delete_request"), class: 'btn btn-primary w-100 mb-2'

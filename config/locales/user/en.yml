@@ -35,3 +35,10 @@ en:
     all_class_group: All class groups
     career_assessment: Career assessment(v1)
     personality_assessment: Personality assessment(v1)
+    delete_info_request: Request to delete personal information
+    send_delete_request: Send delete request
+    user_uuid: "Trey Visay mobile app: user ID"
+    user_fullname: "Trey Visay mobile app: user full name"
+    invalid_info: Your information is invalid, please check it again!
+    delete_info_success: Your information has been deleted successfully!
+    cannot_be_blank: Can't be blank

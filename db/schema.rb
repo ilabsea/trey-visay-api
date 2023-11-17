@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_13_065436) do
+ActiveRecord::Schema.define(version: 2023_11_15_041139) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -639,6 +639,7 @@ ActiveRecord::Schema.define(version: 2023_11_13_065436) do
     t.boolean "is_self_understanding"
     t.boolean "is_selected_major_or_career"
     t.boolean "potential_drop_off"
+    t.datetime "deleted_at"
   end
 
   create_table "videos", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

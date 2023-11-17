@@ -8,6 +8,10 @@
 
   .content
     .d-flex.mb-2
+      .w-25= t('user.user_uuid')
+      %b= " : #{@user.uuid}"
+
+    .d-flex.mb-2
       .w-25= t('user.full_name')
       %b= " : #{@user.full_name}"
 
