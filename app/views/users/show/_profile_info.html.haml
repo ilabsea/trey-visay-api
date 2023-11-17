@@ -8,7 +8,7 @@
 
   .content
     .d-flex.mb-2
-      .w-25= t('user.user_uuid')
+      .w-25= t('user.uuid')
       %b= " : #{@user.uuid}"
 
     .d-flex.mb-2
@@ -38,3 +38,15 @@
     .d-flex.mb-2
       .w-25= t('user.study_at')
       %b= " : #{@user.school_address}"
+
+    .d-flex.mb-2
+      .w-25= t('user.registered_at')
+      %b= " : #{timeago(@user.registered_at)}".html_safe
+
+    .d-flex.mb-2
+      .w-25= t('shared.created_at')
+      %b= " : #{timeago(@user.created_at)}".html_safe
+
+    .d-flex.mb-2
+      .w-25= t('shared.updated_at')
+      %b= " : #{timeago(@user.updated_at)}".html_safe

@@ -5,20 +5,23 @@
   .card-body
     = render "shared/headers/pagy_label"
 
-    %table.table
-      %thead
-        %tr
-          %th{width: 60} #
-          %th= t('user.student')
-          %th= t('user.gender')
-          %th= t('user.grade')
-          %th= t('user.class_group')
-          %th= t('user.study_at')
-          %th ការធ្វើតេស្ត(v1)
-          %th= t('user.holland_quiz') + "v2"
-          %th
+    .table-responsive.mb-4
+      %table.table
+        %thead
+          %tr
+            %th{width: 60} #
+            %th= t('user.student')
+            %th= t('user.gender')
+            %th= t('user.grade')
+            %th= t('user.class_group')
+            %th= t('user.study_at')
+            %th ការធ្វើតេស្ត(v1)
+            %th= t('user.holland_quiz') + "v2"
+            %th= t('user.registered_at')
+            %th= t('shared.updated_at')
+            %th
 
-      %tbody#body-content
-        = render partial: 'users'
+        %tbody#body-content
+          = render partial: 'users'
 
     = render "shared/footers/pagination"

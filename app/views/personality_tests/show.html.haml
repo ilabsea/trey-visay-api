@@ -1,44 +1,36 @@
-= render partial: 'shared/side_nav', locals: {title: "ការធ្វើតេស្តរបស់ #{@user.full_name}"}
-.container
-  .row
-    .col-md-10
-      .tab{:role => "tabpanel"}
-        = render 'shared/tab_header'
+/ Page Heading
+= render "users/tab_header"
 
-        .tab-content.tabs
-          .tab-pane.fade.in.active{:role => "tabpanel"}
-            .col-md-12
-              %br
-              %div
-                %a.btn.icon-btn.btn-primary{:href => "#{user_personality_tests_path(@user)}"}
-                  %span.glyphicon.btn-glyphicon.glyphicon-arrow-left.img-circle.text-primary
-                  - num = @user.personality_tests.map(&:id).index(@test.id) + 1
-                  = "ធ្វើតេស្តលើកទី #{num}"
+.card.shadow.mb-4
+  .card-body
+    %div
+      %a.btn.btn-primary{:href => "#{user_personality_tests_path(@user)}"}
+        %i.fa-solid.fa-chevron-left
+        - num = @user.personality_tests.map(&:id).index(@test.id) + 1
+        = "ធ្វើតេស្តលើកទី #{num}"
 
-              %center
-                %h4 បង្ហាញលទ្ធផល
-              .result-wrapper
-                .test-result{'data-category': @categories.to_json}
-                  %canvas#myChart{width: '100', height: '50'}
+    %h4.text-center បង្ហាញលទ្ធផល
 
-                .description-wrapper
-                  %div= t('personality_test_help_you_find_correct_way')
-                  .list-wrapper
-                    %ul
-                      %li="#{t('realistic')} (Realistic)"
-                      %li="#{t('investigative')} (Investigative)"
-                      %li="#{t('artistic')} (Artistic)"
-                    %ul
-                      %li="#{t('social')} (Social)"
-                      %li="#{t('enterprising')} (Enterprising)"
-                      %li="#{t('conventional')} (Conventional)"
+    .result-wrapper
+      .test-result{'data-category': @categories.to_json}
+        %canvas#myChart{width: '100', height: '50'}
 
-              %center
-                %h4= t('detail')
+      .description-wrapper
+        %div= t('personality_test_help_you_find_correct_way')
+        .list-wrapper
+          %ul
+            %li="#{t('realistic')} (Realistic)"
+            %li="#{t('investigative')} (Investigative)"
+            %li="#{t('artistic')} (Artistic)"
+          %ul
+            %li="#{t('social')} (Social)"
+            %li="#{t('enterprising')} (Enterprising)"
+            %li="#{t('conventional')} (Conventional)"
 
-              - @categories.each do |category|
-                = render partial: 'box_item', locals: {css_id: category[:name], title: "#{t(category[:name])} (#{category[:count]})"}
-              %br
+    %h4.text-center= t('detail')
+
+    - @categories.each do |category|
+      = render partial: 'box_item', locals: {css_id: category[:name], title: "#{t(category[:name])} (#{category[:count]})"}
 
 - @categories.each do |category|
   - unless category[:count].zero?

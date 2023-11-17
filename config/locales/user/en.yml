@@ -42,3 +42,5 @@ en:
     invalid_info: Your information is invalid, please check it again!
     delete_info_success: Your information has been deleted successfully!
     cannot_be_blank: Can't be blank
+    uuid: ID
+    registered_at: Registered at
