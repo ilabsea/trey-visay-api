@@ -11,3 +11,6 @@ ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 ADD . /app
+
+# Copy fonts for PDF rendering
+COPY app/assets/fonts /usr/share/fonts
