@@ -37,10 +37,17 @@ en:
     personality_assessment: Personality assessment(v1)
     delete_info_request: Request to delete personal information
     send_delete_request: Send delete request
-    user_uuid: "Trey Visay mobile app: user ID"
-    user_fullname: "Trey Visay mobile app: user full name"
+    user_uuid: User ID in TreyVisay app
+    user_fullname: User full name in TreyVisay app
     invalid_info: Your information is invalid, please check it again!
-    delete_info_success: Your information has been deleted successfully!
+    delete_info_success: Your information will be suspended and completely removed from the system witin 90 days!
     cannot_be_blank: Can't be blank
     uuid: ID
     registered_at: Registered at
+    app_user_info: Trey Visay App user information
+    go_to_app: Go to Trey Visay app and find
+
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA was incorrect, please try again.'
+      recaptcha_unreachable: 'reCAPTCHA verification server error, please try again.'

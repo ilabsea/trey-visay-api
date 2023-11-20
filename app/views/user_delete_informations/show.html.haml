@@ -1,10 +1,22 @@
-.form-wrapper#login_form
+.form-wrapper#user-delete-info
   %h2.font-weight-normal.text-center.mb-4
     = t('user.delete_info_request')
 
   = simple_form_for @user, url: user_delete_information_path,  method: :delete do |f|
-    = f.input :uuid, label: t('user.user_uuid')
+    %div
+      %label.control-label.string.required{:for => "user_uuid"}
+        %abbr{:title => "required"} *
+        = t('user.user_uuid')
+
+      %button.btn.btn-outline-info.btn-circle.btn-sm{"data-target": "#hintModal", "data-toggle": "modal", type: "button"}
+        %i.fa-solid.fa-info
+
+    = f.input :uuid, label: false
     = f.input :full_name, label: t('user.user_fullname')
 
-    .actions.form-group
-      = f.submit t("user.send_delete_request"), class: 'btn btn-primary w-100 mb-2'
+    = recaptcha_tags
+
+    .actions.form-group.mt-4
+      = f.submit t("user.send_delete_request"), class: 'btn btn-danger w-100 mb-2'
+
+= render "modal_user_hint"

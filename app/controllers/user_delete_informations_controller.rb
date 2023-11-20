@@ -10,10 +10,10 @@ class UserDeleteInformationsController < ActionController::Base
   def destroy
     @user = User.find_for_archive(user_params)
 
-    if @user.persisted? && @user.destroy
+    if verify_recaptcha(model: @user) && @user.persisted? && @user.destroy
       redirect_to user_delete_information_url, notice: t("user.delete_info_success")
     else
-      flash.now[:alert] = t("user.invalid_info")
+      flash.now[:alert] = @user.errors.full_messages.join(", ").presence || t("user.invalid_info")
       render :show
     end
   end
