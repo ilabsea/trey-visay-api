@@ -20,6 +20,9 @@ RUN gem install bundler:2.3.7 && \
 # Install the application
 COPY . /app
 
+# Copy fonts for PDF rendering
+COPY app/assets/fonts /usr/share/fonts
+
 # Generate version file if available
 RUN if [ -d .git ]; then git describe --always > VERSION; fi
 
