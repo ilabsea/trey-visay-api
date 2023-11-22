@@ -314,6 +314,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    recaptcha (5.16.0)
     redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
@@ -511,6 +512,7 @@ DEPENDENCIES
   pundit (~> 2.3.0)
   rack-cors (~> 2.0.1)
   rails (~> 6.0.0)
+  recaptcha (~> 5.16.0)
   remove_emoji (~> 3.0.0)
   roo (~> 2.9.0)
   rspec

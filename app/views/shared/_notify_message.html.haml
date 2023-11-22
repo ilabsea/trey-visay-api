@@ -1,13 +1,16 @@
 - if notice.present?
-  .alert.alert-success.notify-message
-    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+  .alert.alert-success.notify-message.alert-dismissible.fade.show
     = notice
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
+
 - if alert.present?
-  .alert.alert-danger.notify-message
-    %button.close{type: 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close'}
+  .alert.alert-danger.notify-message.alert-dismissible.fade.show
     = alert
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
 
 :javascript
   setTimeout(function() {
     $( ".alert" ).fadeOut( "slow" )
-  }, 3000);
+  }, 4000);
