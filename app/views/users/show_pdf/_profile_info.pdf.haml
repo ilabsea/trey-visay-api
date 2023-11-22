@@ -34,3 +34,7 @@
         %tr
           %td= t('user.study_at')
           %td= " : #{@user.school_address}"
+
+        %tr
+          %td= t('user.registered_at')
+          %td= " : #{l(@user.registered_at)}"
