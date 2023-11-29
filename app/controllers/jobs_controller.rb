@@ -10,7 +10,7 @@ class JobsController < ApplicationController
       }
 
       format.xlsx {
-        @jobs = authorize Job.filter(filter_params)
+        @jobs = authorize Job.filter(filter_params).includes(:job_cluster).order(:job_cluster_id)
 
         if @jobs.length > Settings.max_download_record
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
