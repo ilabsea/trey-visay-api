@@ -45,7 +45,10 @@ en:
     uuid: ID
     registered_at: Registered at
     app_user_info: Trey Visay App user information
-    go_to_app: Go to Trey Visay app and find
+    go_to_app: Go to Trey Visay app
+    how_to_get_user_id: How to find user ID and name
+    click_on_tab_other: Click on tab "ផ្សេងៗ"
+    copy_user_uuid: Copy user id and name
 
   recaptcha:
     errors:

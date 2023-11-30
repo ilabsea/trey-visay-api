@@ -8,11 +8,14 @@
         %abbr{:title => "required"} *
         = t('user.user_uuid')
 
-      %button.btn.btn-outline-info.btn-circle.btn-sm{"data-target": "#hintModal", "data-toggle": "modal", type: "button"}
-        %i.fa-solid.fa-info
-
     = f.input :uuid, label: false
-    = f.input :full_name, label: t('user.user_fullname')
+    = f.input :full_name, label: t('user.user_fullname'), wrapper_html: { class: 'mb-0' }
+
+    / Button trigger modal
+    %button.btn.btn-link.d-flex.align-items-center.px-0.mb-3{"data-target" => "#hintModal", "data-toggle" => "modal", type: 'button'}
+      %span.btn-info-circle.mr-1
+        %i.fa-solid.fa-info
+      %small= t('user.how_to_get_user_id')
 
     = recaptcha_tags
 
