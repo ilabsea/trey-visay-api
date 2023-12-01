@@ -126,6 +126,7 @@ group :test do
   gem "webdrivers"
   gem "shoulda-matchers"
   gem "database_cleaner"
+  gem "rspec-sidekiq"
 end
 
 group :development do

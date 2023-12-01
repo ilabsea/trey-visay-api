@@ -17,11 +17,11 @@
 require "rails_helper"
 
 RSpec.describe HollandQuiz, type: :model do
-  it { is_expected.to have_many(:self_understanding_responses) }
-  it { is_expected.to have_many(:holland_responses) }
-  it { is_expected.to have_many(:holland_major_responses) }
-  it { is_expected.to have_many(:holland_job_responses) }
-  it { is_expected.to have_many(:holland_scores) }
+  it { is_expected.to have_many(:self_understanding_responses).dependent(:destroy) }
+  it { is_expected.to have_many(:holland_responses).dependent(:destroy) }
+  it { is_expected.to have_many(:holland_major_responses).dependent(:destroy) }
+  it { is_expected.to have_many(:holland_job_responses).dependent(:destroy) }
+  it { is_expected.to have_many(:holland_scores).dependent(:destroy) }
 
   describe "#after_create, set potential_drop_off" do
     let!(:user) { create(:user) }
