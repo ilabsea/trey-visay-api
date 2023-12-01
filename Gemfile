@@ -109,6 +109,9 @@ gem "sentry-rails"
 
 gem "recaptcha", "~> 5.16.0"
 
+# Protect the app from bad clients
+gem "rack-attack", "~> 6.7.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug"
