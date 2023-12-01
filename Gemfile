@@ -51,7 +51,7 @@ gem "oj"
 gem "remove_emoji", "~> 3.0.0"
 
 # File upload
-gem "carrierwave", "~> 2.2.3"
+gem "carrierwave", "~> 2.2.5"
 
 # Serialer
 gem "active_model_serializers", "~> 0.10.13"
