@@ -7,44 +7,73 @@
 
   / Logo
   .logo-image-wrapper.flex-row.justify-content-conter
-    = image_tag 'logo.png', size: '120x120', class: 'logo'
+    = image_tag 'logo.png', class: 'logo'
 
-  .d-flex.justify-content-center
-    / Implemented by
-    .mr-5.d-flex.flex-column
-      %p.paragraph
-        %strong.text-white សហការផលិតដោយ
+  .d-flex
+    / -----------V1
+    .d-flex.flex-column.flex-grow-1.mr-1
+      / Implemented by
+      .d-flex.flex-column.align-items-center
+        %strong.paragraph.text-white កំណែទី១ (ឆ្នាំ២០១៨) សហការផលិតដោយ
 
-      .flex-grow-1.d-flex.align-items-center
-        = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
-          = image_tag 'about/moeys.png', width: 65
+        .d-flex.align-items-center
+          = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
+            = image_tag 'about/moeys.png', height: 60
 
-        = link_to 'http://www.kapekh.org', target: "_blank" do
-          = image_tag 'about/kape.png', width: 70
+          = link_to 'http://www.kapekh.org', target: "_blank" do
+            = image_tag 'about/kape.png', height: 50
 
-    / Developed by
-    .d-flex.flex-column
-      %p.paragraph
-        %strong.text-white អភិវឌ្ឍន៍ដោយ
+      / Developed by
+      .d-flex.flex-column.align-items-center
+        %strong.paragraph.text-white អភិវឌ្ឍន៍ដោយ
 
-      .flex-grow-1.d-flex.align-items-center
-        .card.p-2
+        .flex-grow-1.d-flex.align-items-center.card
           = link_to 'http://ilabsoutheastasia.org', target: "_blank" do
-            = image_tag 'about/ilab.png', width: 180
+            = image_tag 'about/ilab.png', height: 38
 
-  / Funded by
-  %p.paragraph
-    %strong.text-white គាំទ្រថវិកាពី
+      .d-flex.flex-column.align-items-center
+        / Funded by
+        %strong.paragraph.text-white គាំទ្រថវិកាដោយ
 
-  .d-inline-block.card.p-2
-    = link_to 'https://www.usaid.gov/cambodia', target: "_blank" do
-      = image_tag 'about/usaid.png', width: 140
+        .flex-grow-1.d-flex.align-items-center
+          .d-inline-block.card.px-1
+            = link_to 'https://www.usaid.gov/cambodia', target: "_blank" do
+              = image_tag 'about/usaid.png', width: 120
 
-    = link_to 'https://www.development-innovations.org/', target: "_blank", class: 'mx-3' do
-      = image_tag 'about/di.png', width: 140
+            = link_to 'https://www.development-innovations.org/', target: "_blank", class: 'mx-3' do
+              = image_tag 'about/di.png', width: 120
 
-    = link_to 'https://spidercenter.org/', target: "_blank" do
-      = image_tag 'about/spider.png', width: 140
+            = link_to 'https://spidercenter.org/', target: "_blank" do
+              = image_tag 'about/spider.png', width: 120
+
+    / -----------V2
+    .d-flex.flex-column.flex-grow-1.ml-1
+      / Implemented by
+      .d-flex.flex-column.align-items-center
+        %strong.paragraph.text-white កំណែទី២ (ឆ្នាំ២០២៣) កែលម្អមាតិកានិងផលិតដោយ
+
+        .flex-grow-1.d-flex.align-items-center
+          = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
+            = image_tag 'about/moeys.png', height: 60
+
+      / Developed by
+      .d-flex.flex-column.align-items-center
+        %strong.paragraph.text-white អភិវឌ្ឍន៍ដោយ
+
+        .flex-grow-1.d-flex.align-items-center
+          = link_to 'https://kawsang.com', target: "_blank" do
+            = image_tag 'about/kawsang_logo.png', height: 38
+
+      .d-flex.flex-column.align-items-center
+        / Funded by
+        %strong.paragraph.text-white គាំទ្រថវិកាដោយ
+
+        .flex-grow-1.d-flex.align-items-center
+          .d-inline-block.card.px-1
+            = image_tag 'about/adb_project.jpg', height: 38
+
+            = link_to 'https://adb.org', target: "_blank", class: 'ml-3' do
+              = image_tag 'about/adb.jpg', height: 38
 
   / Download
   .qr-code.mt-4

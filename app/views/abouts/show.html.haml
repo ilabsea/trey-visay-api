@@ -6,20 +6,30 @@
   .card.shadow.mb-4
     .card-body
       %h5.card-title.center
-        %strong កម្មវិធីត្រីវិស័យ
+        %strong អំពីកម្មវិធីត្រីវិស័យ
 
       %p
-        គឺជាកម្មវិធីទូរស័ព្ទមួយដែលអនុញ្ញាតឱ្យសិស្សថ្នាក់ទី៩ ដល់ថ្នាក់ទី១២
-        អាចធ្វើការស្វែងយល់អំពីខ្លួនឯង ដោយធ្វើការតេស្តជាមួយនឹងកម្មវិធី ដើម្បីអាចអោយគាត់ស្គាល់ពីជំនាញទន់
-        និងជំនាញរឹង និងកំណត់គោលដៅរបស់ខ្លួន សម្រាប់ការជ្រើសរើសជំនាញវិជ្ជាជីវៈនាពេលអនាគត។
+        «ត្រីវិស័យ» ជាកម្មវិធីទូរសព្ទដៃឆ្លាតវៃថ្មីមួយ (Offline App) ត្រូវបានបង្កើតឡើងក្នុងគោលបំណងគាំទ្រដល់សិស្សានុសិស្សកម្រិតថ្នាក់ទី៩ ដល់ទី ១២ ក្នុងការតម្រង់ទិសវិជ្ជាជីវៈតាមរយៈការធ្វើស្វ័យវាយតម្លៃអំពីជម្រើសមុខរបរ អាជីពនិងការសិក្សា ដែលជាទុនបម្រុងមួយជួយពួកគេឱ្យមានមូលដ្ឋានក្នុងការរៀបចំផែនការសិក្សានិងអាជីពនាពេលអនាគតបានសមរម្យ។
 
       %p
-        បន្ថែមពីនេះទៀតកម្មវិធីត្រីវិស័យ បានបញ្ចូលនៅព័ត៌មានទាក់ទងជាមួយនឹងគ្រឹះស្ថានសិក្សានៅក្នុងស្រុក
-        ពត័មានជំនាញដែលយើងត្រូវសិក្សានៅសាកលវិទ្យាល័យ ក៏ដូចជាព័ត៌មានអំពីជំនាញវិជ្ជាជីវៈ
-        ដោយភ្ជាប់ជាមួយសាលាដែលយើងអាចសិក្សាបាន។
+        Trey Visay is an offline application for smartphone and tablet, developed to assist students from grade 9 to 12 in self-assessment on study and career options so that they are able to plan their further education and future career choice properly.
 
-      %p.center.paragraph
-        %strong សហការផលិតដោយ
+      %div
+        «ត្រីវិស័យ» ផ្ដល់ជូននូវម៌ាគាឆ្ពោះទៅការជ្រើសរើសអាជីពស័ក្ដិសមនឹងអ្នកតាមរយៈកញ្ចប់ព័ត៌មានក្នុងមុខងារសំខាន់ៗ៖
+        %ul
+          - ['វាយតម្លៃមុខរបរនិងអាជីព', 'តេស្ដភាពឆ្លាតវៃ', 'ព័ត៌មានអំពីគ្រឹះស្ថានសិក្សា', 'ព័ត៌មានអំពីប្រភេទការងារ', 'វីដេអូមុខរបរ', 'មជ្ឈមណ្ឌលការងារ'].each do |content|
+            %li= content
+
+      %div
+        Trey Visay provides proper option on career pathways through the following key functions:
+        %ul
+          - ['Career assessment/Holland Test', 'Multiple Intelligence test', 'Institution Information', 'Career Information', 'Video of careers', 'Career center'].each do |content|
+            %li= content
+
+      / --------v1
+      .center.paragraph.mt-5.d-flex.flex-column
+        %strong កំណែទី១ (ឆ្នាំ២០១៨) សហការផលិតដោយ /
+        %strong Version 1 (2018) Co-produced by
 
       %p.center
         = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
@@ -29,14 +39,14 @@
           = image_tag 'about/kape.png', width: 70
 
       %p.center.paragraph
-        %strong អភិវឌ្ឍន៍ដោយ
+        %strong អភិវឌ្ឍន៍ដោយ / Developed by
 
       %p.center
         = link_to 'http://ilabsoutheastasia.org', target: "_blank" do
           = image_tag 'about/ilab.png', width: 180
 
       %p.center.paragraph
-        %strong គាំទ្រថវិកាពី
+        %strong គាំទ្រថវិកាដោយ / Funded by
 
       %p.center
         = link_to 'https://www.usaid.gov/cambodia', target: "_blank" do
@@ -47,3 +57,29 @@
 
         = link_to 'https://spidercenter.org/', target: "_blank" do
           = image_tag 'about/spider.png', width: 140
+
+      / --------v2
+      .center.paragraph.mt-5.d-flex.flex-column
+        %strong កំណែទី២ (ឆ្នាំ២០២៣) កែលម្អមាតិកានិងផលិតដោយ /
+        %strong Version 2 (2023) Content updated and produced by
+
+      %p.center
+        = link_to 'http://www.moeys.gov.kh', target: "_blank", class: 'mr-4' do
+          = image_tag 'about/moeys.png', width: 65
+
+      %p.center.paragraph
+        %strong អភិវឌ្ឍន៍ដោយ / Developed by
+
+      %p.center
+        = link_to 'https://kawsang.com', target: "_blank" do
+          = image_tag 'about/kawsang_logo.png', width: 180
+
+      %p.center.paragraph
+        %strong គាំទ្រថវិកាដោយ / Funded by
+
+      %p.center
+        = link_to '#', target: "_blank", class: 'mx-3' do
+          = image_tag 'about/adb_project.jpg', width: 140
+
+        = link_to 'https://adb.org/', target: "_blank" do
+          = image_tag 'about/adb.jpg', width: 70
