@@ -9,6 +9,7 @@ TV.UsersIndex = (() => {
     onClickSearch();
     onClickDownload();
     handleDisplaySearchButton();
+    TV.Common.DaterangePicker.init();
   }
 
   function handleDisplaySearchButton() {

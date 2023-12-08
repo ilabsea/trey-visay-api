@@ -14,4 +14,11 @@ namespace :user do
       user.update_columns(potential_drop_off: true)
     end
   end
+
+  desc "Migrate registered_at to have value as created_at"
+  task migrate_to_have_registered_at: :environment do
+    User.where(registered_at: nil).find_each do |user|
+      user.update_columns(registered_at: user.created_at)
+    end
+  end
 end

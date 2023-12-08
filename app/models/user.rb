@@ -99,6 +99,7 @@ class User < ApplicationRecord
 
   # Callback
   before_create :set_username_password
+  before_create :secure_registered_at
   before_validation :set_district_id
 
   def school_address
@@ -143,5 +144,9 @@ class User < ApplicationRecord
 
     def set_district_id
       self.district_id ||= high_school.try(:district_id)
+    end
+
+    def secure_registered_at
+      self.registered_at ||= Time.zone.now
     end
 end

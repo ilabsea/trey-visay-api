@@ -1,7 +1,9 @@
+- placeholder ||= t('shared.search_by_date')
+
 %div{'data-language-code' => I18n.locale, style: 'min-width: 280px;' }
   #daterange.input-group
     .form-control.pointer.d-flex.align-items-center
-      %span{'data-placeholder' => t('shared.search_by_date')}= t('shared.search_by_date')
+      %span{'data-placeholder' => placeholder}= placeholder
 
     %a.input-group-append.pointer
       .input-group-text
