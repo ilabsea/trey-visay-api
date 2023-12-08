@@ -114,3 +114,4 @@ en:
     update_success: "%{name} was successfully updated."
     delete_success: "%{name} was successfully deleted."
     close: Close
+    search_by_created_at: Search by created at

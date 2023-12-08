@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     def filter_params
       params.permit(
         :name, :province_id, :district_id, :high_school_code,
-        :grade, :gender, :class_group
+        :grade, :gender, :class_group, :start_date, :end_date
       )
     end
 end

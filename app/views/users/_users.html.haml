@@ -20,6 +20,7 @@
           = ")"
     %td= user.quizzes_count
     %td= timeago(user.registered_at).html_safe
+    %td= timeago(user.created_at).html_safe
     %td= timeago(user.updated_at).html_safe
     %td
       = link_to user_path(user, format: 'pdf'), class: "btn btn-circle btn-sm btn-outline-dark mr-1", data: { toggle: 'tooltip', placement: 'top', title: t('user.view_as_pdf')}, target: '_blank' do

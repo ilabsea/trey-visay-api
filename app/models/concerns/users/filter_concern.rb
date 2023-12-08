@@ -13,6 +13,7 @@ module Users::FilterConcern
       scope = scope.where(grade: params[:grade]) if params[:grade].present?
       scope = scope.where(sex: params[:gender]) if params[:gender].present?
       scope = scope.where(class_group: params[:class_group]) if params[:class_group].present?
+      scope = scope.where("created_at BETWEEN ? AND ?", params[:start_date], params[:end_date]) if params[:start_date].present? && params[:end_date].present?
       scope
     end
 

@@ -114,3 +114,4 @@ km:
     update_success: "%{name}ត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ"
     delete_success: "%{name}ត្រូវបានលុបដោយជោគជ័យ"
     close: បិទ
+    search_by_created_at: ស្វែងរកតាមកាលបរិច្ឆេទបង្កើត
