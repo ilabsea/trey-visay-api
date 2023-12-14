@@ -3,7 +3,7 @@
 # Users sheet-------------
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "app_user") do |sheet|
-  sheet.add_row %w[id full_name gender date_of_birth phone_number school_name grade class_group app_vesion registered_at device_type device_os]
+  sheet.add_row %w[id full_name gender date_of_birth phone_number school_name grade class_group app_vesion registered_at device_type device_os total_holland_test total_intelligence_test]
 
   @users.each_with_index do |user, index|
     row = [
@@ -18,7 +18,9 @@ wb.add_worksheet(name: "app_user") do |sheet|
       user.app_version,
       user.registered_at,
       user.device_type,
-      user.device_os
+      user.device_os,
+      user.holland_quizzes_count,
+      user.intelligence_quizzes_count
     ]
 
     sheet.add_row row, types: row.length.times.map { |i| :string }

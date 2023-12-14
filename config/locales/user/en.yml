@@ -49,6 +49,7 @@ en:
     how_to_get_user_id: How to find user ID and name
     click_on_tab_other: Click on tab "ផ្សេងៗ"
     copy_user_uuid: Copy user id and name
+    search_by_registered_at: Search by registered at
 
   recaptcha:
     errors:

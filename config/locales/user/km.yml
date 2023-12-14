@@ -49,6 +49,7 @@ km:
     how_to_get_user_id: របៀបស្វែងរកលេខកូដID និងឈ្មោះ
     click_on_tab_other: ចុចលើថេប "ផ្សេងៗ"
     copy_user_uuid: ថតចម្លងលេខសម្គាល់ និងឈ្មោះ
+    search_by_registered_at: ស្វែងរកតាមកាលបរិច្ឆេទចុះឈ្មោះ
 
   recaptcha:
     errors:

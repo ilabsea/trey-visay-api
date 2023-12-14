@@ -74,4 +74,23 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "before_create, secure_registered_at" do
+    context "having value" do
+      let!(:registered_at) { DateTime.yesterday }
+      let!(:user) { create(:user, registered_at: registered_at) }
+
+      it "takes the assign value" do
+        expect(user.registered_at).to eq(registered_at)
+      end
+    end
+
+    context "no value" do
+      let!(:user) { create(:user, registered_at: nil) }
+
+      it "assigns a new value" do
+        expect(user.registered_at).not_to be_nil
+      end
+    end
+  end
 end
