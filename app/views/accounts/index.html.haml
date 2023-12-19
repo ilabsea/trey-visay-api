@@ -17,7 +17,6 @@
             %th= t('account.location')
             %th= t('account.school')
             %th= t('account.status')
-            %th= t('account.grafana')
             %th= t('shared.created_at')
             %th= t('shared.updated_at')
             %th
@@ -29,7 +28,12 @@
               %td= link_to account.email, edit_account_path(account.id)
               %td= account.full_name
               %td= account.phone_number
-              %td.trancate-column= I18n.t("account.#{account.role}")
+              %td.trancate-column
+                - if account.gf_user_id.present?
+                  %span.text-success{'data-toggle': 'tooltip', 'data-title': t('account.allow_seeing_dashboard')}
+                    %i.fa-solid.fa-chart-simple
+                = I18n.t("account.#{account.role}")
+
               %td
                 = account.provinces.pluck(:name_km).join(", ") if account.trainer?
 
@@ -44,7 +48,6 @@
 
               %td.status{ class: account.status }
                 = t("account.#{account.status}")
-              %td= account.gf_user_id.present? ? "Yes" : nil
               %td= timeago(account.created_at).html_safe
               %td= timeago(account.updated_at).html_safe
               %td
