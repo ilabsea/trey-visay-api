@@ -29,7 +29,7 @@
         .d-none
           = f.input :high_school_ids, as: :select, input_html: { multiple: true }
 
-        %select.form-control.custom-select{ "data-pumi-select-collection-label-method" => "name", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "id", "data-pumi-select-disabled-target" => "#school", "data-pumi-select-id" => "school", "data-pumi-select-target" => "klass", name: 'account[high_school_ids][]', 'data-pumi-select-has-hidden-value' => true, multiple: true, 'data-pumi-select-hidden-values' => @account.high_school_ids, class: ('is-invalid' if f.object.errors["high_school_ids"].present?) }
+        %select.form-control.custom-select{ "data-pumi-select-collection-label-method" => "name_#{I18n.locale}", "data-pumi-select-collection-url" => "/high_schools.json?district_id=FILTER", "data-pumi-select-collection-url-filter-interpolation-key" => "FILTER", "data-pumi-select-collection-value-method" => "code",  "data-pumi-select-id" => "school", name: 'account[high_school_ids][]', 'data-pumi-select-has-hidden-value' => true, multiple: true, 'data-pumi-select-hidden-values' => @account.high_school_ids, class: ('is-invalid' if f.object.errors["high_school_ids"].present?) }
 
         .invalid-feedback.d-block= f.object.errors["high_school_ids"].join(';')
 

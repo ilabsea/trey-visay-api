@@ -1,0 +1,2 @@
+= f.hidden_field(:high_school_code, value: params[:high_school_code])
+= f.select(:high_school_code, [], {:include_blank => t("shared.all_schools")}, {:data => {:pumi_select_id => "school", :pumi_select_collection_url => "/high_schools.json?district_id=FILTER", :pumi_select_collection_url_filter_interpolation_key => "FILTER", :pumi_select_collection_label_method => "name_#{I18n.locale}", :pumi_select_collection_value_method => "code", :pumi_select_has_hidden_value => true}, class: 'form-control custom-select'})
