@@ -53,15 +53,6 @@ RSpec.describe HollandQuiz, type: :model do
       end
     end
 
-    context "user's potential_drop_off is already set" do
-      let!(:user) { create(:user, potential_drop_off: false) }
-      let!(:quiz) { create(:holland_quiz, param) }
-
-      it "set user can complete grade twelve to false" do
-        expect(quiz.user.potential_drop_off).to be_falsey
-      end
-    end
-
     context "both question 1 and 2 has no response value with 'unsure'" do
       let(:quiz) {
         create(:holland_quiz,

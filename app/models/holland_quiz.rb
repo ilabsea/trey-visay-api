@@ -37,9 +37,9 @@ class HollandQuiz < Quiz
     # Update to user for only first test
     def update_user_supporting_dashboard
       attributes = {}
-      attributes[:is_selected_major_or_career] = (holland_major_response_ids.present? || holland_job_response_ids.present?) if user.is_selected_major_or_career.nil?
-      attributes[:potential_drop_off] = self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").present? if user.potential_drop_off.nil?
-      attributes[:is_self_understanding] = self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE if user.is_self_understanding.nil?
+      attributes[:is_selected_major_or_career] = (holland_major_response_ids.present? || holland_job_response_ids.present?)
+      attributes[:potential_drop_off] = self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").present?
+      attributes[:is_self_understanding] = self_understanding_score.to_i >= SELF_UNDERSTANDING_PASS_SCORE
 
       user.update(attributes)
     end

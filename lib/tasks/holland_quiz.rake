@@ -11,4 +11,16 @@ namespace :holland_quiz do
       end
     end
   end
+
+  desc "Update user supporting dashboard"
+  task update_user_supporting_dashboard: :environment do
+    HollandQuiz.find_each do |quiz|
+      quiz.send(:update_user_supporting_dashboard)
+
+      print "."
+      $stdout.flush
+    end
+
+    puts "Update user supporting dashboard is completed!"
+  end
 end
