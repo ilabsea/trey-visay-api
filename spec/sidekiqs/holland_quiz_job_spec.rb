@@ -15,6 +15,7 @@ RSpec.describe HollandQuizJob, type: :job do
       {
         user_id: user.id,
         quizzed_at: DateTime.yesterday.to_s,
+        self_understanding_score: 5,
         self_understanding_responses_attributes: [
           {
             self_understanding_question_code: self_understanding_question.code,
@@ -58,6 +59,7 @@ RSpec.describe HollandQuizJob, type: :job do
       expect(quiz.holland_responses.length).to eq(1)
       expect(quiz.holland_major_responses.length).to eq(3)
       expect(quiz.holland_job_responses.length).to eq(3)
+      expect(user.reload.is_self_understanding).to be_truthy
     end
   end
 end
