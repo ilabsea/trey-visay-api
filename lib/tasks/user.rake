@@ -21,4 +21,22 @@ namespace :user do
       user.update_columns(registered_at: user.created_at)
     end
   end
+
+  desc "Update user supporting dashboard"
+  task update_user_supporting_dashboard: :environment do
+    users = User.where("holland_quizzes_count > 0").includes(holland_quizzes: [:holland_major_responses, :holland_job_responses, :self_understanding_responses])
+    users.find_each do |user|
+      quiz = user.holland_quizzes.sort_by(&:quizzed_at).first
+      user.update(
+        is_selected_major_or_career: (quiz.holland_major_response_ids.present? || quiz.holland_job_response_ids.present?),
+        potential_drop_off: quiz.self_understanding_responses.where(self_understanding_question_code: %w(q1 q2), value: "unsure").present?,
+        is_self_understanding: quiz.self_understanding_score.to_i >= HollandQuiz::SELF_UNDERSTANDING_PASS_SCORE
+      )
+
+      print "."
+      $stdout.flush
+    end
+
+    puts "Update user supporting dashboard is completed!"
+  end
 end

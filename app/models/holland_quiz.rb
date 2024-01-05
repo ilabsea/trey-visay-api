@@ -31,7 +31,7 @@ class HollandQuiz < Quiz
 
   # Callback
   before_create :set_display_order
-  after_create :update_user_supporting_dashboard
+  after_commit :update_user_supporting_dashboard, on: :update
 
   private
     # Update to user for only first test
