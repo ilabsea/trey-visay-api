@@ -22,7 +22,7 @@
               = fff.hidden_field :personality_type
 
         %tr
-          %td= index + 1
+          %td= badge_line_html(item, index + 1).html_safe
           %td= item.code
           %td= item.name
           %td= item.personality_type

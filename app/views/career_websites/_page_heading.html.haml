@@ -10,7 +10,7 @@
 
       / More Options
       = render "shared/buttons/more_button" do
-        = render "shared/buttons/import_from_file_button", url: new_career_website_importer_path
+        = render "shared/buttons/import_from_file_button", url: new_career_website_importer_path, title: t("shared.import_from_zip_file")
 
         = render "shared/buttons/importing_history_button", name: t('sidebar.career_website'), url: career_website_importers_path
 

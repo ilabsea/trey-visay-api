@@ -21,7 +21,7 @@
               = fff.hidden_field :intelligence_category_id
 
         %tr
-          %td= index + 1
+          %td= badge_line_html(item, index + 1).html_safe
           %td= item.code
           %td= item.name
           %td= item.intelligence_category_name

@@ -59,4 +59,11 @@ module ApplicationHelper
   def tagify_class(value)
     "tagify-item-" + value
   end
+
+  def badge_line_html(item, num)
+    klass = item.new_record? ? 'new' : 'edit'
+    klass = 'invalid' unless item.valid?
+
+    "<div class='line-badge #{klass}'>#{num}</div>"
+  end
 end
