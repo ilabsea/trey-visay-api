@@ -22,7 +22,7 @@
               = fff.hidden_field :commune_id
 
         %tr
-          %td= index + 1
+          %td= badge_line_html(item, index + 1).html_safe
           %td= item.name_km
           %td= "(#{item.commune_id}) #{item.address}"
 
