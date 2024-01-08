@@ -21,7 +21,7 @@ class AccountHighSchool < ApplicationRecord
 
   private
     def assign_location
-      if high_school_id.present?
+      if high_school.present?
         self.province_id = high_school.province_id
         self.district_id = high_school.district_id
       else
