@@ -82,6 +82,7 @@ class Account < ApplicationRecord
 
   # Validation
   validates :email, presence: true
+  validates_uniqueness_of :email, allow_blank: true, conditions: -> { with_deleted }
   validates :role, presence: true
   validates :high_school_ids, presence: true, if: :counselor?
   validates :province_ids, presence: true, if: :trainer?
