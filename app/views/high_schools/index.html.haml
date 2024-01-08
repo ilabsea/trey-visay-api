@@ -13,6 +13,9 @@
             %th= t('shared.code')
             %th= t('shared.name')
             %th= t('school.address')
+            %th= t('shared.version') if current_account.primary_admin?
+            %th= t('shared.created_at')
+            %th= t('shared.updated_at')
             %th
 
         %tbody#body-content
@@ -22,6 +25,9 @@
               %td= school.code
               %td= school.name
               %td= "(#{school.district_id}) #{school.address}"
+              %td= school.version if current_account.primary_admin?
+              %td= timeago(school.created_at).html_safe
+              %td= timeago(school.updated_at).html_safe
               %td
                 .d-flex.justify-content-end
                   = render "shared/buttons/edit_button", object: school, url: edit_high_school_path(school)

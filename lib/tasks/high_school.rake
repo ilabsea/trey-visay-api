@@ -14,4 +14,10 @@ namespace :high_school do
     school = HighSchool.find_or_initialize_by(name_km: "ផ្សេងៗ")
     school.update(code: "other", district_id: "0000", province_id: "00")
   end
+
+  desc "Migrate school version to v2"
+  task migrate_high_school_version: :environment do
+    high_schools = HighSchool.where("LENGTH(code) >= ?", 9).or(HighSchool.where(code: "other"))
+    high_schools.update_all(version: 2)
+  end
 end

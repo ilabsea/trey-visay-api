@@ -17,7 +17,7 @@ gem "bootstrap", "~> 4.5.2"
 
 gem "sass-rails", "~> 5.0"
 gem "sprockets-rails", require: "sprockets/railtie"
-gem "simple_form", "~> 5.0.0"
+gem "simple_form", "~> 5.3.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes

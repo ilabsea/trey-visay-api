@@ -11,6 +11,9 @@
 #  province_id :string(255)
 #  commune_id  :string(255)
 #  deleted_at  :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#  version     :integer          default(1)
 #
 # Indexes
 #
@@ -32,6 +35,7 @@ class HighSchool < ApplicationRecord
   # Callback
   before_create :secure_code
   before_create :set_name_en
+  before_create :set_version
 
   # Scope
   default_scope { order(district_id: :asc) }
@@ -49,14 +53,18 @@ class HighSchool < ApplicationRecord
     scope = scope.where("code LIKE ? OR name_km LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
     scope = scope.where(province_id: params[:province_id]) if params[:province_id].present?
     scope = scope.where(district_id: params[:district_id]) if params[:district_id].present?
+    scope = scope.where(version: params[:version]) if params[:version].present?
     scope
   end
 
   private
     def secure_code
-      num = self.class.where("district_id": district_id).length + 1
+      self.code ||= "#{district_id}_#{SecureRandom.uuid[0..3]}"
 
-      self.code ||= "#{district_id}#{sprintf("%03d", num)}"
+      return unless self.class.exists?(code: code)
+
+      self.code = "#{district_id}_#{SecureRandom.uuid[0..3]}"
+      secure_code
     end
 
     def set_name_en

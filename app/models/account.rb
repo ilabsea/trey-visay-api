@@ -71,9 +71,6 @@ class Account < ApplicationRecord
     trainer: 4
   }
 
-  # Constant
-  SYSTEM_VERSION = ENV.fetch("SYSTEM_VERSION") { 2 }
-
   # Callback
   before_create :reset_authentication_token
   before_save :ensure_authentication_token
@@ -158,9 +155,5 @@ class Account < ApplicationRecord
     def clean_unused_account_high_school
       schools = account_high_schools.where(high_school_id: "all")
       schools.delete_all
-    end
-
-    def set_version
-      self.version ||= SYSTEM_VERSION
     end
 end

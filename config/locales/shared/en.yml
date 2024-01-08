@@ -114,3 +114,5 @@ en:
     update_success: "%{name} was successfully updated."
     delete_success: "%{name} was successfully deleted."
     close: Close
+    version: Version
+    any_version: Any version

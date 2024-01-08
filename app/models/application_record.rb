@@ -31,4 +31,8 @@ class ApplicationRecord < ActiveRecord::Base
     def set_display_order
       self.display_order ||= self.class.maximum(:display_order).to_i + 1
     end
+
+    def set_version
+      self.version = ENV.fetch("SYSTEM_VERSION") { 2 }.to_i
+    end
 end
