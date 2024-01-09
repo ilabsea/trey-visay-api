@@ -19,5 +19,6 @@ namespace :high_school do
   task migrate_high_school_version: :environment do
     high_schools = HighSchool.where("LENGTH(code) >= ?", 9).or(HighSchool.where(code: "other"))
     high_schools.update_all(version: 2)
+    high_schools.touch_all
   end
 end

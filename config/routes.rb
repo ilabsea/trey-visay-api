@@ -97,6 +97,7 @@ Rails.application.routes.draw do
     namespace :v2 do
       resources :majors, only: [:index]
       resources :schools, only: [:index]
+      resources :high_schools, only: [:index]
       resources :jobs, only: [:index]
       resources :job_clusters, only: [:index]
       resources :holland_quizzes, only: [:create, :update]
