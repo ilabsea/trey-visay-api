@@ -39,6 +39,7 @@ class HighSchool < ApplicationRecord
 
   # Scope
   default_scope { order(district_id: :asc) }
+  scope :exclude_v1, -> { where.not(version: 1) }
 
   def location
     Pumi::District.find_by_id(district_id)
