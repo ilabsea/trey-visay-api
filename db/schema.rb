@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_15_041139) do
+ActiveRecord::Schema.define(version: 2024_01_08_090547) do
 
   create_table "account_high_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "high_school_id"
@@ -188,6 +188,9 @@ ActiveRecord::Schema.define(version: 2023_11_15_041139) do
     t.string "province_id"
     t.string "commune_id"
     t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "version", default: 1
     t.index ["code"], name: "index_high_schools_on_code", unique: true
   end
 

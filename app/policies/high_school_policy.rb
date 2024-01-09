@@ -10,7 +10,7 @@ class HighSchoolPolicy < ApplicationPolicy
   end
 
   def create?
-    user.primary_admin?
+    user.primary_admin? || user.admin?
   end
 
   def update?
@@ -22,9 +22,11 @@ class HighSchoolPolicy < ApplicationPolicy
   end
 
   # NOTE: Be explicit about which records you allow access to!
-  # class Scope < Scope
-  #   def resolve
-  #     scope.all
-  #   end
-  # end
+  class Scope < Scope
+    def resolve
+      return scope.all if user.primary_admin?
+
+      scope.where.not(version: 1)
+    end
+  end
 end

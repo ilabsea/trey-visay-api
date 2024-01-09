@@ -11,6 +11,9 @@
 #  province_id :string(255)
 #  commune_id  :string(255)
 #  deleted_at  :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#  version     :integer          default(1)
 #
 # Indexes
 #

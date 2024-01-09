@@ -61,8 +61,8 @@ module ApplicationHelper
   end
 
   def badge_line_html(item, num)
-    klass = item.new_record? ? 'new' : 'edit'
-    klass = 'invalid' unless item.valid?
+    klass = item.new_record? ? "new" : "edit"
+    klass = "invalid" unless item.valid?
 
     "<div class='line-badge #{klass}'>#{num}</div>"
   end

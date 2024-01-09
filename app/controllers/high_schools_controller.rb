@@ -6,11 +6,11 @@ class HighSchoolsController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        @pagy, @schools = pagy(authorize HighSchool.filter(filter_params))
+        @pagy, @schools = pagy(authorize policy_scope(HighSchool.filter(filter_params)))
       }
 
       format.xlsx {
-        @schools = authorize HighSchool.filter(filter_params)
+        @schools = authorize policy_scope(HighSchool.filter(filter_params))
 
         if @schools.length > Settings.max_download_record
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
@@ -21,7 +21,7 @@ class HighSchoolsController < ApplicationController
       }
 
       format.json {
-        @schools = authorize HighSchool.filter(filter_params)
+        @schools = authorize HighSchool.filter(filter_params).where.not(version: 1)
 
         render json: @schools
       }
@@ -61,7 +61,7 @@ class HighSchoolsController < ApplicationController
 
   private
     def filter_params
-      params.permit(:name, :province_id, :district_id)
+      params.permit(:name, :province_id, :district_id, :version)
     end
     helper_method :filter_params
 
