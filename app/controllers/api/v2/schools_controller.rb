@@ -4,7 +4,7 @@ module Api
   module V2
     class SchoolsController < ::Api::V2::ApiController
       def index
-        pagy, schools = pagy(School.filter(filter_params).with_deleted.includes(school_departments: [:department, :majors]))
+        pagy, schools = pagy(School.filter(filter_params).with_deleted.includes(school_departments: [:department, :majors, school_majors: :major]))
 
         render json: {
           pagy: pagy.vars,

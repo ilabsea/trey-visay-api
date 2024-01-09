@@ -21,7 +21,7 @@ class SchoolsController < ApplicationController
       }
 
       format.json {
-        @schools = authorize School.filter(filter_params).includes(school_departments: [:department, :majors])
+        @schools = authorize School.filter(filter_params).includes(school_departments: [:department, :majors, school_majors: :major])
 
         render json: @schools
       }
