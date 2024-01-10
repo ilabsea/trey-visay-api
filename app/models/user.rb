@@ -103,7 +103,7 @@ class User < ApplicationRecord
   before_validation :set_district_id
 
   def school_address
-    return nil unless high_school_code.present?
+    return nil unless high_school.present?
 
     "#{high_school_name_km} #{high_school.location.address_km}"
   end
