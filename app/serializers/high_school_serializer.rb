@@ -21,7 +21,7 @@
 #
 class HighSchoolSerializer < ActiveModel::Serializer
   attributes :id, :code, :label, :province_id, :district_id, :parent_code,
-             :name_km, :name_en, :updated_at
+             :name_km, :name_en, :updated_at, :deleted_at
 
   def parent_code
     object.district_id
