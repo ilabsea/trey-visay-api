@@ -50,7 +50,7 @@ class SchoolsController < ApplicationController
   end
 
   def update
-    if @school.update(school_params)
+    if @school.update(school_params) && @school.touch
       redirect_to schools_url, notice: "School was successfully updated."
     else
       render :edit, status: :unprocessable_entity

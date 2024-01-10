@@ -37,7 +37,7 @@
               = fff.hidden_field :display_order
               = fff.hidden_field :logo_cache
 
-              - item.school_departments.each do |school_department|
+              - item.school_departments.includes(school_majors: :major).each do |school_department|
                 = fff.fields_for :school_departments, school_department do |sdf|
                   = sdf.hidden_field :id
                   = sdf.hidden_field :_destroy
