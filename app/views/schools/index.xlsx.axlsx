@@ -3,20 +3,23 @@
 # School sheet-------------
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "school") do |sheet|
-  sheet.add_row %w[school_code school_name address province_code tels emails website_or_facebook type category]
+  sheet.add_row %w[school_code school_name logo address province_code tels emails website_or_facebook type category display_order]
 
   @schools.each_with_index do |school, index|
-    sheet.add_row [
+    row = [
       school.code,
       school.name,
+      school.logo_identifier,
       school.address,
-      nil,
+      school.province_id,
       school.phone_numbers.to_s.to_eng_num,
       school.emails.to_s.downcase,
       school.website_or_facebook,
       school.kind,
-      school.category
+      school.category,
+      school.display_order
     ]
+    sheet.add_row row, types: row.map { |i| :string }
   end
 end
 
@@ -25,10 +28,10 @@ def render_first_department(school, sheet)
   school_department = school.school_departments[0]
   return unless school_department.present?
 
-  sheet.add_row [school.code, school.name, school_department.try(:department_name), school_department&.majors&.first&.name]
+  sheet.add_row [school.code, school.name, school_department.try(:department_name), school_department.try(:department_grade), school_department&.majors&.first&.name]
 
   (school_department.majors[1..-1] || []).each do |major|
-    sheet.add_row [nil, nil, nil, major.name]
+    sheet.add_row [nil, nil, nil, nil, major.name]
   end
 end
 
@@ -36,19 +39,54 @@ def render_other_department(school, sheet)
   return unless school.school_departments.length > 1
 
   school.school_departments[1..-1].each do |sd|
-    sheet.add_row [nil, nil, sd.department_name, sd.majors[0].name]
+    sheet.add_row [nil, nil, sd.department_name, sd.department_grade, sd.majors[0].name]
 
     (sd.majors[1..-1] || []).each do |major|
-      sheet.add_row [nil, nil, nil, major.name]
+      sheet.add_row [nil, nil, nil, nil, major.name]
     end
   end
 end
 
 wb.add_worksheet(name: "department_major") do |sheet|
-  sheet.add_row %w[school_code school_name department_name major_name]
+  sheet.add_row %w[school_code school_name department_name grade major_name]
 
   @schools.each do |school|
     render_first_department(school, sheet)
     render_other_department(school, sheet)
+  end
+end
+
+# References
+# --grade
+wb.add_worksheet(name: "REF-grade") do |sheet|
+  sheet.add_row %w[grade description]
+  sheet.add_row ["vocational_grade", "will display for user having profile with choosing grade <=9 or other occupation"]
+end
+
+# --province code
+wb.add_worksheet(name: "REF-province-code") do |sheet|
+  sheet.add_row %w[province_code province_name]
+
+  Pumi::Province.all.each do |province|
+    row = [province.id, province.name_km]
+    sheet.add_row row, types: row.map { |i| :string }
+  end
+end
+
+# --school type
+wb.add_worksheet(name: "REF-school-type") do |sheet|
+  sheet.add_row %w[type description]
+
+  School.kinds.keys.each do |type|
+    sheet.add_row [type, t("school.#{type}")]
+  end
+end
+
+# --school category
+wb.add_worksheet(name: "REF-school-category") do |sheet|
+  sheet.add_row %w[category description]
+
+  School.categories.each do |cate|
+    sheet.add_row [cate, t("school.#{cate}")]
   end
 end

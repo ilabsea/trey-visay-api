@@ -13,6 +13,6 @@ wb.add_worksheet(name: "career_website") do |sheet|
       web.logo_url
     ]
 
-    sheet.add_row row, types: row.length.times.map { |i| :string }
+    sheet.add_row row, types: row.map { |i| :string }
   end
 end

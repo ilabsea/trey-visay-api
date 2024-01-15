@@ -23,7 +23,7 @@ class SchoolDepartment < ApplicationRecord
   accepts_nested_attributes_for :school_majors, allow_destroy: true
 
   # Delegation
-  delegate :name, to: :department, prefix: :department
+  delegate :name, :grade, to: :department, prefix: :department
 
   # Instant method
   def department_attributes=(hash)

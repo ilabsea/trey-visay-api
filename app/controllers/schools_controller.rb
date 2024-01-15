@@ -10,7 +10,7 @@ class SchoolsController < ApplicationController
       }
 
       format.xlsx {
-        @schools = authorize School.filter(filter_params)
+        @schools = authorize School.filter(filter_params).includes(school_departments: [:department, :majors, school_majors: :major])
 
         if @schools.length > Settings.max_download_record
           flash[:alert] = t("shared.file_size_is_too_big", max_record: Settings.max_download_record)
