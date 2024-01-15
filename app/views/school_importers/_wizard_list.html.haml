@@ -37,17 +37,15 @@
               = fff.hidden_field :display_order
               = fff.hidden_field :logo_cache
 
-              - item.school_departments.includes(school_majors: :major).each do |school_department|
+              - item.school_departments.each do |school_department|
                 = fff.fields_for :school_departments, school_department do |sdf|
                   = sdf.hidden_field :id
                   = sdf.hidden_field :_destroy
+                  = sdf.hidden_field :major_list, value: school_department.tmp_major_list.to_a.join(',')
+
                   = sdf.fields_for :department, school_department.department do |df|
                     = df.hidden_field :name
-
-                  - school_department.school_majors.each do |school_major|
-                    = sdf.fields_for :school_majors, school_major do |smf|
-                      = smf.fields_for :major, school_major.major do |mj|
-                        = mj.hidden_field :name
+                    = df.hidden_field :grade
 
         %tr
           %td= badge_line_html(item, index + 1).html_safe
@@ -63,7 +61,7 @@
           %td= item.kind
           %td= item.category
           %td
-            = item.school_departments.select{ |d| !d._destroy }.map { |sd| "#{sd.department.name}(#{t('school.major_count', count: sd.school_majors.length)})" }.join(" / ")
+            = item.school_departments.select{ |d| !d._destroy }.map { |sd| "#{sd.department.name}(#{t('school.major_count', count: sd.tmp_major_list.to_a.length)})" }.join(" / ")
 
           / Validation status
           %td= render "shared/validation_status", item: item

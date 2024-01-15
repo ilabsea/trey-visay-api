@@ -36,12 +36,12 @@ module Spreadsheets
         def new_department(row)
           @current = {
             department_attributes: { name: row["department_name"], grade: Department.grades[row["grade"]] },
-            school_majors_attributes: [{ major_attributes: { name: row["major_name"] } }]
+            tmp_major_list: [row["major_name"].to_s.strip]
           }
         end
 
         def append_major(row)
-          @current[:school_majors_attributes].push({ major_attributes: { name: row["major_name"] } })
+          @current[:tmp_major_list].push(row["major_name"]) if row["major_name"].to_s.strip.present?
         end
     end
   end

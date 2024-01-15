@@ -20,11 +20,7 @@ class SchoolImportersController < ApplicationController
       [
         :id, :code, :name, :address, :province, :phone_numbers, :emails, :website_or_facebook,
         :kind, :category, :logo_cache, :province_id, :display_order,
-        school_departments_attributes: [
-          :id, :_destroy,
-          department_attributes: [:name],
-          school_majors_attributes: [major_attributes: [:name]]
-        ]
+        school_departments_attributes: [ :id, :_destroy, :major_list, department_attributes: [:name, :grade] ]
       ]
     end
 end
