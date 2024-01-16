@@ -34,9 +34,10 @@
 #  gf_user_id             :integer
 #  province_id            :string(255)
 #  district_id            :string(255)
-#  full_name              :string(255)
+#  first_name             :string(255)
 #  phone_number           :string(255)
 #  version                :integer          default(1)
+#  last_name              :string(255)
 #
 # Indexes
 #
@@ -112,7 +113,11 @@ class Account < ApplicationRecord
   end
 
   def display_name
-    email.split("@").first.upcase
+    full_name.presence || email.split("@").first.upcase
+  end
+
+  def full_name
+    "#{last_name} #{first_name}"
   end
 
   def in_school_other?
