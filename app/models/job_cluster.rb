@@ -42,7 +42,7 @@ class JobCluster < ApplicationRecord
   def self.filter(params = {})
     scope = all
     scope = scope.where("code LIKE ? or name LIKE ?", "%#{params[:name]}%", "%#{params[:name]}%") if params[:name].present?
-    scope = scope.where("updated_at >= ?", params[:updated_at]) if params[:updated_at].present?
+    scope = scope.where("updated_at > ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 end

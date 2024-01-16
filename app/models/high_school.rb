@@ -55,6 +55,7 @@ class HighSchool < ApplicationRecord
     scope = scope.where(province_id: params[:province_id]) if params[:province_id].present?
     scope = scope.where(district_id: params[:district_id]) if params[:district_id].present?
     scope = scope.where(version: params[:version]) if params[:version].present?
+    scope = scope.where("updated_at > ?", params[:updated_at]) if params[:updated_at].present?
     scope
   end
 

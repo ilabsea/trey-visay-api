@@ -12,6 +12,7 @@
 #
 class SchoolDepartment < ApplicationRecord
   attr_accessor :major_list
+  attr_accessor :tmp_major_list
 
   # Association
   belongs_to :school
@@ -23,7 +24,7 @@ class SchoolDepartment < ApplicationRecord
   accepts_nested_attributes_for :school_majors, allow_destroy: true
 
   # Delegation
-  delegate :name, to: :department, prefix: :department
+  delegate :name, :grade, to: :department, prefix: :department
 
   # Instant method
   def department_attributes=(hash)
@@ -41,5 +42,7 @@ class SchoolDepartment < ApplicationRecord
     self.majors = names.to_s.split(",").map do |name|
       Major.where(name: name.strip).first_or_create!
     end
+
+    school.try(:touch)
   end
 end

@@ -14,7 +14,7 @@ module Spreadsheets
 
       def importing_items(zipfile)
         codes = @items.map { |r| r["school_code"] }
-        items = School.where(code: codes)
+        items = School.where(code: codes).includes(school_departments: [:department, :majors, school_majors: :major])
 
         @items.map do |row|
           item = items.select { |f| f.code == row["school_code"] }.first || School.new

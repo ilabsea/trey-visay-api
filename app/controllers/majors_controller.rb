@@ -22,7 +22,7 @@ class MajorsController < ApplicationController
       }
 
       format.json {
-        @majors = authorize Major.filter(filter_params)
+        @majors = authorize Major.filter(filter_params).includes(:schools, major_personality_types: :personality_type)
 
         render json: @majors
       }

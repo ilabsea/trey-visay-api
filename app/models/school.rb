@@ -31,8 +31,6 @@ class School < ApplicationRecord
 
   mount_uploader :logo, LogoUploader
 
-  CATEGORIES = %w[សាលារដ្ឋ សាលាឯកជន អង្គការ].freeze
-
   enum kind: {
     higher_education: 1,
     tvet_institute: 2
