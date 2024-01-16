@@ -84,7 +84,7 @@ class AccountsController < ApplicationController
     end
 
     def account_params
-      params.require(:account).permit(:email, :full_name, :phone_number, :role, :province_id, :district_id, high_school_ids: [], province_ids: [])
+      params.require(:account).permit(:email, :first_name, :last_name, :phone_number, :role, :province_id, :district_id, high_school_ids: [], province_ids: [])
     end
 
     def filter_params

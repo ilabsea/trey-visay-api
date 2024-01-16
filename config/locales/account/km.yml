@@ -26,6 +26,8 @@ km:
     school: សាលា
     grafana: គណនីស្ថិតិ
     full_name: ឈ្មោះពេញ
+    first_name: នាមខ្លួន
+    last_name: នាមត្រកូល
     phone_number: លេខទូរស័ព្ទ
     enable_dashboard_successfully: បញ្ជូនសំណើបើកគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងអាចចូលប្រើផ្ទាំងស្ថិតិនៅបន្តិចទៀត!
     disable_dashboard_successfully: បញ្ជូនសំណើបិទគណនីស្ថិតិដោយជោគជ័យ! គណនី %{email} នឹងមិនអាចចូលប្រើផ្ទាំងស្ថិតិនៅបន្តិចទៀត!
